@@ -1,0 +1,663 @@
+/* ベーススタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #3b82f6;
+    --primary-hover: #2563eb;
+    --secondary-color: #64748b;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* スクリーン管理 */
+.screen {
+    min-height: 100vh;
+}
+
+.screen.hidden {
+    display: none;
+}
+
+/* ログイン画面 */
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 40px;
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+}
+
+.login-container h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-size: 2rem;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+}
+
+/* タブ */
+.login-tabs {
+    display: flex;
+    margin-bottom: 24px;
+    border-bottom: 2px solid var(--border);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-secondary);
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    margin-bottom: -2px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* フォーム */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* ボタン */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #475569;
+}
+
+.btn-small {
+    padding: 8px 16px;
+    font-size: 12px;
+}
+
+.btn-oauth {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    background-color: white;
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn-oauth:hover {
+    background-color: var(--background);
+}
+
+.oauth-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.toggle-auth {
+    text-align: center;
+    margin-top: 16px;
+    color: var(--text-secondary);
+}
+
+.toggle-auth a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.toggle-auth a:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.message {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.message.error {
+    background-color: #fef2f2;
+    color: var(--danger-color);
+}
+
+.message.success {
+    background-color: #f0fdf4;
+    color: var(--success-color);
+}
+
+/* アプリヘッダー */
+.app-header {
+    background: var(--surface);
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.app-header h1 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.user-email {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* ナビゲーション */
+.app-nav {
+    background: var(--surface);
+    padding: 0 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 8px;
+}
+
+.nav-btn {
+    padding: 16px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-secondary);
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+}
+
+.nav-btn:hover {
+    color: var(--primary-color);
+}
+
+.nav-btn.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* メインコンテンツ */
+.app-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+.view h2 {
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+/* 統計カード */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    background: var(--surface);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.stat-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* ダッシュボードセクション */
+.dashboard-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.dashboard-section {
+    background: var(--surface);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.dashboard-section h3 {
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.current-session {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.current-session.active {
+    background: #f0fdf4;
+    color: var(--success-color);
+}
+
+.session-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.session-buttons button {
+    flex: 1;
+    min-width: 120px;
+}
+
+.top-apps {
+    min-height: 100px;
+}
+
+.top-app-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: var(--background);
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.top-app-name {
+    font-weight: 500;
+}
+
+.top-app-time {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* タイムライン */
+.timeline-controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    align-items: center;
+}
+
+.date-input {
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.timeline-container {
+    background: var(--surface);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    min-height: 300px;
+}
+
+.timeline-item {
+    padding: 16px;
+    border-left: 3px solid var(--primary-color);
+    margin-bottom: 16px;
+    background: var(--background);
+    border-radius: 0 8px 8px 0;
+}
+
+.timeline-item.focus {
+    border-left-color: var(--success-color);
+}
+
+.timeline-item.distraction {
+    border-left-color: var(--danger-color);
+}
+
+.timeline-item.break {
+    border-left-color: var(--warning-color);
+}
+
+.timeline-time {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.timeline-app {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.timeline-type {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.timeline-type.focus {
+    background: #f0fdf4;
+    color: var(--success-color);
+}
+
+.timeline-type.distraction {
+    background: #fef2f2;
+    color: var(--danger-color);
+}
+
+.timeline-type.break {
+    background: #fffbeb;
+    color: var(--warning-color);
+}
+
+.timeline-notes {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* 行動ストーリー */
+.story-controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    align-items: center;
+}
+
+.story-container {
+    background: var(--surface);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    min-height: 300px;
+}
+
+.story-content {
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+.story-content p {
+    margin-bottom: 16px;
+}
+
+.story-content h3 {
+    margin: 24px 0 12px;
+    color: var(--primary-color);
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--border);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 16px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* モーダル */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--surface);
+    padding: 32px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: var(--shadow-lg);
+}
+
+.modal-content h3 {
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.modal-buttons button {
+    flex: 1;
+}
+
+/* グローバルメッセージ */
+.global-message {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    padding: 16px 24px;
+    border-radius: 8px;
+    background: var(--surface);
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    max-width: 400px;
+}
+
+.global-message.success {
+    border-left: 4px solid var(--success-color);
+}
+
+.global-message.error {
+    border-left: 4px solid var(--danger-color);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .login-container {
+        margin: 50px auto;
+        padding: 24px;
+    }
+    
+    .app-header {
+        padding: 12px 16px;
+    }
+    
+    .app-header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .user-email {
+        display: none;
+    }
+    
+    .app-nav {
+        padding: 0 16px;
+        overflow-x: auto;
+    }
+    
+    .nav-btn {
+        padding: 12px 16px;
+        white-space: nowrap;
+    }
+    
+    .app-main {
+        padding: 24px 16px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .dashboard-sections {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline-controls,
+    .story-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .modal-content {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+        padding: 16px;
+    }
+    
+    .dashboard-section {
+        padding: 16px;
+    }
+}

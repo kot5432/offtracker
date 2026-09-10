@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OffTracker</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            width: 320px;
+            padding: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 18px;
+            margin: 0;
+            color: #333;
+        }
+        .status {
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            background: #f5f5f5;
+        }
+        .status.active {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .status.inactive {
+            background: #fff3e0;
+            color: #e65100;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .btn-primary {
+            background: #4f46e5;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #4338ca;
+        }
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+        }
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+        .hidden {
+            display: none;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .login-form input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .web-link {
+            text-align: center;
+            margin-top: 16px;
+        }
+        .web-link a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        .web-link a:hover {
+            text-decoration: underline;
+        }
+        .message {
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+        .message.success {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .message.error {
+            background: #ffebee;
+            color: #c62828;
+        }
+    </style>
+</head>
+<body>
+    <!-- ログイン画面 -->
+    <div id="login-screen">
+        <div class="header">
+            <h1>OffTracker</h1>
+        </div>
+        <form class="login-form" id="login-form">
+            <input type="email" id="email" placeholder="メールアドレス" required>
+            <input type="password" id="password" placeholder="パスワード" required>
+            <button type="submit" class="btn btn-primary">ログイン</button>
+        </form>
+        <div id="auth-message" class="message hidden"></div>
+    </div>
+
+    <!-- セッション管理画面 -->
+    <div id="session-screen" class="hidden">
+        <div class="header">
+            <h1>OffTracker</h1>
+        </div>
+        <div id="session-status" class="status inactive">
+            セッション停止中
+        </div>
+        <button id="start-session" class="btn btn-primary">セッション開始</button>
+        <button id="end-session" class="btn btn-danger hidden">セッション終了</button>
+        <div class="web-link">
+            <a href="https://off-tracker.pages.dev" target="_blank">ウェブアプリで詳細を見る</a>
+        </div>
+    </div>
+
+    <script src="supabase.min.js"></script>
+    <script src="popup-simple.js"></script>
+</body>
+</html>

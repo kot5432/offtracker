@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OffTracker - 行動分析プラットフォーム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ログイン画面 -->
+    <div id="login-screen" class="screen">
+        <div class="login-container">
+            <h1>OffTracker</h1>
+            <p class="subtitle">行動分析プラットフォーム</p>
+            
+            <div class="login-tabs">
+                <button class="tab-btn active" data-tab="email">メールでログイン</button>
+                <button class="tab-btn" data-tab="oauth">ソーシャルログイン</button>
+            </div>
+            
+            <div id="email-tab" class="tab-content active">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <input type="email" id="email" required placeholder="your@email.com" autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">パスワード</label>
+                        <input type="password" id="password" required placeholder="••••••••" autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">ログイン</button>
+                </form>
+                <p class="toggle-auth">
+                    アカウントをお持ちでない場合は<a href="#" id="show-signup">新規登録</a>
+                </p>
+            </div>
+            
+            <div id="oauth-tab" class="tab-content">
+                <button class="btn btn-oauth" id="google-login">
+                    <span class="oauth-icon">G</span>
+                    Googleでログイン
+                </button>
+                <button class="btn btn-oauth" id="github-login">
+                    <span class="oauth-icon">GH</span>
+                    GitHubでログイン
+                </button>
+            </div>
+            
+            <div id="signup-form" class="hidden">
+                <form id="signup-form-inner">
+                    <div class="form-group">
+                        <label for="signup-email">メールアドレス</label>
+                        <input type="email" id="signup-email" required placeholder="your@email.com" autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">パスワード</label>
+                        <input type="password" id="signup-password" required placeholder="••••••••" autocomplete="new-password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">新規登録</button>
+                </form>
+                <p class="toggle-auth">
+                    すでにアカウントをお持ちの場合は<a href="#" id="show-login">ログイン</a>
+                </p>
+            </div>
+            
+            <div id="auth-message" class="message"></div>
+        </div>
+    </div>
+    
+    <!-- メインアプリ画面 -->
+    <div id="app-screen" class="screen hidden">
+        <header class="app-header">
+            <h1>OffTracker</h1>
+            <div class="header-controls">
+                <div id="session-indicator" class="session-indicator">
+                    <span id="session-status-dot" class="session-status-dot"></span>
+                    <span id="session-status-text" class="session-status-text">作業なし</span>
+                </div>
+                <span id="user-email" class="user-email"></span>
+                <button id="logout-btn" class="btn btn-small">ログアウト</button>
+            </div>
+        </header>
+        
+        <nav class="app-nav">
+            <button class="nav-btn active" data-view="dashboard">ダッシュボード</button>
+            <button class="nav-btn" data-view="timeline">タイムライン</button>
+            <button class="nav-btn" data-view="analysis">分析</button>
+            <button class="nav-btn" data-view="story">行動ストーリー</button>
+        </nav>
+        
+        <main class="app-main">
+            <!-- ダッシュボード -->
+            <section id="dashboard-view" class="view active">
+                <h2>ダッシュボード</h2>
+                
+                <!-- 目的と実際の比較セクション -->
+                <div class="purpose-comparison-section">
+                    <!-- 目的設定済みの場合 -->
+                    <div id="dashboard-with-purpose" class="dashboard-with-purpose hidden">
+                        <div class="comparison-header">
+                            <h3>今回の目的</h3>
+                            <div class="purpose-display-large" id="dashboard-purpose-display">-</div>
+                        </div>
+                        
+                        <div class="comparison-divider"></div>
+                        
+                        <div class="comparison-session">
+                            <h3>セッション情報</h3>
+                            <div class="session-info" id="session-info">
+                                <div class="session-info-item">
+                                    <span class="session-info-label">開始:</span>
+                                    <span class="session-info-value" id="session-start">-</span>
+                                </div>
+                                <div class="session-info-item">
+                                    <span class="session-info-label">経過:</span>
+                                    <span class="session-info-value" id="session-duration">-</span>
+                                </div>
+                                <div class="session-info-item">
+                                    <span class="session-info-label">目的内:</span>
+                                    <span class="session-info-value" id="purpose-time">-</span>
+                                </div>
+                                <div class="session-info-item">
+                                    <span class="session-info-label">目的外:</span>
+                                    <span class="session-info-value" id="deviation-time">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-divider"></div>
+                        
+                        <div class="comparison-distractions-summary">
+                            <h3>脱線サマリー</h3>
+                            <div class="distractions-summary" id="distractions-summary">
+                                <div class="distraction-summary-item">
+                                    <span class="distraction-summary-label">脱線回数:</span>
+                                    <span class="distraction-summary-value" id="distraction-count">-</span>
+                                </div>
+                                <div class="distraction-summary-item">
+                                    <span class="distraction-summary-label">最初の脱線:</span>
+                                    <span class="distraction-summary-value" id="first-distraction">-</span>
+                                </div>
+                                <div class="distraction-summary-item">
+                                    <span class="distraction-summary-label">合計脱線時間:</span>
+                                    <span class="distraction-summary-value" id="total-distraction-time">-</span>
+                                </div>
+                                <div class="distraction-summary-item">
+                                    <span class="distraction-summary-label">主な脱線先:</span>
+                                    <span class="distraction-summary-value" id="main-distraction">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-divider"></div>
+                        
+                        <div class="comparison-current-status">
+                            <h3>現在の状態</h3>
+                            <div class="current-status" id="current-status">
+                                <div class="status-indicator" id="status-indicator"></div>
+                                <div class="status-text" id="status-text">-</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 目的未設定の場合 -->
+                    <div id="dashboard-without-purpose" class="dashboard-without-purpose hidden">
+                        <div class="comparison-header">
+                            <h3>今回の目的</h3>
+                            <div class="purpose-display-large">目的未設定</div>
+                            <button id="set-purpose-btn" class="btn btn-primary btn-small">目的を設定する</button>
+                        </div>
+                        
+                        <div class="comparison-divider"></div>
+                        
+                        <div class="comparison-session">
+                            <h3>セッション情報</h3>
+                            <div class="session-info" id="session-info-no-purpose">
+                                <div class="session-info-item">
+                                    <span class="session-info-label">開始:</span>
+                                    <span class="session-info-value" id="session-start-no-purpose">-</span>
+                                </div>
+                                <div class="session-info-item">
+                                    <span class="session-info-label">経過:</span>
+                                    <span class="session-info-value" id="session-duration-no-purpose">-</span>
+                                </div>
+                                <div class="session-info-item">
+                                    <span class="session-info-label">合計利用時間:</span>
+                                    <span class="session-info-value" id="total-time-no-purpose">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-divider"></div>
+                        
+                        <div class="comparison-usage">
+                            <h3>利用状況</h3>
+                            <div class="actual-breakdown" id="actual-breakdown-no-purpose">
+                                <div class="actual-item">
+                                    <span class="actual-service">-</span>
+                                    <span class="actual-time">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-divider"></div>
+                        
+                        <div class="comparison-current-status">
+                            <h3>現在の状態</h3>
+                            <div class="current-status" id="current-status-no-purpose">
+                                <div class="status-indicator" id="status-indicator-no-purpose"></div>
+                                <div class="status-text" id="status-text-no-purpose">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 今回の目的セクション -->
+                <div id="session-purpose-section" class="daily-purpose-section">
+                    <div id="purpose-setting-ui" class="purpose-setting-ui">
+                        <h3>今回の目的を設定</h3>
+                        
+                        <div class="purpose-time-range-section">
+                            <label class="purpose-input-label">⏰ 時間帯</label>
+                            <div class="purpose-time-range-inputs">
+                                <div class="purpose-time-input">
+                                    <label>開始</label>
+                                    <input type="time" id="purpose-start-time" value="09:00">
+                                </div>
+                                <div class="purpose-time-input">
+                                    <label>終了</label>
+                                    <input type="time" id="purpose-end-time" value="21:00">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="purpose-input-section">
+                            <label class="purpose-input-label">📝 行動内容</label>
+                            <textarea id="custom-purpose" placeholder="例: プログラミングをする" rows="2"></textarea>
+                        </div>
+                        
+                        <div class="purpose-save-buttons">
+                            <button id="save-purpose" class="btn btn-primary">保存</button>
+                            <button id="cancel-purpose" class="btn btn-secondary">キャンセル</button>
+                        </div>
+                    </div>
+                    
+                    <div id="purpose-display" class="purpose-display hidden">
+                        <div class="purpose-label">今回の目的</div>
+                        <div class="purpose-value" id="current-purpose">-</div>
+                        <button id="change-purpose" class="btn btn-small">変更</button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- タイムライン -->
+            <section id="timeline-view" class="view">
+                <h2>タイムライン</h2>
+                
+                <!-- 今回の目的表示 -->
+                <div id="timeline-purpose-display" class="timeline-purpose-display hidden">
+                    <div class="timeline-purpose-label">今回の目的</div>
+                    <div class="timeline-purpose-value" id="timeline-current-purpose">-</div>
+                </div>
+                
+                <div class="timeline-controls">
+                    <input type="date" id="timeline-date" class="date-input">
+                    <select id="service-filter" class="service-filter">
+                        <option value="">すべてのサービス</option>
+                    </select>
+                    <div class="control-buttons">
+                        <button id="load-timeline" class="btn btn-primary btn-small">読み込み</button>
+                    </div>
+                </div>
+                
+                <div id="timeline-container" class="timeline-container">
+                    <p>日付を選択して「読み込み」をクリックしてください</p>
+                </div>
+                
+                <div class="dashboard-section">
+                    <h3>アプリ別使用時間</h3>
+                    <div id="app-pie-chart" class="app-pie-chart">
+                        <p>データがありません</p>
+                    </div>
+                </div>
+                
+                <div class="dashboard-section">
+                    <h3>時間帯別使用パターン</h3>
+                    <div id="hourly-pattern" class="hourly-pattern">
+                        <p>データがありません</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 分析 -->
+            <section id="analysis-view" class="view">
+                <h2>分析</h2>
+                
+                <div class="analysis-section">
+                    <h3>目的外の行動</h3>
+                    <div id="purpose-deviation-analysis" class="purpose-deviation-analysis">
+                        <p>データがありません</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 行動ストーリー -->
+            <section id="story-view" class="view">
+                <h2>行動ストーリー</h2>
+                
+                <div class="story-controls">
+                    <input type="date" id="story-date" class="date-input">
+                    <div class="control-buttons">
+                        <button id="generate-story" class="btn btn-primary btn-small">ストーリー生成</button>
+                    </div>
+                </div>
+                
+                <div id="story-container" class="story-container">
+                    <p>日付を選択して「ストーリー生成」をクリックしてください</p>
+                </div>
+                
+                <div id="story-loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>AIが行動ストーリーを分析中...</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- グローバルメッセージ -->
+    <div id="global-message" class="global-message hidden"></div>
+    
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+        
+        // Supabase設定
+        const SUPABASE_URL = 'https://pgyczjsuuxulyftuuagq.supabase.co';
+        const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_M3ePv_hOAcWp56L_nah4iA_w_sQ7YhW';
+        
+        // Supabaseクライアント初期化
+        const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+        
+        // アプリケーション状態
+        let currentUser = null;
+        let currentSession = null;
+        let sessionInterval = null;
+        
+        // DOM要素
+        const loginScreen = document.getElementById('login-screen');
+        const appScreen = document.getElementById('app-screen');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form-inner');
+        const authMessage = document.getElementById('auth-message');
+        const userEmail = document.getElementById('user-email');
+        const logoutBtn = document.getElementById('logout-btn');
+        const navBtns = document.querySelectorAll('.nav-btn');
+        const views = document.querySelectorAll('.view');
+        
+        // 初期化
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAuth();
+            setupEventListeners();
+            setDefaultDates();
+        });
+        
+        // 認証状態チェック
+        async function checkAuth() {
+            const { data: { session } } = await supabase.auth.getSession();
+            
+            if (session) {
+                currentUser = session.user;
+                showAppScreen();
+                loadDashboard();
+            } else {
+                showLoginScreen();
+            }
+            
+            // 認証状態変更を監視
+            supabase.auth.onAuthStateChange((event, session) => {
+                if (event === 'SIGNED_IN') {
+                    currentUser = session.user;
+                    showAppScreen();
+                    loadDashboard();
+                } else if (event === 'SIGNED_OUT') {
+                    currentUser = null;
+                    showLoginScreen();
+                }
+            });
+        }
+        
+        // イベントリスナー設定
+        function setupEventListeners() {
+            // ログインフォーム
+            loginForm.addEventListener('submit', handleLogin);
+            
+            // 新規登録フォーム
+            signupForm.addEventListener('submit', handleSignup);
+            
+            // タブ切り替え
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const tab = e.target.dataset.tab;
+                    switchTab(tab);
+                });
+            });
+            
+            // ログイン/新規登録切り替え
+            document.getElementById('show-signup').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('email-tab').classList.add('hidden');
+                document.getElementById('signup-form').classList.remove('hidden');
+            });
+            
+            document.getElementById('show-login').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('signup-form').classList.add('hidden');
+                document.getElementById('email-tab').classList.remove('hidden');
+            });
+            
+            // OAuthログイン
+            document.getElementById('google-login').addEventListener('click', () => handleOAuthLogin('google'));
+            document.getElementById('github-login').addEventListener('click', () => handleOAuthLogin('github'));
+            
+            // ログアウト
+            logoutBtn.addEventListener('click', handleLogout);
+            
+            // ナビゲーション
+            navBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const view = e.target.dataset.view;
+                    switchView(view);
+                });
+            });
+            
+            // セッション目的設定
+            initSessionPurpose();
+            document.getElementById('save-purpose').addEventListener('click', savePurpose);
+            document.getElementById('cancel-purpose').addEventListener('click', cancelPurpose);
+            document.getElementById('change-purpose').addEventListener('click', showPurposeSetting);
+            document.getElementById('set-purpose-btn').addEventListener('click', showPurposeSetting);
+            
+            // タイムライン
+            document.getElementById('load-timeline').addEventListener('click', loadTimeline);
+            document.getElementById('service-filter').addEventListener('change', loadTimeline);
+            
+            // 行動ストーリー
+            document.getElementById('generate-story').addEventListener('click', generateStory);
+        }
+        
+        // タブ切り替え
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.tab === tab);
+            });
+            
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            document.getElementById(`${tab}-tab`).classList.add('active');
+        }
+        
+        // 画面切り替え
+        function showLoginScreen() {
+            loginScreen.classList.remove('hidden');
+            appScreen.classList.add('hidden');
+        }
+        
+        function showAppScreen() {
+            loginScreen.classList.add('hidden');
+            appScreen.classList.remove('hidden');
+            userEmail.textContent = currentUser.email;
+        }
+        
+        function switchView(view) {
+            navBtns.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.view === view);
+            });
+            
+            views.forEach(v => {
+                v.classList.remove('active');
+            });
+            
+            document.getElementById(`${view}-view`).classList.add('active');
+            
+            // 分析タブが選択された場合、目的外の行動を分析
+            if (view === 'analysis') {
+                updatePurposeDeviationAnalysis();
+            }
+        }
+        
+        // デフォルト日付設定
+        function setDefaultDates() {
+            const now = new Date();
+            const today = now.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '-');
+            document.getElementById('timeline-date').value = today;
+            document.getElementById('story-date').value = today;
+        }
+        
+        // ログイン処理
+        async function handleLogin(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email,
+                    password
+                });
+                
+                if (error) throw error;
+                
+                showAuthMessage('ログインしました', 'success');
+            } catch (error) {
+                showAuthMessage(error.message, 'error');
+            }
+        }
+        
+        // 新規登録処理
+        async function handleSignup(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            
+            try {
+                const { data, error } = await supabase.auth.signUp({
+                    email,
+                    password
+                });
+                
+                if (error) throw error;
+                
+                showAuthMessage('登録確認メールを送信しました', 'success');
+            } catch (error) {
+                showAuthMessage(error.message, 'error');
+            }
+        }
+        
+        // OAuthログイン
+        async function handleOAuthLogin(provider) {
+            try {
+                const { data, error } = await supabase.auth.signInWithOAuth({
+                    provider: provider,
+                    options: {
+                        redirectTo: window.location.origin
+                    }
+                });
+                
+                if (error) throw error;
+            } catch (error) {
+                showAuthMessage(error.message, 'error');
+            }
+        }
+        
+        // ログアウト
+        async function handleLogout() {
+            await supabase.auth.signOut();
+            if (currentSession) {
+                endSession();
+            }
+        }
+        
+        // 認証メッセージ表示
+        function showAuthMessage(message, type) {
+            authMessage.textContent = message;
+            authMessage.className = `message ${type}`;
+            
+            setTimeout(() => {
+                authMessage.textContent = '';
+                authMessage.className = 'message';
+            }, 5000);
+        }
+        
+        // グローバルメッセージ表示
+        function showGlobalMessage(message, type = 'success') {
+            const globalMessage = document.getElementById('global-message');
+            globalMessage.textContent = message;
+            globalMessage.className = `global-message ${type}`;
+            
+            setTimeout(() => {
+                globalMessage.classList.add('hidden');
+            }, 3000);
+        }
+        
+        // ダッシュボードデータ読み込み
+        async function loadDashboard() {
+            if (!currentUser) return;
+            
+            try {
+                // セッション目的を取得
+                const sessionKey = getSessionKey();
+                const savedPurpose = localStorage.getItem(sessionKey);
+                
+                // 目的設定済みかどうかで表示を切り替え
+                const dashboardWithPurpose = document.getElementById('dashboard-with-purpose');
+                const dashboardWithoutPurpose = document.getElementById('dashboard-without-purpose');
+                
+                if (savedPurpose) {
+                    dashboardWithPurpose.classList.remove('hidden');
+                    dashboardWithPurpose.classList.add('active');
+                    dashboardWithoutPurpose.classList.add('hidden');
+                    dashboardWithoutPurpose.classList.remove('active');
+                    
+                    // 目的設定済みのデータを表示
+                    await loadDashboardWithPurpose(savedPurpose);
+                } else {
+                    dashboardWithPurpose.classList.add('hidden');
+                    dashboardWithPurpose.classList.remove('active');
+                    dashboardWithoutPurpose.classList.remove('hidden');
+                    dashboardWithoutPurpose.classList.add('active');
+                    
+                    // 目的未設定のデータを表示
+                    await loadDashboardWithoutPurpose();
+                }
+                
+            } catch (error) {
+                console.error('Dashboard load error:', error);
+            }
+        }
+        
+        // 目的設定済みのダッシュボードデータ読み込み
+        async function loadDashboardWithPurpose(savedPurpose) {
+            try {
+                const purposeData = JSON.parse(savedPurpose);
+                const dashboardPurposeDisplay = document.getElementById('dashboard-purpose-display');
+                dashboardPurposeDisplay.textContent = `${purposeData.startTime}〜${purposeData.endTime}: ${purposeData.content}`;
+                
+                // セッションとイベントデータを取得
+                const { data: sessions, error: sessionsError } = await supabase
+                    .from('sessions')
+                    .select('*')
+                    .eq('user_id', currentUser.id)
+                    .order('started_at', { ascending: false });
+                
+                if (sessionsError) throw sessionsError;
+                
+                const { data: events, error: eventsError } = await supabase
+                    .from('events')
+                    .select('*')
+                    .eq('user_id', currentUser.id)
+                    .order('created_at', { ascending: false });
+                
+                if (eventsError) throw eventsError;
+                
+                // 現在のセッションを取得
+                const activeSession = sessions.find(session => !session.ended_at);
+                
+                if (activeSession) {
+                    // セッション情報を表示
+                    const sessionStart = new Date(activeSession.started_at);
+                    const sessionStartStr = sessionStart.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+                    const now = new Date();
+                    const durationMinutes = Math.round((now - sessionStart) / 1000 / 60);
+                    
+                    document.getElementById('session-start').textContent = sessionStartStr;
+                    document.getElementById('session-duration').textContent = `${durationMinutes}分`;
+                    
+                    // セッションのイベントを取得
+                    const sessionEvents = events.filter(event => {
+                        const eventTime = new Date(event.created_at);
+                        return eventTime >= sessionStart && eventTime <= now;
+                    });
+                    
+                    // 目的内/目的外を計算
+                    let purposeTime = 0;
+                    let deviationTime = 0;
+                    
+                    sessionEvents.forEach(event => {
+                        if (event.event_type === 'focus') {
+                            purposeTime += 1; // 簡易的に1イベントを1分として計算
+                        } else if (event.event_type === 'distraction') {
+                            deviationTime += 1;
+                        }
+                    });
+                    
+                    document.getElementById('purpose-time').textContent = `${purposeTime}分`;
+                    document.getElementById('deviation-time').textContent = `${deviationTime}分`;
+                    
+                    // 脱線サマリーを計算
+                    const distractionEvents = sessionEvents.filter(event => event.event_type === 'distraction');
+                    document.getElementById('distraction-count').textContent = `${distractionEvents.length}回`;
+                    
+                    if (distractionEvents.length > 0) {
+                        const firstDistraction = distractionEvents[0];
+                        const firstDistractionTime = new Date(firstDistraction.created_at);
+                        const firstDistractionMinutes = Math.round((firstDistractionTime - sessionStart) / 1000 / 60);
+                        document.getElementById('first-distraction').textContent = `開始${firstDistractionMinutes}分後`;
+                        document.getElementById('total-distraction-time').textContent = `${deviationTime}分`;
+                        
+                        // 主な脱線先を集計
+                        const distractionCounts = {};
+                        distractionEvents.forEach(event => {
+                            const serviceName = event.service_name || 'Unknown';
+                            distractionCounts[serviceName] = (distractionCounts[serviceName] || 0) + 1;
+                        });
+                        
+                        const sortedDistractions = Object.entries(distractionCounts).sort((a, b) => b[1] - a[1]);
+                        const mainDistraction = sortedDistractions[0];
+                        document.getElementById('main-distraction').textContent = `${mainDistraction[0]} (${mainDistraction[1]}回)`;
+                    } else {
+                        document.getElementById('first-distraction').textContent = '-';
+                        document.getElementById('total-distraction-time').textContent = '0分';
+                        document.getElementById('main-distraction').textContent = '-';
+                    }
+                    
+                    // 現在の状態を表示
+                    const latestEvent = sessionEvents[0];
+                    if (latestEvent) {
+                        const statusIndicator = document.getElementById('status-indicator');
+                        const statusText = document.getElementById('status-text');
+                        
+                        if (latestEvent.event_type === 'focus') {
+                            statusIndicator.className = 'status-indicator focus';
+                            statusText.textContent = `集中中 - ${latestEvent.service_name || 'Unknown'}`;
+                        } else if (latestEvent.event_type === 'distraction') {
+                            statusIndicator.className = 'status-indicator distraction';
+                            statusText.textContent = `脱線中 - ${latestEvent.service_name || 'Unknown'}`;
+                        } else {
+                            statusIndicator.className = 'status-indicator';
+                            statusText.textContent = `${latestEvent.service_name || 'Unknown'}`;
+                        }
+                    } else {
+                        document.getElementById('status-indicator').className = 'status-indicator';
+                        document.getElementById('status-text').textContent = 'データなし';
+                    }
+                } else {
+                    // アクティブセッションがない場合
+                    document.getElementById('session-start').textContent = '-';
+                    document.getElementById('session-duration').textContent = '-';
+                    document.getElementById('purpose-time').textContent = '-';
+                    document.getElementById('deviation-time').textContent = '-';
+                    document.getElementById('distraction-count').textContent = '-';
+                    document.getElementById('first-distraction').textContent = '-';
+                    document.getElementById('total-distraction-time').textContent = '-';
+                    document.getElementById('main-distraction').textContent = '-';
+                    document.getElementById('status-indicator').className = 'status-indicator';
+                    document.getElementById('status-text').textContent = 'セッション未開始';
+                }
+                
+            } catch (error) {
+                console.error('Dashboard with purpose load error:', error);
+            }
+        }
+        
+        // 目的未設定のダッシュボードデータ読み込み
+        async function loadDashboardWithoutPurpose() {
+            try {
+                // セッションとイベントデータを取得
+                const { data: sessions, error: sessionsError } = await supabase
+                    .from('sessions')
+                    .select('*')
+                    .eq('user_id', currentUser.id)
+                    .order('started_at', { ascending: false });
+                
+                if (sessionsError) throw sessionsError;
+                
+                const { data: events, error: eventsError } = await supabase
+                    .from('events')
+                    .select('*')
+                    .eq('user_id', currentUser.id)
+                    .order('created_at', { ascending: false });
+                
+                if (eventsError) throw eventsError;
+                
+                // 現在のセッションを取得
+                const activeSession = sessions.find(session => !session.ended_at);
+                
+                if (activeSession) {
+                    const sessionStart = new Date(activeSession.started_at);
+                    const sessionStartStr = sessionStart.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+                    const now = new Date();
+                    const durationMinutes = Math.round((now - sessionStart) / 1000 / 60);
+                    
+                    document.getElementById('session-start-no-purpose').textContent = sessionStartStr;
+                    document.getElementById('session-duration-no-purpose').textContent = `${durationMinutes}分`;
+                    
+                    // セッションのイベントを取得
+                    const sessionEvents = events.filter(event => {
+                        const eventTime = new Date(event.created_at);
+                        return eventTime >= sessionStart && eventTime <= now;
+                    });
+                    
+                    // 合計利用時間を計算
+                    const totalTime = sessionEvents.length; // 簡易的に1イベントを1分として計算
+                    document.getElementById('total-time-no-purpose').textContent = `${totalTime}分`;
+                    
+                    // 利用状況を表示
+                    const serviceTimeMap = {};
+                    sessionEvents.forEach(event => {
+                        const serviceName = event.service_name || 'Unknown';
+                        serviceTimeMap[serviceName] = (serviceTimeMap[serviceName] || 0) + 1;
+                    });
+                    
+                    const actualBreakdown = document.getElementById('actual-breakdown-no-purpose');
+                    actualBreakdown.innerHTML = '';
+                    
+                    const sortedServices = Object.entries(serviceTimeMap)
+                        .sort((a, b) => b[1] - a[1])
+                        .slice(0, 5);
+                    
+                    if (sortedServices.length === 0) {
+                        actualBreakdown.innerHTML = '<div class="actual-item"><span class="actual-service">データなし</span><span class="actual-time">-</span></div>';
+                    } else {
+                        sortedServices.forEach(([service, time]) => {
+                            const item = document.createElement('div');
+                            item.className = 'actual-item';
+                            item.innerHTML = `<span class="actual-service">${service}</span><span class="actual-time">${time}分</span>`;
+                            actualBreakdown.appendChild(item);
+                        });
+                    }
+                    
+                    // 現在の状態を表示
+                    const latestEvent = sessionEvents[0];
+                    if (latestEvent) {
+                        const statusIndicator = document.getElementById('status-indicator-no-purpose');
+                        const statusText = document.getElementById('status-text-no-purpose');
+                        
+                        statusIndicator.className = 'status-indicator';
+                        statusText.textContent = `利用中 - ${latestEvent.service_name || 'Unknown'}`;
+                    } else {
+                        document.getElementById('status-indicator-no-purpose').className = 'status-indicator';
+                        document.getElementById('status-text-no-purpose').textContent = 'データなし';
+                    }
+                } else {
+                    document.getElementById('session-start-no-purpose').textContent = '-';
+                    document.getElementById('session-duration-no-purpose').textContent = '-';
+                    document.getElementById('total-time-no-purpose').textContent = '-';
+                    document.getElementById('actual-breakdown-no-purpose').innerHTML = '<div class="actual-item"><span class="actual-service">データなし</span><span class="actual-time">-</span></div>';
+                    document.getElementById('status-indicator-no-purpose').className = 'status-indicator';
+                    document.getElementById('status-text-no-purpose').textContent = 'セッション未開始';
+                }
+                
+            } catch (error) {
+                console.error('Dashboard without purpose load error:', error);
+            }
+        }
+        
+        // ダッシュボード統計更新
+        function updateDashboardStats(sessions, events, today) {
+            let totalTime = 0;
+            let focusTime = 0;
+            let distractionCount = 0;
+            
+            // ローカル時間で今日の日付を取得
+            const getLocalDate = (dateStr) => {
+                const date = new Date(dateStr);
+                return date.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '-');
+            };
+            
+            // 今日のイベントのみフィルタリング
+            const todayEvents = events.filter(event => {
+                const eventDate = getLocalDate(event.created_at);
+                return eventDate === today;
+            });
+            
+            // イベントデータから利用時間を計算（タイムラインと同じロジック）
+            if (todayEvents.length > 0) {
+                // 連続するイベントをグループ化（2分以内のギャップは連続とみなす）
+                const GAP_THRESHOLD = 2 * 60 * 1000; // 2分
+                const groupedEvents = [];
+                
+                // 時系列にソート
+                const sortedEvents = [...todayEvents].sort((a, b) => 
+                    new Date(a.created_at) - new Date(b.created_at)
+                );
+                
+                let currentGroup = null;
+                sortedEvents.forEach(event => {
+                    const eventTime = new Date(event.created_at);
+                    const appName = event.app_name;
+                    const eventType = event.event_type || 'default';
+                    
+                    if (!currentGroup) {
+                        currentGroup = {
+                            app_name: appName,
+                            event_type: eventType,
+                            start_time: eventTime,
+                            end_time: eventTime,
+                            count: 1
+                        };
+                    } else if (
+                        currentGroup.app_name === appName && 
+                        currentGroup.event_type === eventType &&
+                        (eventTime - currentGroup.end_time) < GAP_THRESHOLD
+                    ) {
+                        currentGroup.end_time = eventTime;
+                        currentGroup.count++;
+                    } else {
+                        groupedEvents.push(currentGroup);
+                        currentGroup = {
+                            app_name: appName,
+                            event_type: eventType,
+                            start_time: eventTime,
+                            end_time: eventTime,
+                            count: 1
+                        };
+                    }
+                });
+                
+                if (currentGroup) {
+                    groupedEvents.push(currentGroup);
+                }
+                
+                // グループ化されたイベントから利用時間を計算
+                groupedEvents.forEach(group => {
+                    const duration = (group.end_time - group.start_time) / 1000 / 60; // 分
+                    totalTime += duration;
+                    
+                    if (group.event_type === 'focus') {
+                        focusTime += duration;
+                    }
+                });
+            }
+            
+            // セッション目的を取得して表示
+            const sessionKey = getSessionKey();
+            const savedPurpose = localStorage.getItem(sessionKey);
+            const dashboardPurposeDisplay = document.getElementById('dashboard-purpose-display');
+            
+            if (savedPurpose) {
+                try {
+                    const purposeData = JSON.parse(savedPurpose);
+                    if (purposeData.content && purposeData.startTime && purposeData.endTime) {
+                        dashboardPurposeDisplay.textContent = `${purposeData.startTime}〜${purposeData.endTime}: ${purposeData.content}`;
+                    } else {
+                        dashboardPurposeDisplay.textContent = savedPurpose;
+                    }
+                } catch (e) {
+                    dashboardPurposeDisplay.textContent = savedPurpose;
+                }
+            } else {
+                dashboardPurposeDisplay.textContent = '目的未設定';
+            }
+            
+            // サービスごとの利用時間を集計
+            const serviceTimeMap = {};
+            todayEvents.forEach(event => {
+                const serviceName = event.service_name || 'Unknown';
+                if (!serviceTimeMap[serviceName]) {
+                    serviceTimeMap[serviceName] = 0;
+                }
+                // 簡易的に1イベントを1分として計算（実際にはグループ化された時間を使うべき）
+                serviceTimeMap[serviceName] += 1;
+            });
+            
+            // 実際の行動を表示
+            const actualBreakdown = document.getElementById('actual-breakdown');
+            actualBreakdown.innerHTML = '';
+            
+            const sortedServices = Object.entries(serviceTimeMap)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 5); // 上位5件
+            
+            if (sortedServices.length === 0) {
+                actualBreakdown.innerHTML = '<div class="actual-item"><span class="actual-service">データなし</span><span class="actual-time">-</span></div>';
+            } else {
+                sortedServices.forEach(([service, time]) => {
+                    const item = document.createElement('div');
+                    item.className = 'actual-item';
+                    item.innerHTML = `<span class="actual-service">${service}</span><span class="actual-time">${time}分</span>`;
+                    actualBreakdown.appendChild(item);
+                });
+            }
+            
+            // 目的とのズレを計算
+            const deviationSummary = document.getElementById('deviation-summary');
+            if (savedPurpose) {
+                const deviationMinutes = totalTime - focusTime;
+                if (deviationMinutes > 0) {
+                    deviationSummary.textContent = `${Math.round(deviationMinutes)}分が目的外の行動`;
+                } else {
+                    deviationSummary.textContent = '目的通りに進行中';
+                }
+            } else {
+                deviationSummary.textContent = '目的未設定のためズレは計算できません';
+            }
+            
+            // 主な脱線を表示
+            const distractionsList = document.getElementById('distractions-list');
+            distractionsList.innerHTML = '';
+            
+            const distractionEvents = todayEvents.filter(event => event.event_type === 'distraction');
+            if (distractionEvents.length === 0) {
+                distractionsList.innerHTML = '<div class="distraction-item">脱線なし</div>';
+            } else {
+                // 脱線イベントを時間順に並べて上位3件を表示
+                const recentDistractions = distractionEvents
+                    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+                    .slice(0, 3);
+                
+                recentDistractions.forEach(event => {
+                    const eventTime = new Date(event.created_at);
+                    const timeStr = `${eventTime.getHours()}:${String(eventTime.getMinutes()).padStart(2, '0')}`;
+                    const serviceName = event.service_name || 'Unknown';
+                    
+                    const item = document.createElement('div');
+                    item.className = 'distraction-item';
+                    item.textContent = `${timeStr} ${serviceName}へ移動`;
+                    distractionsList.appendChild(item);
+                });
+            }
+            
+            // ヘッダーのセッションインジケーターを更新
+            const activeSession = sessions.find(session => !session.ended_at);
+            const sessionDot = document.getElementById('session-status-dot');
+            const sessionText = document.getElementById('session-status-text');
+            
+            if (activeSession) {
+                const startTime = new Date(activeSession.started_at);
+                const now = new Date();
+                const duration = Math.floor((now - startTime) / 1000 / 60); // 分
+                
+                sessionDot.classList.add('active');
+                sessionText.classList.add('active');
+                sessionText.textContent = `作業中 (${duration}分)`;
+            } else {
+                sessionDot.classList.remove('active');
+                sessionText.classList.remove('active');
+                sessionText.textContent = '作業なし';
+            }
+        }
+        
+        // 時間フォーマット
+        function formatTime(minutes) {
+            const hours = Math.floor(minutes / 60);
+            const mins = Math.round(minutes % 60);
+            return `${hours}時間${mins}分`;
+        }
+        
+        // 上位アプリ更新
+        function updateTopApps(events) {
+            const appTimes = {};
+            
+            events.forEach(event => {
+                if (!appTimes[event.app_name]) {
+                    appTimes[event.app_name] = 0;
+                }
+                appTimes[event.app_name]++;
+            });
+            
+            const sortedApps = Object.entries(appTimes)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 5);
+            
+            const container = document.getElementById('top-apps');
+            if (sortedApps.length === 0) {
+                container.innerHTML = '<p>データがありません</p>';
+                return;
+            }
+            
+            container.innerHTML = sortedApps.map(([app, count]) => `
+                <div class="top-app-item">
+                    <span class="top-app-name">${app}</span>
+                    <span class="top-app-time">${count}回</span>
+                </div>
+            `).join('');
+        }
+        
+        // 週間トレンド更新
+        async function updatePurposeDeviationAnalysis() {
+            if (!currentUser) return;
+            
+            try {
+                // セッション目的を取得
+                const sessionKey = getSessionKey();
+                const savedPurpose = localStorage.getItem(sessionKey);
+                
+                // 今日のイベントを取得
+                const now = new Date();
+                const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                
+                const { data: events, error } = await supabase
+                    .from('events')
+                    .select('*')
+                    .eq('user_id', currentUser.id)
+                    .gte('created_at', startOfDay.toISOString())
+                    .order('created_at', { ascending: true });
+                
+                if (error) throw error;
+                
+                const container = document.getElementById('purpose-deviation-analysis');
+                
+                if (!savedPurpose) {
+                    container.innerHTML = '<p>目的が設定されていません</p>';
+                    return;
+                }
+                
+                if (events.length === 0) {
+                    container.innerHTML = '<p>データがありません</p>';
+                    return;
+                }
+                
+                // 目的データをパース
+                let purposeStartTime, purposeEndTime, purposeContent;
+                try {
+                    const purposeData = JSON.parse(savedPurpose);
+                    purposeStartTime = purposeData.startTime;
+                    purposeEndTime = purposeData.endTime;
+                    purposeContent = purposeData.content;
+                } catch (e) {
+                    container.innerHTML = '<p>目的データの読み込みに失敗しました</p>';
+                    return;
+                }
+                
+                // 目的時間帯内のイベントをフィルタリング
+                const [startHour, startMin] = purposeStartTime.split(':').map(Number);
+                const [endHour, endMin] = purposeEndTime.split(':').map(Number);
+                
+                const purposeStartDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), startHour, startMin);
+                const purposeEndDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), endHour, endMin);
+                
+                const purposePeriodEvents = events.filter(event => {
+                    const eventTime = new Date(event.created_at);
+                    return eventTime >= purposeStartDateTime && eventTime <= purposeEndDateTime;
+                });
+                
+                // 目的外の行動（distractionタイプ）を抽出
+                const distractionEvents = purposePeriodEvents.filter(event => event.event_type === 'distraction');
+                
+                if (distractionEvents.length === 0) {
+                    container.innerHTML = '<p>目的時間帯内に脱線はありませんでした</p>';
+                    return;
+                }
+                
+                // サービスごとの脱線回数を集計
+                const distractionCounts = {};
+                distractionEvents.forEach(event => {
+                    const serviceName = event.service_name || 'Unknown';
+                    if (!distractionCounts[serviceName]) {
+                        distractionCounts[serviceName] = 0;
+                    }
+                    distractionCounts[serviceName]++;
+                });
+                
+                // 結果を表示
+                const sortedDistractions = Object.entries(distractionCounts)
+                    .sort((a, b) => b[1] - a[1]);
+                
+                const analysisHTML = sortedDistractions.map(([service, count]) => {
+                    return `
+                        <div class="deviation-analysis-item purpose-outside">
+                            <div class="deviation-analysis-service">目的外行動: ${service}</div>
+                            <div class="deviation-analysis-time">${count}回脱線</div>
+                        </div>
+                    `;
+                }).join('');
+                
+                container.innerHTML = analysisHTML;
+                
+            } catch (error) {
+                console.error('Purpose deviation analysis error:', error);
+                document.getElementById('purpose-deviation-analysis').innerHTML = '<p>データの読み込みに失敗しました</p>';
+            }
+        }
+        
+        // アプリ別使用時間更新
+        function updateAppPieChart(events) {
+            const container = document.getElementById('app-pie-chart');
+            
+            // アプリごとのイベント数を集計
+            const appCounts = {};
+            events.forEach(event => {
+                if (!appCounts[event.app_name]) {
+                    appCounts[event.app_name] = 0;
+                }
+                appCounts[event.app_name]++;
+            });
+            
+            const entries = Object.entries(appCounts);
+            if (entries.length === 0) {
+                container.innerHTML = '<p>データがありません</p>';
+                return;
+            }
+            
+            // 上位5アプリに絞り込み
+            const sortedEntries = entries.sort((a, b) => b[1] - a[1]).slice(0, 5);
+            const total = sortedEntries.reduce((sum, [, count]) => sum + count, 0);
+            
+            // 色のパレット
+            const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', '#f97316'];
+            
+            // 円グラフのCSS conic-gradientを作成
+            let gradientParts = [];
+            let currentAngle = 0;
+            
+            sortedEntries.forEach(([app, count], index) => {
+                const percentage = (count / total) * 100;
+                const endAngle = currentAngle + percentage;
+                const color = colors[index % colors.length];
+                gradientParts.push(`${color} ${currentAngle}% ${endAngle}%`);
+                currentAngle = endAngle;
+            });
+            
+            const gradient = `conic-gradient(${gradientParts.join(', ')})`;
+            
+            // 凡例を作成
+            const legendHTML = sortedEntries.map(([app, count], index) => {
+                const percentage = Math.round((count / total) * 100);
+                const color = colors[index % colors.length];
+                return `
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: ${color};"></div>
+                        <span>${app} (${percentage}%)</span>
+                    </div>
+                `;
+            }).join('');
+            
+            container.innerHTML = `
+                <div class="pie-chart-container">
+                    <div class="pie-chart" style="background: ${gradient};"></div>
+                    <div class="pie-legend">
+                        ${legendHTML}
+                    </div>
+                </div>
+            `;
+        }
+        
+        // 時間帯別使用パターン更新
+        function updateHourlyPattern(events) {
+            const container = document.getElementById('hourly-pattern');
+            
+            // 時間帯ごとのイベント数を集計（0-23時）
+            const hourlyCounts = new Array(24).fill(0);
+            
+            events.forEach(event => {
+                const eventTime = new Date(event.created_at);
+                const hour = eventTime.getHours();
+                hourlyCounts[hour]++;
+            });
+            
+            // チャートを描画
+            const maxValue = Math.max(...hourlyCounts, 1);
+            
+            const chartHTML = `
+                <div class="hourly-chart">
+                    ${hourlyCounts.map((count, hour) => {
+                        const height = (count / maxValue) * 100;
+                        return `
+                            <div class="hourly-bar">
+                                <div class="hourly-bar-value" style="height: ${height}%;" title="${hour}時: ${count}回"></div>
+                                <div class="hourly-bar-label">${hour}</div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+            
+            container.innerHTML = chartHTML;
+        }
+        
+        
+        // タイムライン読み込み
+        async function loadTimeline() {
+            if (!currentUser) return;
+            
+            const date = document.getElementById('timeline-date').value;
+            const serviceFilter = document.getElementById('service-filter').value;
+            
+            try {
+                // 全イベントを取得
+                const { data: events, error } = await supabase
+                    .from('events')
+                    .select('*')
+                    .eq('user_id', currentUser.id)
+                    .order('created_at', { ascending: true });
+                
+                if (error) throw error;
+                
+                // ローカル時間でフィルタリング
+                const getLocalDate = (dateStr) => {
+                    const date = new Date(dateStr);
+                    return date.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '-');
+                };
+                
+                // サービス名の一覧を取得してセレクトボックスに追加
+                const serviceNames = new Set();
+                events.forEach(event => {
+                    if (event.service_name) {
+                        serviceNames.add(event.service_name);
+                    }
+                });
+                
+                const serviceFilterSelect = document.getElementById('service-filter');
+                const currentSelection = serviceFilterSelect.value;
+                serviceFilterSelect.innerHTML = '<option value="">すべてのサービス</option>';
+                
+                Array.from(serviceNames).sort().forEach(serviceName => {
+                    const option = document.createElement('option');
+                    option.value = serviceName;
+                    option.textContent = serviceName;
+                    serviceFilterSelect.appendChild(option);
+                });
+                
+                serviceFilterSelect.value = currentSelection;
+                
+                const filteredEvents = events.filter(event => {
+                    const eventDate = getLocalDate(event.created_at);
+                    const dateMatch = eventDate === date;
+                    const serviceMatch = !serviceFilter || event.service_name === serviceFilter;
+                    return dateMatch && serviceMatch;
+                });
+                
+                // 選択された日付の目的を表示
+                const dateParts = date.split('-');
+                const year = parseInt(dateParts[0]);
+                const month = parseInt(dateParts[1]);
+                const day = parseInt(dateParts[2]);
+                
+                // 現在の日付の場合はセッション目的を優先、それ以外は日付キーを使用
+                const today = new Date();
+                const isToday = year === today.getFullYear() && month === today.getMonth() + 1 && day === today.getDate();
+                
+                let datePurpose;
+                if (isToday) {
+                    const sessionKey = getSessionKey();
+                    datePurpose = localStorage.getItem(sessionKey);
+                }
+                
+                if (!datePurpose) {
+                    const dateKey = `daily-purpose-${year}-${month}-${day}`;
+                    datePurpose = localStorage.getItem(dateKey);
+                }
+                
+                const timelinePurposeDisplay = document.getElementById('timeline-purpose-display');
+                const timelineCurrentPurpose = document.getElementById('timeline-current-purpose');
+                
+                if (datePurpose) {
+                    try {
+                        const purposeData = JSON.parse(datePurpose);
+                        if (purposeData.content && purposeData.startTime && purposeData.endTime) {
+                            timelineCurrentPurpose.textContent = `${purposeData.startTime}〜${purposeData.endTime}: ${purposeData.content}`;
+                        } else {
+                            // 古いデータ形式（単純な文字列）の場合
+                            timelineCurrentPurpose.textContent = datePurpose;
+                        }
+                    } catch (e) {
+                        // JSONパース失敗の場合は古いデータ形式として扱う
+                        timelineCurrentPurpose.textContent = datePurpose;
+                    }
+                    timelinePurposeDisplay.classList.remove('hidden');
+                } else {
+                    timelinePurposeDisplay.classList.add('hidden');
+                }
+                
+                renderTimeline(filteredEvents);
+                updateAppPieChart(filteredEvents);
+                updateHourlyPattern(filteredEvents);
+                
+            } catch (error) {
+                console.error('Timeline load error:', error);
+                showGlobalMessage('タイムラインの読み込みに失敗しました', 'error');
+            }
+        }
+        
+        // タイムライン描画（ガントチャート形式）
+        function renderTimeline(events) {
+            const container = document.getElementById('timeline-container');
+            
+            if (events.length === 0) {
+                container.innerHTML = '<p>データがありません</p>';
+                return;
+            }
+            
+            // 今日の目的を取得
+            const sessionKey = getSessionKey();
+            const todayPurpose = localStorage.getItem(sessionKey);
+            
+            // 連続するイベントをグループ化（2分以内のギャップは連続とみなす）
+            const GAP_THRESHOLD = 2 * 60 * 1000; // 2分
+            const groupedEvents = [];
+            
+            // 時系列にソート
+            const sortedEvents = [...events].sort((a, b) => 
+                new Date(a.created_at) - new Date(b.created_at)
+            );
+            
+            let currentGroup = null;
+            sortedEvents.forEach(event => {
+                const eventTime = new Date(event.created_at);
+                const appName = event.app_name;
+                const eventType = event.event_type || 'default';
+                
+                if (!currentGroup) {
+                    currentGroup = {
+                        app_name: appName,
+                        event_type: eventType,
+                        start_time: eventTime,
+                        end_time: eventTime,
+                        count: 1
+                    };
+                } else if (
+                    currentGroup.app_name === appName && 
+                    currentGroup.event_type === eventType &&
+                    (eventTime - currentGroup.end_time) < GAP_THRESHOLD
+                ) {
+                    // 同じアプリでギャップが小さい場合はグループに追加
+                    currentGroup.end_time = eventTime;
+                    currentGroup.count++;
+                } else {
+                    // 異なるアプリまたはギャップが大きい場合は新しいグループ
+                    groupedEvents.push(currentGroup);
+                    currentGroup = {
+                        app_name: appName,
+                        event_type: eventType,
+                        start_time: eventTime,
+                        end_time: eventTime,
+                        count: 1
+                    };
+                }
+            });
+            
+            if (currentGroup) {
+                groupedEvents.push(currentGroup);
+            }
+            
+            // アプリ名でグループ化
+            const appEvents = {};
+            groupedEvents.forEach(event => {
+                const appName = event.app_name;
+                if (!appEvents[appName]) {
+                    appEvents[appName] = [];
+                }
+                appEvents[appName].push(event);
+            });
+            
+            // 時間範囲をその日の0時から24時に固定
+            const rangeStartHour = 0;
+            const rangeEndHour = 23;
+            const totalHours = 24;
+            
+            // ガントチャートHTMLを生成
+            let ganttHTML = '<div class="gantt-chart">';
+            
+            // 今日の目的を表示
+            if (todayPurpose) {
+                ganttHTML += `
+                    <div class="purpose-display" style="margin-bottom: 16px;">
+                        <div class="purpose-label">今日の目的</div>
+                        <div class="purpose-value">${todayPurpose}</div>
+                    </div>
+                `;
+            }
+            
+            // 時間軸ヘッダー
+            ganttHTML += '<div class="gantt-header">';
+            ganttHTML += '<div style="width: 140px;"></div>';
+            ganttHTML += '<div class="gantt-time-axis">';
+            
+            for (let i = 0; i <= totalHours; i += 2) {
+                const hour = (rangeStartHour + i) % 24;
+                ganttHTML += `<div class="gantt-time-mark">${String(hour).padStart(2, '0')}:00</div>`;
+            }
+            
+            ganttHTML += '</div>';
+            ganttHTML += '</div>';
+            
+            // ガントチャート本体
+            ganttHTML += '<div class="gantt-body">';
+            
+            // アプリごとに行を作成
+            Object.keys(appEvents).forEach(appName => {
+                const appData = appEvents[appName];
+                
+                ganttHTML += '<div class="gantt-row">';
+                ganttHTML += `<div class="gantt-app-name" title="${appName}">${appName}</div>`;
+                ganttHTML += '<div class="gantt-bars-container">';
+                
+                // そのアプリのグループ化されたイベントを横棒として表示
+                appData.forEach(group => {
+                    const startTime = group.start_time;
+                    const endTime = group.end_time;
+                    
+                    const eventStartHour = startTime.getHours();
+                    const startMinute = startTime.getMinutes();
+                    const eventEndHour = endTime.getHours();
+                    const endMinute = endTime.getMinutes();
+                    
+                    // 時間軸上の位置を計算（パーセンテージ）
+                    const startHourOffset = eventStartHour - rangeStartHour;
+                    const startPosition = ((startHourOffset * 60 + startMinute) / (totalHours * 60)) * 100;
+                    
+                    const endHourOffset = eventEndHour - rangeStartHour;
+                    const endPosition = ((endHourOffset * 60 + endMinute) / (totalHours * 60)) * 100;
+                    
+                    // バーの幅
+                    const barWidth = endPosition - startPosition;
+                    
+                    const eventType = group.event_type;
+                    const startTimeStr = startTime.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+                    const endTimeStr = endTime.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+                    const duration = Math.round((endTime - startTime) / 1000 / 60); // 実際の分数
+                    
+                    ganttHTML += `
+                        <div class="gantt-bar ${eventType}" 
+                             style="left: ${startPosition}%; width: ${barWidth}%;"
+                             data-app="${appName}"
+                             data-start="${startTimeStr}"
+                             data-end="${endTimeStr}"
+                             data-duration="${duration}分"
+                             data-type="${eventType}">
+                        </div>
+                    `;
+                });
+                
+                ganttHTML += '</div>';
+                ganttHTML += '</div>';
+            });
+            
+            // 現在時刻ライン（今日の場合のみ）
+            const today = new Date();
+            const selectedDate = document.getElementById('timeline-date').value;
+            const todayStr = today.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '-');
+            
+            if (selectedDate === todayStr) {
+                const currentHour = today.getHours();
+                const currentMinute = today.getMinutes();
+                const hourOffset = currentHour - rangeStartHour;
+                
+                if (hourOffset >= 0 && hourOffset <= totalHours) {
+                    const currentPosition = ((hourOffset * 60 + currentMinute) / (totalHours * 60)) * 100;
+                    ganttHTML += `
+                        <div class="gantt-current-time" style="left: calc(150px + ${currentPosition}%);"></div>
+                    `;
+                }
+            }
+            
+            ganttHTML += '</div>';
+            ganttHTML += '</div>';
+            
+            container.innerHTML = ganttHTML;
+            
+            // ツールチップイベントリスナーを追加
+            setupGanttTooltips();
+        }
+        
+        // ガントチャートツールチップ設定
+       function setupGanttTooltips() {
+            const bars = document.querySelectorAll('.gantt-bar');
+            let tooltip = null;
+            
+            bars.forEach(bar => {
+                bar.addEventListener('mouseenter', (e) => {
+                    if (!tooltip) {
+                        tooltip = document.createElement('div');
+                        tooltip.className = 'gantt-tooltip';
+                        document.body.appendChild(tooltip);
+                    }
+                    
+                    const app = bar.dataset.app;
+                    const start = bar.dataset.start;
+                    const end = bar.dataset.end;
+                    const duration = bar.dataset.duration;
+                    const type = bar.dataset.type;
+                    
+                    const typeLabel = {
+                        focus: '集中',
+                        distraction: '脱線',
+                        break: '休憩'
+                    }[type] || type;
+                    
+                    tooltip.innerHTML = `
+                        <div class="gantt-tooltip-title">${app}</div>
+                        <div class="gantt-tooltip-info">開始: ${start}</div>
+                        <div class="gantt-tooltip-info">終了: ${end}</div>
+                        <div class="gantt-tooltip-info">使用時間: ${duration}</div>
+                        <div class="gantt-tooltip-info">タイプ: ${typeLabel}</div>
+                    `;
+                    
+                    tooltip.style.display = 'block';
+                    positionTooltip(e, tooltip);
+                });
+                
+                bar.addEventListener('mousemove', (e) => {
+                    if (tooltip) {
+                        positionTooltip(e, tooltip);
+                    }
+                });
+                
+                bar.addEventListener('mouseleave', () => {
+                    if (tooltip) {
+                        tooltip.style.display = 'none';
+                    }
+                });
+            });
+        }
+        
+        function positionTooltip(e, tooltip) {
+            const x = e.clientX + 10;
+            const y = e.clientY + 10;
+            
+            // 画面外に出ないように調整
+            const rect = tooltip.getBoundingClientRect();
+            const maxX = window.innerWidth - rect.width - 10;
+            const maxY = window.innerHeight - rect.height - 10;
+            
+            tooltip.style.left = Math.min(x, maxX) + 'px';
+            tooltip.style.top = Math.min(y, maxY) + 'px';
+        }
+        
+        // 行動ストーリー生成
+        async function generateStory() {
+            if (!currentUser) return;
+            
+            const date = document.getElementById('story-date').value;
+            const startDate = `${date}T00:00:00`;
+            const endDate = `${date}T23:59:59`;
+            
+            // ローディング表示
+            document.getElementById('story-container').classList.add('hidden');
+            document.getElementById('story-loading').classList.remove('hidden');
+            
+            try {
+                // データ取得
+                const { data: events, error: eventsError } = await supabase
+                    .from('events')
+                    .select('*')
+                    .eq('user_id', currentUser.id)
+                    .gte('created_at', startDate)
+                    .lte('created_at', endDate)
+                    .order('created_at', { ascending: true });
+                
+                if (eventsError) throw eventsError;
+                
+                const { data: sessions, error: sessionsError } = await supabase
+                    .from('sessions')
+                    .select('*')
+                    .eq('user_id', currentUser.id)
+                    .gte('started_at', startDate)
+                    .lte('started_at', endDate)
+                    .order('started_at', { ascending: true });
+                
+                if (sessionsError) throw sessionsError;
+                
+                // Azure AI API経由でストーリー生成
+                const story = await generateStoryWithAI(events, sessions);
+                
+                // ストーリー表示
+                document.getElementById('story-container').innerHTML = `
+                    <div class="story-content">
+                        ${story}
+                    </div>
+                `;
+                
+            } catch (error) {
+                console.error('Story generation error:', error);
+                document.getElementById('story-container').innerHTML = `
+                    <p class="error">ストーリーの生成に失敗しました: ${error.message}</p>
+                `;
+            } finally {
+                document.getElementById('story-container').classList.remove('hidden');
+                document.getElementById('story-loading').classList.add('hidden');
+            }
+        }
+        
+        // Azure AI APIでストーリー生成
+        async function generateStoryWithAI(events, sessions) {
+            try {
+                const response = await fetch('/api/generate-story', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        events,
+                        sessions,
+                        date: document.getElementById('story-date').value
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('AI API呼び出しに失敗しました');
+                }
+                
+                const data = await response.json();
+                return data.story;
+                
+            } catch (error) {
+                console.error('AI API error:', error);
+                // フォールバック: ローカルでシンプルなストーリー生成
+                return generateLocalStory(events, sessions);
+            }
+        }
+        
+        // ローカルでのシンプルなストーリー生成（フォールバック）
+        function generateLocalStory(events, sessions) {
+            if (events.length === 0 && sessions.length === 0) {
+                return '<p>この日の行動データはありません。</p>';
+            }
+            
+            const date = document.getElementById('story-date').value;
+            let story = `<h3>${date}の行動ストーリー</h3>`;
+            
+            // 目的を取得
+            const dateParts = date.split('-');
+            const year = parseInt(dateParts[0]);
+            const month = parseInt(dateParts[1]);
+            const day = parseInt(dateParts[2]);
+            
+            // 現在の日付の場合はセッション目的を優先、それ以外は日付キーを使用
+            const today = new Date();
+            const isToday = year === today.getFullYear() && month === today.getMonth() + 1 && day === today.getDate();
+            
+            let savedPurpose;
+            if (isToday) {
+                const sessionKey = getSessionKey();
+                savedPurpose = localStorage.getItem(sessionKey);
+            }
+            
+            if (!savedPurpose) {
+                const dateKey = `daily-purpose-${year}-${month}-${day}`;
+                savedPurpose = localStorage.getItem(dateKey);
+            }
+            
+            let purposeStartTime, purposeEndTime, purposeContent;
+            if (savedPurpose) {
+                try {
+                    const purposeData = JSON.parse(savedPurpose);
+                    if (purposeData.content && purposeData.startTime && purposeData.endTime) {
+                        purposeStartTime = purposeData.startTime;
+                        purposeEndTime = purposeData.endTime;
+                        purposeContent = purposeData.content;
+                        story += `<p><strong>今回の目的:</strong> ${purposeStartTime}〜${purposeEndTime}に${purposeContent}</p>`;
+                    }
+                } catch (e) {
+                    // 古いデータ形式の場合は無視
+                }
+            }
+            
+            // 目的時間帯内のイベントをフィルタリング
+            let purposePeriodEvents = events;
+            if (purposeStartTime && purposeEndTime) {
+                const [startHour, startMin] = purposeStartTime.split(':').map(Number);
+                const [endHour, endMin] = purposeEndTime.split(':').map(Number);
+                
+                const purposeStartDateTime = new Date(year, month - 1, day, startHour, startMin);
+                const purposeEndDateTime = new Date(year, month - 1, day, endHour, endMin);
+                
+                purposePeriodEvents = events.filter(event => {
+                    const eventTime = new Date(event.created_at);
+                    return eventTime >= purposeStartDateTime && eventTime <= purposeEndDateTime;
+                });
+            }
+            
+            // 脱線イベントを抽出
+            const distractionEvents = purposePeriodEvents.filter(e => e.event_type === 'distraction');
+            
+            if (distractionEvents.length > 0) {
+                story += '<p><strong>脱線の流れ:</strong></p>';
+                story += '<ul>';
+                
+                distractionEvents.forEach((event, index) => {
+                    const eventTime = new Date(event.created_at);
+                    const timeStr = eventTime.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+                    const serviceName = event.service_name || 'Unknown';
+                    
+                    story += `<li>${timeStr}に${serviceName}へ移動（脱線）</li>`;
+                });
+                
+                story += '</ul>';
+                
+                // 脱線回数のサマリー
+                story += `<p>合計${distractionEvents.length}回の脱線がありました。</p>`;
+            } else {
+                story += '<p>目的時間帯内に脱線はありませんでした。目的通りに進行しています。</p>';
+            }
+            
+            // 集中イベントのサマリー
+            const focusEvents = purposePeriodEvents.filter(e => e.event_type === 'focus');
+            if (focusEvents.length > 0) {
+                story += `<p>集中イベント: ${focusEvents.length}回</p>`;
+            }
+            
+            story += '<p><em>※ AI分析機能を有効にするには、Cloudflare Pages Functionsを設定してください。</em></p>';
+            
+            return story;
+        }
+        
+        // セッション目的設定機能
+        function getSessionKey() {
+            // 現在のセッションIDを取得、なければ日付キーを使用
+            if (typeof sessions !== 'undefined' && sessions && sessions.length > 0) {
+                const activeSession = sessions.find(session => !session.ended_at);
+                if (activeSession) {
+                    return `session-purpose-${activeSession.id}`;
+                }
+            }
+            // フォールバック：日付キー
+            const today = new Date();
+            return `daily-purpose-${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+        }
+        
+        function initSessionPurpose() {
+            const sessionKey = getSessionKey();
+            const savedPurpose = localStorage.getItem(sessionKey);
+            
+            if (savedPurpose) {
+                // 目的が設定済みの場合は表示
+                try {
+                    const purposeData = JSON.parse(savedPurpose);
+                    if (purposeData.content && purposeData.startTime && purposeData.endTime) {
+                        document.getElementById('current-purpose').textContent = `${purposeData.startTime}〜${purposeData.endTime}: ${purposeData.content}`;
+                    } else {
+                        // 古いデータ形式（単純な文字列）の場合
+                        document.getElementById('current-purpose').textContent = savedPurpose;
+                    }
+                } catch (e) {
+                    // JSONパース失敗の場合は古いデータ形式として扱う
+                    document.getElementById('current-purpose').textContent = savedPurpose;
+                }
+                document.getElementById('purpose-display').classList.remove('hidden');
+                document.getElementById('purpose-setting-ui').classList.add('hidden');
+            } else {
+                // 目的未設定の場合は設定UIを表示
+                document.getElementById('purpose-display').classList.add('hidden');
+                document.getElementById('purpose-setting-ui').classList.remove('hidden');
+            }
+        }
+        
+        function savePurpose() {
+            const customPurpose = document.getElementById('custom-purpose').value.trim();
+            const startTime = document.getElementById('purpose-start-time').value;
+            const endTime = document.getElementById('purpose-end-time').value;
+            
+            if (customPurpose && startTime && endTime) {
+                const sessionKey = getSessionKey();
+                const purposeData = {
+                    content: customPurpose,
+                    startTime: startTime,
+                    endTime: endTime
+                };
+                localStorage.setItem(sessionKey, JSON.stringify(purposeData));
+                
+                // UI更新
+                document.getElementById('current-purpose').textContent = `${startTime}〜${endTime}: ${customPurpose}`;
+                document.getElementById('purpose-display').classList.remove('hidden');
+                document.getElementById('purpose-setting-ui').classList.add('hidden');
+                document.getElementById('custom-purpose').value = '';
+            }
+        }
+        
+        function cancelPurpose() {
+            document.getElementById('custom-purpose').value = '';
+            document.getElementById('purpose-start-time').value = '09:00';
+            document.getElementById('purpose-end-time').value = '21:00';
+        }
+        
+        function showPurposeSetting() {
+            document.getElementById('purpose-display').classList.add('hidden');
+            document.getElementById('purpose-setting-ui').classList.remove('hidden');
+        }
+        
+    </script>
+</body>
+</html>

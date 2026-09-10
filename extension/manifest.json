@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "OffTracker - 行動分析プラットフォーム",
+  "version": "1.0.0",
+  "description": "PC上の行動履歴を収集・分析し、「何にどれだけ時間を使ったか」だけでなく、「どのような流れで行動し、なぜ集中や脱線が起きたのか」を可視化する行動理解プラットフォーム",
+  "permissions": [
+    "tabs",
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://pgyczjsuuxulyftuuagq.supabase.co/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup-simple.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

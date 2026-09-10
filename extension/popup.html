@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OffTracker - 行動分析プラットフォーム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ログイン画面 -->
+    <div id="login-screen" class="screen">
+        <div class="login-container">
+            <h1>OffTracker</h1>
+            <p class="subtitle">行動分析プラットフォーム</p>
+            
+            <div class="login-tabs">
+                <button class="tab-btn active" data-tab="email">メールでログイン</button>
+                <button class="tab-btn" data-tab="oauth">ソーシャルログイン</button>
+            </div>
+            
+            <div id="email-tab" class="tab-content active">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <input type="email" id="email" required placeholder="your@email.com" autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">パスワード</label>
+                        <input type="password" id="password" required placeholder="••••••••" autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">ログイン</button>
+                </form>
+                <p class="toggle-auth">
+                    アカウントをお持ちでない場合は<a href="#" id="show-signup">新規登録</a>
+                </p>
+            </div>
+            
+            <div id="oauth-tab" class="tab-content">
+                <button class="btn btn-oauth" id="google-login">
+                    <span class="oauth-icon">G</span>
+                    Googleでログイン
+                </button>
+                <button class="btn btn-oauth" id="github-login">
+                    <span class="oauth-icon">GH</span>
+                    GitHubでログイン
+                </button>
+            </div>
+            
+            <div id="signup-form" class="hidden">
+                <form id="signup-form-inner">
+                    <div class="form-group">
+                        <label for="signup-email">メールアドレス</label>
+                        <input type="email" id="signup-email" required placeholder="your@email.com" autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">パスワード</label>
+                        <input type="password" id="signup-password" required placeholder="••••••••" autocomplete="new-password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">新規登録</button>
+                </form>
+                <p class="toggle-auth">
+                    すでにアカウントをお持ちの場合は<a href="#" id="show-login">ログイン</a>
+                </p>
+            </div>
+            
+            <div id="auth-message" class="message"></div>
+        </div>
+    </div>
+    
+    <!-- メインアプリ画面 -->
+    <div id="app-screen" class="screen hidden">
+        <header class="app-header">
+            <h1>OffTracker</h1>
+            <div class="header-controls">
+                <span id="user-email" class="user-email"></span>
+                <button id="logout-btn" class="btn btn-small">ログアウト</button>
+            </div>
+        </header>
+        
+        <nav class="app-nav">
+            <button class="nav-btn active" data-view="dashboard">ダッシュボード</button>
+            <button class="nav-btn" data-view="timeline">タイムライン</button>
+            <button class="nav-btn" data-view="story">行動ストーリー</button>
+        </nav>
+        
+        <main class="app-main">
+            <!-- ダッシュボード -->
+            <section id="dashboard-view" class="view active">
+                <h2>ダッシュボード</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-value" id="today-time">0時間0分</div>
+                        <div class="stat-label">今日の利用時間</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-value" id="focus-time">0時間0分</div>
+                        <div class="stat-label">集中時間</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">↔️</div>
+                        <div class="stat-value" id="distraction-count">0回</div>
+                        <div class="stat-label">脱線回数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-value" id="current-status">-</div>
+                        <div class="stat-label">現在の状態</div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-sections">
+                    <div class="dashboard-section">
+                        <h3>現在の作業状況</h3>
+                        <div id="current-session" class="current-session">
+                            <p>作業中のセッションはありません</p>
+                        </div>
+                        <div class="session-buttons">
+                            <button id="start-session" class="btn btn-primary">セッション開始</button>
+                            <button id="end-session" class="btn btn-secondary hidden">セッション終了</button>
+                            <button id="add-event-session" class="btn btn-secondary">イベント記録</button>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-section">
+                        <h3>今日の上位アプリ</h3>
+                        <div id="top-apps" class="top-apps">
+                            <p>データがありません</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-section">
+                        <h3>イベント記録</h3>
+                        <p class="section-description">アプリの使用状況や集中・脱線を記録</p>
+                        <button id="add-event" class="btn btn-primary">イベントを記録</button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- タイムライン -->
+            <section id="timeline-view" class="view">
+                <h2>タイムライン</h2>
+                
+                <div class="timeline-controls">
+                    <input type="date" id="timeline-date" class="date-input">
+                    <button id="load-timeline" class="btn btn-primary">読み込み</button>
+                </div>
+                
+                <div id="timeline-container" class="timeline-container">
+                    <p>日付を選択して「読み込み」をクリックしてください</p>
+                </div>
+            </section>
+            
+            <!-- 行動ストーリー -->
+            <section id="story-view" class="view">
+                <h2>行動ストーリー</h2>
+                
+                <div class="story-controls">
+                    <input type="date" id="story-date" class="date-input">
+                    <button id="generate-story" class="btn btn-primary">ストーリー生成</button>
+                </div>
+                
+                <div id="story-container" class="story-container">
+                    <p>日付を選択して「ストーリー生成」をクリックしてください</p>
+                </div>
+                
+                <div id="story-loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>AIが行動ストーリーを分析中...</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- イベント記録モーダル -->
+    <div id="event-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>イベントを記録</h3>
+            <form id="event-form">
+                <div class="form-group">
+                    <label for="event-app">アプリ名</label>
+                    <input type="text" id="event-app" required placeholder="例: Chrome, VS Code">
+                </div>
+                <div class="form-group">
+                    <label for="event-service">サービス名（任意）</label>
+                    <input type="text" id="event-service" placeholder="例: YouTube, GitHub">
+                </div>
+                <div class="form-group">
+                    <label for="event-type">イベントタイプ</label>
+                    <select id="event-type" required>
+                        <option value="focus">集中</option>
+                        <option value="distraction">脱線</option>
+                        <option value="break">休憩</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="event-notes">メモ（任意）</label>
+                    <textarea id="event-notes" rows="3" placeholder="この行動についてのメモ"></textarea>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn btn-secondary" id="cancel-event">キャンセル</button>
+                    <button type="submit" class="btn btn-primary">記録</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- グローバルメッセージ -->
+    <div id="global-message" class="global-message hidden"></div>
+    
+    <script src="supabase.min.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
