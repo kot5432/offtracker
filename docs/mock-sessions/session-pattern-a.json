@@ -1,0 +1,77 @@
+{
+  "session": {
+    "id": "session-pattern-a-001",
+    "purpose": "Webアプリのログイン機能を実装する",
+    "target_time_minutes": 180,
+    "start_time": "2026-09-16T18:00:00Z",
+    "end_time": "2026-09-16T19:30:00Z",
+    "status": "completed"
+  },
+  "events": [
+    {
+      "id": "evt-a-001",
+      "session_id": "session-pattern-a-001",
+      "start_time": "2026-09-16T18:00:00Z",
+      "end_time": "2026-09-16T18:35:00Z",
+      "source": "native",
+      "application": "VS Code",
+      "window_title": "OffTracker - Visual Studio Code",
+      "duration_seconds": 2100
+    },
+    {
+      "id": "evt-a-002",
+      "session_id": "session-pattern-a-001",
+      "start_time": "2026-09-16T18:35:00Z",
+      "end_time": "2026-09-16T18:42:00Z",
+      "source": "browser",
+      "application": "Chrome",
+      "service": "Google",
+      "window_title": "Google Search - offtracker desktop app",
+      "duration_seconds": 420
+    },
+    {
+      "id": "evt-a-003",
+      "session_id": "session-pattern-a-001",
+      "start_time": "2026-09-16T18:42:00Z",
+      "end_time": "2026-09-16T19:05:00Z",
+      "source": "browser",
+      "application": "Chrome",
+      "service": "YouTube",
+      "window_title": "YouTube - Programming Tutorial",
+      "duration_seconds": 1380
+    },
+    {
+      "id": "evt-a-004",
+      "session_id": "session-pattern-a-001",
+      "start_time": "2026-09-16T19:05:00Z",
+      "end_time": "2026-09-16T19:12:00Z",
+      "source": "native",
+      "application": "Discord",
+      "window_title": "Discord - Gaming",
+      "duration_seconds": 420
+    },
+    {
+      "id": "evt-a-005",
+      "session_id": "session-pattern-a-001",
+      "start_time": "2026-09-16T19:12:00Z",
+      "end_time": "2026-09-16T19:30:00Z",
+      "source": "native",
+      "application": "VS Code",
+      "window_title": "OffTracker - Visual Studio Code",
+      "duration_seconds": 1080
+    }
+  ],
+  "result": {
+    "id": "res-a-001",
+    "session_id": "session-pattern-a-001",
+    "result_level": "partially_completed",
+    "result_description": "ログイン画面のUIを作成したが、バックエンドは未実装",
+    "actual_duration_minutes": 90
+  },
+  "reflection": {
+    "id": "ref-a-001",
+    "session_id": "session-pattern-a-001",
+    "deviation_reason": "別のことをしてしまった",
+    "reflection_details": "エラーが出て調査しようとしたが、YouTubeを見てしまい、その後Discordで話してしまった"
+  }
+}
