@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OffTracker - Home</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #1a1a1a;
+    }
+
+    .section {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+    }
+
+    input[type="text"],
+    textarea,
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .time-inputs {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .time-inputs input {
+      width: 80px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-primary {
+      background-color: #10b981;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #059669;
+    }
+
+    .btn-danger {
+      background-color: #ef4444;
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background-color: #dc2626;
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .active-session {
+      display: none;
+    }
+
+    .active-session.visible {
+      display: block;
+    }
+
+    .idle-session {
+      display: block;
+    }
+
+    .idle-session.hidden {
+      display: none;
+    }
+
+    .current-activity {
+      background-color: #f0f9ff;
+      border: 2px solid #3b82f6;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .current-activity h3 {
+      color: #1e40af;
+      margin-bottom: 10px;
+    }
+
+    .current-activity p {
+      font-size: 18px;
+      color: #1e3a8a;
+    }
+
+    .recent-sessions {
+      margin-top: 20px;
+    }
+
+    .recent-session-item {
+      padding: 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .recent-session-item:last-child {
+      border-bottom: none;
+    }
+
+    .recent-session-date {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .recent-session-purpose {
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .recent-session-result {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .result-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .result-completed { background-color: #d1fae5; color: #065f46; }
+    .result-mostly-completed { background-color: #dbeafe; color: #1e40af; }
+    .result-partially-completed { background-color: #fef3c7; color: #92400e; }
+    .result-minimal { background-color: #fee2e2; color: #991b1b; }
+    .result-not-completed { background-color: #f3f4f6; color: #374151; }
+
+    .error {
+      color: #ef4444;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>OffTracker</h1>
+    </header>
+
+    <!-- Idle State -->
+    <div id="idleSession" class="section idle-session">
+      <h2 class="section-title">今日の目的</h2>
+
+      <div class="form-group">
+        <label for="purpose">目的</label>
+        <textarea id="purpose" placeholder="今日やることを入力してください"></textarea>
+        <div id="purposeError" class="error"></div>
+      </div>
+
+      <div class="form-group">
+        <label>目標時間（オプション）</label>
+        <div class="time-inputs">
+          <input type="number" id="targetHours" min="0" max="23" value="3">
+          <span>時間</span>
+          <input type="number" id="targetMinutes" min="0" max="59" value="00">
+          <span>分</span>
+        </div>
+      </div>
+
+      <button id="startBtn" class="btn btn-primary">作業を開始</button>
+
+      <div class="recent-sessions">
+        <h3 class="section-title">最近のセッション</h3>
+        <div id="recentSessionsList">
+          <p style="color: #666;">過去のセッションはありません</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active State -->
+    <div id="activeSession" class="section active-session">
+      <h2 class="section-title">現在のセッション</h2>
+
+      <div class="form-group">
+        <label>目的</label>
+        <p id="currentPurpose"></p>
+      </div>
+
+      <div class="form-group">
+        <label>目標時間</label>
+        <p id="currentTargetTime"></p>
+      </div>
+
+      <div class="form-group">
+        <label>開始時刻</label>
+        <p id="currentStartTime"></p>
+      </div>
+
+      <div class="current-activity">
+        <h3>現在</h3>
+        <p>セッション中</p>
+        <p id="currentApp">VS Code</p>
+        <p>作業時間 <span id="elapsedTime">0</span>分</p>
+      </div>
+
+      <button id="stopBtn" class="btn btn-danger" style="margin-top: 20px;">作業を終了</button>
+    </div>
+  </div>
+
+  <script>
+    // Mock data for recent sessions
+    const recentSessions = [
+      {
+        date: "2026-09-20",
+        purpose: "Webアプリを完成させる",
+        result_level: "minimal"
+      },
+      {
+        date: "2026-09-19",
+        purpose: "Webアプリのログイン機能を実装する",
+        result_level: "minimal"
+      }
+    ];
+
+    // State
+    let currentSession = null;
+    let elapsedTimer = null;
+
+    // DOM Elements
+    const idleSession = document.getElementById('idleSession');
+    const activeSession = document.getElementById('activeSession');
+    const purposeInput = document.getElementById('purpose');
+    const targetHoursInput = document.getElementById('targetHours');
+    const targetMinutesInput = document.getElementById('targetMinutes');
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const purposeError = document.getElementById('purposeError');
+    const recentSessionsList = document.getElementById('recentSessionsList');
+
+    // Initialize
+    function init() {
+      loadRecentSessions();
+      startBtn.addEventListener('click', startSession);
+      stopBtn.addEventListener('click', stopSession);
+    }
+
+    // Load recent sessions
+    function loadRecentSessions() {
+      if (recentSessions.length === 0) {
+        recentSessionsList.innerHTML = '<p style="color: #666;">過去のセッションはありません</p>';
+        return;
+      }
+
+      const html = recentSessions.map(session => {
+        const resultLabel = getResultLabel(session.result_level);
+        const resultClass = getResultClass(session.result_level);
+        return `
+          <div class="recent-session-item">
+            <div class="recent-session-date">${session.date}</div>
+            <div class="recent-session-purpose">${session.purpose}</div>
+            <div class="recent-session-result">
+              結果: <span class="result-badge ${resultClass}">${resultLabel}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      recentSessionsList.innerHTML = html;
+    }
+
+    // Get result label
+    function getResultLabel(level) {
+      const labels = {
+        'completed': '完了',
+        'mostly_completed': 'ほぼ完了',
+        'partially_completed': '一部完了',
+        'minimal': '最小限',
+        'not_completed': '未完了'
+      };
+      return labels[level] || level;
+    }
+
+    // Get result class
+    function getResultClass(level) {
+      const classes = {
+        'completed': 'result-completed',
+        'mostly_completed': 'result-mostly-completed',
+        'partially_completed': 'result-partially-completed',
+        'minimal': 'result-minimal',
+        'not_completed': 'result-not-completed'
+      };
+      return classes[level] || '';
+    }
+
+    // Start session
+    function startSession() {
+      const purpose = purposeInput.value.trim();
+      const targetHours = parseInt(targetHoursInput.value) || 0;
+      const targetMinutes = parseInt(targetMinutesInput.value) || 0;
+
+      // Validation
+      if (!purpose) {
+        purposeError.textContent = '目的を入力してください';
+        return;
+      }
+
+      purposeError.textContent = '';
+
+      // Create session
+      currentSession = {
+        id: 'session-' + Date.now(),
+        purpose: purpose,
+        target_time_minutes: targetHours * 60 + targetMinutes,
+        start_time: new Date().toISOString(),
+        status: 'active'
+      };
+
+      // Update UI
+      document.getElementById('currentPurpose').textContent = currentSession.purpose;
+      document.getElementById('currentTargetTime').textContent = formatTime(currentSession.target_time_minutes);
+      document.getElementById('currentStartTime').textContent = formatDateTime(currentSession.start_time);
+
+      // Switch to active state
+      idleSession.classList.add('hidden');
+      idleSession.classList.remove('idle-session');
+      activeSession.classList.add('visible');
+      activeSession.classList.remove('active-session');
+
+      // Start elapsed timer
+      startElapsedTimer();
+
+      console.log('Session started:', currentSession);
+    }
+
+    // Stop session
+    function stopSession() {
+      if (!currentSession) return;
+
+      // Stop timer
+      stopElapsedTimer();
+
+      // Update session
+      currentSession.end_time = new Date().toISOString();
+      currentSession.status = 'completed';
+
+      console.log('Session stopped:', currentSession);
+
+      // Navigate to timeline (in real implementation)
+      alert('セッションを終了しました。Timeline画面に移動します。');
+      window.location.href = 'timeline.html?session=' + currentSession.id;
+    }
+
+    // Start elapsed timer
+    function startElapsedTimer() {
+      const startTime = new Date(currentSession.start_time);
+
+      elapsedTimer = setInterval(() => {
+        const now = new Date();
+        const elapsedMs = now - startTime;
+        const elapsedMinutes = Math.floor(elapsedMs / 60000);
+        document.getElementById('elapsedTime').textContent = elapsedMinutes;
+      }, 1000);
+    }
+
+    // Stop elapsed timer
+    function stopElapsedTimer() {
+      if (elapsedTimer) {
+        clearInterval(elapsedTimer);
+        elapsedTimer = null;
+      }
+    }
+
+    // Format time
+    function formatTime(minutes) {
+      const hours = Math.floor(minutes / 60);
+      const mins = minutes % 60;
+      if (hours > 0) {
+        return `${hours}時間${mins}分`;
+      }
+      return `${mins}分`;
+    }
+
+    // Format date time
+    function formatDateTime(isoString) {
+      const date = new Date(isoString);
+      return date.toLocaleString('ja-JP', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+
+    // Initialize on load
+    init();
+  </script>
+</body>
+</html>

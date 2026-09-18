@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OffTracker - Pattern</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #1a1a1a;
+    }
+
+    .back-link {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .section {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 10px;
+    }
+
+    .pattern-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 20px;
+      background-color: #f0f9ff;
+      border: 2px solid #3b82f6;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .pattern-step {
+      background-color: #3b82f6;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .pattern-arrow {
+      font-size: 24px;
+      color: #3b82f6;
+    }
+
+    .pattern-count {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #1e40af;
+      font-weight: 500;
+    }
+
+    .reflection-item {
+      background-color: #f9fafb;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      border-left: 4px solid #10b981;
+    }
+
+    .reflection-date {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .reflection-purpose {
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .reflection-reason {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .insight-box {
+      background-color: #ecfdf5;
+      border: 2px solid #10b981;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .insight-title {
+      font-weight: 600;
+      color: #065f46;
+      margin-bottom: 10px;
+    }
+
+    .insight-content {
+      color: #064e3b;
+      margin-bottom: 15px;
+    }
+
+    .insight-suggestions {
+      margin-top: 15px;
+    }
+
+    .insight-suggestions h4 {
+      color: #065f46;
+      margin-bottom: 10px;
+    }
+
+    .insight-suggestions ul {
+      list-style-position: inside;
+      color: #064e3b;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-primary {
+      background-color: #10b981;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #059669;
+    }
+
+    .btn-secondary {
+      background-color: #6b7280;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background-color: #4b5563;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #666;
+    }
+
+    .error-message {
+      background-color: #fee2e2;
+      border: 1px solid #ef4444;
+      color: #991b1b;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    .no-patterns {
+      text-align: center;
+      padding: 40px;
+      color: #666;
+    }
+
+    .no-patterns p {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>OffTracker - Pattern</h1>
+      <a href="reflection.html" class="back-link">← Reflectionに戻る</a>
+    </header>
+
+    <div id="loading" class="loading">読み込み中...</div>
+    <div id="error" class="error-message" style="display: none;"></div>
+
+    <div id="patternContainer" style="display: none;">
+      <div class="section">
+        <h2 class="section-title">これまでの作業を振り返る</h2>
+
+        <div id="patternsArea">
+          <div class="pattern-flow">
+            <div class="pattern-step">難しい問題に遭遇</div>
+            <div class="pattern-arrow">↓</div>
+            <div class="pattern-step">ブラウザで調査</div>
+            <div class="pattern-arrow">↓</div>
+            <div class="pattern-step">作業終了</div>
+            <div class="pattern-count">この流れが2回ありました</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">そのときの振り返り</h2>
+
+        <div id="reflectionsArea">
+          <div class="reflection-item">
+            <div class="reflection-date">9/17</div>
+            <div class="reflection-purpose">Webアプリのログイン機能を実装する</div>
+            <div class="reflection-reason">作業が難しかった、エラーが発生した</div>
+          </div>
+          <div class="reflection-item">
+            <div class="reflection-date">9/15</div>
+            <div class="reflection-purpose">APIエンドポイントの実装</div>
+            <div class="reflection-reason">作業が難しかった、次に何をすればいいか分からなかった</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">インサイト</h2>
+
+        <div class="insight-box">
+          <div class="insight-title">観察</div>
+          <div class="insight-content">
+            難しい問題に遭遇したとき、調査に時間をかけすぎて作業を中断する傾向があります。
+          </div>
+
+          <div class="insight-suggestions">
+            <h4>次回は以下を試してみてください：</h4>
+            <ul>
+              <li>調査時間を15分に制限する</li>
+              <li>分からないことは質問する</li>
+              <li>問題を小さく分ける</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="newSessionBtn" class="btn btn-primary">新しいセッションを開始</button>
+        <button id="backBtn" class="btn btn-secondary">Reflectionに戻る</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // State
+    let sessionData = null;
+
+    // DOM Elements
+    const loading = document.getElementById('loading');
+    const error = document.getElementById('error');
+    const patternContainer = document.getElementById('patternContainer');
+    const patternsArea = document.getElementById('patternsArea');
+    const reflectionsArea = document.getElementById('reflectionsArea');
+    const newSessionBtn = document.getElementById('newSessionBtn');
+    const backBtn = document.getElementById('backBtn');
+
+    // Initialize
+    function init() {
+      loadMockSessions();
+      newSessionBtn.addEventListener('click', () => {
+        window.location.href = 'home.html';
+      });
+      backBtn.addEventListener('click', () => {
+        window.location.href = 'reflection.html';
+      });
+    }
+
+    // Load mock sessions for pattern analysis
+    async function loadMockSessions() {
+      try {
+        // Load multiple mock sessions
+        const sessions = ['session-pattern-b.json', 'session-pattern-f.json'];
+        const sessionPromises = sessions.map(session =>
+          fetch('mock-sessions/' + session).then(res => res.json())
+        );
+
+        const loadedSessions = await Promise.all(sessionPromises);
+
+        // Analyze patterns (simplified for mock)
+        displayPatterns(loadedSessions);
+
+        // Hide loading, show pattern
+        loading.style.display = 'none';
+        patternContainer.style.display = 'block';
+      } catch (err) {
+        console.error('Error loading mock sessions:', err);
+        loading.style.display = 'none';
+        error.style.display = 'block';
+        error.textContent = 'データの読み込みに失敗しました';
+      }
+    }
+
+    // Display patterns
+    function displayPatterns(sessions) {
+      // Simplified pattern detection for mock
+      // In real implementation, this would analyze actual patterns
+
+      // For now, show static pattern based on mock data
+      patternsArea.innerHTML = `
+        <div class="pattern-flow">
+          <div class="pattern-step">難しい問題に遭遇</div>
+          <div class="pattern-arrow">↓</div>
+          <div class="pattern-step">ブラウザで調査</div>
+          <div class="pattern-arrow">↓</div>
+          <div class="pattern-step">作業終了</div>
+          <div class="pattern-count">この流れが${sessions.length}回ありました</div>
+        </div>
+      `;
+
+      // Display reflections
+      const reflectionsHtml = sessions.map(session => {
+        const date = new Date(session.session.start_time).toLocaleDateString('ja-JP', {
+          month: '2-digit',
+          day: '2-digit'
+        });
+        return `
+          <div class="reflection-item">
+            <div class="reflection-date">${date}</div>
+            <div class="reflection-purpose">${session.session.purpose}</div>
+            <div class="reflection-reason">${session.reflection.deviation_reason}</div>
+          </div>
+        `;
+      }).join('');
+
+      reflectionsArea.innerHTML = reflectionsHtml;
+    }
+
+    // Initialize on load
+    init();
+  </script>
+</body>
+</html>
