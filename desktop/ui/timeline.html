@@ -207,6 +207,36 @@
       margin-top: 20px;
     }
 
+    .section-description {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .btn-large {
+      padding: 16px 32px;
+      font-size: 18px;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #666;
+    }
+
+    .error-message {
+      background-color: #fee2e2;
+      border: 1px solid #ef4444;
+      color: #991b1b;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
     .session-info {
       background-color: #f0f9ff;
       border: 2px solid #3b82f6;
@@ -221,21 +251,6 @@
 
     .session-info strong {
       color: #1e40af;
-    }
-
-    .loading {
-      text-align: center;
-      padding: 40px;
-      color: #666;
-    }
-
-    .error {
-      background-color: #fee2e2;
-      border: 1px solid #ef4444;
-      color: #991b1b;
-      padding: 15px;
-      border-radius: 4px;
-      margin-bottom: 20px;
     }
   </style>
 </head>
@@ -253,7 +268,8 @@
     </div>
 
     <div class="section">
-      <h2 class="section-title">今日の行動</h2>
+      <h2 class="section-title">記録された行動</h2>
+      <p class="section-description">PCでどのようなアプリを使ったか表示されています</p>
 
       <div id="loading" class="loading">読み込み中...</div>
       <div id="error" class="error" style="display: none;"></div>
@@ -292,7 +308,7 @@
         </div>
 
         <div class="actions">
-          <button id="recordResultBtn" class="btn btn-primary">結果を記録</button>
+          <button id="stopBtn" class="btn btn-danger btn-large">記録を終了 → 結果を入力</button>
           <button id="backBtn" class="btn btn-secondary">Homeに戻る</button>
         </div>
       </div>
@@ -320,35 +336,59 @@
     const filterBrowser = document.getElementById('filterBrowser');
     const filterIdle = document.getElementById('filterIdle');
     const recordResultBtn = document.getElementById('recordResultBtn');
+    const stopBtn = document.getElementById('stopBtn');
     const backBtn = document.getElementById('backBtn');
 
     // Initialize
     function init() {
-      loadMockSession();
+      loadSessionData();
       filterNative.addEventListener('change', renderTimeline);
       filterBrowser.addEventListener('change', renderTimeline);
       filterIdle.addEventListener('change', renderTimeline);
-      recordResultBtn.addEventListener('click', () => {
-        window.location.href = 'result.html?session=' + sessionData.session.id;
-      });
+
+      // Use stopBtn if it exists, otherwise use recordResultBtn
+      const stopButton = stopBtn || recordResultBtn;
+      if (stopButton) {
+        stopButton.addEventListener('click', () => {
+          window.location.href = 'result.html?session=' + sessionData.session.id;
+        });
+      }
       backBtn.addEventListener('click', () => {
         window.location.href = 'home.html';
       });
     }
 
-    // Load mock session
-    async function loadMockSession() {
+    // Load session and events from API
+    async function loadSessionData() {
       try {
-        // Load session-pattern-a.json as default
-        const response = await fetch('mock-sessions/session-pattern-a.json');
-        sessionData = await response.json();
-        events = sessionData.events;
+        // Try to get current session
+        const sessionResponse = await fetch('/api/session/current');
+        let session = null;
+
+        if (sessionResponse.ok) {
+          session = await sessionResponse.json();
+        }
+
+        // Get all events
+        const eventsResponse = await fetch('/api/events');
+        const eventsData = await eventsResponse.json();
+
+        sessionData = {
+          session: session || {
+            id: 'no-session',
+            purpose: '記録されたイベント',
+            start_time: new Date().toISOString(),
+            end_time: new Date().toISOString()
+          },
+          events: eventsData
+        };
+        events = eventsData;
 
         // Display session info
         sessionInfo.style.display = 'block';
-        sessionPurpose.textContent = sessionData.session.purpose;
-        sessionStart.textContent = formatDateTime(sessionData.session.start_time);
-        sessionEnd.textContent = formatDateTime(sessionData.session.end_time);
+        sessionPurpose.textContent = session ? session.purpose : '記録されたイベント';
+        sessionStart.textContent = session ? formatDateTime(session.start_time) : '-';
+        sessionEnd.textContent = session && session.end_time ? formatDateTime(session.end_time) : (session ? '進行中' : '-');
 
         // Render timeline
         renderTimeline();
@@ -357,10 +397,10 @@
         loading.style.display = 'none';
         timelineContainer.style.display = 'block';
       } catch (err) {
-        console.error('Error loading mock session:', err);
+        console.error('Error loading session data:', err);
         loading.style.display = 'none';
         error.style.display = 'block';
-        error.textContent = 'データの読み込みに失敗しました';
+        error.textContent = 'データの読み込みに失敗しました。';
       }
     }
 

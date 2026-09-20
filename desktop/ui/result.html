@@ -221,6 +221,59 @@
       border-radius: 4px;
       margin-bottom: 20px;
     }
+
+    .section-description {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .form-hint {
+      color: #999;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .btn-large {
+      padding: 16px 32px;
+      font-size: 18px;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .time-comparison-bar {
+      margin: 20px 0;
+    }
+
+    .time-bar-container {
+      margin-bottom: 10px;
+    }
+
+    .time-bar-label {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .time-bar {
+      height: 30px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      color: white;
+      font-weight: 500;
+    }
+
+    .target-bar {
+      background-color: #3b82f6;
+    }
+
+    .actual-bar {
+      background-color: #10b981;
+    }
   </style>
 </head>
 <body>
@@ -235,24 +288,28 @@
 
     <div id="resultContainer" style="display: none;">
       <div class="section">
-        <h2 class="section-title">今日の結果</h2>
+        <h2 class="section-title">結果を入力しましょう</h2>
+        <p class="section-description">実際に何ができたか入力してください</p>
 
         <div class="purpose-display">
           <p><strong>目的</strong></p>
           <p id="purposeText"></p>
         </div>
 
-        <div class="time-comparison">
-          <div class="time-item">
-            <div class="time-label">目標時間</div>
-            <div class="time-value" id="targetTime">-</div>
+        <div class="time-comparison-bar">
+          <div class="time-bar-container">
+            <div class="time-bar-label">目標</div>
+            <div class="time-bar target-bar" style="width: 100%;">
+              <span id="targetTime">3時間</span>
+            </div>
           </div>
-          <div class="time-item">
-            <div class="time-label">実際の時間</div>
-            <div class="time-value" id="actualTime">-</div>
+          <div class="time-bar-container">
+            <div class="time-bar-label">実際</div>
+            <div class="time-bar actual-bar" style="width: 60%;">
+              <span id="actualTime">1時間49分</span>
+            </div>
           </div>
         </div>
-        <div id="timeDifference" class="time-difference"></div>
       </div>
 
       <div class="section">
@@ -287,11 +344,42 @@
       </div>
 
       <div class="section">
+        <h2 class="section-title">達成度</h2>
+
+        <div class="form-group">
+          <label>達成度を選択してください</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="resultLevel" value="completed">
+              完了
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="resultLevel" value="mostly_completed">
+              ほぼ完了
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="resultLevel" value="partially_completed">
+              一部完了
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="resultLevel" value="minimal">
+              最小限
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="resultLevel" value="not_completed">
+              未完了
+            </label>
+          </div>
+          <div id="resultLevelError" class="error"></div>
+        </div>
+      </div>
+
+      <div class="section">
         <h2 class="section-title">できたこと</h2>
 
         <div class="form-group">
-          <label for="whatWasDone">何ができましたか？</label>
-          <textarea id="whatWasDone" placeholder="達成したことを入力してください"></textarea>
+          <label for="whatWasDone">できたことは何ですか？</label>
+          <textarea id="whatWasDone" placeholder="例: ログイン画面のUIを完成させた" rows="3"></textarea>
           <div id="whatWasDoneError" class="error"></div>
         </div>
       </div>
@@ -300,13 +388,13 @@
         <h2 class="section-title">できなかったこと</h2>
 
         <div class="form-group">
-          <label for="whatWasntDone">何ができませんでしたか？（オプション）</label>
-          <textarea id="whatWasntDone" placeholder="達成できなかったことを入力してください"></textarea>
+          <label for="whatWasntDone">できなかったことは何ですか？（空欄OK）</label>
+          <textarea id="whatWasntDone" placeholder="例: 認証処理の実装" rows="2"></textarea>
         </div>
       </div>
 
       <div class="actions">
-        <button id="reflectBtn" class="btn btn-primary">振り返る</button>
+        <button id="reflectBtn" class="btn btn-primary btn-large">次へ → 振り返りを入力</button>
         <button id="backBtn" class="btn btn-secondary">Timelineに戻る</button>
       </div>
     </div>
@@ -323,7 +411,6 @@
     const purposeText = document.getElementById('purposeText');
     const targetTime = document.getElementById('targetTime');
     const actualTime = document.getElementById('actualTime');
-    const timeDifference = document.getElementById('timeDifference');
     const whatWasDone = document.getElementById('whatWasDone');
     const whatWasntDone = document.getElementById('whatWasntDone');
     const resultLevelError = document.getElementById('resultLevelError');
@@ -333,29 +420,78 @@
 
     // Initialize
     function init() {
-      loadMockSession();
+      loadSessionData();
       reflectBtn.addEventListener('click', submitResult);
       backBtn.addEventListener('click', () => {
         window.location.href = 'timeline.html';
       });
     }
 
-    // Load mock session
-    async function loadMockSession() {
+    // Get elapsed time from server
+    async function getElapsedTime() {
       try {
-        // Load session-pattern-a.json as default
-        const response = await fetch('mock-sessions/session-pattern-a.json');
-        sessionData = await response.json();
+        const response = await fetch('/api/session/elapsed');
+        const data = await response.json();
+        return data;
+      } catch (err) {
+        console.error('Error getting elapsed time:', err);
+        return { elapsed_minutes: 0 };
+      }
+    }
+
+    // Load session from API or localStorage
+    async function loadSessionData() {
+      try {
+        // Try to get session from localStorage first
+        const storedSession = localStorage.getItem('stoppedSession');
+        let session = null;
+
+        if (storedSession) {
+          session = JSON.parse(storedSession);
+          localStorage.removeItem('stoppedSession'); // Clear after use
+        } else {
+          // Try to get current session from API
+          const sessionResponse = await fetch('/api/session/current');
+          if (sessionResponse.ok) {
+            session = await sessionResponse.json();
+          }
+        }
+
+        // If no session data available
+        if (!session) {
+          loading.style.display = 'none';
+          error.style.display = 'block';
+          error.innerHTML = 'セッションデータが見つかりません。<br><a href="home.html" style="color: #3b82f6;">Home画面から新しいセッションを開始してください</a>';
+          return;
+        }
+
+        sessionData = {
+          session: session,
+          result: {
+            actual_duration_minutes: 0
+          }
+        };
 
         // Display purpose
-        purposeText.textContent = sessionData.session.purpose;
+        purposeText.textContent = session.purpose;
 
-        // Display time comparison
-        const targetMinutes = sessionData.session.target_time_minutes || 0;
-        const actualMinutes = sessionData.result.actual_duration_minutes || 0;
+        // Display time comparison with bar visualization
+        const targetMinutes = session.target_time_minutes || 0;
+        const actualMinutes = session.actual_duration_minutes || 0;
 
         targetTime.textContent = formatTime(targetMinutes);
         actualTime.textContent = formatTime(actualMinutes);
+
+        // Calculate bar widths
+        const maxMinutes = Math.max(targetMinutes, actualMinutes);
+        const targetBarWidth = maxMinutes > 0 ? (targetMinutes / maxMinutes) * 100 : 100;
+        const actualBarWidth = maxMinutes > 0 ? (actualMinutes / maxMinutes) * 100 : 0;
+
+        // Update bar widths
+        const targetBar = document.querySelector('.target-bar');
+        const actualBar = document.querySelector('.actual-bar');
+        if (targetBar) targetBar.style.width = targetBarWidth + '%';
+        if (actualBar) actualBar.style.width = actualBarWidth + '%';
 
         // Calculate difference
         const diff = actualMinutes - targetMinutes;
@@ -370,29 +506,19 @@
           timeDifference.classList.add('positive');
         }
 
-        // Pre-fill with mock data
-        whatWasDone.value = sessionData.result.result_description || '';
-
-        // Select result level from mock data
-        const resultLevel = sessionData.result.result_level;
-        const radio = document.querySelector(`input[name="resultLevel"][value="${resultLevel}"]`);
-        if (radio) {
-          radio.checked = true;
-        }
-
         // Hide loading, show result
         loading.style.display = 'none';
         resultContainer.style.display = 'block';
       } catch (err) {
-        console.error('Error loading mock session:', err);
+        console.error('Error loading session data:', err);
         loading.style.display = 'none';
         error.style.display = 'block';
-        error.textContent = 'データの読み込みに失敗しました';
+        error.innerHTML = 'セッションデータの読み込みに失敗しました。<br><a href="home.html" style="color: #3b82f6;">Home画面に戻ってください</a>';
       }
     }
 
     // Submit result
-    function submitResult() {
+    async function submitResult() {
       // Get selected result level
       const selectedLevel = document.querySelector('input[name="resultLevel"]:checked');
       const whatWasDoneValue = whatWasDone.value.trim();
@@ -419,21 +545,39 @@
         return;
       }
 
-      // Create result object
-      const result = {
-        id: 'res-' + Date.now(),
-        session_id: sessionData.session.id,
-        result_level: selectedLevel.value,
-        result_description: whatWasDoneValue,
-        what_wasnt_done: whatWasntDoneValue,
-        actual_duration_minutes: sessionData.result.actual_duration_minutes,
-        created_at: new Date().toISOString()
-      };
+      try {
+        // Submit to API
+        const response = await fetch('/api/session/result', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            session_id: sessionData.session.id,
+            result_level: selectedLevel.value,
+            result_description: whatWasDoneValue,
+            what_wasnt_done: whatWasntDoneValue
+          })
+        });
 
-      console.log('Result submitted:', result);
+        if (!response.ok) {
+          throw new Error('Failed to save result');
+        }
 
-      // Navigate to reflection
-      window.location.href = 'reflection.html?session=' + sessionData.session.id;
+        const result = await response.json();
+        console.log('Result submitted:', result);
+
+        // Store session data in localStorage for reflection screen
+        console.log('Storing session in localStorage:', sessionData.session);
+        localStorage.setItem('resultSession', JSON.stringify(sessionData.session));
+        console.log('Stored session, checking:', localStorage.getItem('resultSession'));
+
+        // Navigate to reflection
+        window.location.href = 'reflection.html';
+      } catch (err) {
+        console.error('Error submitting result:', err);
+        alert('結果の保存に失敗しました');
+      }
     }
 
     // Format time

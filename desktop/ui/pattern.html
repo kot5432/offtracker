@@ -211,6 +211,30 @@
       color: #666;
     }
 
+    .section-description {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .btn-large {
+      padding: 16px 32px;
+      font-size: 18px;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .session-summary {
+      background-color: #f0f9ff;
+      border: 2px solid #3b82f6;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+  </style>
+
     .no-patterns p {
       margin-bottom: 10px;
     }
@@ -228,7 +252,21 @@
 
     <div id="patternContainer" style="display: none;">
       <div class="section">
+        <h2 class="section-title">記録完了</h2>
+        <p class="section-description">今回の記録を確認できます</p>
+
+        <div class="session-summary">
+          <h3>今回の記録</h3>
+          <p><strong>目的:</strong> <span id="sessionPurpose">-</span></p>
+          <p><strong>結果:</strong> <span id="sessionResult">-</span></p>
+          <p><strong>原因:</strong> <span id="sessionReason">-</span></p>
+          <p><strong>時間:</strong> <span id="sessionDuration">-</span></p>
+        </div>
+      </div>
+
+      <div class="section">
         <h2 class="section-title">これまでの作業を振り返る</h2>
+        <p class="section-description">これまでの記録を比較できます</p>
 
         <div id="patternsArea">
           <div class="pattern-flow">
@@ -280,8 +318,8 @@
       </div>
 
       <div class="actions">
-        <button id="newSessionBtn" class="btn btn-primary">新しいセッションを開始</button>
-        <button id="backBtn" class="btn btn-secondary">Reflectionに戻る</button>
+        <button id="newSessionBtn" class="btn btn-primary btn-large">新しい記録を開始</button>
+        <button id="backBtn" class="btn btn-secondary">前に戻る</button>
       </div>
     </div>
   </div>
@@ -301,77 +339,103 @@
 
     // Initialize
     function init() {
-      loadMockSessions();
+      loadSessionData();
       newSessionBtn.addEventListener('click', () => {
         window.location.href = 'home.html';
       });
       backBtn.addEventListener('click', () => {
+        // Store session data when going back to reflection
+        if (sessionData && sessionData.session) {
+          localStorage.setItem('resultSession', JSON.stringify(sessionData.session));
+        }
         window.location.href = 'reflection.html';
       });
     }
 
-    // Load mock sessions for pattern analysis
-    async function loadMockSessions() {
+    // Load session data for pattern analysis
+    async function loadSessionData() {
       try {
-        // Load multiple mock sessions
-        const sessions = ['session-pattern-b.json', 'session-pattern-f.json'];
-        const sessionPromises = sessions.map(session =>
-          fetch('mock-sessions/' + session).then(res => res.json())
-        );
+        // Get session from localStorage
+        const storedSession = localStorage.getItem('reflectionSession');
+        let session = null;
 
-        const loadedSessions = await Promise.all(sessionPromises);
+        if (storedSession) {
+          session = JSON.parse(storedSession);
+          localStorage.removeItem('reflectionSession'); // Clear after use
+        }
 
-        // Analyze patterns (simplified for mock)
-        displayPatterns(loadedSessions);
+        // If no session data available
+        if (!session) {
+          loading.style.display = 'none';
+          error.style.display = 'block';
+          error.innerHTML = 'セッションデータが見つかりません。<br><a href="home.html" style="color: #3b82f6;">Home画面から新しいセッションを開始してください</a>';
+          return;
+        }
+
+        // Get all events
+        const eventsResponse = await fetch('/api/events');
+        const events = await eventsResponse.json();
+
+        sessionData = {
+          session: session,
+          events: events
+        };
+
+        // Display patterns (simplified for now)
+        displaySimplePattern(session, events);
 
         // Hide loading, show pattern
         loading.style.display = 'none';
         patternContainer.style.display = 'block';
       } catch (err) {
-        console.error('Error loading mock sessions:', err);
+        console.error('Error loading session data:', err);
         loading.style.display = 'none';
         error.style.display = 'block';
-        error.textContent = 'データの読み込みに失敗しました';
+        error.innerHTML = 'セッションデータの読み込みに失敗しました。<br><a href="home.html" style="color: #3b82f6;">Home画面に戻ってください</a>';
       }
     }
 
-    // Display patterns
-    function displayPatterns(sessions) {
-      // Simplified pattern detection for mock
-      // In real implementation, this would analyze actual patterns
+    // Display simple pattern (placeholder for now)
+    function displaySimplePattern(session, events) {
+      // Populate session summary
+      const sessionPurposeEl = document.getElementById('sessionPurpose');
+      const sessionResultEl = document.getElementById('sessionResult');
+      const sessionReasonEl = document.getElementById('sessionReason');
+      const sessionDurationEl = document.getElementById('sessionDuration');
 
-      // For now, show static pattern based on mock data
+      if (sessionPurposeEl) sessionPurposeEl.textContent = session.purpose || '-';
+      if (sessionResultEl) sessionResultEl.textContent = session.status === 'completed' ? '完了' : '進行中';
+      if (sessionReasonEl) sessionReasonEl.textContent = session.result_level || '-';
+      if (sessionDurationEl) sessionDurationEl.textContent = session.actual_duration_minutes ? session.actual_duration_minutes + '分' : '-';
+
+      // Simplified pattern display
+      // In real implementation, this would analyze patterns across multiple sessions
+
       patternsArea.innerHTML = `
         <div class="pattern-flow">
-          <div class="pattern-step">難しい問題に遭遇</div>
+          <div class="pattern-step">セッション開始</div>
           <div class="pattern-arrow">↓</div>
-          <div class="pattern-step">ブラウザで調査</div>
+          <div class="pattern-step">${events.length}個のイベント記録</div>
           <div class="pattern-arrow">↓</div>
-          <div class="pattern-step">作業終了</div>
-          <div class="pattern-count">この流れが${sessions.length}回ありました</div>
+          <div class="pattern-step">セッション終了</div>
+          <div class="pattern-count">今回のセッション</div>
         </div>
       `;
 
-      // Display reflections
-      const reflectionsHtml = sessions.map(session => {
-        const date = new Date(session.session.start_time).toLocaleDateString('ja-JP', {
-          month: '2-digit',
-          day: '2-digit'
-        });
-        return `
-          <div class="reflection-item">
-            <div class="reflection-date">${date}</div>
-            <div class="reflection-purpose">${session.session.purpose}</div>
-            <div class="reflection-reason">${session.reflection.deviation_reason}</div>
-          </div>
-        `;
-      }).join('');
-
-      reflectionsArea.innerHTML = reflectionsHtml;
+      // Show session reflection if available
+      reflectionsArea.innerHTML = `
+        <div class="reflection-item">
+          <div class="reflection-date">${new Date(session.start_time).toLocaleDateString('ja-JP')}</div>
+          <div class="reflection-purpose">${session.purpose}</div>
+          <div class="reflection-reason">振り返りを完了しました</div>
+        </div>
+      `;
     }
 
-    // Initialize on load
     init();
+  </script>
+</body>
+</html>    init();
   </script>
 </body>
 </html>

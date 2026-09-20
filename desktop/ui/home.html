@@ -206,6 +206,34 @@
       font-size: 14px;
       margin-top: 5px;
     }
+
+    .section-description {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .form-hint {
+      color: #999;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .btn-large {
+      padding: 16px 32px;
+      font-size: 18px;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -216,25 +244,27 @@
 
     <!-- Idle State -->
     <div id="idleSession" class="section idle-session">
-      <h2 class="section-title">今日の目的</h2>
+      <h2 class="section-title">今日の目的を決めましょう</h2>
+      <p class="section-description">何をしたいか入力してください</p>
 
       <div class="form-group">
         <label for="purpose">目的</label>
-        <textarea id="purpose" placeholder="今日やることを入力してください"></textarea>
+        <textarea id="purpose" placeholder="例: ログイン機能を実装する" rows="3"></textarea>
         <div id="purposeError" class="error"></div>
       </div>
 
       <div class="form-group">
         <label>目標時間（オプション）</label>
+        <p class="form-hint">空欄でOKです</p>
         <div class="time-inputs">
-          <input type="number" id="targetHours" min="0" max="23" value="3">
+          <input type="number" id="targetHours" min="0" max="23" value="1">
           <span>時間</span>
           <input type="number" id="targetMinutes" min="0" max="59" value="00">
           <span>分</span>
         </div>
       </div>
 
-      <button id="startBtn" class="btn btn-primary">作業を開始</button>
+      <button id="startBtn" class="btn btn-primary btn-large">記録を開始 → 次はPCで作業</button>
 
       <div class="recent-sessions">
         <h3 class="section-title">最近のセッション</h3>
@@ -246,7 +276,8 @@
 
     <!-- Active State -->
     <div id="activeSession" class="section active-session">
-      <h2 class="section-title">現在のセッション</h2>
+      <h2 class="section-title">記録中</h2>
+      <p class="section-description">PCで作業してください。終わったら「記録を終了」を押してください</p>
 
       <div class="form-group">
         <label>目的</label>
@@ -264,13 +295,15 @@
       </div>
 
       <div class="current-activity">
-        <h3>現在</h3>
-        <p>セッション中</p>
-        <p id="currentApp">VS Code</p>
-        <p>作業時間 <span id="elapsedTime">0</span>分</p>
+        <h3>現在の状態</h3>
+        <p>PC使用中: <span id="currentApp">VS Code</span></p>
+        <p>経過時間: <span id="elapsedTime">0</span>分</p>
       </div>
 
-      <button id="stopBtn" class="btn btn-danger" style="margin-top: 20px;">作業を終了</button>
+      <div class="actions">
+        <button id="viewTimelineBtn" class="btn btn-secondary">記録を見る</button>
+        <button id="stopBtn" class="btn btn-danger btn-large">記録を終了 → 結果を入力</button>
+      </div>
     </div>
   </div>
 
@@ -292,6 +325,7 @@
     // State
     let currentSession = null;
     let elapsedTimer = null;
+    let windowUpdateTimer = null;
 
     // DOM Elements
     const idleSession = document.getElementById('idleSession');
@@ -396,25 +430,60 @@
       // Start elapsed timer
       startElapsedTimer();
 
+      // Start window update timer
+      startWindowUpdate();
+
       console.log('Session started:', currentSession);
     }
 
     // Stop session
-    function stopSession() {
+    async function stopSession() {
       if (!currentSession) return;
 
-      // Stop timer
+      // Stop timers
       stopElapsedTimer();
+      stopWindowUpdate();
 
       // Update session
       currentSession.end_time = new Date().toISOString();
       currentSession.status = 'completed';
 
+      // Calculate actual duration
+      const startTime = new Date(currentSession.start_time);
+      const endTime = new Date(currentSession.end_time);
+      const actualDurationMinutes = Math.floor((endTime - startTime) / 60000);
+      currentSession.actual_duration_minutes = actualDurationMinutes;
+
       console.log('Session stopped:', currentSession);
 
-      // Navigate to timeline (in real implementation)
-      alert('セッションを終了しました。Timeline画面に移動します。');
-      window.location.href = 'timeline.html?session=' + currentSession.id;
+      // Stop session on server
+      try {
+        const response = await fetch('/api/session/stop', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            session_id: currentSession.id
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to stop session');
+        }
+
+        const result = await response.json();
+        console.log('Session stopped on server:', result);
+
+        // Store session data in localStorage for result screen
+        localStorage.setItem('stoppedSession', JSON.stringify(currentSession));
+
+        // Navigate to result screen
+        window.location.href = 'result.html';
+      } catch (err) {
+        console.error('Error stopping session:', err);
+        alert('セッションの停止に失敗しました');
+      }
     }
 
     // Start elapsed timer
@@ -434,6 +503,41 @@
       if (elapsedTimer) {
         clearInterval(elapsedTimer);
         elapsedTimer = null;
+      }
+    }
+
+    // Start window update
+    function startWindowUpdate() {
+      // Update immediately
+      updateCurrentWindow();
+
+      // Update every 2 seconds
+      windowUpdateTimer = setInterval(updateCurrentWindow, 2000);
+    }
+
+    // Stop window update
+    function stopWindowUpdate() {
+      if (windowUpdateTimer) {
+        clearInterval(windowUpdateTimer);
+        windowUpdateTimer = null;
+      }
+    }
+
+    // Update current window display
+    async function updateCurrentWindow() {
+      try {
+        const response = await fetch('/api/window');
+        if (!response.ok) {
+          return;
+        }
+        const windowData = await response.json();
+
+        const currentAppElement = document.getElementById('currentApp');
+        if (currentAppElement) {
+          currentAppElement.textContent = windowData.owner || 'Unknown';
+        }
+      } catch (err) {
+        console.error('Error updating window:', err);
       }
     }
 

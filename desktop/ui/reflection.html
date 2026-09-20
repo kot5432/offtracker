@@ -178,6 +178,27 @@
       margin-bottom: 20px;
     }
 
+    .section-description {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .form-hint {
+      color: #999;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .btn-large {
+      padding: 16px 32px;
+      font-size: 18px;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+      display: block;
+    }
+
     .purpose-display p {
       margin-bottom: 8px;
     }
@@ -198,16 +219,21 @@
     <div id="error" class="error-message" style="display: none;"></div>
 
     <div id="reflectionContainer" style="display: none;">
-      <div class="purpose-display">
-        <p><strong>目的</strong></p>
-        <p id="purposeText"></p>
+      <div class="section">
+        <h2 class="section-title">振り返りましょう</h2>
+        <p class="section-description">なぜ予定通りできなかったか考えてみましょう</p>
+
+        <div class="purpose-display">
+          <p><strong>目的</strong></p>
+          <p id="purposeText"></p>
+        </div>
       </div>
 
       <div class="section">
-        <h2 class="section-title">振り返ってみよう</h2>
+        <h2 class="section-title">原因を考える</h2>
 
         <div class="form-group">
-          <label>なぜ予定通りできなかったと思いますか？（複数選択可）</label>
+          <label>なぜできなかったと思いますか？（複数選択可）</label>
           <div class="checkbox-group">
             <label class="checkbox-option">
               <input type="checkbox" name="deviationReason" value="作業が難しかった">
@@ -247,17 +273,17 @@
       </div>
 
       <div class="section">
-        <h2 class="section-title">自由に書く</h2>
+        <h2 class="section-title">その他、気がついたこと</h2>
 
         <div class="form-group">
-          <label for="reflectionDetails">詳しく書く（オプション）</label>
-          <textarea id="reflectionDetails" placeholder="詳細な振り返りを自由に書いてください"></textarea>
+          <label for="reflectionDetails">その他、気がついたことは？（空欄OK）</label>
+          <textarea id="reflectionDetails" placeholder="例: 途中でYouTubeを見てしまった" rows="3"></textarea>
         </div>
       </div>
 
       <div class="actions">
-        <button id="completeBtn" class="btn btn-primary">完了</button>
-        <button id="backBtn" class="btn btn-secondary">Resultに戻る</button>
+        <button id="completeBtn" class="btn btn-primary btn-large">完了 → パターンを見る</button>
+        <button id="backBtn" class="btn btn-secondary">前に戻る</button>
       </div>
     </div>
   </div>
@@ -278,48 +304,64 @@
 
     // Initialize
     function init() {
-      loadMockSession();
+      loadSessionData();
       completeBtn.addEventListener('click', submitReflection);
       backBtn.addEventListener('click', () => {
+        // Store session data when going back to result
+        if (sessionData && sessionData.session) {
+          localStorage.setItem('resultSession', JSON.stringify(sessionData.session));
+        }
         window.location.href = 'result.html';
       });
     }
 
-    // Load mock session
-    async function loadMockSession() {
+    // Load session from localStorage
+    async function loadSessionData() {
       try {
-        // Load session-pattern-a.json as default
-        const response = await fetch('mock-sessions/session-pattern-a.json');
-        sessionData = await response.json();
+        // Get session from localStorage
+        console.log('Checking localStorage for resultSession...');
+        const storedSession = localStorage.getItem('resultSession');
+        console.log('Found in localStorage:', storedSession);
+        let session = null;
+
+        if (storedSession) {
+          session = JSON.parse(storedSession);
+          localStorage.removeItem('resultSession'); // Clear after use
+          console.log('Parsed session:', session);
+        }
+
+        // If no session data available
+        if (!session) {
+          loading.style.display = 'none';
+          error.style.display = 'block';
+          error.innerHTML = 'セッションデータが見つかりません。<br><a href="home.html" style="color: #3b82f6;">Home画面から新しいセッションを開始してください</a>';
+          return;
+        }
+
+        sessionData = {
+          session: session,
+          reflection: {
+            deviation_reason: '',
+            reflection_details: ''
+          }
+        };
 
         // Display purpose
-        purposeText.textContent = sessionData.session.purpose;
-
-        // Pre-fill with mock data
-        reflectionDetails.value = sessionData.reflection.reflection_details || '';
-
-        // Select checkboxes from mock data
-        const deviationReasons = sessionData.reflection.deviation_reason.split(',');
-        deviationReasons.forEach(reason => {
-          const checkbox = document.querySelector(`input[name="deviationReason"][value="${reason.trim()}"]`);
-          if (checkbox) {
-            checkbox.checked = true;
-          }
-        });
+        purposeText.textContent = session.purpose;
 
         // Hide loading, show reflection
         loading.style.display = 'none';
         reflectionContainer.style.display = 'block';
       } catch (err) {
-        console.error('Error loading mock session:', err);
+        console.error('Error loading session data:', err);
         loading.style.display = 'none';
         error.style.display = 'block';
-        error.textContent = 'データの読み込みに失敗しました';
+        error.innerHTML = 'セッションデータの読み込みに失敗しました。<br><a href="home.html" style="color: #3b82f6;">Home画面に戻ってください</a>';
       }
     }
 
     // Submit reflection
-    function submitReflection() {
+    async function submitReflection() {
       // Get selected reasons
       const selectedReasons = Array.from(document.querySelectorAll('input[name="deviationReason"]:checked'))
         .map(checkbox => checkbox.value);
@@ -334,19 +376,36 @@
 
       deviationReasonError.textContent = '';
 
-      // Create reflection object
-      const reflection = {
-        id: 'ref-' + Date.now(),
-        session_id: sessionData.session.id,
-        deviation_reason: selectedReasons.join(','),
-        reflection_details: reflectionDetailsValue,
-        created_at: new Date().toISOString()
-      };
+      try {
+        // Submit to API
+        const response = await fetch('/api/reflection', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            session_id: sessionData.session.id,
+            deviation_reason: selectedReasons.join(','),
+            reflection_details: reflectionDetailsValue
+          })
+        });
 
-      console.log('Reflection submitted:', reflection);
+        if (!response.ok) {
+          throw new Error('Failed to save reflection');
+        }
 
-      // Navigate to pattern
-      window.location.href = 'pattern.html?session=' + sessionData.session.id;
+        const reflection = await response.json();
+        console.log('Reflection submitted:', reflection);
+
+        // Store session data in localStorage for pattern screen
+        localStorage.setItem('reflectionSession', JSON.stringify(sessionData.session));
+
+        // Navigate to pattern
+        window.location.href = 'pattern.html';
+      } catch (err) {
+        console.error('Error submitting reflection:', err);
+        alert('振り返りの保存に失敗しました');
+      }
     }
 
     // Initialize on load
