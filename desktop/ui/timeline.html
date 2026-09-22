@@ -111,6 +111,14 @@
       background-color: #6b7280;
     }
 
+    .timeline-bar.deviation {
+      background-color: #ef4444;
+    }
+
+    .timeline-bar.on-track {
+      background-color: #10b981;
+    }
+
     .timeline-bar-duration {
       margin-left: auto;
       font-size: 14px;
@@ -131,6 +139,13 @@
     }
 
     .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .summary-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
@@ -252,6 +267,66 @@
     .session-info strong {
       color: #1e40af;
     }
+
+    .insight {
+      background-color: #fef3c7;
+      border: 2px solid #f59e0b;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .insight p {
+      margin-bottom: 8px;
+    }
+
+    .insight strong {
+      color: #92400e;
+    }
+
+    .legend {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f9fafb;
+      border-radius: 4px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+    }
+
+    .legend-color.on-track {
+      background-color: #10b981;
+    }
+
+    .legend-color.deviation {
+      background-color: #ef4444;
+    }
+
+    .legend-color.browser {
+      background-color: #3b82f6;
+    }
+
+    .legend-color.idle {
+      background-color: #6b7280;
+    }
+
+    .legend-description {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.4;
+    }
   </style>
 </head>
 <body>
@@ -267,6 +342,11 @@
       <p><strong>終了:</strong> <span id="sessionEnd"></span></p>
     </div>
 
+    <div id="insight" class="insight" style="display: none;">
+      <p><strong>振り返りのヒント:</strong></p>
+      <p id="insightText"></p>
+    </div>
+
     <div class="section">
       <h2 class="section-title">記録された行動</h2>
       <p class="section-description">PCでどのようなアプリを使ったか表示されています</p>
@@ -277,7 +357,44 @@
       <div id="timelineContainer" style="display: none;">
         <div class="timeline" id="timeline"></div>
 
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-color on-track"></div>
+            <span>目的に関連</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color deviation"></div>
+            <span>脱線</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color browser"></div>
+            <span>調査</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color idle"></div>
+            <span>アイドル</span>
+          </div>
+          <div class="legend-description">
+            ※ 目的キーワードに基づいて自動判定されます（例: プログラミング → VS Codeは目的に関連、YouTubeは脱線）
+          </div>
+        </div>
+
         <div class="summary">
+          <div class="summary-item">
+            <div class="summary-label">目的関連時間</div>
+            <div class="summary-value" id="onTrackDuration">0分</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">脱線時間</div>
+            <div class="summary-value" id="deviationDuration">0分</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">集中割合</div>
+            <div class="summary-value" id="focusRatio">0%</div>
+          </div>
+        </div>
+
+        <div class="summary-row">
           <div class="summary-item">
             <div class="summary-label">総作業時間</div>
             <div class="summary-value" id="totalDuration">0分</div>
@@ -308,6 +425,7 @@
         </div>
 
         <div class="actions">
+          <button id="loadMockDataBtn" class="btn btn-secondary">疑似データをロード</button>
           <button id="stopBtn" class="btn btn-danger btn-large">記録を終了 → 結果を入力</button>
           <button id="backBtn" class="btn btn-secondary">Homeに戻る</button>
         </div>
@@ -316,9 +434,51 @@
   </div>
 
   <script>
+    // Purpose keyword map for classification
+    const purposeKeywords = {
+      'プログラミング': {
+        onTrack: ['VS Code', 'GitHub', 'Stack Overflow', 'Git'],
+        deviation: ['YouTube', 'X', 'Reddit', 'Discord'],
+        research: ['Google', 'Google Search']
+      },
+      '勉強': {
+        onTrack: ['PDF Viewer', 'Word', 'Excel', 'PowerPoint'],
+        deviation: ['YouTube', 'X', 'Reddit', 'Discord'],
+        research: ['Google', 'Google Scholar']
+      },
+      '調査': {
+        onTrack: ['Google', 'Google Scholar', 'Stack Overflow'],
+        deviation: ['YouTube', 'X', 'Reddit', 'Discord'],
+        research: ['Google', 'Google Scholar']
+      },
+      '開発': {
+        onTrack: ['VS Code', 'GitHub', 'Git'],
+        deviation: ['YouTube', 'X', 'Reddit', 'Discord'],
+        research: ['Google', 'Stack Overflow']
+      },
+      'レポート': {
+        onTrack: ['Word', 'Excel', 'PowerPoint'],
+        deviation: ['YouTube', 'X', 'Reddit', 'Discord'],
+        research: ['Google', 'Google Search']
+      },
+      'isj応募': {
+        onTrack: ['VS Code', 'Word', 'PDF Viewer'],
+        deviation: ['YouTube', 'X', 'Reddit', 'Discord'],
+        research: ['Google', 'Google Search']
+      }
+    };
+
+    // Default classification for unknown purposes
+    const defaultClassification = {
+      onTrack: ['VS Code', 'Word', 'Excel', 'PowerPoint', 'PDF Viewer'],
+      deviation: ['YouTube', 'X', 'Reddit', 'Discord'],
+      research: ['Google', 'Stack Overflow', 'Google Search']
+    };
+
     // State
     let sessionData = null;
     let events = [];
+    let currentPurposeKeywords = null;
 
     // DOM Elements
     const loading = document.getElementById('loading');
@@ -329,15 +489,21 @@
     const sessionPurpose = document.getElementById('sessionPurpose');
     const sessionStart = document.getElementById('sessionStart');
     const sessionEnd = document.getElementById('sessionEnd');
+    const insight = document.getElementById('insight');
+    const insightText = document.getElementById('insightText');
     const totalDuration = document.getElementById('totalDuration');
     const switchCount = document.getElementById('switchCount');
     const longestApp = document.getElementById('longestApp');
+    const onTrackDuration = document.getElementById('onTrackDuration');
+    const deviationDuration = document.getElementById('deviationDuration');
+    const focusRatio = document.getElementById('focusRatio');
     const filterNative = document.getElementById('filterNative');
     const filterBrowser = document.getElementById('filterBrowser');
     const filterIdle = document.getElementById('filterIdle');
     const recordResultBtn = document.getElementById('recordResultBtn');
     const stopBtn = document.getElementById('stopBtn');
     const backBtn = document.getElementById('backBtn');
+    const loadMockDataBtn = document.getElementById('loadMockDataBtn');
 
     // Initialize
     function init() {
@@ -345,6 +511,11 @@
       filterNative.addEventListener('change', renderTimeline);
       filterBrowser.addEventListener('change', renderTimeline);
       filterIdle.addEventListener('change', renderTimeline);
+
+      // Load mock data button
+      if (loadMockDataBtn) {
+        loadMockDataBtn.addEventListener('click', loadMockData);
+      }
 
       // Use stopBtn if it exists, otherwise use recordResultBtn
       const stopButton = stopBtn || recordResultBtn;
@@ -406,6 +577,11 @@
 
     // Render timeline
     function renderTimeline() {
+      // Extract purpose keywords from session purpose
+      if (sessionData && sessionData.session && sessionData.session.purpose) {
+        extractPurposeKeywords(sessionData.session.purpose);
+      }
+
       // Filter events
       const filteredEvents = events.filter(event => {
         if (event.source === 'native' && !filterNative.checked) return false;
@@ -425,6 +601,25 @@
 
       // Update summary
       updateSummary(filteredEvents);
+
+      // Generate insight
+      generateInsight(filteredEvents);
+    }
+
+    // Extract purpose keywords from session purpose
+    function extractPurposeKeywords(purpose) {
+      currentPurposeKeywords = null;
+
+      // Find matching purpose keyword map
+      for (const [key, value] of Object.entries(purposeKeywords)) {
+        if (purpose.includes(key)) {
+          currentPurposeKeywords = value;
+          return;
+        }
+      }
+
+      // Use default classification if no match
+      currentPurposeKeywords = defaultClassification;
     }
 
     // Create timeline event element
@@ -437,7 +632,8 @@
       time.textContent = formatTime(event.start_time);
 
       const bar = document.createElement('div');
-      bar.className = `timeline-bar ${event.source}`;
+      const barClass = determineBarClass(event);
+      bar.className = `timeline-bar ${barClass}`;
       bar.textContent = getAppLabel(event);
       bar.title = event.window_title || '';
 
@@ -459,6 +655,46 @@
       return div;
     }
 
+    // Determine bar class based on deviation
+    function determineBarClass(event) {
+      if (event.source === 'idle') return 'idle';
+
+      // Use purpose keywords if available
+      if (currentPurposeKeywords) {
+        const appLabel = getAppLabel(event).toLowerCase();
+
+        // Check if it's a deviation
+        for (const deviationApp of currentPurposeKeywords.deviation) {
+          if (appLabel.includes(deviationApp.toLowerCase())) {
+            return 'deviation';
+          }
+        }
+
+        // Check if it's research
+        for (const researchApp of currentPurposeKeywords.research) {
+          if (appLabel.includes(researchApp.toLowerCase())) {
+            return 'browser';
+          }
+        }
+
+        // Check if it's on-track
+        for (const onTrackApp of currentPurposeKeywords.onTrack) {
+          if (appLabel.includes(onTrackApp.toLowerCase())) {
+            return 'on-track';
+          }
+        }
+      }
+
+      // Fallback to default classification
+      if (event.service === 'YouTube' || event.service === 'X' || event.service === 'Reddit') {
+        return 'deviation';
+      }
+      if (event.application === 'VS Code' || event.application === 'Microsoft Word' || event.application === 'PDF Viewer') {
+        return 'on-track';
+      }
+      return event.source;
+    }
+
     // Get app label
     function getAppLabel(event) {
       if (event.source === 'browser' && event.service) {
@@ -473,6 +709,21 @@
       const totalSeconds = filteredEvents.reduce((sum, event) => sum + event.duration_seconds, 0);
       totalDuration.textContent = formatDuration(totalSeconds);
 
+      // On-track vs deviation duration
+      const onTrackSeconds = filteredEvents
+        .filter(e => determineBarClass(e) === 'on-track')
+        .reduce((sum, e) => sum + e.duration_seconds, 0);
+      const deviationSeconds = filteredEvents
+        .filter(e => determineBarClass(e) === 'deviation')
+        .reduce((sum, e) => sum + e.duration_seconds, 0);
+
+      onTrackDuration.textContent = formatDuration(onTrackSeconds);
+      deviationDuration.textContent = formatDuration(deviationSeconds);
+
+      // Focus ratio
+      const ratio = totalSeconds > 0 ? Math.round((onTrackSeconds / totalSeconds) * 100) : 0;
+      focusRatio.textContent = ratio + '%';
+
       // Switch count
       switchCount.textContent = Math.max(0, filteredEvents.length - 1) + '回';
 
@@ -484,6 +735,42 @@
         longestApp.textContent = getAppLabel(longestEvent);
       } else {
         longestApp.textContent = '-';
+      }
+    }
+
+    // Generate insight
+    function generateInsight(filteredEvents) {
+      const insights = [];
+
+      // Check for YouTube usage
+      const youtubeEvents = filteredEvents.filter(e => e.service === 'YouTube');
+      if (youtubeEvents.length > 0) {
+        const youtubeDuration = youtubeEvents.reduce((sum, e) => sum + e.duration_seconds, 0);
+        if (youtubeDuration > 300) {
+          insights.push(`YouTubeを${Math.floor(youtubeDuration / 60)}分使用しています。脱線している可能性があります。`);
+        }
+      }
+
+      // Check for switching frequency
+      if (filteredEvents.length > 5) {
+        insights.push(`アプリの切り替えが${filteredEvents.length}回発生しています。集中が途切れている可能性があります。`);
+      }
+
+      // Check for research time
+      const googleEvents = filteredEvents.filter(e => e.service === 'Google');
+      if (googleEvents.length > 0) {
+        const googleDuration = googleEvents.reduce((sum, e) => sum + e.duration_seconds, 0);
+        if (googleDuration > 900) {
+          insights.push(`調査に${Math.floor(googleDuration / 60)}分使用しています。調査に時間がかかっている可能性があります。`);
+        }
+      }
+
+      // Display insight
+      if (insights.length > 0) {
+        insight.style.display = 'block';
+        insightText.textContent = insights.join(' ');
+      } else {
+        insight.style.display = 'none';
       }
     }
 
@@ -517,6 +804,38 @@
         hour: '2-digit',
         minute: '2-digit'
       });
+    }
+
+    // Load mock data
+    async function loadMockData() {
+      try {
+        const response = await fetch('mock-sessions/phase-7-5-2-sessions.json');
+        const mockSessions = await response.json();
+
+        // Load the first session for demonstration
+        const mockSession = mockSessions[0];
+        sessionData = {
+          session: mockSession.session,
+          events: mockSession.events
+        };
+        events = mockSession.events;
+
+        // Display session info
+        sessionInfo.style.display = 'block';
+        sessionPurpose.textContent = mockSession.session.purpose;
+        sessionStart.textContent = formatDateTime(mockSession.session.start_time);
+        sessionEnd.textContent = formatDateTime(mockSession.session.end_time);
+
+        // Render timeline
+        renderTimeline();
+
+        // Hide loading, show timeline
+        loading.style.display = 'none';
+        timelineContainer.style.display = 'block';
+      } catch (err) {
+        console.error('Error loading mock data:', err);
+        alert('疑似データの読み込みに失敗しました。');
+      }
     }
 
     // Initialize on load

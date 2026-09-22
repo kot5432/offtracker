@@ -493,19 +493,6 @@
         if (targetBar) targetBar.style.width = targetBarWidth + '%';
         if (actualBar) actualBar.style.width = actualBarWidth + '%';
 
-        // Calculate difference
-        const diff = actualMinutes - targetMinutes;
-        if (diff > 0) {
-          timeDifference.textContent = `+${formatTime(diff)} 超過`;
-          timeDifference.classList.add('positive');
-        } else if (diff < 0) {
-          timeDifference.textContent = `${formatTime(Math.abs(diff))} 不足`;
-          timeDifference.classList.remove('positive');
-        } else {
-          timeDifference.textContent = '目標通り';
-          timeDifference.classList.add('positive');
-        }
-
         // Hide loading, show result
         loading.style.display = 'none';
         resultContainer.style.display = 'block';

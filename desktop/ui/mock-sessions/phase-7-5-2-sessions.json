@@ -1,0 +1,374 @@
+[
+  {
+    "session": {
+      "id": "session-programming-youtube-001",
+      "purpose": "プログラミングをする",
+      "target_time_minutes": 60,
+      "start_time": "2026-09-21T19:00:00Z",
+      "end_time": "2026-09-21T19:45:00Z",
+      "status": "completed"
+    },
+    "events": [
+      {
+        "id": "evt-prog-yt-001",
+        "session_id": "session-programming-youtube-001",
+        "start_time": "2026-09-21T19:00:00Z",
+        "end_time": "2026-09-21T19:20:00Z",
+        "source": "native",
+        "application": "VS Code",
+        "service": null,
+        "window_title": "OffTracker - Visual Studio Code",
+        "process_id": 12345,
+        "duration_seconds": 1200
+      },
+      {
+        "id": "evt-prog-yt-002",
+        "session_id": "session-programming-youtube-001",
+        "start_time": "2026-09-21T19:20:00Z",
+        "end_time": "2026-09-21T19:25:00Z",
+        "source": "browser",
+        "application": "Microsoft Edge",
+        "service": "Google",
+        "window_title": "Google Search - programming error",
+        "process_id": 67890,
+        "duration_seconds": 300
+      },
+      {
+        "id": "evt-prog-yt-003",
+        "session_id": "session-programming-youtube-001",
+        "start_time": "2026-09-21T19:25:00Z",
+        "end_time": "2026-09-21T19:40:00Z",
+        "source": "browser",
+        "application": "Microsoft Edge",
+        "service": "YouTube",
+        "window_title": "YouTube - Programming Tutorial",
+        "process_id": 67890,
+        "duration_seconds": 900
+      },
+      {
+        "id": "evt-prog-yt-004",
+        "session_id": "session-programming-youtube-001",
+        "start_time": "2026-09-21T19:40:00Z",
+        "end_time": "2026-09-21T19:45:00Z",
+        "source": "native",
+        "application": "VS Code",
+        "service": null,
+        "window_title": "OffTracker - Visual Studio Code",
+        "process_id": 12345,
+        "duration_seconds": 300
+      }
+    ],
+    "result": {
+      "id": "res-prog-yt-001",
+      "session_id": "session-programming-youtube-001",
+      "result_level": "partially_completed",
+      "result_description": "プログラミングを少し進めたが、YouTubeを見てしまった",
+      "what_wasnt_done": "予定していた機能を完成できなかった",
+      "actual_duration_minutes": 45
+    },
+    "reflection": {
+      "id": "ref-prog-yt-001",
+      "session_id": "session-programming-youtube-001",
+      "deviation_reason": "脱線",
+      "reflection_details": "エラーが出て調べようとしたが、YouTubeを見てしまい、そのまま時間が経過した"
+    }
+  },
+  {
+    "session": {
+      "id": "session-programming-error-001",
+      "purpose": "プログラミングをする",
+      "target_time_minutes": 60,
+      "start_time": "2026-09-21T20:00:00Z",
+      "end_time": "2026-09-21T20:50:00Z",
+      "status": "completed"
+    },
+    "events": [
+      {
+        "id": "evt-prog-err-001",
+        "session_id": "session-programming-error-001",
+        "start_time": "2026-09-21T20:00:00Z",
+        "end_time": "2026-09-21T20:15:00Z",
+        "source": "native",
+        "application": "VS Code",
+        "service": null,
+        "window_title": "OffTracker - Visual Studio Code",
+        "process_id": 12345,
+        "duration_seconds": 900
+      },
+      {
+        "id": "evt-prog-err-002",
+        "session_id": "session-programming-error-001",
+        "start_time": "2026-09-21T20:15:00Z",
+        "end_time": "2026-09-21T20:45:00Z",
+        "source": "browser",
+        "application": "Microsoft Edge",
+        "service": "Google",
+        "window_title": "Google Search - programming error solution",
+        "process_id": 67890,
+        "duration_seconds": 1800
+      },
+      {
+        "id": "evt-prog-err-003",
+        "session_id": "session-programming-error-001",
+        "start_time": "2026-09-21T20:45:00Z",
+        "end_time": "2026-09-21T20:50:00Z",
+        "source": "native",
+        "application": "VS Code",
+        "service": null,
+        "window_title": "OffTracker - Visual Studio Code",
+        "process_id": 12345,
+        "duration_seconds": 300
+      }
+    ],
+    "result": {
+      "id": "res-prog-err-001",
+      "session_id": "session-programming-error-001",
+      "result_level": "partially_completed",
+      "result_description": "エラー解決に時間がかかった",
+      "what_wasnt_done": "予定していた機能を完成できなかった",
+      "actual_duration_minutes": 50
+    },
+    "reflection": {
+      "id": "ref-prog-err-001",
+      "session_id": "session-programming-error-001",
+      "deviation_reason": "難しかった",
+      "reflection_details": "エラーの原因が分からず、調べる時間が長くなった"
+    }
+  },
+  {
+    "session": {
+      "id": "session-report-research-001",
+      "purpose": "レポートを書く",
+      "target_time_minutes": 90,
+      "start_time": "2026-09-21T21:00:00Z",
+      "end_time": "2026-09-21T22:00:00Z",
+      "status": "completed"
+    },
+    "events": [
+      {
+        "id": "evt-rep-res-001",
+        "session_id": "session-report-research-001",
+        "start_time": "2026-09-21T21:00:00Z",
+        "end_time": "2026-09-21T21:15:00Z",
+        "source": "native",
+        "application": "Microsoft Word",
+        "service": null,
+        "window_title": "Report - Microsoft Word",
+        "process_id": 54321,
+        "duration_seconds": 900
+      },
+      {
+        "id": "evt-rep-res-002",
+        "session_id": "session-report-research-001",
+        "start_time": "2026-09-21T21:15:00Z",
+        "end_time": "2026-09-21T22:00:00Z",
+        "source": "browser",
+        "application": "Microsoft Edge",
+        "service": "Google",
+        "window_title": "Google Search - report research",
+        "process_id": 67890,
+        "duration_seconds": 2700
+      }
+    ],
+    "result": {
+      "id": "res-rep-res-001",
+      "session_id": "session-report-research-001",
+      "result_level": "not_completed",
+      "result_description": "調査に時間がかかりすぎた",
+      "what_wasnt_done": "レポートを完成できなかった",
+      "actual_duration_minutes": 60
+    },
+    "reflection": {
+      "id": "ref-rep-res-001",
+      "session_id": "session-report-research-001",
+      "deviation_reason": "調査に時間がかかった",
+      "reflection_details": "必要な情報が見つからず、調査に時間が長くなった"
+    }
+  },
+  {
+    "session": {
+      "id": "session-study-switch-001",
+      "purpose": "勉強をする",
+      "target_time_minutes": 60,
+      "start_time": "2026-09-21T22:30:00Z",
+      "end_time": "2026-09-21T23:00:00Z",
+      "status": "completed"
+    },
+    "events": [
+      {
+        "id": "evt-stu-swi-001",
+        "session_id": "session-study-switch-001",
+        "start_time": "2026-09-21T22:30:00Z",
+        "end_time": "2026-09-21T22:40:00Z",
+        "source": "native",
+        "application": "PDF Viewer",
+        "service": null,
+        "window_title": "Textbook - PDF Viewer",
+        "process_id": 34567,
+        "duration_seconds": 600
+      },
+      {
+        "id": "evt-stu-swi-002",
+        "session_id": "session-study-switch-001",
+        "start_time": "2026-09-21T22:40:00Z",
+        "end_time": "2026-09-21T22:45:00Z",
+        "source": "native",
+        "application": "Microsoft Edge",
+        "service": null,
+        "window_title": "Microsoft Edge",
+        "process_id": 67890,
+        "duration_seconds": 300
+      },
+      {
+        "id": "evt-stu-swi-003",
+        "session_id": "session-study-switch-001",
+        "start_time": "2026-09-21T22:45:00Z",
+        "end_time": "2026-09-21T22:50:00Z",
+        "source": "native",
+        "application": "PDF Viewer",
+        "service": null,
+        "window_title": "Textbook - PDF Viewer",
+        "process_id": 34567,
+        "duration_seconds": 300
+      },
+      {
+        "id": "evt-stu-swi-004",
+        "session_id": "session-study-switch-001",
+        "start_time": "2026-09-21T22:50:00Z",
+        "end_time": "2026-09-21T22:55:00Z",
+        "source": "native",
+        "application": "Microsoft Edge",
+        "service": null,
+        "window_title": "Microsoft Edge",
+        "process_id": 67890,
+        "duration_seconds": 300
+      },
+      {
+        "id": "evt-stu-swi-005",
+        "session_id": "session-study-switch-001",
+        "start_time": "2026-09-21T22:55:00Z",
+        "end_time": "2026-09-21T23:00:00Z",
+        "source": "native",
+        "application": "PDF Viewer",
+        "service": null,
+        "window_title": "Textbook - PDF Viewer",
+        "process_id": 34567,
+        "duration_seconds": 300
+      }
+    ],
+    "result": {
+      "id": "res-stu-swi-001",
+      "session_id": "session-study-switch-001",
+      "result_level": "partially_completed",
+      "result_description": "集中が途切れた",
+      "what_wasnt_done": "予定通り勉強できなかった",
+      "actual_duration_minutes": 30
+    },
+    "reflection": {
+      "id": "ref-stu-swi-001",
+      "session_id": "session-study-switch-001",
+      "deviation_reason": "集中が切れた",
+      "reflection_details": "別の作業に移ってしまい、集中が途切れた"
+    }
+  },
+  {
+    "session": {
+      "id": "session-dev-overwork-001",
+      "purpose": "開発をする",
+      "target_time_minutes": 60,
+      "start_time": "2026-09-22T09:00:00Z",
+      "end_time": "2026-09-22T10:30:00Z",
+      "status": "completed"
+    },
+    "events": [
+      {
+        "id": "evt-dev-ovr-001",
+        "session_id": "session-dev-overwork-001",
+        "start_time": "2026-09-22T09:00:00Z",
+        "end_time": "2026-09-22T10:30:00Z",
+        "source": "native",
+        "application": "VS Code",
+        "service": null,
+        "window_title": "OffTracker - Visual Studio Code",
+        "process_id": 12345,
+        "duration_seconds": 5400
+      }
+    ],
+    "result": {
+      "id": "res-dev-ovr-001",
+      "session_id": "session-dev-overwork-001",
+      "result_level": "completed",
+      "result_description": "予定より作業量が多かったが、達成できた",
+      "what_wasnt_done": null,
+      "actual_duration_minutes": 90
+    },
+    "reflection": {
+      "id": "ref-dev-ovr-001",
+      "session_id": "session-dev-overwork-001",
+      "deviation_reason": "作業量が多かった",
+      "reflection_details": "予定していた作業量が多かったが、時間をかけて達成できた"
+    }
+  },
+  {
+    "session": {
+      "id": "session-complete-success-001",
+      "purpose": "何かを完成させる",
+      "target_time_minutes": 60,
+      "start_time": "2026-09-22T11:00:00Z",
+      "end_time": "2026-09-22T11:55:00Z",
+      "status": "completed"
+    },
+    "events": [
+      {
+        "id": "evt-cmp-suc-001",
+        "session_id": "session-complete-success-001",
+        "start_time": "2026-09-22T11:00:00Z",
+        "end_time": "2026-09-22T11:20:00Z",
+        "source": "native",
+        "application": "VS Code",
+        "service": null,
+        "window_title": "OffTracker - Visual Studio Code",
+        "process_id": 12345,
+        "duration_seconds": 1200
+      },
+      {
+        "id": "evt-cmp-suc-002",
+        "session_id": "session-complete-success-001",
+        "start_time": "2026-09-22T11:20:00Z",
+        "end_time": "2026-09-22T11:25:00Z",
+        "source": "browser",
+        "application": "Microsoft Edge",
+        "service": "Google",
+        "window_title": "Google Search - quick reference",
+        "process_id": 67890,
+        "duration_seconds": 300
+      },
+      {
+        "id": "evt-cmp-suc-003",
+        "session_id": "session-complete-success-001",
+        "start_time": "2026-09-22T11:25:00Z",
+        "end_time": "2026-09-22T11:55:00Z",
+        "source": "native",
+        "application": "VS Code",
+        "service": null,
+        "window_title": "OffTracker - Visual Studio Code",
+        "process_id": 12345,
+        "duration_seconds": 1800
+      }
+    ],
+    "result": {
+      "id": "res-cmp-suc-001",
+      "session_id": "session-complete-success-001",
+      "result_level": "completed",
+      "result_description": "予定通り達成できた",
+      "what_wasnt_done": null,
+      "actual_duration_minutes": 55
+    },
+    "reflection": {
+      "id": "ref-cmp-suc-001",
+      "session_id": "session-complete-success-001",
+      "deviation_reason": "達成",
+      "reflection_details": "途中で調べ物をしたが、すぐに作業に戻れて達成できた"
+    }
+  }
+]

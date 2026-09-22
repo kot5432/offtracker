@@ -394,7 +394,7 @@
     }
 
     // Start session
-    function startSession() {
+    async function startSession() {
       const purpose = purposeInput.value.trim();
       const targetHours = parseInt(targetHoursInput.value) || 0;
       const targetMinutes = parseInt(targetMinutesInput.value) || 0;
@@ -407,33 +407,52 @@
 
       purposeError.textContent = '';
 
-      // Create session
-      currentSession = {
-        id: 'session-' + Date.now(),
-        purpose: purpose,
-        target_time_minutes: targetHours * 60 + targetMinutes,
-        start_time: new Date().toISOString(),
-        status: 'active'
-      };
+      // Call server API to start session
+      try {
+        console.log('[Home] Calling server API to start session');
+        const response = await fetch('/api/session/start', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            purpose: purpose,
+            target_time_minutes: targetHours * 60 + targetMinutes
+          })
+        });
 
-      // Update UI
-      document.getElementById('currentPurpose').textContent = currentSession.purpose;
-      document.getElementById('currentTargetTime').textContent = formatTime(currentSession.target_time_minutes);
-      document.getElementById('currentStartTime').textContent = formatDateTime(currentSession.start_time);
+        if (!response.ok) {
+          throw new Error('Failed to start session');
+        }
 
-      // Switch to active state
-      idleSession.classList.add('hidden');
-      idleSession.classList.remove('idle-session');
-      activeSession.classList.add('visible');
-      activeSession.classList.remove('active-session');
+        const session = await response.json();
+        console.log('[Home] Session started on server:', session);
 
-      // Start elapsed timer
-      startElapsedTimer();
+        // Use server session
+        currentSession = session;
 
-      // Start window update timer
-      startWindowUpdate();
+        // Update UI
+        document.getElementById('currentPurpose').textContent = currentSession.purpose;
+        document.getElementById('currentTargetTime').textContent = formatTime(currentSession.target_time_minutes);
+        document.getElementById('currentStartTime').textContent = formatDateTime(currentSession.start_time);
 
-      console.log('Session started:', currentSession);
+        // Switch to active state
+        idleSession.classList.add('hidden');
+        idleSession.classList.remove('idle-session');
+        activeSession.classList.add('visible');
+        activeSession.classList.remove('active-session');
+
+        // Start elapsed timer
+        startElapsedTimer();
+
+        // Start window update timer
+        startWindowUpdate();
+
+        console.log('Session started:', currentSession);
+      } catch (error) {
+        console.error('[Home] Error starting session:', error);
+        purposeError.textContent = 'セッションの開始に失敗しました';
+      }
     }
 
     // Stop session
