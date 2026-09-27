@@ -69,34 +69,60 @@
 
     .timeline {
       position: relative;
-      padding-left: 100px;
+      padding: 50px 20px 20px 20px;
+      min-height: 400px;
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: auto;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      background-color: #f9fafb;
+    }
+
+    .timeline-session-info {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: #f3f4f6;
+      border-bottom: 1px solid #e5e7eb;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .timeline-axis {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background-color: #f3f4f6;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      font-size: 12px;
+      color: #666;
+      z-index: 10;
     }
 
     .timeline-event {
-      position: relative;
-      margin-bottom: 30px;
-    }
-
-    .timeline-time {
       position: absolute;
-      left: -100px;
-      width: 90px;
-      text-align: right;
-      font-family: 'Courier New', monospace;
-      font-size: 14px;
-      color: #666;
-      top: 0;
-    }
-
-    .timeline-bar {
-      height: 40px;
+      height: 48px;
       border-radius: 4px;
       display: flex;
       align-items: center;
-      padding: 0 15px;
+      padding: 0 12px;
       font-weight: 500;
       color: white;
-      position: relative;
+      font-size: 14px;
+      white-space: nowrap;
+      cursor: pointer;
+      min-width: 50px;
+    }
+
+    .timeline-event:hover {
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
     .timeline-bar.native {
@@ -119,23 +145,30 @@
       background-color: #10b981;
     }
 
+    .timeline-event.native {
+      background-color: #3b82f6;
+    }
+
+    .timeline-event.browser {
+      background-color: #10b981;
+    }
+
+    .timeline-event.idle {
+      background-color: #6b7280;
+    }
+
+    .timeline-event.deviation {
+      background-color: #ef4444;
+    }
+
+    .timeline-event.on-track {
+      background-color: #10b981;
+    }
+
     .timeline-bar-duration {
       margin-left: auto;
-      font-size: 14px;
+      font-size: 12px;
       opacity: 0.9;
-    }
-
-    .timeline-connector {
-      position: absolute;
-      left: -95px;
-      top: 40px;
-      width: 2px;
-      height: 30px;
-      background-color: #e0e0e0;
-    }
-
-    .timeline-event:last-child .timeline-connector {
-      display: none;
     }
 
     .summary {
@@ -355,80 +388,63 @@
       <div id="error" class="error" style="display: none;"></div>
 
       <div id="timelineContainer" style="display: none;">
-        <div class="timeline" id="timeline"></div>
-
-        <div class="legend">
-          <div class="legend-item">
-            <div class="legend-color on-track"></div>
-            <span>目的に関連</span>
-          </div>
-          <div class="legend-item">
-            <div class="legend-color deviation"></div>
-            <span>脱線</span>
-          </div>
-          <div class="legend-item">
-            <div class="legend-color browser"></div>
-            <span>調査</span>
-          </div>
-          <div class="legend-item">
-            <div class="legend-color idle"></div>
-            <span>アイドル</span>
-          </div>
-          <div class="legend-description">
-            ※ 目的キーワードに基づいて自動判定されます（例: プログラミング → VS Codeは目的に関連、YouTubeは脱線）
-          </div>
+        <div class="timeline-session-info" id="timelineSessionInfo" style="display: none;">
+          <span><strong>セッション:</strong> <span id="timelineSessionPurpose"></span></span>
+          <span><strong>期間:</strong> <span id="timelineSessionPeriod"></span></span>
         </div>
+        <div class="timeline" id="timeline" style="width: 100%;"></div>
+      </div>
 
-        <div class="summary">
-          <div class="summary-item">
-            <div class="summary-label">目的関連時間</div>
-            <div class="summary-value" id="onTrackDuration">0分</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-label">脱線時間</div>
-            <div class="summary-value" id="deviationDuration">0分</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-label">集中割合</div>
-            <div class="summary-value" id="focusRatio">0%</div>
-          </div>
+      <div class="legend" style="display: none;" id="legendContainer">
+        <div class="legend-item">
+          <div class="legend-color on-track"></div>
+          <span>目的に関連</span>
         </div>
+        <div class="legend-item">
+          <div class="legend-color deviation"></div>
+          <span>脱線</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color browser"></div>
+          <span>調査</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color idle"></div>
+          <span>アイドル</span>
+        </div>
+        <div class="legend-description">
+          ※ 目的キーワードに基づいて自動判定されます（例: プログラミング → VS Codeは目的に関連、YouTubeは脱線）
+        </div>
+      </div>
 
+      <div class="summary" style="display: none;" id="summaryContainer">
         <div class="summary-row">
           <div class="summary-item">
-            <div class="summary-label">総作業時間</div>
+            <div class="summary-label">作業時間</div>
             <div class="summary-value" id="totalDuration">0分</div>
           </div>
-          <div class="summary-item">
-            <div class="summary-label">アプリ切り替え</div>
-            <div class="summary-value" id="switchCount">0回</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-label">最長使用</div>
-            <div class="summary-value" id="longestApp">-</div>
-          </div>
         </div>
+      </div>
 
-        <div class="filters">
-          <label class="filter-checkbox">
-            <input type="checkbox" id="filterNative" checked>
-            ネイティブアプリ
-          </label>
-          <label class="filter-checkbox">
-            <input type="checkbox" id="filterBrowser" checked>
-            ブラウザ
-          </label>
-          <label class="filter-checkbox">
-            <input type="checkbox" id="filterIdle">
-            アイドル時間
-          </label>
-        </div>
+      <div class="filters" style="display: none;" id="filtersContainer">
+        <label class="filter-checkbox">
+          <input type="checkbox" id="filterNative" checked>
+          ネイティブアプリ
+        </label>
+        <label class="filter-checkbox">
+          <input type="checkbox" id="filterBrowser" checked>
+          ブラウザ
+        </label>
+        <label class="filter-checkbox">
+          <input type="checkbox" id="filterIdle">
+          アイドル時間
+        </label>
+      </div>
 
-        <div class="actions">
-          <button id="loadMockDataBtn" class="btn btn-secondary">疑似データをロード</button>
-          <button id="stopBtn" class="btn btn-danger btn-large">記録を終了 → 結果を入力</button>
-          <button id="backBtn" class="btn btn-secondary">Homeに戻る</button>
-        </div>
+      <div class="actions">
+        <button id="loadMockDataBtn" class="btn btn-secondary">疑似データをロード</button>
+        <button id="stopBtn" class="btn btn-danger btn-large">記録を終了 → 結果を入力</button>
+        <button id="backBtn" class="btn btn-secondary">Homeに戻る</button>
       </div>
     </div>
   </div>
@@ -497,6 +513,7 @@
     const onTrackDuration = document.getElementById('onTrackDuration');
     const deviationDuration = document.getElementById('deviationDuration');
     const focusRatio = document.getElementById('focusRatio');
+    const timelineAxis = document.getElementById('timelineAxis');
     const filterNative = document.getElementById('filterNative');
     const filterBrowser = document.getElementById('filterBrowser');
     const filterIdle = document.getElementById('filterIdle');
@@ -567,6 +584,18 @@
         // Hide loading, show timeline
         loading.style.display = 'none';
         timelineContainer.style.display = 'block';
+        legendContainer.style.display = 'block';
+        summaryContainer.style.display = 'block';
+        filtersContainer.style.display = 'block';
+
+        // Update timeline session info
+        if (session && session.purpose) {
+          timelineSessionInfo.style.display = 'flex';
+          timelineSessionPurpose.textContent = session.purpose;
+          const sessionStart = formatTime(session.start_time);
+          const sessionEnd = session.end_time ? formatTime(session.end_time) : '進行中';
+          timelineSessionPeriod.textContent = `${sessionStart} - ${sessionEnd}`;
+        }
       } catch (err) {
         console.error('Error loading session data:', err);
         loading.style.display = 'none';
@@ -590,20 +619,163 @@
         return true;
       });
 
-      // Clear timeline
-      timeline.innerHTML = '';
-
-      // Render events
-      filteredEvents.forEach((event, index) => {
-        const eventElement = createTimelineEvent(event, index < filteredEvents.length - 1);
-        timeline.appendChild(eventElement);
-      });
+      // Render gantt chart
+      renderGanttChart(filteredEvents);
 
       // Update summary
       updateSummary(filteredEvents);
 
       // Generate insight
       generateInsight(filteredEvents);
+    }
+
+    // Render gantt chart
+    function renderGanttChart(filteredEvents) {
+      if (filteredEvents.length === 0) {
+        timeline.innerHTML = '<div style="text-align: center; color: #666; padding: 40px;">記録されたイベントがありません</div>';
+        return;
+      }
+
+      // Filter short events (less than 3 minutes)
+      const MIN_DURATION_SECONDS = 180; // 3 minutes
+      const significantEvents = filteredEvents.filter(event => event.duration_seconds >= MIN_DURATION_SECONDS);
+
+      if (significantEvents.length === 0) {
+        timeline.innerHTML = '<div style="text-align: center; color: #666; padding: 40px;">主要なイベントがありません（3分以上のイベントのみ表示されます）</div>';
+        return;
+      }
+
+      // Calculate total duration
+      const startTime = new Date(significantEvents[0].start_time);
+      const endTime = new Date(significantEvents[significantEvents.length - 1].end_time);
+      const totalDuration = endTime - startTime;
+
+      console.log('Gantt chart rendering:', {
+        totalEvents: significantEvents.length,
+        startTime: startTime.toISOString(),
+        endTime: endTime.toISOString(),
+        totalDuration: totalDuration
+      });
+
+      // Merge consecutive events for each application/service
+      const mergedEvents = {};
+      significantEvents.forEach(event => {
+        const key = getAppLabel(event);
+        if (!mergedEvents[key]) {
+          mergedEvents[key] = [];
+        }
+        mergedEvents[key].push(event);
+      });
+
+      for (const [appLabel, appEvents] of Object.entries(mergedEvents)) {
+        if (appEvents.length === 0) {
+          continue;
+        }
+
+        // Sort events by start time
+        appEvents.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
+
+        const merged = [];
+        let currentEvent = { ...appEvents[0] };
+
+        for (let i = 1; i < appEvents.length; i++) {
+          const nextEvent = appEvents[i];
+          const currentEndTime = new Date(currentEvent.end_time);
+          const nextStartTime = new Date(nextEvent.start_time);
+
+          // Check if events are consecutive (gap less than 1 minute)
+          const gap = (nextStartTime - currentEndTime) / 1000;
+
+          if (gap < 60) {
+            // Merge events
+            currentEvent.end_time = nextEvent.end_time;
+            currentEvent.duration_seconds += nextEvent.duration_seconds;
+          } else {
+            // Add current event and start new
+            merged.push(currentEvent);
+            currentEvent = { ...nextEvent };
+          }
+        }
+
+        merged.push(currentEvent);
+        mergedEvents[appLabel] = merged;
+      }
+
+      console.log('Merged events:', mergedEvents);
+
+      // Clear timeline
+      timeline.innerHTML = '';
+
+      // Render axis labels
+      renderAxisLabels(startTime, endTime);
+
+      // Convert merged events to a flat array and sort by start time
+      const flatEvents = [];
+      for (const [appLabel, appEvents] of Object.entries(mergedEvents)) {
+        appEvents.forEach(event => {
+          flatEvents.push(event);
+        });
+      }
+      flatEvents.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
+
+      // Render events in sequence
+      flatEvents.forEach((event, index) => {
+        const eventElement = createGanttEvent(event, startTime, totalDuration, index);
+        timeline.appendChild(eventElement);
+      });
+    }
+
+    // Create gantt event element
+    function createGanttEvent(event, startTime, totalDuration, index) {
+      const eventStart = new Date(event.start_time);
+      const eventEnd = new Date(event.end_time);
+      const eventDuration = eventEnd - eventStart;
+
+      // Calculate position and width as percentages
+      const leftPercent = ((eventStart - startTime) / totalDuration) * 100;
+      const widthPercent = (eventDuration / totalDuration) * 100;
+
+      console.log('Gantt event:', {
+        application: event.application,
+        service: event.service,
+        leftPercent: leftPercent.toFixed(2),
+        widthPercent: widthPercent.toFixed(2),
+        eventDuration: eventDuration
+      });
+
+      const div = document.createElement('div');
+      div.className = 'timeline-event';
+      const barClass = determineBarClass(event);
+      div.classList.add(barClass);
+      div.style.left = leftPercent + '%';
+      div.style.width = widthPercent + '%';
+      div.style.top = (index * 60 + 20) + 'px';
+      div.textContent = getAppLabel(event);
+      div.title = `${getAppLabel(event)} (${formatDuration(event.duration_seconds)})`;
+
+      const duration = document.createElement('span');
+      duration.className = 'timeline-bar-duration';
+      duration.textContent = formatDuration(event.duration_seconds);
+      div.appendChild(duration);
+
+      return div;
+    }
+
+    // Render axis labels
+    function renderAxisLabels(startTime, endTime) {
+      const axis = document.createElement('div');
+      axis.className = 'timeline-axis';
+
+      const startLabel = document.createElement('div');
+      startLabel.textContent = formatTime(startTime.toISOString());
+      axis.appendChild(startLabel);
+
+      const endLabel = document.createElement('div');
+      endLabel.style.marginLeft = 'auto';
+      endLabel.textContent = formatTime(endTime.toISOString());
+      axis.appendChild(endLabel);
+
+      timeline.insertBefore(axis, timeline.firstChild);
     }
 
     // Extract purpose keywords from session purpose
@@ -620,39 +792,6 @@
 
       // Use default classification if no match
       currentPurposeKeywords = defaultClassification;
-    }
-
-    // Create timeline event element
-    function createTimelineEvent(event, hasConnector) {
-      const div = document.createElement('div');
-      div.className = 'timeline-event';
-
-      const time = document.createElement('div');
-      time.className = 'timeline-time';
-      time.textContent = formatTime(event.start_time);
-
-      const bar = document.createElement('div');
-      const barClass = determineBarClass(event);
-      bar.className = `timeline-bar ${barClass}`;
-      bar.textContent = getAppLabel(event);
-      bar.title = event.window_title || '';
-
-      const duration = document.createElement('span');
-      duration.className = 'timeline-bar-duration';
-      duration.textContent = formatDuration(event.duration_seconds);
-      bar.appendChild(duration);
-
-      const connector = document.createElement('div');
-      connector.className = 'timeline-connector';
-      if (!hasConnector) {
-        connector.style.display = 'none';
-      }
-
-      div.appendChild(time);
-      div.appendChild(bar);
-      div.appendChild(connector);
-
-      return div;
     }
 
     // Determine bar class based on deviation
@@ -708,34 +847,6 @@
       // Total duration
       const totalSeconds = filteredEvents.reduce((sum, event) => sum + event.duration_seconds, 0);
       totalDuration.textContent = formatDuration(totalSeconds);
-
-      // On-track vs deviation duration
-      const onTrackSeconds = filteredEvents
-        .filter(e => determineBarClass(e) === 'on-track')
-        .reduce((sum, e) => sum + e.duration_seconds, 0);
-      const deviationSeconds = filteredEvents
-        .filter(e => determineBarClass(e) === 'deviation')
-        .reduce((sum, e) => sum + e.duration_seconds, 0);
-
-      onTrackDuration.textContent = formatDuration(onTrackSeconds);
-      deviationDuration.textContent = formatDuration(deviationSeconds);
-
-      // Focus ratio
-      const ratio = totalSeconds > 0 ? Math.round((onTrackSeconds / totalSeconds) * 100) : 0;
-      focusRatio.textContent = ratio + '%';
-
-      // Switch count
-      switchCount.textContent = Math.max(0, filteredEvents.length - 1) + '回';
-
-      // Longest app
-      if (filteredEvents.length > 0) {
-        const longestEvent = filteredEvents.reduce((max, event) =>
-          event.duration_seconds > max.duration_seconds ? event : max
-        );
-        longestApp.textContent = getAppLabel(longestEvent);
-      } else {
-        longestApp.textContent = '-';
-      }
     }
 
     // Generate insight
@@ -832,6 +943,18 @@
         // Hide loading, show timeline
         loading.style.display = 'none';
         timelineContainer.style.display = 'block';
+        legendContainer.style.display = 'block';
+        summaryContainer.style.display = 'block';
+        filtersContainer.style.display = 'block';
+
+        // Update timeline session info
+        if (mockSession.session.purpose) {
+          timelineSessionInfo.style.display = 'flex';
+          timelineSessionPurpose.textContent = mockSession.session.purpose;
+          const sessionStart = formatTime(mockSession.session.start_time);
+          const sessionEnd = formatTime(mockSession.session.end_time);
+          timelineSessionPeriod.textContent = `${sessionStart} - ${sessionEnd}`;
+        }
       } catch (err) {
         console.error('Error loading mock data:', err);
         alert('疑似データの読み込みに失敗しました。');
