@@ -407,28 +407,16 @@
 
       purposeError.textContent = '';
 
-      // Call server API to start session
+      // Call Tauri command to start session
       try {
-        console.log('[Home] Calling server API to start session');
-        const response = await fetch('/api/session/start', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            purpose: purpose,
-            target_time_minutes: targetHours * 60 + targetMinutes
-          })
+        console.log('[Home] Calling Tauri command to start session');
+        const session = await window.__TAURI__.invoke('start_session', {
+          purpose: purpose,
+          targetTimeMinutes: targetHours * 60 + targetMinutes
         });
+        console.log('[Home] Session started:', session);
 
-        if (!response.ok) {
-          throw new Error('Failed to start session');
-        }
-
-        const session = await response.json();
-        console.log('[Home] Session started on server:', session);
-
-        // Use server session
+        // Use Tauri session
         currentSession = session;
 
         // Update UI
@@ -475,24 +463,12 @@
 
       console.log('Session stopped:', currentSession);
 
-      // Stop session on server
+      // Stop session via Tauri
       try {
-        const response = await fetch('/api/session/stop', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            session_id: currentSession.id
-          })
+        const result = await window.__TAURI__.invoke('stop_session', {
+          sessionId: currentSession.id
         });
-
-        if (!response.ok) {
-          throw new Error('Failed to stop session');
-        }
-
-        const result = await response.json();
-        console.log('Session stopped on server:', result);
+        console.log('Session stopped:', result);
 
         // Store session data in localStorage for result screen
         localStorage.setItem('stoppedSession', JSON.stringify(currentSession));
@@ -545,15 +521,11 @@
     // Update current window display
     async function updateCurrentWindow() {
       try {
-        const response = await fetch('/api/window');
-        if (!response.ok) {
-          return;
-        }
-        const windowData = await response.json();
+        const windowData = await window.__TAURI__.invoke('get_current_window');
 
         const currentAppElement = document.getElementById('currentApp');
         if (currentAppElement) {
-          currentAppElement.textContent = windowData.owner || 'Unknown';
+          currentAppElement.textContent = windowData.process_name || 'Unknown';
         }
       } catch (err) {
         console.error('Error updating window:', err);

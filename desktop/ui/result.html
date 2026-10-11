@@ -396,19 +396,20 @@
       });
     }
 
-    // Get elapsed time from server
-    async function getElapsedTime() {
+    // Get elapsed time from Tauri
+    async function getElapsedTime(sessionId) {
       try {
-        const response = await fetch('/api/session/elapsed');
-        const data = await response.json();
-        return data;
+        const elapsedSeconds = await window.__TAURI__.invoke('get_session_elapsed', {
+          sessionId: sessionId
+        });
+        return { elapsed_minutes: Math.floor(elapsedSeconds / 60) };
       } catch (err) {
         console.error('Error getting elapsed time:', err);
         return { elapsed_minutes: 0 };
       }
     }
 
-    // Load session from API or localStorage
+    // Load session from Tauri or localStorage
     async function loadSessionData() {
       try {
         // Try to get session from localStorage first
@@ -419,10 +420,10 @@
           session = JSON.parse(storedSession);
           localStorage.removeItem('stoppedSession'); // Clear after use
         } else {
-          // Try to get current session from API
-          const sessionResponse = await fetch('/api/session/current');
-          if (sessionResponse.ok) {
-            session = await sessionResponse.json();
+          // Try to get current session from Tauri
+          const currentSession = await window.__TAURI__.invoke('get_current_session');
+          if (currentSession) {
+            session = currentSession;
           }
         }
 
@@ -502,25 +503,14 @@
       }
 
       try {
-        // Submit to API
-        const response = await fetch('/api/session/result', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            session_id: sessionData.session.id,
-            result_level: selectedLevel.value,
-            result_description: whatWasDoneValue,
-            what_wasnt_done: whatWasntDoneValue
-          })
+        // Submit to Tauri
+        const result = await window.__TAURI__.invoke('save_result', {
+          sessionId: sessionData.session.id,
+          resultLevel: selectedLevel.value,
+          resultDescription: whatWasDoneValue,
+          actualDurationMinutes: sessionData.result.actual_duration_minutes,
+          whatWasntDone: whatWasntDoneValue
         });
-
-        if (!response.ok) {
-          throw new Error('Failed to save result');
-        }
-
-        const result = await response.json();
         console.log('Result submitted:', result);
 
         // Store session data in localStorage for reflection screen
