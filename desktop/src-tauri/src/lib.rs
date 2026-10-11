@@ -72,6 +72,7 @@ pub fn run() {
             get_events_for_session,
             save_result,
             save_reflection,
+            get_session_elapsed,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
@@ -245,4 +246,31 @@ fn save_reflection(
             reflection_details,
         })
         .map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn get_session_elapsed(
+    session_id: String,
+    state: State<'_, AppState>,
+) -> Result<i64, String> {
+    let storage = state.storage.clone();
+    let session = storage
+        .get_session(&session_id)
+        .map_err(|e| e.to_string())?
+        .ok_or_else(|| "Session not found".to_string())?;
+
+    let start_time = chrono::DateTime::parse_from_rfc3339(&session.start_time)
+        .map_err(|e| format!("Invalid start_time: {}", e))?
+        .with_timezone(&chrono::Utc);
+
+    let end_time = if let Some(end) = &session.end_time {
+        chrono::DateTime::parse_from_rfc3339(end)
+            .map_err(|e| format!("Invalid end_time: {}", e))?
+            .with_timezone(&chrono::Utc)
+    } else {
+        chrono::Utc::now()
+    };
+
+    let elapsed = (end_time - start_time).num_seconds();
+    Ok(elapsed)
 }
