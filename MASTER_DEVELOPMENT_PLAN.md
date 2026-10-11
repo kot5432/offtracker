@@ -14,8 +14,20 @@
 | 行動理解 | █░░░░░░░░░ 約10% | Timelineは **Event表示段階**。Activity層・意味づけ・目的との関係は未着手 |
 | 振り返り | ░░░░░░░░░░ 約5% | Reflection/Resultの骨格のみ。AI仮説・Grounded Reason・Next Actionは Phase 6〜8 |
 
-**次の開発ゴールは「Timelineの見た目を完成させる」ことではない。**  
-Timelineは **「行動理解」の入口** に過ぎない。優先順は **Phase 0 → Phase 1（Eventが正しいか）→ Phase 2（Event→Activity）** である。
+**現在の段階**: 第1段階（基盤の安定化）の途中
+
+## 開発方針（4段階）
+
+OffTrackerの開発を、次の4段階に分けます。
+
+| 段階 | 目的 | 完了条件 |
+|---|---|---|
+| 第1段階：基盤の安定化 | Tauri版を正常に動かす | 画面・DB・セッション管理が連動する |
+| 第2段階：行動の理解 | EventをActivityに変換する | PC操作の羅列から、意味のある行動単位を作れる |
+| 第3段階：振り返りの実現 | 目的とのズレや原因の仮説を分析する | ユーザーが自分の行動を理解できる |
+| 第4段階：継続的な改善 | 次の行動と過去の記録を結び付ける | 対策を試し、その結果を振り返れる |
+
+**現在は第1段階の途中です。** ここを飛ばしてAIの実装を進めると、データ収集や保存に問題があった場合に、分析結果まで正しくなくなる可能性があります。
 
 ---
 
@@ -24,8 +36,8 @@ Timelineは **「行動理解」の入口** に過ぎない。優先順は **Pha
 ### 1-1. フレームワーク決定: **Tauri 2.x (Rust)** 正式採用
 - Electron系20ファイルは `desktop/_legacy_electron/` に隔離済み、MVP時削除予定
 - アーキテクチャ原則: `HTML/JS → Tauri invoke() → Rust Command → Storage → SQLite` の単一経路。旧 `fetch('/api/*')` は禁止。
-- **Phase 0〜1 で整理必須**: `desktop/ui/` に `fetch('/api/...')` が **10箇所** 残存（legacy除く）。  
-  `home.html`(3), `result.html`(3), `timeline.html`(2), `reflection.html`(1), `pattern.html`(1)。  
+- **Phase 0〜1 で整理必須**: `desktop/ui/` に `fetch('/api/...')` が **15箇所** 残存（legacy除く）。  
+  `home.html`(3), `result.html`(3), `timeline.html`(4), `reflection.html`(4), `pattern.html`(1)。  
   未Accept Diff確定とあわせ invoke 一本化する。
 
 ### 1-2. プロダクト哲学（絶対ルール - 全コード・UIが従う）
@@ -334,10 +346,61 @@ save_reflection(session_id, deviation_reason, reflection_details?)
 ## 7. 直近の実行タスク
 
 ### Phase 0（最優先・機能追加なし）
+
+**Step 0-1：現在の変更内容を確認する**
+まず、現在の変更内容を調べます。
+確認対象は次のとおりです。
+- `desktop/src-tauri/src/lib.rs`：Tauriコマンドと記録処理の連携
+- `desktop/ui/index.html`：Home画面
+- `desktop/ui/result.html`：Result画面
+- `desktop/ui/timeline.html`：Timeline画面
+- `desktop/ui/reflection.html`：Reflection画面
+- `desktop/ui/pattern.html`：Pattern画面
+
+特に、未AcceptのDiffが現在も残っているかを確認します。
+未Acceptの変更をすべて無条件にAcceptするのではなく、変更内容を確認してから確定してください。
+また、作業前に現在の変更をGitで保存しておくと、問題が起きた際に戻しやすくなります。
+
+**Step 0-2：`fetch('/api/...')` を整理する**
+5つのHTMLファイルに合計15箇所のAPI呼び出しが残っています。
+Tauri版では、原則として次の経路に統一します。
+```
+HTML / JavaScript
+        ↓
+Tauri invoke()
+        ↓
+Rust Command
+        ↓
+Storage
+        ↓
+SQLite
+```
+ただし、単純に文字列を置換するだけでは不十分です。
+例えば、JavaScript側の呼び出しを`invoke("get_session")`に変更する場合、Rust側のコマンド名、引数、戻り値の形式も一致している必要があります。
+
+**完了条件**
+- 15箇所の呼び出しを調査・整理した
+- 必要なTauriコマンドが存在する
+- JavaScriptとRustの引数・戻り値が一致している
+- 不要になった旧APIへの依存が残っていない
+- 各画面でデータの取得・保存が動作する
+
+**Step 0-3：ビルドと起動を確認する**
+変更後は、まずプロジェクトのRust側でコンパイルを確認します。
+```bash
+cd desktop/src-tauri
+cargo check
+```
+その後、プロジェクトの設定に従ってTauriアプリを起動します。
+```bash
+cargo tauri dev
+```
+コマンドが成功しただけでは完了ではありません。HomeからSessionを開始し、終了し、Resultを保存するところまで確認します。
+
 1. 未Accept Diffを一覧し、意図を確認して Accept
-2. `tracker.rs` / `lib.rs` — Event確定、Tracking開始停止、Session連動
+2. `lib.rs` — Event確定、Tracking開始停止、Session連動
 3. `home.html` / `result.html` — invoke化、Active復元、実績時間
-4. 残り ui — `timeline.html`, `reflection.html`, `pattern.html` の fetch 10箇所を invoke 化
+4. 残り ui — `timeline.html`, `reflection.html`, `pattern.html` の fetch 15箇所を invoke 化
 5. ローカルで `cargo check` → `cargo tauri dev`
 
 ### Phase 1（Phase 0 完了後のみ）
