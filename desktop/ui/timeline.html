@@ -165,6 +165,26 @@
       background-color: #10b981;
     }
 
+    .timeline-event.related {
+      background-color: #10b981;
+    }
+
+    .timeline-event.possibly-related {
+      background-color: #84cc16;
+    }
+
+    .timeline-event.uncertain {
+      background-color: #9ca3af;
+    }
+
+    .timeline-event.possibly-unrelated {
+      background-color: #f97316;
+    }
+
+    .timeline-event.unrelated {
+      background-color: #ef4444;
+    }
+
     .timeline-bar-duration {
       margin-left: auto;
       font-size: 12px;
@@ -354,6 +374,26 @@
       background-color: #6b7280;
     }
 
+    .legend-color.related {
+      background-color: #10b981;
+    }
+
+    .legend-color.possibly-related {
+      background-color: #84cc16;
+    }
+
+    .legend-color.uncertain {
+      background-color: #9ca3af;
+    }
+
+    .legend-color.possibly-unrelated {
+      background-color: #f97316;
+    }
+
+    .legend-color.unrelated {
+      background-color: #ef4444;
+    }
+
     .legend-description {
       margin-top: 10px;
       font-size: 12px;
@@ -381,8 +421,7 @@
     </div>
 
     <div class="section">
-      <h2 class="section-title">記録された行動</h2>
-      <p class="section-description">PCでどのようなアプリを使ったか表示されています</p>
+      <h2 class="section-title">今回のセッションの行動</h2>
 
       <div id="loading" class="loading">読み込み中...</div>
       <div id="error" class="error" style="display: none;"></div>
@@ -397,30 +436,56 @@
 
       <div class="legend" style="display: none;" id="legendContainer">
         <div class="legend-item">
-          <div class="legend-color on-track"></div>
+          <div class="legend-color related"></div>
           <span>目的に関連</span>
         </div>
         <div class="legend-item">
-          <div class="legend-color deviation"></div>
-          <span>脱線</span>
+          <div class="legend-color possibly-related"></div>
+          <span>関連する可能性</span>
         </div>
         <div class="legend-item">
-          <div class="legend-color browser"></div>
-          <span>調査</span>
+          <div class="legend-color uncertain"></div>
+          <span>不明</span>
         </div>
         <div class="legend-item">
-          <div class="legend-color idle"></div>
-          <span>アイドル</span>
+          <div class="legend-color possibly-unrelated"></div>
+          <span>関連しない可能性</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color unrelated"></div>
+          <span>関連しない</span>
         </div>
         <div class="legend-description">
-          ※ 目的キーワードに基づいて自動判定されます（例: プログラミング → VS Codeは目的に関連、YouTubeは脱線）
+          ※ 目的キーワードに基づいて自動判定されます（例: プログラミング → VS Codeは目的に関連、YouTubeは関連しない）
         </div>
       </div>
 
       <div class="summary" style="display: none;" id="summaryContainer">
         <div class="summary-row">
           <div class="summary-item">
-            <div class="summary-label">作業時間</div>
+            <div class="summary-label">目的に関連</div>
+            <div class="summary-value" id="relatedDuration">0分</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">関連する可能性</div>
+            <div class="summary-value" id="possiblyRelatedDuration">0分</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">不明</div>
+            <div class="summary-value" id="uncertainDuration">0分</div>
+          </div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-item">
+            <div class="summary-label">関連しない可能性</div>
+            <div class="summary-value" id="possiblyUnrelatedDuration">0分</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">関連しない</div>
+            <div class="summary-value" id="unrelatedDuration">0分</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">合計</div>
             <div class="summary-value" id="totalDuration">0分</div>
           </div>
         </div>
@@ -428,22 +493,34 @@
 
       <div class="filters" style="display: none;" id="filtersContainer">
         <label class="filter-checkbox">
-          <input type="checkbox" id="filterNative" checked>
-          ネイティブアプリ
+          <input type="checkbox" id="filterRelated" checked>
+          目的に関連
         </label>
         <label class="filter-checkbox">
-          <input type="checkbox" id="filterBrowser" checked>
-          ブラウザ
+          <input type="checkbox" id="filterPossiblyRelated" checked>
+          関連する可能性
         </label>
         <label class="filter-checkbox">
-          <input type="checkbox" id="filterIdle">
-          アイドル時間
+          <input type="checkbox" id="filterUncertain" checked>
+          不明
+        </label>
+        <label class="filter-checkbox">
+          <input type="checkbox" id="filterPossiblyUnrelated" checked>
+          関連しない可能性
+        </label>
+        <label class="filter-checkbox">
+          <input type="checkbox" id="filterUnrelated" checked>
+          関連しない
         </label>
       </div>
 
+      <div class="insight" style="display: none;" id="insight">
+        <h3 class="section-title" style="font-size: 16px; margin-bottom: 10px;">振り返りのヒント</h3>
+        <p id="insightText"></p>
+      </div>
+
       <div class="actions">
-        <button id="loadMockDataBtn" class="btn btn-secondary">疑似データをロード</button>
-        <button id="stopBtn" class="btn btn-danger btn-large">記録を終了 → 結果を入力</button>
+        <button id="reflectBtn" class="btn btn-primary">次へ → 振り返りを入力</button>
         <button id="backBtn" class="btn btn-secondary">Homeに戻る</button>
       </div>
     </div>
@@ -508,39 +585,49 @@
     const insight = document.getElementById('insight');
     const insightText = document.getElementById('insightText');
     const totalDuration = document.getElementById('totalDuration');
+    const relatedDuration = document.getElementById('relatedDuration');
+    const possiblyRelatedDuration = document.getElementById('possiblyRelatedDuration');
+    const uncertainDuration = document.getElementById('uncertainDuration');
+    const possiblyUnrelatedDuration = document.getElementById('possiblyUnrelatedDuration');
+    const unrelatedDuration = document.getElementById('unrelatedDuration');
     const switchCount = document.getElementById('switchCount');
     const longestApp = document.getElementById('longestApp');
     const onTrackDuration = document.getElementById('onTrackDuration');
     const deviationDuration = document.getElementById('deviationDuration');
     const focusRatio = document.getElementById('focusRatio');
     const timelineAxis = document.getElementById('timelineAxis');
-    const filterNative = document.getElementById('filterNative');
-    const filterBrowser = document.getElementById('filterBrowser');
-    const filterIdle = document.getElementById('filterIdle');
+    const filterRelated = document.getElementById('filterRelated');
+    const filterPossiblyRelated = document.getElementById('filterPossiblyRelated');
+    const filterUncertain = document.getElementById('filterUncertain');
+    const filterPossiblyUnrelated = document.getElementById('filterPossiblyUnrelated');
+    const filterUnrelated = document.getElementById('filterUnrelated');
     const recordResultBtn = document.getElementById('recordResultBtn');
     const stopBtn = document.getElementById('stopBtn');
     const backBtn = document.getElementById('backBtn');
     const loadMockDataBtn = document.getElementById('loadMockDataBtn');
+    const reflectionQuestions = document.getElementById('reflectionQuestions');
 
     // Initialize
     function init() {
       loadSessionData();
-      filterNative.addEventListener('change', renderTimeline);
-      filterBrowser.addEventListener('change', renderTimeline);
-      filterIdle.addEventListener('change', renderTimeline);
+      filterRelated.addEventListener('change', renderTimeline);
+      filterPossiblyRelated.addEventListener('change', renderTimeline);
+      filterUncertain.addEventListener('change', renderTimeline);
+      filterPossiblyUnrelated.addEventListener('change', renderTimeline);
+      filterUnrelated.addEventListener('change', renderTimeline);
 
       // Load mock data button
       if (loadMockDataBtn) {
         loadMockDataBtn.addEventListener('click', loadMockData);
       }
 
-      // Use stopBtn if it exists, otherwise use recordResultBtn
-      const stopButton = stopBtn || recordResultBtn;
-      if (stopButton) {
-        stopButton.addEventListener('click', () => {
-          window.location.href = 'result.html?session=' + sessionData.session.id;
+      const reflectBtn = document.getElementById('reflectBtn');
+      if (reflectBtn) {
+        reflectBtn.addEventListener('click', () => {
+          window.location.href = 'reflection.html';
         });
       }
+
       backBtn.addEventListener('click', () => {
         window.location.href = 'home.html';
       });
@@ -549,28 +636,77 @@
     // Load session and events from API
     async function loadSessionData() {
       try {
-        // Try to get current session
-        const sessionResponse = await fetch('/api/session/current');
+        // Get session_id from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlSessionId = urlParams.get('session_id');
+        
+        console.log('[Timeline] Loading session data, URL session_id:', urlSessionId);
+        
+        // Try to get session from localStorage (set by result.html)
+        const storedSession = localStorage.getItem('resultSession');
         let session = null;
+        let sessionId = null;
 
-        if (sessionResponse.ok) {
-          session = await sessionResponse.json();
+        if (urlSessionId) {
+          sessionId = urlSessionId;
+          console.log('[Timeline] Using URL session_id:', sessionId);
+        } else if (storedSession) {
+          session = JSON.parse(storedSession);
+          sessionId = session.id;
+          localStorage.removeItem('resultSession'); // Clear after use
+          console.log('[Timeline] Using stored session_id:', sessionId);
+        } else {
+          // Try to get current session from API
+          const sessionResponse = await fetch('/api/session/current');
+          if (sessionResponse.ok) {
+            session = await sessionResponse.json();
+            sessionId = session.id;
+            console.log('[Timeline] Using current session_id:', sessionId);
+          }
         }
 
-        // Get all events
-        const eventsResponse = await fetch('/api/events');
-        const eventsData = await eventsResponse.json();
+        // Get events for the specific session
+        let eventsData = [];
+        if (sessionId) {
+          console.log('[Timeline] Fetching events for session:', sessionId);
+          const eventsResponse = await fetch(`/api/session/events?session_id=${sessionId}`);
+          if (eventsResponse.ok) {
+            eventsData = await eventsResponse.json();
+            console.log('[Timeline] Received events:', eventsData.length);
+          } else {
+            console.error('[Timeline] Failed to fetch events:', eventsResponse.status);
+            error.style.display = 'block';
+            error.textContent = 'イベントの取得に失敗しました';
+            loading.style.display = 'none';
+            return;
+          }
+        }
 
-        sessionData = {
-          session: session || {
+        // If no session found, use all events
+        if (!session && !sessionId) {
+          console.log('[Timeline] No session found, loading all events');
+          const eventsResponse = await fetch('/api/events');
+          eventsData = await eventsResponse.json();
+          session = {
             id: 'no-session',
             purpose: '記録されたイベント',
             start_time: new Date().toISOString(),
             end_time: new Date().toISOString()
+          };
+        }
+
+        sessionData = {
+          session: session || {
+            id: sessionId || 'no-session',
+            purpose: session ? session.purpose : '記録されたイベント',
+            start_time: session ? session.start_time : new Date().toISOString(),
+            end_time: session ? session.end_time : new Date().toISOString()
           },
           events: eventsData
         };
         events = eventsData;
+
+        console.log('[Timeline] Session data loaded:', sessionData);
 
         // Display session info
         sessionInfo.style.display = 'block';
@@ -611,12 +747,36 @@
         extractPurposeKeywords(sessionData.session.purpose);
       }
 
-      // Filter events
+      // Filter activities (events are now activities)
       const filteredEvents = events.filter(event => {
-        if (event.source === 'native' && !filterNative.checked) return false;
-        if (event.source === 'browser' && !filterBrowser.checked) return false;
-        if (event.source === 'idle' && !filterIdle.checked) return false;
-        return true;
+        // For activities, filter by purpose_relation
+        if (event.purpose_relation) {
+          switch (event.purpose_relation) {
+            case 'related':
+              return filterRelated.checked;
+            case 'possibly_related':
+              return filterPossiblyRelated.checked;
+            case 'uncertain':
+              return filterUncertain.checked;
+            case 'possibly_unrelated':
+              return filterPossiblyUnrelated.checked;
+            case 'unrelated':
+              return filterUnrelated.checked;
+            default:
+              return true;
+          }
+        }
+        // For backward compatibility with legacy events
+        if (event.type) {
+          // Activity without purpose_relation - show all
+          return true;
+        } else {
+          // Legacy event - keep original filtering
+          if (event.source === 'native' && !filterRelated.checked) return false;
+          if (event.source === 'browser' && !filterPossiblyRelated.checked) return false;
+          if (event.source === 'idle' && !filterUncertain.checked) return false;
+          return true;
+        }
       });
 
       // Render gantt chart
@@ -636,9 +796,17 @@
         return;
       }
 
-      // Filter short events (less than 3 minutes)
+      // For activities, filtering is already done in ActivityGenerator
+      // For legacy events, filter short events
       const MIN_DURATION_SECONDS = 180; // 3 minutes
-      const significantEvents = filteredEvents.filter(event => event.duration_seconds >= MIN_DURATION_SECONDS);
+      const significantEvents = filteredEvents.filter(event => {
+        // Activities are already filtered by ActivityGenerator
+        if (event.type) {
+          return true;
+        }
+        // Legacy events need filtering
+        return event.duration_seconds >= MIN_DURATION_SECONDS;
+      });
 
       if (significantEvents.length === 0) {
         timeline.innerHTML = '<div style="text-align: center; color: #666; padding: 40px;">主要なイベントがありません（3分以上のイベントのみ表示されます）</div>';
@@ -658,50 +826,67 @@
       });
 
       // Merge consecutive events for each application/service
-      const mergedEvents = {};
-      significantEvents.forEach(event => {
-        const key = getAppLabel(event);
-        if (!mergedEvents[key]) {
-          mergedEvents[key] = [];
-        }
-        mergedEvents[key].push(event);
-      });
+      // Activities are already merged by ActivityGenerator, so skip for activities
+      const isAllActivities = significantEvents.every(event => event.type);
+      let eventsToRender = significantEvents;
 
-      for (const [appLabel, appEvents] of Object.entries(mergedEvents)) {
-        if (appEvents.length === 0) {
-          continue;
-        }
-
-        // Sort events by start time
-        appEvents.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
-
-        const merged = [];
-        let currentEvent = { ...appEvents[0] };
-
-        for (let i = 1; i < appEvents.length; i++) {
-          const nextEvent = appEvents[i];
-          const currentEndTime = new Date(currentEvent.end_time);
-          const nextStartTime = new Date(nextEvent.start_time);
-
-          // Check if events are consecutive (gap less than 1 minute)
-          const gap = (nextStartTime - currentEndTime) / 1000;
-
-          if (gap < 60) {
-            // Merge events
-            currentEvent.end_time = nextEvent.end_time;
-            currentEvent.duration_seconds += nextEvent.duration_seconds;
-          } else {
-            // Add current event and start new
-            merged.push(currentEvent);
-            currentEvent = { ...nextEvent };
+      if (!isAllActivities) {
+        // Legacy events need merging
+        const mergedEvents = {};
+        significantEvents.forEach(event => {
+          const key = getAppLabel(event);
+          if (!mergedEvents[key]) {
+            mergedEvents[key] = [];
           }
+          mergedEvents[key].push(event);
+        });
+
+        for (const [appLabel, appEvents] of Object.entries(mergedEvents)) {
+          if (appEvents.length === 0) {
+            continue;
+          }
+
+          // Sort events by start time
+          appEvents.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
+
+          const merged = [];
+          let currentEvent = { ...appEvents[0] };
+
+          for (let i = 1; i < appEvents.length; i++) {
+            const nextEvent = appEvents[i];
+            const currentEndTime = new Date(currentEvent.end_time);
+            const nextStartTime = new Date(nextEvent.start_time);
+
+            // Check if events are consecutive (gap less than 1 minute)
+            const gap = (nextStartTime - currentEndTime) / 1000;
+
+            if (gap < 60) {
+              // Merge events
+              currentEvent.end_time = nextEvent.end_time;
+              currentEvent.duration_seconds += nextEvent.duration_seconds;
+            } else {
+              // Add current event and start new
+              merged.push(currentEvent);
+              currentEvent = { ...nextEvent };
+            }
+          }
+
+          merged.push(currentEvent);
+          mergedEvents[appLabel] = merged;
         }
 
-        merged.push(currentEvent);
-        mergedEvents[appLabel] = merged;
+        // Convert merged events to a flat array and sort by start time
+        const flatEvents = [];
+        for (const [appLabel, appEvents] of Object.entries(mergedEvents)) {
+          appEvents.forEach(event => {
+            flatEvents.push(event);
+          });
+        }
+        flatEvents.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
+        eventsToRender = flatEvents;
       }
 
-      console.log('Merged events:', mergedEvents);
+      console.log('Events to render:', eventsToRender.length);
 
       // Clear timeline
       timeline.innerHTML = '';
@@ -709,17 +894,8 @@
       // Render axis labels
       renderAxisLabels(startTime, endTime);
 
-      // Convert merged events to a flat array and sort by start time
-      const flatEvents = [];
-      for (const [appLabel, appEvents] of Object.entries(mergedEvents)) {
-        appEvents.forEach(event => {
-          flatEvents.push(event);
-        });
-      }
-      flatEvents.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
-
       // Render events in sequence
-      flatEvents.forEach((event, index) => {
+      eventsToRender.forEach((event, index) => {
         const eventElement = createGanttEvent(event, startTime, totalDuration, index);
         timeline.appendChild(eventElement);
       });
@@ -796,7 +972,44 @@
 
     // Determine bar class based on deviation
     function determineBarClass(event) {
-      if (event.source === 'idle') return 'idle';
+      // For activities, use purpose_relation field first
+      if (event.purpose_relation) {
+        switch (event.purpose_relation) {
+          case 'related':
+            return 'related';
+          case 'possibly_related':
+            return 'possibly-related';
+          case 'uncertain':
+            return 'uncertain';
+          case 'possibly_unrelated':
+            return 'possibly-unrelated';
+          case 'unrelated':
+            return 'unrelated';
+          default:
+            return 'uncertain';
+        }
+      }
+
+      // For activities with type field but no purpose_relation (backward compatibility)
+      if (event.type) {
+        switch (event.type) {
+          case 'on_track':
+          case 'work':
+            return 'related';
+          case 'deviation':
+          case 'distraction_candidate':
+            return 'unrelated';
+          case 'research':
+            return 'possibly-related';
+          case 'idle':
+            return 'uncertain';
+          default:
+            return 'uncertain';
+        }
+      }
+
+      // For legacy events, use source field
+      if (event.source === 'idle') return 'uncertain';
 
       // Use purpose keywords if available
       if (currentPurposeKeywords) {
@@ -805,33 +1018,33 @@
         // Check if it's a deviation
         for (const deviationApp of currentPurposeKeywords.deviation) {
           if (appLabel.includes(deviationApp.toLowerCase())) {
-            return 'deviation';
+            return 'unrelated';
           }
         }
 
         // Check if it's research
         for (const researchApp of currentPurposeKeywords.research) {
           if (appLabel.includes(researchApp.toLowerCase())) {
-            return 'browser';
+            return 'possibly-related';
           }
         }
 
         // Check if it's on-track
         for (const onTrackApp of currentPurposeKeywords.onTrack) {
           if (appLabel.includes(onTrackApp.toLowerCase())) {
-            return 'on-track';
+            return 'related';
           }
         }
       }
 
       // Fallback to default classification
       if (event.service === 'YouTube' || event.service === 'X' || event.service === 'Reddit') {
-        return 'deviation';
+        return 'unrelated';
       }
       if (event.application === 'VS Code' || event.application === 'Microsoft Word' || event.application === 'PDF Viewer') {
-        return 'on-track';
+        return 'related';
       }
-      return event.source;
+      return 'uncertain';
     }
 
     // Get app label
@@ -844,8 +1057,71 @@
 
     // Update summary
     function updateSummary(filteredEvents) {
-      // Total duration
-      const totalSeconds = filteredEvents.reduce((sum, event) => sum + event.duration_seconds, 0);
+      // Calculate duration by purpose_relation
+      let relatedSeconds = 0;
+      let possiblyRelatedSeconds = 0;
+      let uncertainSeconds = 0;
+      let possiblyUnrelatedSeconds = 0;
+      let unrelatedSeconds = 0;
+
+      filteredEvents.forEach(event => {
+        const duration = event.duration_seconds || 0;
+        if (event.purpose_relation) {
+          switch (event.purpose_relation) {
+            case 'related':
+              relatedSeconds += duration;
+              break;
+            case 'possibly_related':
+              possiblyRelatedSeconds += duration;
+              break;
+            case 'uncertain':
+              uncertainSeconds += duration;
+              break;
+            case 'possibly_unrelated':
+              possiblyUnrelatedSeconds += duration;
+              break;
+            case 'unrelated':
+              unrelatedSeconds += duration;
+              break;
+          }
+        } else if (event.type) {
+          // Backward compatibility for activities without purpose_relation
+          switch (event.type) {
+            case 'on_track':
+            case 'work':
+              relatedSeconds += duration;
+              break;
+            case 'deviation':
+            case 'distraction_candidate':
+              unrelatedSeconds += duration;
+              break;
+            case 'research':
+              possiblyRelatedSeconds += duration;
+              break;
+            case 'idle':
+              uncertainSeconds += duration;
+              break;
+            default:
+              uncertainSeconds += duration;
+          }
+        } else {
+          // Legacy events - classify based on source
+          if (event.source === 'idle') {
+            uncertainSeconds += duration;
+          } else {
+            uncertainSeconds += duration;
+          }
+        }
+      });
+
+      const totalSeconds = relatedSeconds + possiblyRelatedSeconds + uncertainSeconds + possiblyUnrelatedSeconds + unrelatedSeconds;
+
+      // Update display
+      relatedDuration.textContent = formatDuration(relatedSeconds);
+      possiblyRelatedDuration.textContent = formatDuration(possiblyRelatedSeconds);
+      uncertainDuration.textContent = formatDuration(uncertainSeconds);
+      possiblyUnrelatedDuration.textContent = formatDuration(possiblyUnrelatedSeconds);
+      unrelatedDuration.textContent = formatDuration(unrelatedSeconds);
       totalDuration.textContent = formatDuration(totalSeconds);
     }
 
@@ -877,10 +1153,10 @@
       }
 
       // Display insight
-      if (insights.length > 0) {
+      if (insights.length > 0 && insight && insightText) {
         insight.style.display = 'block';
         insightText.textContent = insights.join(' ');
-      } else {
+      } else if (insight) {
         insight.style.display = 'none';
       }
     }
