@@ -1,0 +1,5146 @@
+[
+  {
+    "id": "a8d91ae2-2b06-4527-8a0b-fa788242ac58",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:09:42.585Z",
+    "end_time": "2026-09-21T18:09:46.624Z",
+    "duration_seconds": 4,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "0fd8762b-bdea-4429-b7e1-831693cc040a",
+    "source_events": [
+      "da6889bf-0c52-4378-83f7-10c31caf642d"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "8d1dc13d-30e9-4c7d-a157-8799263bcb92",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:09:46.623Z",
+    "end_time": "2026-09-21T18:11:09.128Z",
+    "duration_seconds": 82,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "0fd8762b-bdea-4429-b7e1-831693cc040a",
+    "source_events": [
+      "e48d3ec0-3b7e-4c43-ad2f-d102aab4f5e1"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "c9730684-2634-4c3b-8ba3-df5174b7f979",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:36:23.787Z",
+    "end_time": "2026-09-21T18:36:27.820Z",
+    "duration_seconds": 4,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "ef8885fd-ea7e-4ae3-a1d2-14a697514bae",
+    "source_events": [
+      "094f5d68-a2d7-4ea3-b5cb-deff54230872"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "208a2cac-e8ae-4aac-95c4-ff390164458b",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:36:27.820Z",
+    "end_time": "2026-09-21T18:36:35.902Z",
+    "duration_seconds": 8,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "YouTube - (481) 【必見】\"これ\"をすると周りから嫌われてしまうらしい… - YouTube",
+    "session_id": "ef8885fd-ea7e-4ae3-a1d2-14a697514bae",
+    "source_events": [
+      "86fce939-f335-4fe6-b890-959887339fac"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "eac45313-7173-41fd-99c1-f30ebe622786",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:36:35.902Z",
+    "end_time": "2026-09-21T18:36:41.938Z",
+    "duration_seconds": 6,
+    "application": "Devin",
+    "service": null,
+    "window_title": "GeoPuzzle - Devin - offtrackerのローカルファイルが見当たりません。 https://dash.cloudflare.com/5c98cd8420e33908663d...",
+    "session_id": "ef8885fd-ea7e-4ae3-a1d2-14a697514bae",
+    "source_events": [
+      "a34290c7-669b-43d1-91c1-fbb191119486"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "43a5d687-09e8-4fc5-a59a-1841b67073c4",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:36:41.937Z",
+    "end_time": "2026-09-21T18:37:00.087Z",
+    "duration_seconds": 18,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "YouTube - (481) 【必見】\"これ\"をすると周りから嫌われてしまうらしい… - YouTube",
+    "session_id": "ef8885fd-ea7e-4ae3-a1d2-14a697514bae",
+    "source_events": [
+      "385e8e15-f9fd-43c7-ad5f-422556a0e203"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "98ed5b75-2beb-48c8-b29d-9d43403716c7",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:37:00.087Z",
+    "end_time": "2026-09-21T18:39:44.113Z",
+    "duration_seconds": 164,
+    "application": "Devin",
+    "service": null,
+    "window_title": "GeoPuzzle - Devin - offtrackerのローカルファイルが見当たりません。 https://dash.cloudflare.com/5c98cd8420e33908663d...",
+    "session_id": "ef8885fd-ea7e-4ae3-a1d2-14a697514bae",
+    "source_events": [
+      "603268ef-a55b-4070-9e8d-fe21e85a0403"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "0f9764ac-00fa-4801-8c0b-2e0643ed5857",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:39:45.110Z",
+    "end_time": "2026-09-21T18:39:50.152Z",
+    "duration_seconds": 5,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "YouTube - (481) 【必見】\"これ\"をすると周りから嫌われてしまうらしい… - YouTube",
+    "session_id": "ef8885fd-ea7e-4ae3-a1d2-14a697514bae",
+    "source_events": [
+      "ef5a94b2-7f96-4ee9-a17f-c1d6ebd02563"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "2b435bd7-e69a-4768-b020-9fecc62c8303",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:39:50.152Z",
+    "end_time": "2026-09-21T18:40:01.233Z",
+    "duration_seconds": 11,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "ad34842c-57b4-4164-9a5f-e9c217f0bb11",
+    "source_events": [
+      "3d196390-f518-44e1-8a6f-8bb95062d43d"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "fab9984e-cbd8-4b14-9e63-c81e75d1ac47",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:40:01.233Z",
+    "end_time": "2026-09-21T18:40:12.304Z",
+    "duration_seconds": 11,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "YouTube - (481) 【必見】\"これ\"をすると周りから嫌われてしまうらしい… - YouTube",
+    "session_id": "ad34842c-57b4-4164-9a5f-e9c217f0bb11",
+    "source_events": [
+      "1ea394c3-d614-41ba-a538-1c69e50d3d81"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "c64b8cc5-0241-4639-ac08-09885e5c20d1",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:40:12.303Z",
+    "end_time": "2026-09-21T18:41:17.722Z",
+    "duration_seconds": 65,
+    "application": "Devin",
+    "service": null,
+    "window_title": "GeoPuzzle - Devin - offtrackerのローカルファイルが見当たりません。 https://dash.cloudflare.com/5c98cd8420e33908663d...",
+    "session_id": "ad34842c-57b4-4164-9a5f-e9c217f0bb11",
+    "source_events": [
+      "085b2b49-4b4b-4acf-99e6-fbb96f00cd3a"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "48dec10e-13e5-41b7-8c95-48a6bc59a21c",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:41:17.722Z",
+    "end_time": "2026-09-21T18:41:20.747Z",
+    "duration_seconds": 3,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "YouTube - (481) 【必見】\"これ\"をすると周りから嫌われてしまうらしい… - YouTube",
+    "session_id": "ad34842c-57b4-4164-9a5f-e9c217f0bb11",
+    "source_events": [
+      "69c964e0-da96-437f-bc1a-e71688e356df"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "4592a44c-c453-4a86-b3c6-a9d737676f38",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:41:20.746Z",
+    "end_time": "2026-09-21T18:41:21.751Z",
+    "duration_seconds": 1,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "",
+    "session_id": "ad34842c-57b4-4164-9a5f-e9c217f0bb11",
+    "source_events": [
+      "10e61cc5-073f-4fd1-b8bd-1398bda2042a"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "81cce3ab-cdfa-4add-bf36-60b3f0f01905",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:41:21.751Z",
+    "end_time": "2026-09-21T18:41:27.788Z",
+    "duration_seconds": 6,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "ad34842c-57b4-4164-9a5f-e9c217f0bb11",
+    "source_events": [
+      "76178ec2-706d-4eab-9eef-3cc0a5a23ecc"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "d6cbcc70-1742-43c7-8a92-214b8d334b2e",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:41:27.787Z",
+    "end_time": "2026-09-21T18:41:29.805Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "YouTube - (481) 【必見】\"これ\"をすると周りから嫌われてしまうらしい… - YouTube",
+    "session_id": "ad34842c-57b4-4164-9a5f-e9c217f0bb11",
+    "source_events": [
+      "4eb7cb54-2d8e-467b-9b5f-f3a79606ac4f"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "ddf48cb5-97bb-4e06-8908-665aeb036bc6",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:41:29.804Z",
+    "end_time": "2026-09-21T18:41:32.816Z",
+    "duration_seconds": 3,
+    "application": "Devin",
+    "service": null,
+    "window_title": "GeoPuzzle - Devin - offtrackerのローカルファイルが見当たりません。 https://dash.cloudflare.com/5c98cd8420e33908663d...",
+    "session_id": "ad34842c-57b4-4164-9a5f-e9c217f0bb11",
+    "source_events": [
+      "5923486f-7ade-4e87-a496-36550faf23d5"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "68c697f4-a387-4979-ba01-d0373fd24f41",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:42:36.451Z",
+    "end_time": "2026-09-21T18:42:39.473Z",
+    "duration_seconds": 3,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "3f5ef04c-435c-47b9-b6a7-593e08fd3a35",
+    "source_events": [
+      "dc1d2e6f-4f36-48eb-883f-26cac11a7267"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "80e1cb89-ca54-4f26-b680-34661635029d",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:42:39.473Z",
+    "end_time": "2026-09-21T18:42:44.503Z",
+    "duration_seconds": 5,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "YouTube - (481) 【必見】\"これ\"をすると周りから嫌われてしまうらしい… - YouTube",
+    "session_id": "3f5ef04c-435c-47b9-b6a7-593e08fd3a35",
+    "source_events": [
+      "bec37c38-d0fd-414e-99d8-96ef33744f04"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "613a208c-6bbb-4d67-a2e2-8574248e6874",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:42:44.503Z",
+    "end_time": "2026-09-21T18:42:47.531Z",
+    "duration_seconds": 3,
+    "application": "Devin",
+    "service": null,
+    "window_title": "GeoPuzzle - Devin - offtrackerのローカルファイルが見当たりません。 https://dash.cloudflare.com/5c98cd8420e33908663d...",
+    "session_id": "3f5ef04c-435c-47b9-b6a7-593e08fd3a35",
+    "source_events": [
+      "08720ea2-5a02-4eff-94ce-595be1d1c041"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "7d2b906d-d74f-4699-867e-5b13e56a62a1",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:42:47.531Z",
+    "end_time": "2026-09-21T18:42:48.537Z",
+    "duration_seconds": 1,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "タスクの切り替え",
+    "session_id": "3f5ef04c-435c-47b9-b6a7-593e08fd3a35",
+    "source_events": [
+      "e412afaa-6b68-43e9-a5e0-46f38de0c183"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "11cb512d-7f7a-4bc7-ae02-0982a26ccca1",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:42:48.536Z",
+    "end_time": "2026-09-21T18:43:30.844Z",
+    "duration_seconds": 42,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "YouTube - (481) 【必見】\"これ\"をすると周りから嫌われてしまうらしい… - YouTube",
+    "session_id": "3f5ef04c-435c-47b9-b6a7-593e08fd3a35",
+    "source_events": [
+      "02162d44-6a46-4d19-9b37-4c671d56815a"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "bf15739d-e189-40c0-9063-44bec8f5eaf1",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:43:30.844Z",
+    "end_time": "2026-09-21T18:43:31.855Z",
+    "duration_seconds": 1,
+    "application": "Devin",
+    "service": null,
+    "window_title": "GeoPuzzle - Devin - offtrackerのローカルファイルが見当たりません。 https://dash.cloudflare.com/5c98cd8420e33908663d...",
+    "session_id": "3f5ef04c-435c-47b9-b6a7-593e08fd3a35",
+    "source_events": [
+      "48616d35-c744-491d-aeb6-5cdf2106c46d"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "32663539-586e-4192-8047-7d88deeb7897",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:43:31.854Z",
+    "end_time": "2026-09-21T18:43:32.861Z",
+    "duration_seconds": 1,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "タスクの切り替え",
+    "session_id": "3f5ef04c-435c-47b9-b6a7-593e08fd3a35",
+    "source_events": [
+      "38e60f5c-0367-4fbf-9c83-a463718ada26"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "8d399aa5-7cc7-428a-bc43-ad15a343e35d",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:43:32.860Z",
+    "end_time": "2026-09-21T18:43:35.880Z",
+    "duration_seconds": 3,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "3f5ef04c-435c-47b9-b6a7-593e08fd3a35",
+    "source_events": [
+      "0d9a2aa4-f8d5-45b7-9cca-c079f2131aba"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "68c43bc7-645c-42ef-8c12-0c73290ecf70",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:43:35.880Z",
+    "end_time": "2026-09-21T18:43:41.926Z",
+    "duration_seconds": 6,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "YouTube - (481) 【必見】\"これ\"をすると周りから嫌われてしまうらしい… - YouTube",
+    "session_id": "3f5ef04c-435c-47b9-b6a7-593e08fd3a35",
+    "source_events": [
+      "7fbeded8-2e90-4f27-aed5-a5cbce9e5e42"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "5785a0de-6c7d-42fe-ba93-1f6dd67d57ab",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:46:16.719Z",
+    "end_time": "2026-09-21T18:46:18.734Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "24ec6575-3003-42b8-b689-e4ecc2043ca7",
+    "source_events": [
+      "99f6cb6e-c1c9-45ff-9f9b-6e1f40fc24dc"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "1addb065-e320-460b-b835-4aa33cede39b",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:46:18.734Z",
+    "end_time": "2026-09-21T18:47:19.231Z",
+    "duration_seconds": 60,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "YouTube - (481) 【必見】\"これ\"をすると周りから嫌われてしまうらしい… - YouTube",
+    "session_id": "24ec6575-3003-42b8-b689-e4ecc2043ca7",
+    "source_events": [
+      "34664702-65b3-41da-8529-14844d62109f"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "8a56ca25-ade6-4a98-9d0e-616188311b4d",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:48:53.840Z",
+    "end_time": "2026-09-21T18:48:56.869Z",
+    "duration_seconds": 3,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5579c58f-d65f-4951-b194-5947a3954eb6",
+    "source_events": [
+      "d40d8cbb-76d6-4b8c-871f-d96e9ce4201f"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "74ab5667-1fd3-4ff7-92d6-aaf468b49d94",
+    "type": "unknown",
+    "start_time": "2026-09-21T18:48:56.869Z",
+    "end_time": "2026-09-21T18:49:59.901Z",
+    "duration_seconds": 63,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (481) 【必見】\"これ\"をすると周りから嫌われてしまうらしい… - YouTube",
+    "session_id": "5579c58f-d65f-4951-b194-5947a3954eb6",
+    "source_events": [
+      "8200dad0-14df-4ca9-843a-35c66e0611ef"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "ce57d1ff-34c0-429e-adc7-ee076db6b729",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:12:57.101Z",
+    "end_time": "2026-09-22T14:13:05.135Z",
+    "duration_seconds": 8,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 33 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "1b608c70-78bc-42f8-a824-087aff76f27c"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "69d56ac8-1a77-4846-8789-30eba7ae28b3",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:13:05.134Z",
+    "end_time": "2026-09-22T14:13:15.176Z",
+    "duration_seconds": 10,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "新しいタブ および他 34 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "f38bbf5f-c242-4208-a9f1-22ccb49ab18a"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "9cb9e630-90a5-44ca-9139-dd6f56c0b25d",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:13:15.175Z",
+    "end_time": "2026-09-22T14:13:24.243Z",
+    "duration_seconds": 9,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "isj応募 富山インターンシップジャーニー - 検索 および他 34 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "c081697c-3624-4f6c-a62a-5f8c8865f2a8"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "be1047bf-41ae-4034-8cdb-857a6fe42e39",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:13:24.242Z",
+    "end_time": "2026-09-22T14:13:25.242Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "bing.com/ck/a?!&&p=25cdf14eb67e6d19887201068a9e84cde1b1fe4504cfe44bac1a613e5a0ec7f6JmltdHM9MTc5MDAzNTIwMA&ptn=3&ver=2&hsh=4&fclid=076f58c0-6239-6d10-038a-4d1463a06c03&psq=isj応募+富山インターンシップジャーニー&u=a1aHR0cHM6Ly90b3lhbWEtaW50ZXJuc2hpcC1qb3VybmV5LmpwLw&ntb=1 および他 35 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "4d18cf7d-969e-42cf-9685-4cae54ab3532"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "af7d0c94-6b0f-4ab4-bb8a-ae4f470f56b4",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:13:25.242Z",
+    "end_time": "2026-09-22T14:13:29.265Z",
+    "duration_seconds": 4,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "ISJ | 富山インターンシップジャーニー および他 35 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "1903a917-7f2b-479f-9ef1-feb046fec7dc"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "18958699-4aec-4647-81af-ade2ab2b29e6",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:13:29.264Z",
+    "end_time": "2026-09-22T14:13:31.277Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "無題 および他 36 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "08e796a7-8cca-44bc-bdb3-0367e0796f69"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "71cd7d27-be5e-486c-a578-ce54cb8557f7",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:13:31.277Z",
+    "end_time": "2026-09-22T14:13:38.317Z",
+    "duration_seconds": 7,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 36 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "83729584-1bb1-49ce-8aa5-b453e873f038"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "5891d770-b969-403b-acd3-b8deb72f08de",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:13:38.316Z",
+    "end_time": "2026-09-22T14:14:14.536Z",
+    "duration_seconds": 36,
+    "application": "Microsoft Edge",
+    "service": "Google",
+    "window_title": "ISJ2027_エントリー準備シート.pdf - Google ドライブ および他 37 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "81180605-4343-4b87-8720-70110660d0f4"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "e230f7f0-2298-46c9-8590-ca520519cf7b",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:14:14.536Z",
+    "end_time": "2026-09-22T14:25:32.307Z",
+    "duration_seconds": 677,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "22cc07c7-9c06-4601-855a-363c44cde290"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "50dbf841-5083-43c9-a1ce-59d6bb3afc2a",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:25:32.307Z",
+    "end_time": "2026-09-22T14:25:35.316Z",
+    "duration_seconds": 3,
+    "application": "Microsoft Edge",
+    "service": "Google",
+    "window_title": "ISJ2027_エントリー準備シート.pdf - Google ドライブ および他 37 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "ea1e54b8-e089-4593-ba38-d90af8f84345"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "c7a38011-7f8f-4aee-b34e-6269e239ce0d",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:25:35.316Z",
+    "end_time": "2026-09-22T14:25:41.346Z",
+    "duration_seconds": 6,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 37 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "65b1fcff-1e26-4b99-9d16-79e76b5df42a"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "d5bce45e-3cd9-4792-9704-79608bf5addf",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:25:41.345Z",
+    "end_time": "2026-09-22T14:25:44.357Z",
+    "duration_seconds": 3,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "ISJ | 富山インターンシップジャーニー および他 37 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "4d585fc1-d161-4207-8016-a4a8459aaaee"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "be755152-0985-438a-8bd9-2beae77ccdef",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:25:44.357Z",
+    "end_time": "2026-09-22T14:25:46.380Z",
+    "duration_seconds": 2,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "タスクの切り替え",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "297a626d-54d5-4e61-ba62-6ad172c75146"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "44f28b8b-c656-45b9-91fe-37abaa604272",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:25:46.380Z",
+    "end_time": "2026-09-22T14:28:59.398Z",
+    "duration_seconds": 193,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "f9dc36f4-d506-4da0-924c-5c3a38ffba39"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "4840457d-ec46-432f-bd9b-14cf970af120",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:28:59.398Z",
+    "end_time": "2026-09-22T14:29:04.409Z",
+    "duration_seconds": 5,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "タスクの切り替え",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "97ead1b0-87c2-4e53-bb44-55176e962639"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "d079d930-c6f0-4747-af40-f73090a9a9f5",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:29:04.409Z",
+    "end_time": "2026-09-22T14:29:06.416Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": "Google",
+    "window_title": "ISJ2027_エントリー準備シート.pdf - Google ドライブ および他 37 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "4d9a60c3-451f-441a-978c-d705e9debae8"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "dc6b39f6-e7b9-47bf-9232-bf098f23e206",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:29:06.415Z",
+    "end_time": "2026-09-22T14:30:28.845Z",
+    "duration_seconds": 82,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "ISJ | 富山インターンシップジャーニー および他 37 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "ce422de7-50db-456b-9f15-50c6d12f391d"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "0652aa23-21d4-48ba-9c03-a4b280af4acf",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:30:28.845Z",
+    "end_time": "2026-09-22T14:30:31.863Z",
+    "duration_seconds": 3,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "ae529f68-f414-4319-b0fd-699bcaff69f9"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "43719ef8-77c4-4f33-a83b-75d7ab53342e",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:30:31.863Z",
+    "end_time": "2026-09-22T14:30:38.893Z",
+    "duration_seconds": 7,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "ISJ | 富山インターンシップジャーニー および他 37 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "0a08b407-172e-451d-8339-ac025bf1d943"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "48f0c01b-7385-4553-92fd-bdb622c61e07",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:30:38.893Z",
+    "end_time": "2026-09-22T14:30:39.903Z",
+    "duration_seconds": 1,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "762e870c-6ed8-424d-9dde-ba8079f2c5bb"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "866b0175-d6f7-49ad-b4a4-6828d088d97a",
+    "type": "unknown",
+    "start_time": "2026-09-22T14:30:39.903Z",
+    "end_time": "2026-09-22T15:14:09.505Z",
+    "duration_seconds": 2609,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "193d6653-7153-4866-b3fa-7a11009c02a5"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "97830236-0028-4a1e-8854-87c514e1e8d7",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:14:09.505Z",
+    "end_time": "2026-09-22T15:14:11.519Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "ISJ | 富山インターンシップジャーニー および他 37 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "93536060-c629-49b4-a782-77bc5083e573"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "e623a512-578b-4e8b-9976-4c5d488e7dec",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:14:11.519Z",
+    "end_time": "2026-09-22T15:14:25.583Z",
+    "duration_seconds": 14,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "新しいタブ および他 38 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "12bbf945-e7fd-43d1-bad7-8b90cf573251"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "da891ddd-537d-4381-ba84-aa586a47a638",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:14:25.583Z",
+    "end_time": "2026-09-22T15:14:30.614Z",
+    "duration_seconds": 5,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "waffle empower - 検索 および他 38 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "433e464f-449d-45f0-9ac8-1e8e36232436"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "0e3d3880-09e4-46f0-ada9-e0b223b0eca0",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:14:30.614Z",
+    "end_time": "2026-09-22T15:14:31.618Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "ISJ | 富山インターンシップジャーニー および他 38 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "e0374573-64e8-4547-9267-b9107548e8f2"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "7235ea3b-32cc-48a0-b033-1ffbf0d4ca26",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:14:31.618Z",
+    "end_time": "2026-09-22T15:14:32.621Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "waffle empower - 検索 および他 38 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "af6e5d9c-fc48-4c29-862e-20293d8e0ed3"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "6809b619-3ef0-469f-bed0-fab7e2239c61",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:14:32.621Z",
+    "end_time": "2026-09-22T15:26:36.722Z",
+    "duration_seconds": 724,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "7e4375f3-8156-48d0-9d32-ad432690709e"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "38f7c41f-f4cc-42c4-8d34-d35b721281da",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:26:36.722Z",
+    "end_time": "2026-09-22T15:26:38.726Z",
+    "duration_seconds": 2,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "Program Manager",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "d9518d0b-ab1c-43c4-b0a5-b1a72dde9ea0"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "6a572df3-5db4-4397-b5a7-8307531c7156",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:26:38.726Z",
+    "end_time": "2026-09-22T15:26:43.752Z",
+    "duration_seconds": 5,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "14832903-ef6e-43ce-a7f1-90bacbf85045"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "61b880e9-194e-4003-a185-ea649f6bd59e",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:26:43.752Z",
+    "end_time": "2026-09-22T15:26:45.768Z",
+    "duration_seconds": 2,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "Program Manager",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "2fe770bf-9e0c-4878-9cde-3e5a6dd9a175"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "7ab15783-1654-47dd-9451-3950dce5d908",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:26:45.768Z",
+    "end_time": "2026-09-22T15:26:46.769Z",
+    "duration_seconds": 1,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "レポート.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "f4639476-057e-46cd-9f0d-17f5b5480372"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "8be7cef9-1365-4236-998f-41b380a2fd98",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:26:46.769Z",
+    "end_time": "2026-09-22T15:26:47.775Z",
+    "duration_seconds": 1,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "45b92692-41a6-45a4-9ac9-e66ce86697a8"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "4fca2308-d987-4132-add0-f952f5f9ec9e",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:26:47.775Z",
+    "end_time": "2026-09-22T15:26:48.778Z",
+    "duration_seconds": 1,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "3997fc07-7c9b-4ced-a3b2-6da19ec5d761"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "3fe400b9-4ee8-48dd-b9cc-6593ca4adde3",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:26:48.778Z",
+    "end_time": "2026-09-22T15:26:52.794Z",
+    "duration_seconds": 4,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "スナップ アシスト",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "49ec3671-bdb8-4132-a4fc-e83787a26f49"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "2d4b4a9a-7ab0-45fb-bb9a-c70b884afc50",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:26:52.794Z",
+    "end_time": "2026-09-22T15:26:53.808Z",
+    "duration_seconds": 1,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "14f3c5c2-2d39-4024-9a51-41dd24e63b90"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "065ad7c9-359f-43e5-9e3e-4dda9b6143c3",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:26:53.808Z",
+    "end_time": "2026-09-22T15:33:13.804Z",
+    "duration_seconds": 379,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "08f226a5-3bad-4a7e-a90f-5a40ed95b50c"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "1cc613ca-8a56-4fad-95da-28a15bcc9b46",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:33:13.804Z",
+    "end_time": "2026-09-22T15:33:27.950Z",
+    "duration_seconds": 14,
+    "application": "necpc.WPF.BatterySaver",
+    "service": null,
+    "window_title": "LAVIEかんたん設定-ロングバッテリー",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "9ea9825b-007b-4890-9980-32dcd3944227"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "a039c168-b7ae-4840-bbe4-e4523f223cd6",
+    "type": "unknown",
+    "start_time": "2026-09-22T15:33:27.950Z",
+    "end_time": "2026-09-22T16:05:28.157Z",
+    "duration_seconds": 1920,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "49d2d856-9839-4de6-8039-6e782e1acc0d"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "dce156c2-6b6d-40d7-9620-eafc2f16a18e",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:05:28.157Z",
+    "end_time": "2026-09-22T16:05:29.162Z",
+    "duration_seconds": 1,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "85252614-5620-4508-bc54-b71b1b7463ea"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "0f5a0744-c142-49ea-9b27-3c5e706e3e3c",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:05:29.162Z",
+    "end_time": "2026-09-22T16:05:30.173Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "13cb77aa-0711-46f8-a7a7-c7e214d305fb"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "bb9dfb1e-b5d6-4945-acff-011c434ff0fd",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:05:30.173Z",
+    "end_time": "2026-09-22T16:05:34.182Z",
+    "duration_seconds": 4,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - 【必見】\"これ\"をすると周りから嫌われてしまうらしい… - YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "0a835142-3faf-49b7-956c-6ad2339f6bfd"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "e512cce5-24b8-467f-aefd-a1e6afe11276",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:05:34.182Z",
+    "end_time": "2026-09-22T16:05:37.204Z",
+    "duration_seconds": 3,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) 【必見】\"これ\"をすると周りから嫌われてしまうらしい… - YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "dc84bb9b-bf8e-45ee-8cc5-eff90b1865ad"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "2c6f6773-9600-4ef2-b14a-d08e58c9365f",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:05:37.204Z",
+    "end_time": "2026-09-22T16:05:45.242Z",
+    "duration_seconds": 8,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "815d745a-d3d2-4aa6-a92e-a0185b1637f7"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "5ba5b0ab-75c9-4a70-81aa-12b44cf54c24",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:05:45.242Z",
+    "end_time": "2026-09-22T16:06:29.460Z",
+    "duration_seconds": 44,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) 【悲報】最近のボカロに名曲がない理由、〇〇が原因だと判明する… - YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "7b56c02f-ea8c-47bd-aa0b-15dadd3cb4b3"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "e1d20bb3-8690-454d-b0e1-ec72eb99c979",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:06:29.460Z",
+    "end_time": "2026-09-22T16:06:37.513Z",
+    "duration_seconds": 8,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "add5d387-31f6-4f08-921f-f2cbc344a15f"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "7941d4d7-df7c-40f8-8144-0b16c5e86870",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:06:37.513Z",
+    "end_time": "2026-09-22T16:07:59.976Z",
+    "duration_seconds": 82,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) 歌い手のそらねこがグループを勝手に脱退するツイート!?まじでとんでもない事に... #ポケカメン - YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "a0ec3493-d8d3-4bc8-a4c5-4066e84ad4d6"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "fff1e3c1-ce36-4b39-9a4f-60c84ba8e42e",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:07:59.976Z",
+    "end_time": "2026-09-22T16:08:05.007Z",
+    "duration_seconds": 5,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "ff22733b-7d27-4955-8dfb-7b5e6307c218"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "f81447ac-9875-472a-911d-c073e4f45036",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:08:05.007Z",
+    "end_time": "2026-09-22T16:31:26.918Z",
+    "duration_seconds": 1401,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) 花火を見ながら謎解きをしよう！！（オフィスで） - YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "ff05b319-cb0b-4878-95f9-7e6ad05fcb37"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "16c88972-357f-4ad5-8a3a-a708579208d0",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:31:26.918Z",
+    "end_time": "2026-09-22T16:31:34.959Z",
+    "duration_seconds": 8,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "d7fad247-8ad0-4554-ab47-0fedc88b3c8f"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "583d5e19-3502-49c9-b152-ab5a02cb89bc",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:31:34.958Z",
+    "end_time": "2026-09-22T16:31:35.961Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) 花火を見ながら謎解きをしよう！！（オフィスで） - YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "b39947e5-535e-400b-9e6d-f82e7497bd8c"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "0a052754-d1b8-4919-b9ea-688abc86bdff",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:31:35.961Z",
+    "end_time": "2026-09-22T16:40:44.976Z",
+    "duration_seconds": 549,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) 【活動者必見】推しに辞めてほしい所を募集したら意外と溜まってた - YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "d39d5fb0-bed7-4a77-ab26-8ee2e96ab3ce"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "0f7c70c8-3a99-4d1e-a8f3-da43ef225aa9",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:40:44.976Z",
+    "end_time": "2026-09-22T16:40:58.064Z",
+    "duration_seconds": 13,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "5504fd01-b114-4bc7-96ba-0819507ae24d"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "4957ad14-6d99-42c6-9231-81d6c0584dbd",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:40:58.064Z",
+    "end_time": "2026-09-22T16:41:42.258Z",
+    "duration_seconds": 44,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) 7月21日が月曜日で機内モードだった件に関するうんちく - YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "9ef5a724-a728-47f6-9449-b11ce2b61abd"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "ec796ad5-f423-4406-b09c-c795df3c5752",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:41:42.258Z",
+    "end_time": "2026-09-22T16:41:47.303Z",
+    "duration_seconds": 5,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "e3f20644-671e-43ab-827f-d896c522298f"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "2842cbe9-f393-4167-bf7f-888e8adac3a7",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:41:47.303Z",
+    "end_time": "2026-09-22T16:42:34.547Z",
+    "duration_seconds": 47,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) 堀大輔、自●をほのめかす！！！堀大輔のファンチたちが悲しむのでそういうのはやめてください。ボロンまでしたのに今更そんな悲しいことを言うなよ……っていうかどんだけ細川バレンタインの指摘が効いてる - YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "e54bf513-a856-451b-8349-b8a0ba58fadf"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "3183c7a5-2333-4801-9e38-182e3229f558",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:42:34.547Z",
+    "end_time": "2026-09-22T16:42:46.614Z",
+    "duration_seconds": 12,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "3b3894c9-da9f-4656-8eb3-e7a2320d75e1"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "1304cc31-0521-46cb-b65c-a1ae1eca525a",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:42:46.614Z",
+    "end_time": "2026-09-22T16:42:48.629Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) 【活動者必見】推しに辞めてほしい所を募集したら意外と溜まってた - YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "397dfb12-3eed-45c3-aeb4-de8fb97b704d"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "d22f62b9-ae9e-4c45-9e0b-ed792333b752",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:42:48.628Z",
+    "end_time": "2026-09-22T16:45:52.715Z",
+    "duration_seconds": 184,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) esoragoto『レーテンシー』Music Video - YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "56a2cea4-408d-4aac-a512-4695f1fb997b"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "23662d21-24ca-4d18-9d1d-4d61d20a95f5",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:45:52.715Z",
+    "end_time": "2026-09-22T16:46:08.804Z",
+    "duration_seconds": 16,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "30d083b5-6b70-46c0-b380-08a1d166ea38"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "a5e12f65-1a7f-4567-a5ed-424620e9a302",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:46:08.804Z",
+    "end_time": "2026-09-22T16:52:51.864Z",
+    "duration_seconds": 403,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "78373802-c82b-4f76-86c6-8fac3854c74c"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "3149eb8b-a57e-4c13-90b6-f3268996a916",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:52:52.836Z",
+    "end_time": "2026-09-22T16:52:53.840Z",
+    "duration_seconds": 1,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "00f5abb3-b8e9-4363-ab5b-5dfa4757d28a"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "3e48465a-7197-4480-838c-656e932589a8",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:52:53.840Z",
+    "end_time": "2026-09-22T16:52:54.850Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (486) esoragoto『レーテンシー』Music Video - YouTube",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "594a55da-e01e-45bf-98e2-ff59132d6616"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "5998ec6e-4a11-49f0-ba8a-b26c68c4adfb",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:52:54.850Z",
+    "end_time": "2026-09-22T16:53:03.877Z",
+    "duration_seconds": 9,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "27e99490-f8b5-4452-824b-1b33666c47c6"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "f42d0d73-fe80-40b7-9105-83b34c46d33a",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:53:03.877Z",
+    "end_time": "2026-09-22T16:53:04.878Z",
+    "duration_seconds": 1,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "Program Manager",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "68e209dc-fa4b-4a9b-84b4-a37a3fcad8fc"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "a3b5f526-19d6-4ecd-ad41-433c99c5ed1c",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:53:04.878Z",
+    "end_time": "2026-09-22T16:53:25.971Z",
+    "duration_seconds": 21,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "イベント.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "aec92dce-155a-4a13-abc2-502f8d6cd403"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "39cd0bdb-bb3f-4278-809c-50c612bab70e",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:53:25.971Z",
+    "end_time": "2026-09-22T16:53:39.041Z",
+    "duration_seconds": 13,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "1fe05ae0-916a-4f00-9dd9-64622e2cd549"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "86f29f85-3fe9-4fe4-ba11-38fb9fce56e2",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:53:39.041Z",
+    "end_time": "2026-09-22T16:53:43.060Z",
+    "duration_seconds": 4,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "932f5f50-2773-4948-b6cb-fa56f9ebe000"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "0d1ca12b-660d-406e-b4ff-e22c699d9a79",
+    "type": "unknown",
+    "start_time": "2026-09-22T16:53:43.060Z",
+    "end_time": "2026-09-22T17:05:04.646Z",
+    "duration_seconds": 681,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "a1825da2-267e-4c53-864b-269a88098173"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "930796cf-43a2-4ac0-ab0e-1d865b921730",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:05:04.645Z",
+    "end_time": "2026-09-22T17:05:21.723Z",
+    "duration_seconds": 17,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "c35853c3-7f0b-47c5-888b-19e87ca02cde"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "ce678c36-aad7-4f9d-b606-e204f97fcb55",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:05:21.723Z",
+    "end_time": "2026-09-22T17:07:42.550Z",
+    "duration_seconds": 140,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "1890adfb-69ea-45a8-bb56-573255506ca8"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "d4c320b7-e48d-476e-8734-25ea3c74df75",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:07:42.550Z",
+    "end_time": "2026-09-22T17:07:49.578Z",
+    "duration_seconds": 7,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "イベント.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "c9e6d0f3-6780-47e9-975d-d0424367154e"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "851def61-f3e0-4708-a5a4-51eb1d24811a",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:07:49.578Z",
+    "end_time": "2026-09-22T17:08:54.904Z",
+    "duration_seconds": 65,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "5d95f3aa-0f6f-49fe-ba05-ad11b3e42476"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "f0b818cc-3df0-4712-85a4-1910ded746eb",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:08:54.904Z",
+    "end_time": "2026-09-22T17:09:02.971Z",
+    "duration_seconds": 8,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "waffle empower - 検索 および他 38 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "4e4d5096-79b7-46ce-8fb2-3b631de04be5"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "546e4a01-f427-4150-b060-e7068644865e",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:09:02.971Z",
+    "end_time": "2026-09-22T17:09:04.990Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "learn 旅を通して学ぶプログラム - 検索 および他 38 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "bdc33180-d8f7-4e78-9671-c18092b06620"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "897e3268-d21b-49a2-8fbf-cb2725ddf4b6",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:09:04.990Z",
+    "end_time": "2026-09-22T17:09:07.003Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "bing.com/ck/a?!&&p=d364239c5a35de7c27f7c43613944d3cacfe778d714e288b73dc688d7d399ed4JmltdHM9MTc5MDAzNTIwMA&ptn=3&ver=2&hsh=4&fclid=076f58c0-6239-6d10-038a-4d1463a06c03&psq=learn+旅を通して学ぶプログラム&u=a1aHR0cHM6Ly9sZWFybi1wcm9qZWN0LmNvbS9wajIwMjZzdW1tZXItcHJvZ3JhbS8&ntb=1 および他 39 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "e22f79fc-506b-4d06-87fa-ce8ae506ecbd"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "ade2090d-f2c6-4dcb-9444-4638831b3dc4",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:09:07.003Z",
+    "end_time": "2026-09-22T17:09:17.058Z",
+    "duration_seconds": 10,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "LEARN with Porsche 2026旅を通して学ぶプログラム「流れに気づく旅」2026年8月23日〜27日 – LEARN および他 39 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "5c6318ef-17ad-4c52-9fc5-b151681be1b3"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "54d514bb-bb71-482d-bd6e-1a40c7cb6414",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:09:17.057Z",
+    "end_time": "2026-09-22T17:09:25.106Z",
+    "duration_seconds": 8,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "bcf4e2c0-4260-4bc8-b724-9cd30cc1bce7"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "6cb9eae8-9d40-4f3b-bb85-9ca714db3136",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:09:25.106Z",
+    "end_time": "2026-09-22T17:09:26.106Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "LEARN with Porsche 2026旅を通して学ぶプログラム「流れに気づく旅」2026年8月23日〜27日 – LEARN および他 39 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "2d0e026d-010b-46ea-b83d-cb381d73b9a7"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "1ef5df4f-f1c3-47da-a59e-9207496fc174",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:09:26.105Z",
+    "end_time": "2026-09-22T17:11:12.683Z",
+    "duration_seconds": 106,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "learn 旅を通して学ぶプログラム - 検索 および他 38 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "fc14d49e-d1b3-4119-8e10-500a9208bb16"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "17f71239-15c0-44fd-8876-e1b197fa5ae8",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:11:12.683Z",
+    "end_time": "2026-09-22T17:12:33.108Z",
+    "duration_seconds": 80,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "11fbae78-c3c6-4e09-ab69-3185361e0a4f"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "eb2242a0-3a8c-44c6-adfb-6f2aa535f3c3",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:12:33.108Z",
+    "end_time": "2026-09-22T17:12:34.113Z",
+    "duration_seconds": 1,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "7ba8ec5c-913c-4717-aa86-6d374f773de5"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "79e172aa-69f7-42f8-a8d9-bf0378352931",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:12:34.113Z",
+    "end_time": "2026-09-22T17:12:38.125Z",
+    "duration_seconds": 4,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "learn 旅を通して学ぶプログラム - 検索 および他 38 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "9fb88f50-e89c-412d-8fb7-1e04c3303495"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "eb16a233-1e9a-4f36-b22b-5f4ea8f41029",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:12:38.125Z",
+    "end_time": "2026-09-22T17:13:28.343Z",
+    "duration_seconds": 50,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "286a9af9-a1ac-48c1-9efb-19afa85c5c11"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "ccb9934d-cce3-47bd-8ed4-75923bdac04f",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:13:28.343Z",
+    "end_time": "2026-09-22T17:13:49.408Z",
+    "duration_seconds": 21,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*イベント.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "98713baf-3f07-477f-9808-39ee6bb6af53"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "ff45ccfb-cdd0-4cb5-a96b-13f7c43c3ff0",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:13:49.408Z",
+    "end_time": "2026-09-22T17:15:19.843Z",
+    "duration_seconds": 90,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "51898e55-6c0f-4cb1-9ae5-80bc1473b962"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "abfba899-2e3b-43f7-a7f2-9eb007291bb6",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:15:19.843Z",
+    "end_time": "2026-09-22T17:15:20.853Z",
+    "duration_seconds": 1,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*イベント.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "4f52c956-8ef0-4ce4-9111-59f00dd1fe4f"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "8635b2c1-c24d-4044-889b-42d3d829f76f",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:15:20.853Z",
+    "end_time": "2026-09-22T17:15:21.854Z",
+    "duration_seconds": 1,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "d1c9a7c7-636e-4734-bd5d-4f3530b06835"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "61ffb98f-42f4-4ee8-9dbc-51c73e434422",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:15:21.854Z",
+    "end_time": "2026-09-22T17:15:23.903Z",
+    "duration_seconds": 2,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "タスクの切り替え",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "e736878d-ee97-426b-baf0-ee5c6842b462"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "1c49f1f5-4a61-4901-977e-c12fd4f30f18",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:15:23.903Z",
+    "end_time": "2026-09-22T17:15:30.911Z",
+    "duration_seconds": 7,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "232257ad-3122-4450-9b53-a9d6153d835c"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "bcd6e35e-28d9-4f6b-bb08-e674267650f1",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:15:30.911Z",
+    "end_time": "2026-09-22T17:29:26.233Z",
+    "duration_seconds": 835,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "1f79ff1c-6421-4a43-a7c1-c79912784310"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "64d1a841-7cb7-4152-a782-b4bac63df862",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:29:26.233Z",
+    "end_time": "2026-09-22T17:29:45.319Z",
+    "duration_seconds": 19,
+    "application": "Devin",
+    "service": null,
+    "window_title": "GeoPuzzle - Devin - offtrackerのローカルファイルが見当たりません。 https://dash.cloudflare.com/5c98cd8420e33908663d...",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "673fa9b3-e238-403f-a61f-82014b8f6251"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "6d6ea77c-293d-4c31-8b2e-7cae68a4ff74",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:29:45.319Z",
+    "end_time": "2026-09-22T17:29:48.346Z",
+    "duration_seconds": 3,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "4e65005a-66d3-4ec3-b6e1-75114c8cc160"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "7ec2664f-8e93-48f6-b798-f78f235444a6",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:29:48.346Z",
+    "end_time": "2026-09-22T17:30:28.597Z",
+    "duration_seconds": 40,
+    "application": "Devin",
+    "service": null,
+    "window_title": "GeoPuzzle - Devin - offtrackerのローカルファイルが見当たりません。 https://dash.cloudflare.com/5c98cd8420e33908663d...",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "4fe7e812-5bc5-4384-ba93-2e8cd2feffc9"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "014c0910-8777-49de-98e7-4639e2d8ea04",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:30:28.597Z",
+    "end_time": "2026-09-22T17:30:33.642Z",
+    "duration_seconds": 5,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "88d3a468-be51-492f-b291-dc9b2e3ed392"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "374dce42-17db-4616-aa42-cbeaf77f5362",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:30:33.642Z",
+    "end_time": "2026-09-22T17:30:38.671Z",
+    "duration_seconds": 5,
+    "application": "Devin",
+    "service": null,
+    "window_title": "GeoPuzzle - Devin - offtrackerのローカルファイルが見当たりません。 https://dash.cloudflare.com/5c98cd8420e33908663d...",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "daab7881-bf4f-4ce8-b80d-817326bb7e68"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "0a06bbd3-a9b4-40b1-a641-b7918ac21b90",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:30:38.671Z",
+    "end_time": "2026-09-22T17:31:03.792Z",
+    "duration_seconds": 25,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "Program Manager",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "694f2e95-6b7d-4952-9c1b-c1090d8ffd80"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "dd8c6d1c-4ebf-4bd2-be61-3ec815cf11c6",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:31:03.792Z",
+    "end_time": "2026-09-22T17:31:13.842Z",
+    "duration_seconds": 10,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "weprogram.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "6ac4a727-adf3-440d-9181-0892cfa8247e"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "e21c4118-27dc-4876-a4b0-1b7e5497528e",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:31:13.842Z",
+    "end_time": "2026-09-22T17:31:20.875Z",
+    "duration_seconds": 7,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "Program Manager",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "900845ce-257a-4628-9a71-9121a9e1a0cc"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "268a0da9-027f-4bc0-b43d-ba9c24ea2097",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:31:20.875Z",
+    "end_time": "2026-09-22T17:31:25.905Z",
+    "duration_seconds": 5,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "メンタリング - エクスプローラー",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "1d513f24-62fb-4200-a1d8-b7f6938f1349"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "bb2c8d38-3ca0-4b3a-8f83-fe6cdf82d4c0",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:31:25.905Z",
+    "end_time": "2026-09-22T17:31:29.929Z",
+    "duration_seconds": 4,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "action - エクスプローラー",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "1f10e5ca-6cc7-4a92-80a6-c307aee2cef9"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "247c19e4-b96b-469a-bf67-2b4047bb671e",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:31:29.929Z",
+    "end_time": "2026-09-22T17:31:30.934Z",
+    "duration_seconds": 1,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "メール - エクスプローラー",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "2c2d8c8e-27e3-4e1f-a358-71f519d9db60"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "cf2a03a1-87cf-43bc-a0ad-bfedccb3c4f6",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:31:30.934Z",
+    "end_time": "2026-09-22T17:31:32.944Z",
+    "duration_seconds": 2,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "action - エクスプローラー",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "017c01aa-8de0-4992-91b0-44b29680fb44"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "59aecce4-de5f-4f34-8186-5f9849981381",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:31:32.944Z",
+    "end_time": "2026-09-22T17:32:12.126Z",
+    "duration_seconds": 39,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "デスクトップ - エクスプローラー",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "60c69db8-f5c1-4733-8a79-12f5a159528f"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "0cf11338-2da2-49a1-99bb-aacbb72c9dfa",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:32:12.125Z",
+    "end_time": "2026-09-22T17:32:15.143Z",
+    "duration_seconds": 3,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "イベント関係 - エクスプローラー",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "ea7615d8-f36c-4130-8d69-253937271738"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "2f153b5b-30e8-41fa-9ada-0e66c0503855",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:32:15.143Z",
+    "end_time": "2026-09-22T17:32:17.146Z",
+    "duration_seconds": 2,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "プログラミング.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "634e1ddc-ef98-4934-8952-0ec2cf0647f5"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "9fdfeab5-21bd-49dc-b0f5-5ef8fed8ba20",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:32:17.146Z",
+    "end_time": "2026-09-22T17:32:31.222Z",
+    "duration_seconds": 14,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "イベント関係 - エクスプローラー",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "2d05f664-0f98-4d51-97c3-608c9d91c96e"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "88e97f94-4e8e-445e-bca5-2a11fe48f3ad",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:32:31.222Z",
+    "end_time": "2026-09-22T17:32:44.284Z",
+    "duration_seconds": 13,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "デスクトップ - エクスプローラー",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "3f42994d-e835-4dfe-a115-9b7ad6bec670"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "a0f5b118-6cc3-491f-b9d6-0b39c01a11c2",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:32:44.284Z",
+    "end_time": "2026-09-22T17:32:57.346Z",
+    "duration_seconds": 13,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "dd7c64e9-69e1-4d72-8f30-3a63ec72d7f6"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "57e4eb0c-0713-4293-bc9c-f4557c8c6a90",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:32:57.346Z",
+    "end_time": "2026-09-22T17:32:58.350Z",
+    "duration_seconds": 1,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "aab189d0-8b00-4c9f-88ef-25b2365b831f"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "8c094b0e-5218-435f-9d0e-4a9b50c83df3",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:32:58.350Z",
+    "end_time": "2026-09-22T17:32:59.355Z",
+    "duration_seconds": 1,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "デスクトップ - エクスプローラー",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "45983106-ee7c-4fe6-865b-6d852ebe73e9"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "67e00eee-ca56-4f30-9821-54c389f905f1",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:32:59.355Z",
+    "end_time": "2026-09-22T17:33:09.400Z",
+    "duration_seconds": 10,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "タスクの切り替え",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "47ba5a24-935c-4265-b627-ec81da7537db"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "d836667c-b89c-44f6-a43e-efa99d8ebf7a",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:33:09.400Z",
+    "end_time": "2026-09-22T17:33:28.517Z",
+    "duration_seconds": 19,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "デスクトップ - エクスプローラー",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "d5d811d7-d1b1-4f29-9079-c73c0a2929c8"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "3c72e24d-55e9-4124-a690-41e155c188f0",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:33:29.512Z",
+    "end_time": "2026-09-22T17:33:36.553Z",
+    "duration_seconds": 7,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "面接.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "bc3385ee-4f1c-412b-a932-bf0dca9fcd64"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "ce70ce87-c039-4561-8dc7-8eea82da5e93",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:33:36.553Z",
+    "end_time": "2026-09-22T17:33:37.566Z",
+    "duration_seconds": 1,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "6632e14a-9deb-45e8-a0cb-6be00bcd59fe"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "b8cfaa37-dbd2-487a-81fd-0ffa1cddb552",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:33:37.566Z",
+    "end_time": "2026-09-22T17:34:19.820Z",
+    "duration_seconds": 42,
+    "application": "Devin",
+    "service": null,
+    "window_title": "GeoPuzzle - Devin - offtrackerのローカルファイルが見当たりません。 https://dash.cloudflare.com/5c98cd8420e33908663d...",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "04277127-f71c-482f-9241-4818dd583f04"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "12aa35bd-5b09-4f7c-9428-2d2bed25e2c8",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:34:19.820Z",
+    "end_time": "2026-09-22T17:34:20.828Z",
+    "duration_seconds": 1,
+    "application": "Slack",
+    "service": null,
+    "window_title": "! 事務局からの重要連絡（チャンネル） - BEAU LABO 第26期 - 3 個の新しいアイテム - Slack",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "192f3d05-108e-4d98-8d07-5f8debf8719c"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "5bb84404-10b5-461d-8bc3-40413a6e79ab",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:34:20.828Z",
+    "end_time": "2026-09-22T17:35:02.082Z",
+    "duration_seconds": 41,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "f8f0a058-d127-4579-8b4b-abc323201d51"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "a066763b-9501-444c-94a7-310c0464e2a9",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:35:02.082Z",
+    "end_time": "2026-09-22T17:35:04.089Z",
+    "duration_seconds": 2,
+    "application": "Slack",
+    "service": null,
+    "window_title": "事務局からの重要連絡（チャンネル） - BEAU LABO 第26期 - 3 個の新しいアイテム - Slack",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "0c37fc80-c776-4f78-bca8-0ec113ab2c68"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "83b3ea1a-60f7-4e15-9548-4402785f1cea",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:35:04.089Z",
+    "end_time": "2026-09-22T17:35:07.131Z",
+    "duration_seconds": 3,
+    "application": "Devin",
+    "service": null,
+    "window_title": "GeoPuzzle - Devin - offtrackerのローカルファイルが見当たりません。 https://dash.cloudflare.com/5c98cd8420e33908663d...",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "6475ddba-0dae-4a1f-a9bd-a50ed41f2cf4"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "8dd1fffe-8d6c-4d1d-899f-10aa714fb152",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:35:07.131Z",
+    "end_time": "2026-09-22T17:35:09.121Z",
+    "duration_seconds": 1,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "b4eb9e22-bd2d-4130-a430-910648be1541"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "4f67f7cf-1074-423b-9dc0-935a39ee41a6",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:35:09.121Z",
+    "end_time": "2026-09-22T17:35:13.149Z",
+    "duration_seconds": 4,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "97db5d8e-b835-4e07-8e27-86d4adc2efe9"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "7337c904-d1c2-4558-82f1-a80c68c13074",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:35:13.149Z",
+    "end_time": "2026-09-22T17:35:38.321Z",
+    "duration_seconds": 25,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "a8f9a2bc-85b9-4770-8f13-1173ab72d4f4"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "a38df114-ee33-4660-a661-a6cb60b62bae",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:35:38.321Z",
+    "end_time": "2026-09-22T17:36:23.602Z",
+    "duration_seconds": 45,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "ed576ff1-7421-4bec-b92f-b7be9243de68"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "8c82ea2d-e06a-4531-86ab-b2a54ee989be",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:36:23.602Z",
+    "end_time": "2026-09-22T17:37:03.850Z",
+    "duration_seconds": 40,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "3ff874e7-7c4a-46ef-827b-1711b2b8e00c"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "0be20abe-5614-439d-a338-e40120b5b825",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:37:03.850Z",
+    "end_time": "2026-09-22T17:37:04.858Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "learn 旅を通して学ぶプログラム - 検索 および他 38 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "bdf99c46-5592-40f5-a46a-bb7826db1bcd"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "168eb5b1-5e05-45a6-ab55-a93585e0e919",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:37:04.858Z",
+    "end_time": "2026-09-22T17:37:05.863Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Pattern および他 38 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "12fbdeaa-c39d-4c21-9f8b-68e58d26e6b3"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "39e93747-36f8-46c2-bd54-5ddf4064653b",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:37:05.863Z",
+    "end_time": "2026-09-22T17:37:06.866Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Pattern および他 37 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "c42aa4f4-5597-4518-95f1-5859e168a8ff"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "fbfedb52-1972-4798-83fc-5487b4214073",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:37:06.866Z",
+    "end_time": "2026-09-22T17:37:07.875Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Pattern および他 33 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "eaf591bc-62e5-4e5f-ae89-766daf10a431"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "660e4c70-5eab-4733-a2d4-313dba651e71",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:37:07.875Z",
+    "end_time": "2026-09-22T17:37:10.897Z",
+    "duration_seconds": 3,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "ISJ | 富山インターンシップジャーニー および他 30 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "ef13fd5b-b03f-4c43-8689-3138acc7094a"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "7da2f4cb-a173-4d61-8478-d1983e889022",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:37:10.897Z",
+    "end_time": "2026-09-22T17:37:12.907Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "無題 および他 31 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "8bfa7445-e632-4416-a05f-da3480abf374"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "4e614191-64aa-4abc-94d6-46d3b6b894c7",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:37:12.907Z",
+    "end_time": "2026-09-22T17:37:13.908Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "ISJ | 富山インターンシップジャーニー および他 30 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "417b6a0d-0f84-48e8-82a0-0a28c7da1518"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "b1a9e8b0-410b-4e19-859a-051df8c68c10",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:37:13.908Z",
+    "end_time": "2026-09-22T17:38:02.181Z",
+    "duration_seconds": 48,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 30 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "6ccd937e-53a0-48fe-b45f-29c7f39753f1"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "967f3235-ccf8-4000-9f9f-6f3a6c587b10",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:38:02.180Z",
+    "end_time": "2026-09-22T17:38:08.210Z",
+    "duration_seconds": 6,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "新しいタブ および他 31 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "db701e09-1cdf-45f7-b9e7-99688ae3f964"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "84b5d200-bf24-4f86-85ba-17c992fe330e",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:38:08.210Z",
+    "end_time": "2026-09-22T17:38:10.232Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "郵便番号 - 検索 および他 31 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "d62cb423-6ebb-4237-ad67-1dbb48c8fc55"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "e153f6db-2fc8-4aab-b945-1f226ec847c6",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:38:10.232Z",
+    "end_time": "2026-09-22T17:38:11.238Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "無題 および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "9f095c95-4952-491b-852c-1dd8e5067c99"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "1818c93b-4d7d-45db-b108-97ceddb130f7",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:38:11.238Z",
+    "end_time": "2026-09-22T17:38:21.270Z",
+    "duration_seconds": 10,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "郵便番号検索 | 日本郵便株式会社 および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "28c2d767-51cb-43f8-925b-261af5c778ac"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "1d95c91a-59f6-43ea-9c11-22645b4b8b6b",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:38:21.270Z",
+    "end_time": "2026-09-22T17:38:25.289Z",
+    "duration_seconds": 4,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "郵便番号 9390341 の検索結果 | 日本郵便株式会社 および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "25c8304c-8901-41ba-90dd-1fee2d1c83eb"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "d9875ff4-1ad6-44a3-beb6-70ad301a3432",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:38:25.289Z",
+    "end_time": "2026-09-22T17:40:36.960Z",
+    "duration_seconds": 131,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "15330512-33a8-4270-aa94-4c816d3fd149"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "ff034655-5b89-446c-a97a-96da9b845b2a",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:40:36.960Z",
+    "end_time": "2026-09-22T17:40:56.088Z",
+    "duration_seconds": 19,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "05435bea-2609-464b-89fe-1e6dae34ff20"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "957a7c78-8d5b-4766-9f53-fb2cb1c9ddd1",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:40:56.088Z",
+    "end_time": "2026-09-22T17:40:58.102Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "baa77fe7-6e8d-4443-a338-cf1cb40e38d3"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "56fdf199-8f04-4791-be5d-508a8abca58a",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:40:58.102Z",
+    "end_time": "2026-09-22T17:40:59.113Z",
+    "duration_seconds": 1,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "935c28c3-093f-41dc-94ca-47e322727135"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "d4886c5f-5792-4cda-9679-bc57db0d5a84",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:40:59.113Z",
+    "end_time": "2026-09-22T17:41:16.264Z",
+    "duration_seconds": 17,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "f6911835-b7b7-44d2-b391-338dfe9d7cfb"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "a026183b-c6a9-4a37-b277-aae2832af8c6",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:41:16.263Z",
+    "end_time": "2026-09-22T17:42:02.544Z",
+    "duration_seconds": 46,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "51f2e111-5cfd-40f6-8302-66aa0927f584"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "377933d0-b181-4fe8-8f57-426aeddab861",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:42:02.544Z",
+    "end_time": "2026-09-22T17:42:28.692Z",
+    "duration_seconds": 26,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "8306100e-46e8-46c6-829c-5f346cc1100a"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "d71ffc34-c2bc-4379-8b67-038119d4960f",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:42:28.692Z",
+    "end_time": "2026-09-22T17:42:30.708Z",
+    "duration_seconds": 2,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "18568297-6ddf-40a4-a043-6382269b6597"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "3a13577a-b080-49fd-9b05-c15fbbd01c89",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:42:30.708Z",
+    "end_time": "2026-09-22T17:43:36.111Z",
+    "duration_seconds": 65,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "c30682a5-976b-4172-8e80-cb7d7d28df51"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "4562c4ac-116b-423d-9253-74276c24755b",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:43:36.111Z",
+    "end_time": "2026-09-22T17:43:38.135Z",
+    "duration_seconds": 2,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "b0fba3ff-07d0-4077-94de-0202520603f5"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "deaa5b0d-150b-434f-9fc3-2958c196f89b",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:43:38.135Z",
+    "end_time": "2026-09-22T17:43:57.265Z",
+    "duration_seconds": 19,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "d9f9f9ba-7936-4b5d-8544-588e096da5a8"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "d864614c-197d-487f-8623-7be392fd8cc2",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:43:57.265Z",
+    "end_time": "2026-09-22T17:44:46.635Z",
+    "duration_seconds": 49,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "9d818006-d313-4435-8209-997b1f145cae"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "f2cd5f62-62e6-493c-b1e1-5c5fd4f9df1f",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:44:46.635Z",
+    "end_time": "2026-09-22T17:44:48.659Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "59a6b24f-2b7f-48f6-952c-4c89f3084afe"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "883e084a-333c-470a-abf1-8e81a2d4f7f1",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:44:48.659Z",
+    "end_time": "2026-09-22T17:46:19.198Z",
+    "duration_seconds": 90,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "7171808b-a781-499e-919f-7aed44afe2e0"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "0ffb362d-378c-4da0-83fa-64d36fad4eb1",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:46:19.198Z",
+    "end_time": "2026-09-22T17:46:36.305Z",
+    "duration_seconds": 17,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "fa9d132b-2396-4c2f-a528-35906504b268"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "7739c21b-aee0-455f-9b04-850c30428947",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:46:36.305Z",
+    "end_time": "2026-09-22T17:46:39.321Z",
+    "duration_seconds": 3,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "846b8365-e724-4b5b-8e83-f7397e583152"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "db5e5a78-5618-4598-a616-76b6bd21e85f",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:46:39.321Z",
+    "end_time": "2026-09-22T17:46:51.381Z",
+    "duration_seconds": 12,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "46837f00-153a-4712-9019-6aabdda4305d"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "4cdf7abf-fb8f-406f-8d2f-2b7b04f3e4a0",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:46:51.381Z",
+    "end_time": "2026-09-22T17:47:03.450Z",
+    "duration_seconds": 12,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "4145ece9-3da4-4068-8f97-d11f772b496b"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "98c0a96d-5cdd-4449-aaec-9967301e1554",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:47:03.450Z",
+    "end_time": "2026-09-22T17:47:09.478Z",
+    "duration_seconds": 6,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "7f4146d5-84bb-4a07-96eb-30c1d210753a"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "4e5be279-07f0-43d2-8d65-3d5f6e6a0efc",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:47:09.478Z",
+    "end_time": "2026-09-22T17:47:15.518Z",
+    "duration_seconds": 6,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "405855da-f155-4ae2-96e4-01074b20a72b"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "245cc02c-4ed1-4a43-b959-555cbcfc81c1",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:47:15.518Z",
+    "end_time": "2026-09-22T17:47:20.557Z",
+    "duration_seconds": 5,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "c9f23c24-3ffc-45ae-aa96-7f5ef6873b86"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "383de5a1-30c6-4560-bcab-d359d353b99f",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:47:20.557Z",
+    "end_time": "2026-09-22T17:47:24.581Z",
+    "duration_seconds": 4,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "bd52a1ee-8eaa-4c1f-9c07-7f0fba3106e6"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "6aa4518b-b1c4-4617-af04-b89938de0215",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:47:24.581Z",
+    "end_time": "2026-09-22T17:47:29.663Z",
+    "duration_seconds": 5,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "34577c97-6ba8-41e1-a08f-be6a283c6b71"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "51ce5d78-b45b-47af-8005-70371c2e1a78",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:47:29.663Z",
+    "end_time": "2026-09-22T17:47:46.739Z",
+    "duration_seconds": 17,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*イベント.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "81cf5dc4-415a-4508-9438-f589779126ea"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "2870d13c-0f78-4656-b476-4531bfe7997e",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:47:46.739Z",
+    "end_time": "2026-09-22T17:48:06.856Z",
+    "duration_seconds": 20,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "6dcdde88-ef57-491b-93ec-2e1503431541"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "189b4561-4490-46df-878e-02f4101a2d72",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:48:06.856Z",
+    "end_time": "2026-09-22T17:48:54.139Z",
+    "duration_seconds": 47,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "40172f27-c246-4424-b0c9-641bbc46ef94"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "6b82a766-505b-4621-baad-47770a76831b",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:48:54.139Z",
+    "end_time": "2026-09-22T17:50:10.571Z",
+    "duration_seconds": 76,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "d5cb5e74-0efc-4b1b-bfc0-b92b1d98996c"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "f829f7ed-1d23-4525-b806-2047a3cd1581",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:50:10.571Z",
+    "end_time": "2026-09-22T17:50:17.636Z",
+    "duration_seconds": 7,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "d73e4239-67e8-4b5f-bf61-73fd771ae1e5"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "2d048ec5-ff37-4584-a605-f710429d45a4",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:50:17.635Z",
+    "end_time": "2026-09-22T17:51:05.895Z",
+    "duration_seconds": 48,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "f83a58fe-0885-4c04-b66f-7798a0c4466d"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "650a811a-29ee-4b16-bb86-9679c0f2732e",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:51:05.895Z",
+    "end_time": "2026-09-22T17:51:14.931Z",
+    "duration_seconds": 9,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "イベント.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "cce04714-2386-4b57-b9db-87cfca7591f7"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "8a72569a-f88c-4604-95bd-008434a2ff5a",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:51:14.931Z",
+    "end_time": "2026-09-22T17:51:31.041Z",
+    "duration_seconds": 16,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "cd52803d-a279-440f-9724-1ff23b750f7b"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "a4593ee4-04fc-4f94-a96d-5c558105d62f",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:51:31.040Z",
+    "end_time": "2026-09-22T17:51:32.043Z",
+    "duration_seconds": 1,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "イベント.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "41c8f7be-b0f0-4a6a-954d-dd2d82e9a672"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "8c1e998a-37da-4f0d-83e8-93af03f26b7a",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:51:32.043Z",
+    "end_time": "2026-09-22T17:51:58.176Z",
+    "duration_seconds": 26,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "1ff9e0ae-8ebe-411f-9640-f8f142180ca0"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "c8a46623-170f-4c2f-b88d-1c7f1bc361de",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:51:58.176Z",
+    "end_time": "2026-09-22T17:52:31.372Z",
+    "duration_seconds": 33,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "4a9bae68-6ecc-4e5c-a31a-1da5ddc600b5"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "c7ed3260-9341-4a4f-a2ba-1754c440ee7c",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:52:31.372Z",
+    "end_time": "2026-09-22T17:52:33.382Z",
+    "duration_seconds": 2,
+    "application": "File Picker UI Host",
+    "service": null,
+    "window_title": "バッテリーの残量が少なくなっています。",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "a49b7084-be09-4c7c-93f2-f320f1b35342"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "3c25235b-ae62-4ba9-8565-2b91c4a7e6cb",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:52:33.382Z",
+    "end_time": "2026-09-22T17:53:02.649Z",
+    "duration_seconds": 29,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "e7768986-fb88-4037-8162-5e7cdb7e5838"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "927c21d0-4b2d-4224-8af0-7fffcbda3938",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:53:02.649Z",
+    "end_time": "2026-09-22T17:53:29.840Z",
+    "duration_seconds": 27,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "4f7b7405-41bc-4dae-aa00-7b8373fe8997"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "c421749a-d9d1-4126-bf3c-7df633a8013e",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:53:29.839Z",
+    "end_time": "2026-09-22T17:53:32.866Z",
+    "duration_seconds": 3,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "6a6b167d-5daf-4475-9dd1-ea478ebc368d"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "7947f58b-48d1-4e48-a822-5ebc018767e3",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:53:32.866Z",
+    "end_time": "2026-09-22T17:53:50.988Z",
+    "duration_seconds": 18,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "cec139bf-0428-4f6e-ae3d-e5a4cf6e9662"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "b35ca9cd-b187-413d-8ffe-802887b77b56",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:53:50.988Z",
+    "end_time": "2026-09-22T17:53:51.998Z",
+    "duration_seconds": 1,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "95b20e80-3394-4dd8-96f5-ef1c6713d97c"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "01548d2d-8724-47fe-b3eb-6c821ec7fb25",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:53:51.998Z",
+    "end_time": "2026-09-22T17:54:49.427Z",
+    "duration_seconds": 57,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "4e1d7e2c-93a7-4ccc-9b90-496e78a6ad46"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "73875858-75fa-4a3d-a7bb-a9c451dbfc52",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:54:49.427Z",
+    "end_time": "2026-09-22T17:54:50.437Z",
+    "duration_seconds": 1,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "0c8dea29-df5b-48fc-b508-6f6ec772fbdb"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "a8a7b3bf-cfbf-4b47-9a6a-e2a4bd20053a",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:54:50.437Z",
+    "end_time": "2026-09-22T17:56:15.147Z",
+    "duration_seconds": 84,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "2cb5ff4d-f218-47cb-becf-81a06ee1d07b"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "6494d431-039c-42e1-92ec-4ae1904a9302",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:56:15.147Z",
+    "end_time": "2026-09-22T17:56:18.172Z",
+    "duration_seconds": 3,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "e816ca5b-846c-44dc-b76c-89f0533ab894"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "75627296-fb79-420c-999d-a21bb59b3f06",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:56:18.172Z",
+    "end_time": "2026-09-22T17:56:34.299Z",
+    "duration_seconds": 16,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "85535db8-9ced-4da7-8366-8624b0bc6deb"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "46ea964f-2119-49fb-af03-ef6734e1099f",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:56:34.299Z",
+    "end_time": "2026-09-22T17:56:41.364Z",
+    "duration_seconds": 7,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "イベント.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "39899019-9deb-44ab-89e2-89fee895f096"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "c0b20705-50d1-498b-a903-121cac0a4e6b",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:56:41.364Z",
+    "end_time": "2026-09-22T17:56:49.418Z",
+    "duration_seconds": 8,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "fc9c721d-04ee-4886-a4c7-8c090b8e2f43"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "d465aaeb-e3ab-43e0-ac41-80d25c7882b1",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:56:49.418Z",
+    "end_time": "2026-09-22T17:56:51.432Z",
+    "duration_seconds": 2,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "イベント.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "1122ba21-09b3-4c17-bc24-8e578c0d8493"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "dcafb1e0-0334-490b-aac5-6d6477a419ca",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:56:51.432Z",
+    "end_time": "2026-09-22T17:57:25.661Z",
+    "duration_seconds": 34,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "4cb1f7f2-895a-4334-aae2-63410f44c16e"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "b210676f-cef4-4a96-8bdb-7d7769d2538f",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:57:25.661Z",
+    "end_time": "2026-09-22T17:57:36.746Z",
+    "duration_seconds": 11,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "cf1d32ee-eac5-45f1-b5fc-95e4a887ab09"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "65fff1e7-59ec-4b5e-bacc-e0d751b184e6",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:57:36.746Z",
+    "end_time": "2026-09-22T17:57:39.761Z",
+    "duration_seconds": 3,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "ISJ.txt - メモ帳",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "fddd720b-2489-465b-ba0f-d2373beb58d5"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "c8b34f77-d213-4305-b773-958980e1beaf",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:57:39.761Z",
+    "end_time": "2026-09-22T17:57:45.820Z",
+    "duration_seconds": 6,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 32 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "97cd4be2-dab3-4007-b643-da5db09886fd"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "96ab8131-8201-4305-ac11-156c885ada6d",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:57:45.820Z",
+    "end_time": "2026-09-22T17:57:46.834Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "無題 および他 33 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "b4815314-bf46-49c1-93cc-6c67b3860bda"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "0627985a-d18a-4558-a339-97e3b764c1bc",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:57:46.833Z",
+    "end_time": "2026-09-22T17:57:59.950Z",
+    "duration_seconds": 13,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山ISJ 自己PR動画・資料提出フォーム および他 33 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "60e2079c-162b-4ed3-bece-71f01b02bbf9"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "59bda072-5b3b-4dc9-adc4-372ad8c13e23",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:57:59.950Z",
+    "end_time": "2026-09-22T17:58:05.997Z",
+    "duration_seconds": 6,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 33 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "0387296f-c85c-463f-b3cc-d897b74d98b6"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "3776746c-3f0f-4214-aec6-5d9a0d5f8e45",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:58:05.996Z",
+    "end_time": "2026-09-22T17:58:07.007Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "無題 および他 34 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "06f97aca-8ff6-46ed-be4b-304f54b83ec5"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "897d2e48-e888-442a-bb5b-e48aaae7ba86",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:58:07.007Z",
+    "end_time": "2026-09-22T17:58:09.021Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山ISJ 自己PR動画・資料提出フォーム および他 34 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "a02455bd-bc5c-41af-825d-e85260d92bdc"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "57a73013-c331-4335-af43-1864574d3ba0",
+    "type": "unknown",
+    "start_time": "2026-09-22T17:58:09.021Z",
+    "end_time": "2026-09-22T18:28:37.250Z",
+    "duration_seconds": 1828,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 33 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "f104eedb-7920-4552-8686-b8a0cd9983fc"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "0912a758-a701-4dc6-b446-55a7db34f1a8",
+    "type": "unknown",
+    "start_time": "2026-09-22T18:28:37.250Z",
+    "end_time": "2026-09-22T18:28:39.265Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Result および他 33 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "3fb803ff-f269-4a9c-b02f-0492ef05ee34"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "0025eb49-49ea-4de3-bc2a-3d290f8ce0d1",
+    "type": "unknown",
+    "start_time": "2026-09-22T18:28:39.265Z",
+    "end_time": "2026-09-22T18:28:40.270Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "kot5432/offtracker および他 33 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "54d02dd8-d69e-46e3-96cb-4c949011c746"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "009549b2-bdf5-42b2-8fa7-ba914b160560",
+    "type": "unknown",
+    "start_time": "2026-09-22T18:28:40.270Z",
+    "end_time": "2026-09-22T18:28:42.282Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Result および他 33 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "5e0775e3-902e-48e7-96db-0be1ab674677",
+    "source_events": [
+      "727cdc12-3aad-4552-a7fa-8bd3fe58d08f"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "2828f72f-fff0-4194-b095-52d64fd5a32f",
+    "type": "unknown",
+    "start_time": "2026-09-22T18:28:42.282Z",
+    "end_time": "2026-09-22T18:28:54.367Z",
+    "duration_seconds": 12,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 33 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "7aa02ec0-2b03-44fb-ac0b-fb34e74c1f54",
+    "source_events": [
+      "b66285b8-e6d4-4c04-a2de-5590d6d2f3d5"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "3debc9d9-4922-4132-be0d-a91f7b8f346b",
+    "type": "unknown",
+    "start_time": "2026-09-22T18:28:54.366Z",
+    "end_time": "2026-09-22T18:28:56.374Z",
+    "duration_seconds": 2,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "",
+    "session_id": "7aa02ec0-2b03-44fb-ac0b-fb34e74c1f54",
+    "source_events": [
+      "618224cb-4c74-4f46-bc1d-ddd23bb1c1e8"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "fc609a24-20b8-498e-a427-97da1b1d2c62",
+    "type": "unknown",
+    "start_time": "2026-09-22T18:28:56.374Z",
+    "end_time": "2026-09-22T18:33:26.843Z",
+    "duration_seconds": 270,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "ISJ.txt - メモ帳",
+    "session_id": "7aa02ec0-2b03-44fb-ac0b-fb34e74c1f54",
+    "source_events": [
+      "54d28321-8a6b-4369-8223-76b9c5731d43"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "f75ae05e-a865-4337-b7d4-2c7b323ceec9",
+    "type": "unknown",
+    "start_time": "2026-09-22T18:33:26.843Z",
+    "end_time": "2026-09-22T18:33:28.873Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 33 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "7aa02ec0-2b03-44fb-ac0b-fb34e74c1f54",
+    "source_events": [
+      "25e5bc3d-896c-41a3-86c0-d069c3c4a492"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "51003b76-dab6-47ba-b45e-79a543e0cf34",
+    "type": "unknown",
+    "start_time": "2026-09-22T18:33:28.873Z",
+    "end_time": "2026-09-22T18:33:30.878Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 33 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "7aa02ec0-2b03-44fb-ac0b-fb34e74c1f54",
+    "source_events": [
+      "78ea0250-0550-4aa5-9c6c-5bd880c5000c"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "b503b26e-13d5-4bf6-93f6-cfdf6e488a96",
+    "type": "unknown",
+    "start_time": "2026-09-22T18:39:23.568Z",
+    "end_time": "2026-09-22T18:39:25.194Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 33 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "31045b12-0c6b-43f7-8eb7-6105e416c594",
+    "source_events": [
+      "0399dd0e-c644-4542-b57f-309616604d6e"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "35fa01f4-6c74-44c8-be83-7cca36169650",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:37:27.474Z",
+    "end_time": "2026-09-27T12:37:30.522Z",
+    "duration_seconds": 3,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 50 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "8fc6c9ce-6b52-41cc-89a6-3f1bdf1c6861"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "bea5cb06-86d6-44ee-b9f7-c1117a4eac93",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:37:30.520Z",
+    "end_time": "2026-09-27T12:37:35.540Z",
+    "duration_seconds": 5,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "5d12a2d8-bbc6-4723-8700-1c47031e9b1a"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "556e2f5f-2a9c-43a2-8b3b-e93c327846b6",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:37:35.540Z",
+    "end_time": "2026-09-27T12:37:42.567Z",
+    "duration_seconds": 7,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "ISJ.txt - メモ帳",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "e3f3cf48-2bc3-4218-8001-7ab6c31b34ff"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "5388037e-be46-4cb7-82f4-ad10fa492e25",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:37:42.567Z",
+    "end_time": "2026-09-27T12:37:45.585Z",
+    "duration_seconds": 3,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Timeline および他 6 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "983ccf84-975b-4dfd-b67e-4733b5b47c79"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "4ea55400-07c0-4cb8-b963-95e7a9771e4f",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:37:45.585Z",
+    "end_time": "2026-09-27T12:37:46.592Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": "Google",
+    "window_title": "Google Meet および他 5 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "86a3810b-06eb-45ce-8711-6ea64b1b43f2"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "d84e919f-5a23-4b72-8b9d-87ecf7dcd69e",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:37:46.591Z",
+    "end_time": "2026-09-27T12:37:48.599Z",
+    "duration_seconds": 2,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "ISJ.txt - メモ帳",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "8036c3b9-9fe2-45dc-b411-8e78bd7a920d"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "47164134-9f9c-4812-9986-cb7ac301d4ec",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:37:48.599Z",
+    "end_time": "2026-09-27T12:37:50.603Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "WireGuardとは何か？｜VPNプロトコルおすすめ第1位の理由（性能・セキュリティ）｜BestVPN および他 38 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "5760ff3e-1646-47c0-b237-58cdb99e3296"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "d95cf5db-ac56-4e70-a57f-5336b834642e",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:37:50.603Z",
+    "end_time": "2026-09-27T12:37:51.604Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "9/11 臨時MTG - プレゼンテーション および他 21 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "a94bf54d-da30-4087-bcf2-00e2145fad61"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "12c42d86-57c0-48d1-a4b7-029d8f3df870",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:37:51.604Z",
+    "end_time": "2026-09-27T12:37:54.632Z",
+    "duration_seconds": 3,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "9/11 臨時MTG および他 21 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "0d646a21-06e3-4b37-8b46-bfc37f2685b7"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "d3e3ffcd-0c6d-48fb-853f-cb2115e674cc",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:37:54.632Z",
+    "end_time": "2026-09-27T12:37:58.644Z",
+    "duration_seconds": 4,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "WireGuardとは何か？｜VPNプロトコルおすすめ第1位の理由（性能・セキュリティ）｜BestVPN および他 38 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "ba992128-35c5-47db-95a4-b294b993283a"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "a2cbde8b-690e-4060-a167-e8ee1160cecc",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:37:58.644Z",
+    "end_time": "2026-09-27T12:38:01.665Z",
+    "duration_seconds": 3,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 50 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "ffde0bad-6fe5-45bc-9032-01d9f13b1e67"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "6836fa3e-3da7-4bd2-9c41-9e78371ff696",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:38:01.665Z",
+    "end_time": "2026-09-27T12:38:02.675Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Timeline および他 50 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "bd230cc5-79b1-42fc-907d-6b3f33109846"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "53db2b10-b12f-4a62-9c28-a86dc5bdb21c",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:38:02.675Z",
+    "end_time": "2026-09-27T12:38:03.678Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Timeline および他 47 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "d9558b87-53fe-41ca-a806-5a8cd90fa0d1"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "d2c21a3f-7e06-40d6-bb4c-121865b4ecaf",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:38:03.678Z",
+    "end_time": "2026-09-27T12:38:05.693Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 46 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "84b27204-b85c-48e4-b6b5-5dd3a3e3c9cc"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "575c99de-b6b1-4c6d-a5fc-5cfc6ad06e0f",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:38:05.693Z",
+    "end_time": "2026-09-27T12:38:08.710Z",
+    "duration_seconds": 3,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山ISJ 自己PR動画・資料提出フォーム および他 46 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "64a8a307-39c6-4321-9f0e-d7b1ea6d4447"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "a6ef4b4d-819a-4f2a-b0ca-c7c80f5fac17",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:38:08.710Z",
+    "end_time": "2026-09-27T12:38:27.832Z",
+    "duration_seconds": 19,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 46 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "83f73faf-7b96-4418-95ae-6b16d42cf9b1"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "ae0cd532-648b-4946-929a-f7b3c129dabb",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:38:27.832Z",
+    "end_time": "2026-09-27T12:38:50.019Z",
+    "duration_seconds": 22,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "a3f6c6f5-8a50-48b3-b952-c47764938f2e"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "44f40ba4-3b60-4f5a-8227-8cddfdac5cd1",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:38:50.019Z",
+    "end_time": "2026-09-27T12:38:51.027Z",
+    "duration_seconds": 1,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "スナップ アシスト",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "f9b7f74b-575f-446f-b16d-436e867a5fa9"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "805e76cc-cc40-4c03-a82d-690b5cb3e938",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:38:51.027Z",
+    "end_time": "2026-09-27T12:38:55.057Z",
+    "duration_seconds": 4,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 46 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "ef03dec2-d05f-4edf-8039-072d9b298d50"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "555eea6f-d9e6-4a78-8235-2e513955d628",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:38:55.057Z",
+    "end_time": "2026-09-27T12:40:32.667Z",
+    "duration_seconds": 97,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "3e070afd-46a0-40b2-b2b2-c9626f5e033b"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "f0c2a55c-6fad-4b8c-9a9d-7589b9bcd6d3",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:40:32.667Z",
+    "end_time": "2026-09-27T12:40:41.728Z",
+    "duration_seconds": 9,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 46 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "58e25d57-44ac-44fc-9ded-296f08486c2f"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "b2c9f47c-718f-452b-9908-f920a0d63331",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:40:41.728Z",
+    "end_time": "2026-09-27T12:40:50.791Z",
+    "duration_seconds": 9,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "542c3876-d07c-491d-9906-ab67b739f418"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "4f8b9dba-f41c-4026-aa57-b051479ac3b8",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:40:50.791Z",
+    "end_time": "2026-09-27T12:41:06.858Z",
+    "duration_seconds": 16,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 46 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "63676030-28b6-402b-b6ed-c92b094882ce"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "5a0bd972-cb7e-46aa-89a0-948276676a3f",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:41:06.857Z",
+    "end_time": "2026-09-27T12:41:07.863Z",
+    "duration_seconds": 1,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "7d4c05c8-2584-417c-8569-b207ebcc69aa"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "7e3d02b0-ba8b-44a8-97d9-49a7df9b2d23",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:41:07.863Z",
+    "end_time": "2026-09-27T12:42:54.424Z",
+    "duration_seconds": 106,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 46 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "d9c25ea5-e8ea-41b1-81cf-2d947812a279"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "296a958a-0ef0-4e86-a7be-4c27e0346ec0",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:42:54.424Z",
+    "end_time": "2026-09-27T12:43:27.644Z",
+    "duration_seconds": 33,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "4a185b99-8d9d-4bd1-abd0-b10abcd3aff8"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "963695ff-086c-4e46-a0da-4076e5243c7c",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:43:27.644Z",
+    "end_time": "2026-09-27T12:45:55.542Z",
+    "duration_seconds": 147,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 46 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "12d95097-64bb-4789-b13e-784d11e84770"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "fc6820f7-ca4d-4ebf-a816-055592672e22",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:45:55.542Z",
+    "end_time": "2026-09-27T12:46:12.627Z",
+    "duration_seconds": 17,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "6305f06a-afdf-4e6d-b02a-ab7a679a3e89"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "c69d7040-7b71-480b-9ea9-e3c7b84a8c3c",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:46:12.627Z",
+    "end_time": "2026-09-27T12:46:59.984Z",
+    "duration_seconds": 47,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 46 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "34b75705-85eb-45be-b208-aa06cb64e9cf"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "3bdc8ea5-b328-48dd-a936-8c6787ac8931",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:46:59.983Z",
+    "end_time": "2026-09-27T12:47:53.358Z",
+    "duration_seconds": 53,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "e2fe42d1-951b-4cbb-8b75-6a0c02adcaa9"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "26537c94-f85f-40a3-be4d-7015cbeb02b2",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:47:53.358Z",
+    "end_time": "2026-09-27T12:47:54.374Z",
+    "duration_seconds": 1,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "スナップ アシスト",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "9438f9ce-d3cd-4533-9f38-185fafd48aef"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "b94de0b8-5057-4ec8-8059-5ecb08529bc5",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:47:54.373Z",
+    "end_time": "2026-09-27T12:47:55.376Z",
+    "duration_seconds": 1,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "d143bed5-44a8-4c08-b0c2-84cb28471308"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "9eef2123-3af7-428a-9eb4-a6989ea8100c",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:47:55.376Z",
+    "end_time": "2026-09-27T12:47:56.382Z",
+    "duration_seconds": 1,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "Program Manager",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "f757caa9-e3a6-4ce7-b8ec-15a46fc37514"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "45b11266-3a11-4bc9-a8ca-2b1624d363e9",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:47:56.382Z",
+    "end_time": "2026-09-27T12:48:01.395Z",
+    "duration_seconds": 5,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "fcd99e5b-cd74-4ea7-8833-0c08b949eeeb"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "1b4f96fe-c0d6-4b56-ba39-20800dbd6988",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:48:01.395Z",
+    "end_time": "2026-09-27T12:48:07.415Z",
+    "duration_seconds": 6,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "Program Manager",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "93f70fdd-f38b-43fe-a56d-44994d375c56"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "c027b486-8d44-4847-bd2d-0a1f0368375e",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:48:07.415Z",
+    "end_time": "2026-09-27T12:48:20.476Z",
+    "duration_seconds": 13,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "isj - エクスプローラー",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "c537f1da-4944-4e67-90b6-2d7eb59e90e4"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "24edfe08-7135-4664-8ec6-996545611123",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:48:20.476Z",
+    "end_time": "2026-09-27T12:48:22.480Z",
+    "duration_seconds": 2,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "動画原稿.txt - メモ帳",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "ba41cee5-bbb4-4644-946a-82bc7764f8b1"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "24a9483e-5739-4fb6-802d-96c5dbd81b8b",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:48:22.480Z",
+    "end_time": "2026-09-27T12:48:24.486Z",
+    "duration_seconds": 2,
+    "application": "エクスプローラー",
+    "service": null,
+    "window_title": "スナップ アシスト",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "edcadf92-316c-47e7-895a-4578eca5cd00"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "fae12f41-38fd-4acd-bd52-9f3c0278d399",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:48:24.486Z",
+    "end_time": "2026-09-27T12:48:27.515Z",
+    "duration_seconds": 3,
+    "application": "ChatGPT Classic",
+    "service": null,
+    "window_title": "ChatGPT Classic",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "86935fab-6f6b-4963-96de-b0e2fb94a0b4"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "b0de3c7d-e50e-4eaa-ac2f-ef95eaa0d3e6",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:48:27.515Z",
+    "end_time": "2026-09-27T12:48:28.517Z",
+    "duration_seconds": 1,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "動画原稿.txt - メモ帳",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "5cfbd887-6f19-4749-b688-b644f3420797"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "f1f38c41-1611-4db6-8bf4-c11d972d5192",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:48:28.517Z",
+    "end_time": "2026-09-27T12:53:18.092Z",
+    "duration_seconds": 289,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "*動画原稿.txt - メモ帳",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "895b8c22-dc8a-4b56-b79d-3233ae243a0d"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "ea76f2fd-f943-4408-bdc9-60a57356d952",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:53:18.092Z",
+    "end_time": "2026-09-27T12:53:23.101Z",
+    "duration_seconds": 5,
+    "application": "Notepad.exe",
+    "service": null,
+    "window_title": "動画原稿.txt - メモ帳",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "258f2aeb-0f00-4b1b-8506-6a93ec9c0422"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "04c6d930-c825-41bd-88ba-5d2d0e15df9d",
+    "type": "unknown",
+    "start_time": "2026-09-27T12:53:23.101Z",
+    "end_time": "2026-09-27T12:53:26.119Z",
+    "duration_seconds": 3,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "富山インターンシップジャーニー2027 応募フォーム および他 46 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "source_events": [
+      "b81f9880-2465-4fd1-9d5a-87ddcd1f996f"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "a2ff30f6-02d3-41e1-b45f-2b26dfeb4693",
+    "type": "unknown",
+    "start_time": "2026-09-28T15:33:35.791Z",
+    "end_time": "2026-09-28T15:33:37.547Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 33 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "136d8907-2555-48aa-a56a-a922cf530406",
+    "source_events": [
+      "e1dce602-e6f7-4482-be00-04521fae638f"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "19f0d2bb-5212-45d5-b2d0-caae2b286f10",
+    "type": "unknown",
+    "start_time": "2026-09-28T15:34:30.334Z",
+    "end_time": "2026-09-28T15:34:31.679Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 34 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "b037c471-95a8-4fa2-9f12-fb2d05895c60",
+    "source_events": [
+      "003cf1a5-6c3b-4a8b-9bc5-2217e377345f"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "37f07aec-cee5-495b-96ef-5cb424e4da7f",
+    "type": "unknown",
+    "start_time": "2026-09-28T15:35:31.583Z",
+    "end_time": "2026-09-28T15:35:33.153Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 35 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "c134f4bb-f743-43ac-9f89-31ec8bc9788b",
+    "source_events": [
+      "3db64a26-4bf1-4908-a5a9-6a6d145bc4fc"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "15918d6c-73d8-4820-8c25-dbb26a7d73c5",
+    "type": "unknown",
+    "start_time": "2026-09-28T15:38:55.834Z",
+    "end_time": "2026-09-28T15:38:57.336Z",
+    "duration_seconds": 1,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 36 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "b11c0a31-bfcb-4a61-ad57-b679aeca3627",
+    "source_events": [
+      "85456470-a553-40df-97ec-745925321b28"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "18cb79d1-4cc3-408c-9c11-08a036690c4b",
+    "type": "unknown",
+    "start_time": "2026-09-29T12:56:54.032Z",
+    "end_time": "2026-09-29T12:56:56.437Z",
+    "duration_seconds": 2,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 28 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "11da58b2-bd9e-4764-b067-079b5088dade",
+    "source_events": [
+      "158ee622-4bc5-4451-af6c-1f9c59791bfc"
+    ],
+    "confidence": 0.5
+  },
+  {
+    "id": "92660260-fce5-4b64-b0c5-734a2e1b678c",
+    "type": "unknown",
+    "start_time": "2026-10-01T13:12:07.712Z",
+    "end_time": "2026-10-01T13:12:15.931Z",
+    "duration_seconds": 8.219,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 17 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "b9186322-9412-4dc1-a8d5-5366656123a4",
+    "source_events": [
+      "3a37bf2d-f00b-486a-abdb-59f761b1d0c0",
+      "6d03b6c6-c8de-4b6a-944d-c10de63baec3",
+      "41227744-fcfc-499c-833f-991f0b5a3dfb",
+      "4a4b981d-a884-4a2e-a426-6d009fbbda42",
+      "242d05f6-3f68-4df1-b839-0fc3f844e208",
+      "262ad2ca-0bad-4db5-85d2-1e3d8022dcd2",
+      "32ba5311-1a6c-4f30-bd2f-bba3c909aa4f"
+    ],
+    "confidence": 0.8136983333333334
+  },
+  {
+    "id": "0f756cf9-dcef-41f4-b1d8-d9d9cadce230",
+    "type": "distraction_candidate",
+    "start_time": "2026-10-01T13:12:15.931Z",
+    "end_time": "2026-10-01T13:20:05.041Z",
+    "duration_seconds": 469.11,
+    "application": "Microsoft Edge",
+    "service": "YouTube",
+    "window_title": "YouTube - (507) YouTube",
+    "session_id": "b9186322-9412-4dc1-a8d5-5366656123a4",
+    "source_events": [
+      "411eaa4c-e33e-41b4-9d17-c61ad606b70a",
+      "67954471-c20c-4345-8d3c-e4512b0c6add",
+      "7b6d32e3-3f72-4b85-9412-3ac33856eef1",
+      "8dea7e46-328a-40e7-ae73-d211ab7b0a79",
+      "2a78aef6-ac00-4318-b068-e7cbddc8c298",
+      "a306a344-0e6d-4993-bff8-a13b52486c72",
+      "52d4c103-5e1b-4a24-9bb7-ce64fc71ff2c",
+      "4f2f3e52-2a34-42d3-bf26-f66d8f66a34c",
+      "28582dcb-5c24-477c-b2aa-52b20c607907",
+      "f848d35c-d684-42e6-9bc2-2f9de8b95bda",
+      "91cb4e11-6d3d-4716-85d4-f4689020b874",
+      "10d5aa5e-eb19-4652-be90-54e25f22c443",
+      "68de2a88-efb7-4578-80b5-48a9dd053582",
+      "1b0f02ef-6398-4785-902a-0102d181eff9",
+      "08494553-0d2e-4209-9c15-ec249f53a852",
+      "cb870a34-3680-4e29-8a67-5e566b5ab36a",
+      "7ac818a0-b639-4074-af4a-b435a68c9a30",
+      "cf25ce9d-f67e-4a17-9956-1502204d5f8a",
+      "253ada35-b559-4c68-9761-cff6f63db410",
+      "171ad295-6a11-4e0c-90dc-9b83489da352",
+      "0e102c5b-d823-4c43-a1fd-889bd2614e19",
+      "4b8897a1-5722-442c-a7cb-4ab72fc46ca4",
+      "922da837-7d77-4c54-8f7d-9f644d40eecb",
+      "e136add1-5b9d-4223-9977-d90938ff72f2",
+      "2bfa92c7-9f8f-4a0e-84cb-de4260e59177",
+      "b6b2af2a-6333-49d9-bfd0-e970f22cfde2",
+      "caa75d62-15ee-45d1-9916-3962cc9608d1",
+      "4544a5e6-0e0b-40b6-886c-4c1b126839b5",
+      "e2b89aff-46bd-4d5e-96d8-11feb4af395f",
+      "b8bdce1e-84cb-4c4f-8240-e90f29d4aeca",
+      "ebefd9ac-c228-4492-a375-f2cac63ae8ff",
+      "d0f50df8-cb5d-42db-9c00-e48a85ff2c20",
+      "2cc15526-fe58-4c85-818f-14b45bafaa43",
+      "91730f20-a775-4b42-a70e-bd4ed21162d3",
+      "8b02d199-0df4-4d9c-971b-18c11c545a77",
+      "fd2051d0-3bd1-4579-9e21-1ceba9be09b8",
+      "820d5fd5-b2b8-439b-b58c-f443ae1521ea",
+      "b7df8a28-f5fa-4a52-b4ff-7d615f0a7d78",
+      "e9c012d5-5ead-4b20-84f6-b684785902f0",
+      "25caac03-b3d1-4362-9407-af643fe74d32",
+      "840bb360-286d-4a94-b53d-dbea40331d07",
+      "fa7fca6d-9bdd-4aab-b70c-f499b1fcfbd1",
+      "33031fd4-68d1-42d3-ad56-8cb4728593de",
+      "e3ff3d82-38e1-41a9-821d-de9d2eb76574",
+      "60a12380-2965-4b02-83de-1b43dfb71486",
+      "7dab82cb-06ce-4061-9e84-ac1c4bc2f1cd",
+      "677dd024-625c-4313-85cb-183e8e4724d0",
+      "607074b2-1c62-45e7-bf2f-c83fb6a57396",
+      "42f3d0c5-9c63-48ca-80b5-65fd8b09bae6",
+      "1dca5da7-f6fb-43bd-9c7d-a0d215b51ed4",
+      "b8c155d0-bf02-4e7f-b116-f3e3395d53d1",
+      "4a1faa07-abb0-4f2f-a4b4-ec1601e30002",
+      "f5edce53-e1c3-46d7-b122-4ad2c76abebd",
+      "f70544b1-48a7-4ede-8669-bf54d352903f",
+      "1bda4c52-fe55-4723-8b01-b4e505ff4460",
+      "319ea9e5-3122-4b46-9c1f-9e823b373468",
+      "c682eee6-5d0b-40a0-8f33-2d9bb0b1a4fc",
+      "c7efea50-ec5b-40ee-9a92-3079de89c4d3",
+      "40b31d5d-203d-4747-b8a8-464fce6f003c",
+      "677d8d8c-b4f4-463f-92db-fd7d5283817c",
+      "e5293aaf-7f5a-46a1-8a2d-9ce165257459",
+      "763ebfb1-39b2-49b5-9c92-b4793bfddb42",
+      "c2bd4c2d-d7b2-440a-96dc-43af89d5545b",
+      "4fbedee6-b15b-4f31-a03a-c7a5bd1e1c24",
+      "c5815b30-cd01-49b7-923b-9695e249208a",
+      "416dca6d-254d-4159-99b2-cbbcdeb5fbb3",
+      "89a6aa16-90d9-44e4-a2ac-be0be88404bb",
+      "f52207ad-0ae5-40d2-a593-f734090312f9",
+      "1d51b7d2-7f83-47d3-b047-1402c04f393b",
+      "c1fd72d9-0202-48f3-bde3-4ebdeda26539",
+      "f5cbf18e-83b0-4b38-bde4-a648b0d48ccf",
+      "ed14ba0e-e83c-4868-a081-c2f1e5fc1ab3",
+      "851bcb00-d908-4f2c-b172-bc82953336b8",
+      "47b23172-9a90-4185-a4f2-da1c229d676c",
+      "4d82ce05-3a27-4cb5-abef-f9aa2c4e19b4",
+      "6dba15ae-53fb-43a1-9b99-0aa7d6d07822",
+      "b567be5c-c902-45f7-8695-10164c06fb10",
+      "f36e4534-20a0-4116-8a36-019ab6d8aee5",
+      "77655199-a300-432e-8da3-fa36929e0e0a",
+      "b81fdafd-8d9e-4b14-9adf-0f8668c3c46f",
+      "06810f71-2842-4521-9fa5-46634b6dfa97",
+      "b977550a-3c73-4c3d-a64a-f5236f7dd608",
+      "1668342e-94af-45c3-adcc-2787f3f22aa7",
+      "6cd0c609-f8b2-477f-a457-5e17b91e7713",
+      "8fc63234-11a9-4a59-a12d-ba4ae97f0b0e",
+      "404a37a7-ea63-48d7-bb22-902837d7e673",
+      "884b362e-4288-4c52-942e-579094b01901",
+      "10795011-7dce-4e38-8839-50183deffff8",
+      "7fba509f-76f5-423b-9721-9be05a633248",
+      "81fffc3f-005f-44c1-a852-727d28706a60",
+      "99182fac-aaca-4633-af97-843931d83abd",
+      "4a9fd1e6-cd77-4c54-898f-d2b269166630",
+      "0098e895-ae57-43ab-989b-a3023a655eb0",
+      "cbab7a15-3f8d-4998-85c2-baca663c31ac",
+      "2552711e-21dd-436a-81fb-b5dbbfa5e6ef",
+      "6423fc87-e1dd-4323-ace1-8dc6720ff89a",
+      "f9eb9586-691c-487f-bfc4-0853c1ddbf92",
+      "fcda391c-f721-4f6e-ba3d-1a6f9d783c5c",
+      "4ef255e8-310f-410a-9719-1a6c5cbe394b",
+      "6ad5b848-eb3a-4938-afbd-4a24f30c69b4",
+      "6f1948e9-ff52-494e-84ab-f4d2fcfe4a78",
+      "49c8351f-ec11-4566-ae87-5e4d087bfb2a",
+      "de782858-6563-4c00-a02a-91bfa0e81b8d",
+      "0c2660eb-2bce-4bde-b200-270baedd3225",
+      "c0795418-6729-4bfb-8f4d-ce56cdf66bfd",
+      "fb8076d3-7740-4ea3-a63e-5d88d4f93616",
+      "93ae9671-db58-4059-9fce-881a5b894030",
+      "7f99b1eb-560a-486d-be07-d4d297260e00",
+      "455a7f58-a3eb-4802-a3ff-f55fbba6396a",
+      "a2ca0579-502d-40d8-aa24-9e37dd4d1738",
+      "6fd1098f-7a12-4705-bded-0c0ef3d846c0",
+      "27f85673-1175-401a-ba62-a9292016e113",
+      "d98d10df-1187-48f0-b344-d33355266472",
+      "47ae73a5-6455-4eb9-a8c6-decbcdbf98b2",
+      "ece29b58-efd4-4095-850a-cff8b27600ac",
+      "69bdca66-ea8d-4d76-b4a9-24793ef1709d",
+      "1c0045ee-fe05-40ae-becb-0b803065fa00",
+      "d88a9d1a-423e-4f42-8e6d-c77c2afe4bb7",
+      "c57f4f6d-4896-45c5-8e44-f5b7634b516d",
+      "549e5edd-bf57-453b-a72d-afcbde1a2367",
+      "66e1c80e-d2c2-447e-8f7f-178e16689733",
+      "ba3e1414-ceb7-4b75-ad81-d5e897f00ad2",
+      "9e7c7623-cf00-48af-8422-35144639a309",
+      "11b9a1ea-0a7e-4306-b855-47084bb8295d",
+      "31248985-4b27-47bd-bb0f-9a0ba592c031",
+      "a949aab9-feea-40a8-a25d-6b5faed2fdf7",
+      "2424b730-fde3-4a14-815a-0ddbbf058c0f",
+      "4e819344-100a-4620-bd2b-8a67230c6407",
+      "898ec77c-89be-4cfb-ad1f-5ca281868750",
+      "e8d97e1b-9fe4-4965-8db0-6281ae1cff5a",
+      "8263b878-1b2a-408c-a147-e070d89367d9",
+      "3b671610-bf3a-41e9-b296-e491e0561efd",
+      "bfacd1d9-8961-491e-8d04-cbcab1f9d550",
+      "56d73329-0eee-4028-9f2c-d54e6884dc4d",
+      "a5ac6939-e7e1-4a2d-b025-aa6d4f90ddcb",
+      "49b43edc-2c94-4090-a001-5542a6395158",
+      "883956bf-125a-40e7-8cdc-ba212d0fbf79",
+      "ebb272f6-1614-4154-905a-86354bd0f7d1",
+      "99b22dde-6bf5-4add-964c-2059af75c004",
+      "53370389-ac48-47cb-aa4f-611e2319be2a",
+      "964dfe03-0a68-4cb9-b42c-7c75fb363b01",
+      "df8ecb99-d4d1-48c9-96c0-cd4e1a79dced",
+      "46b92e76-b22c-45a9-9a51-9c8d320efca7",
+      "7756e196-6150-46db-972e-ac1fec9399a8",
+      "1e47c303-6049-4e40-b402-b83684b2b6b8",
+      "375bb1b8-b8a0-4106-b045-9e953aa5a63a",
+      "a58185e3-939d-4c0f-b102-a2bfc00112cc",
+      "27d3f817-4323-4f82-8745-74d205b3ed17",
+      "c85bd34a-582f-4ec4-ad92-849b2e50d633",
+      "92b9d8ce-d12b-4b02-a5dc-8f59dcc66613",
+      "393c1b88-80b1-46bf-a600-0167d0b46337",
+      "b6affbb7-ff7d-4df7-87c7-a720769c9a30",
+      "3f61ddfe-1922-4ca3-8e9a-8516d67f2384",
+      "a9717bd5-37eb-44d9-a4ea-deb029b08735",
+      "2795b62a-a7fb-463a-a387-0234100b9c50",
+      "0991fefd-e336-46cc-88bb-1d26345236ab",
+      "09bad266-b427-4d75-af0a-2cac44e86539",
+      "0da3fcc6-7c4d-4293-a89f-8f1c5240ffeb",
+      "6a1d0928-d336-4fe3-843e-c853ee084dbb",
+      "21618189-987e-4f61-9a37-8bd89844f00d",
+      "9072a63f-d7a6-4482-8f7e-626022ce423e",
+      "dad85d79-a4ff-4231-b3ec-ad0a8f2d8343",
+      "1a81ded2-172e-4b23-bbe9-0c0a5598c633",
+      "98922b15-3f08-44d6-b213-702794a77f5a",
+      "35914b3e-8d9e-4bde-9a84-ee47736abc2b",
+      "1c3fb014-29e8-4d32-ad93-2cef77e269b8",
+      "93a263c0-7a60-4e63-99ed-d1d51ddd7c29",
+      "6a366cd8-366b-43ea-9b70-730805fe7cf0",
+      "dafaafd4-464a-4453-8739-7fe264e37209",
+      "5bab080a-8ae5-44a7-9a43-68db866fa5c4",
+      "8124fe93-bbdd-49b2-b105-683bc2f540ab",
+      "2c8b2faa-6744-43e9-b7e4-3acad7420eb8",
+      "c25c2d8a-86db-44d3-b6e1-e4dce78bfa02",
+      "f28dbd62-577b-4850-b696-bd770266322e",
+      "03c33a1e-974c-4104-800c-06482287bef9",
+      "5a26318f-ed12-4b88-b4a8-3c40d3e09f41",
+      "4f301569-a314-46db-a75c-214e1642d27c",
+      "0d67305b-b794-4bb8-b1bb-86bc2eab1be8",
+      "2bad6c71-115b-4a49-86dd-0c893e608a8e",
+      "961dc83c-4198-4350-a306-8c61a2c3ee87",
+      "a41e2f5f-48aa-4d43-975c-86371de9703d",
+      "01ce1e95-071c-433d-a9e2-b5109963b4df",
+      "c0b73209-de6b-4a9e-9a3a-e1903535cf28",
+      "712cb739-ebdd-4a35-b5dc-dd15b21c6876",
+      "3af34a14-fe7d-4495-86ff-5678390761e5",
+      "53d34958-eee9-46cd-89d2-5ec89164353b",
+      "d7d5ff33-fac3-4c81-8c08-b82a65c26b5d",
+      "33f163c3-00e9-4c1e-9156-aeb9aa29575f",
+      "379dcee3-b868-4f8f-9336-f0f1197700b0",
+      "1112abf0-3cab-4245-a6aa-007f46d7a4d9",
+      "5f4c3e95-6451-495d-bb0b-7a6e5184070e",
+      "4fce46cb-7827-410c-a4d8-ca61b4858274",
+      "a8532a3c-b823-4fdd-b85d-9a4a8d7cdf29",
+      "bdac03ed-628e-487f-922f-79ca216de0a1",
+      "0466107e-d207-4e8f-9f93-285ab0ac79c3",
+      "af9b86cd-b520-4059-99c1-412830f32093",
+      "cf2595f0-99de-482a-a6f1-53f9dada8e5e",
+      "b5b17409-6c19-4a11-b414-8441dde033ce",
+      "5f3bdc77-4d04-4f5c-8e73-254167c1e551",
+      "f4905bd1-3be4-4133-a0e1-cb1ae468b4e7",
+      "aeb9b910-3307-478b-a368-e6df9fa78b71",
+      "872dc18d-b8c0-46b1-894b-80be70e7741b",
+      "efbfeb94-ab91-471a-8c7f-bee7e6444bc8",
+      "758f0e27-0763-4870-9b4e-05c8a56977d7",
+      "44078cc7-9775-4826-9830-6fef4b12c8fc",
+      "9bcdc6e5-813b-4ac3-8f53-937714b41e07",
+      "0212ac5a-c4ca-4335-83b9-93517f05825b",
+      "fd91842f-a85b-4cce-af6d-152980f91173",
+      "330efb1f-7a3d-4135-abb7-d786fc1c0c1d",
+      "81fe7634-80b6-418d-81b0-957552ce6c00",
+      "c4c7dc29-4376-422f-9e85-298127d633cd",
+      "15a54015-7ecd-462b-a9e5-f89441a496fc",
+      "5fb9ba63-80df-45e0-98d5-55a661722c72",
+      "aff1e658-e3cc-4c01-939c-83a4f36ab7db",
+      "4f0d6084-226f-4225-b214-4682468c86ea",
+      "198575fa-a64f-4df5-acaf-4066707fa425",
+      "9c5d4b37-ebb7-4dd0-938a-6d5805cd6f00",
+      "90c85b55-45bb-4d2e-81b6-c4a7f06b5c50",
+      "fbebb431-7ba0-427e-8903-7aa51600c60e",
+      "de46939f-b575-4c7d-a304-f26bfbb9d98f",
+      "aa98e7f0-b42f-4c81-8425-56a11a49e962",
+      "a624014c-69eb-45a9-a21b-818168a2cbbc",
+      "a0521978-8568-4767-b1f1-211c37437e7d",
+      "7ca9b7c8-835f-4000-aa07-337314e17f27",
+      "e344059d-2db9-4916-b30e-7abe43921f91",
+      "ab243c31-f40b-4030-b2dd-b8a7d3ca9519",
+      "7d347fa2-85c5-4e98-851f-ec35456f5703",
+      "7eab4718-6c13-41a0-b5f1-48403e3aaca4",
+      "14eacb11-2ca8-44b8-938e-05b53df01f34",
+      "a5c21422-19d4-42f4-b430-1f6fa88dd47f",
+      "df3eb71e-b34e-45a3-a0c0-8c62dd080617",
+      "12f151bf-09d4-4a1c-8175-83bdafdfdb18",
+      "90e1d078-2357-43f0-8ab4-324935137b4a",
+      "f064fa89-762f-4d24-83b6-3303946f4983",
+      "d171eaa7-6985-4715-975c-fd5a582ad52b",
+      "4b3441b0-7707-4b13-8dbf-ca19b93ecc2e",
+      "f30bef10-f0b6-4cef-90a3-0799e816c765",
+      "9082e59a-d627-4f17-b649-3f45d54bcc12",
+      "f5b44376-89f8-482b-a486-c1ffb4ae865f",
+      "e51b972a-f35d-4ea0-b1ae-8f97c40b7514",
+      "5d486df8-350d-4464-9531-8e23d2221176",
+      "aff2ab90-bf48-495c-a86c-129271419feb",
+      "c54b9029-a693-457f-bd81-86137c910992",
+      "05f70991-8a03-4513-9345-8e1c2240d72c",
+      "8f4d42ac-4084-42d9-b65d-f9d8bd4a4933",
+      "ca952dc6-5d61-47a5-85c0-3ad926861c42",
+      "5a089dc6-33f6-46a1-aa04-f0a0f7f575b7",
+      "80cd2539-0dc4-4f84-9d25-c61dbb18bbe6",
+      "637f689c-0828-4d17-b4aa-f9e6467918e0",
+      "6e3cc6ac-eb45-4186-a403-b7308fea97f0",
+      "06ca669b-58a3-4ac6-a3b1-50d0387f0560",
+      "ab9f367d-4b20-4d95-846c-9a96cbbe334d",
+      "9be4f1b9-9929-4b58-b10a-1664ce8d6b49",
+      "c5f8e85b-0c00-4597-ab17-b01470262c8f",
+      "9c9da5ba-c8b0-4f48-a5c1-eb8eeeca0f34",
+      "81ff2b54-e7f1-49bd-8a11-345adddefd12",
+      "61d1d57b-4fc7-47ac-b136-e3e1e801d00a",
+      "0048b5e6-4a4d-4e40-ad47-739bcd4f1e43",
+      "e5b3639b-9232-4151-b4bc-f8bebdc8968e",
+      "4e8263b9-58d9-463b-b3fc-e0c0fab00fa5",
+      "2e907bf4-999c-46f3-b697-d64c2a7ff707",
+      "f5023cd8-32bb-4357-a92d-06bcbb20b2c0",
+      "2a8f5b2a-ba9a-4a44-91c6-8ba11e9f95c7",
+      "2cc2aa90-476b-4e3f-b253-b51bdd6b110b",
+      "9e5566e8-7d92-4351-8c0d-2cd3aa5e9bd4",
+      "36e4724a-01f4-419e-a3b7-74ca1d241677",
+      "1b26a6dd-ceaf-4a55-91ee-704c339885bc",
+      "bfd7aba2-765d-42df-b0a0-a1cb08ac0e40",
+      "c1817fb3-2bf0-4150-a1e6-9499a21eb47e",
+      "59acba0f-b6ec-4482-8edd-4b2a5668bf5b",
+      "600b1c37-fb49-4b4b-a946-813d77ba29a5",
+      "f0d8c680-5b66-419b-9603-31025cbc8b9f",
+      "f1209aef-6809-4b23-9dd2-976293f10d8f",
+      "7c693de6-aac1-4bdc-b836-bb06618a2ad8",
+      "d8db52f1-1d27-4dee-891c-e61ee84b551e",
+      "4cf2b8ed-af73-4884-8d73-5afaac1ed325",
+      "02d78cbc-a513-4ff0-98f0-084ff5ccbaef",
+      "f4b38423-c6fc-4234-8fa8-27682b2e15ce",
+      "496fe6cd-5407-4dbe-a80f-bbf5ff82b386",
+      "1ad742ac-2f25-4e3b-b2f7-52505e3422a9",
+      "2116bc06-bae0-4246-bafe-4573813fceb6",
+      "3d732291-05e0-4272-8f91-f4554a9afa68",
+      "6cf3b25e-5a47-4373-9fdc-aac07556ba25",
+      "9d954f8e-653b-4c69-93e6-1cb0480f6c38",
+      "b7a03c48-aabc-403e-b061-161033c49a76",
+      "498a0ff7-3518-4936-9aea-f8bc9e85bb94",
+      "14ce42a0-8c36-4c10-9a8d-3f927ea6ff05",
+      "e054e2a6-b877-4f34-91d5-78aea2637bee",
+      "ca01a221-d9d7-468d-b5af-8a68f15e2219",
+      "e188aef6-bc1c-4439-8084-9cbab4dabe46",
+      "d1e0abd6-52d4-4913-bf49-0db02ec56cfb",
+      "777a5cb3-1c9b-401c-a1b9-599a5de67a18",
+      "1ca22412-8665-43e4-b6c0-64da03c8ca5e",
+      "32061166-0689-49b5-a5cf-d150a80fd02a",
+      "4c9ada04-ee45-4b61-b2fe-c7bafddfb8a9",
+      "df5a0e10-701c-45e0-abc7-65677970db19",
+      "c365761a-0f1e-4434-829a-da2efb3615b1",
+      "4c4e1dd6-3f14-49bd-988b-27660fcbd513",
+      "22044d3a-f110-437f-baa2-dd2be46fa06f",
+      "384442f5-1aa4-4f70-973f-19145aff74f8",
+      "34b58a88-f24a-4088-b80c-2d06c1c17ace",
+      "9fd4e1bf-7ca1-4363-98d2-661f58272376",
+      "4beef382-7bd4-4bc0-8be5-8bb8836833dc",
+      "438aa351-8c3f-4fc5-8fc9-1bd1c3ef7305",
+      "59e7cc49-71e5-4e5b-a107-e3f85c064bc5",
+      "2cf96008-0d51-4ef4-aa21-d374637d6b36",
+      "2e07aed8-c92d-4ddf-8d4b-fdf7643da535",
+      "bb029e93-2f46-4b13-982e-806809313161",
+      "56336547-671e-4eca-96e0-8fd903c44c5b",
+      "3d6a78bb-37c3-4a69-91b1-cac4056dbc21",
+      "def0d095-f27f-4efa-819d-9d39aabc6ff2",
+      "58699822-850d-40b9-9656-aef45777a0d5",
+      "58745d50-6330-4702-bf99-11d03773673d",
+      "ab1fc1ee-211d-4fc9-b24c-0f801c79f089",
+      "4715d48e-e58c-4e62-9115-1f99d7004723",
+      "847a5bc9-572b-43b2-8efc-4f12d342a840",
+      "a1ef7cb8-bdeb-4b22-8c9b-5eda9efdb3c2",
+      "f8399fd2-c0c5-4a54-b1ae-cc52fa413c64",
+      "27ae7904-5a13-4bf8-849b-bf5b61c80b2e",
+      "d90cfb7e-113b-4f82-9965-9105837d1ec6",
+      "22d3a711-1dbb-4cb7-9a3e-34ab6c3633e8",
+      "beef6dfd-b6ed-4115-8f1c-4199d6fc8414",
+      "3c22c8d8-8166-45b5-b9ed-d43ef3547ac2",
+      "9caaaeae-17e7-4d39-96dc-f1ad46ee410f",
+      "5b46374f-ff85-434f-87c9-f94c1548932d",
+      "db5a10a8-55cf-4f81-ae93-ccfa243dde75",
+      "bd1ee813-d4c2-430a-a713-f1bc25858d71",
+      "43fcf6d9-09b0-4984-a79c-9774ba37fcfa",
+      "b94a8f2c-7dfd-41ee-8e9a-49995ab9aa86",
+      "7a68240d-82e3-420f-90f1-0746f3aed156",
+      "41f6aa82-3daa-4b6d-badc-eb9a6b861c56",
+      "dbb1fdf9-5959-46a0-9c1f-836b35689b96",
+      "e2ae336b-3eeb-42c2-9a3d-8ad86a17a7d0",
+      "ff32d5e0-ed03-46a4-81aa-cc2c45d43a37",
+      "bed80d6d-436b-4b14-a1f9-fe5126c48e88",
+      "91079612-a27a-4b41-a74f-ef751992c2b2",
+      "70e5b8c4-b98f-4748-85af-d0e632d0ebf1",
+      "dae11a71-ebe2-457f-b366-bc7d5d0f6d71",
+      "551cf39a-9380-499d-bca9-7c367b6c675a",
+      "30065904-9925-4a1b-af84-527f56884969",
+      "b9e06f1b-f17f-4f34-9f81-98d0926f371f",
+      "10b00f7f-3c3d-4a50-8a05-33c9b02b7c97",
+      "d6bd99d9-5f7e-49c7-b89d-8559c725595a",
+      "c1a97867-fceb-4a08-837a-9561a457a4b9",
+      "cb92f205-9d06-4ea5-a703-356943b5bb54",
+      "4414988c-72f1-450a-affb-dedfda824094",
+      "5af4d784-4d85-43dd-8a59-d0cdb0b4b0f2",
+      "79a446b9-cb0f-4926-b65b-0801ebf4054f",
+      "ed5e074e-c59d-4a7f-9ab9-a7b81b9f5859",
+      "a1c56fd6-f896-43a9-90f3-b1138ccb5c51",
+      "97b001bf-9e46-4700-86e0-7d7126f8d435",
+      "6f0c6855-e0aa-4e2d-85dd-6504b3f7bff6",
+      "368f7b97-cfed-4edc-97fd-bd3ee9ee065e",
+      "e21f061a-81cc-4bbc-97bc-7a3d18c1d3b9",
+      "188c1adb-4a9d-4a68-ab63-c0c12288aecf",
+      "20dbad72-0ef5-441f-bb3a-e6a2982cfdf9",
+      "1f111db2-379b-4df4-b456-f30e94444ad6",
+      "5f752029-ef9b-4743-bffa-b4914a52c09a",
+      "9d7cb11b-a8cf-460e-96af-d913f787fc5a",
+      "8f12ea53-3ae9-4ebf-9bfc-d728fd1f4f87",
+      "2c49d852-ca70-4dea-9641-23f0fbab41a0",
+      "b8dc06b2-61d7-42bf-ab87-50e470216dd0",
+      "4513060c-0393-4c1c-87cf-11bfaa1885c9",
+      "bba27ebe-adbc-46e6-89bb-8c558c374147",
+      "8b67fe9f-605f-45ca-9c78-002b3f3cf50a",
+      "24c1e9c4-8028-49f6-9538-f5db6db53208",
+      "ec86b76a-bb89-4adb-b265-6957ab8221b1",
+      "bf86cbba-859f-4291-9492-f268687d3853",
+      "ec22069b-4ccd-43d9-b7bb-48db4f9daffa",
+      "02adb8ec-72b4-459e-b7f4-846ceaff438c",
+      "7a285ba9-05c8-4660-a735-749a43d5217a",
+      "352b54b8-0731-48f6-9bae-96b250b8e213",
+      "db90eba6-69ff-423b-bf55-de31a0b17fd2",
+      "56ee6fe2-0b96-4f39-9a93-55df59122f0d",
+      "80cf10d6-1215-43d8-a2d0-f8c702e9e94f",
+      "9ec26be1-9169-471d-af4b-04f92eb426ee",
+      "97fc218e-2a7f-4661-8950-e6689a0e8437",
+      "7038054b-55dc-4de3-a47f-2fff8cba0b72",
+      "15f533d4-6212-40be-8299-1e5116215b00",
+      "0c170842-8108-44e5-a37e-62268f865e8c",
+      "588d69ed-4ccc-4421-8aa3-65da9b0089c6",
+      "ce4b0624-31c5-4552-9410-556f538faef0",
+      "af99f7c4-fe7d-48db-a332-034ec8cb4475",
+      "1a00dd60-c53e-4220-828a-c0dc5b846866",
+      "e5aeb9e8-3bd0-4ec6-9c73-f494b4482eec",
+      "279f10cb-1e57-4ba9-a638-11fb2f36ff4f",
+      "2f29a9c5-6748-4ac7-bf5d-f0d60c8b7445",
+      "8fa66c42-0b64-428a-9e53-23957210282c",
+      "2ed3f903-3b1b-4f5b-962d-707eca716363",
+      "078fd9bc-d63f-4066-92ae-511c9d9191a0",
+      "4bd5af7b-4a5c-4c10-9f46-923acf05f087",
+      "3c7db502-c99d-4e60-86bd-650bdb02f8f3",
+      "cae284d4-61eb-4aaa-a8f1-b2a749a5a2ca",
+      "33391cf3-0a02-48ce-bbfa-c163b4585b6c",
+      "ea6a8521-9304-4814-aa7f-7b8daa599d5a",
+      "f40a51a3-a823-45fe-a485-c077339e6db8",
+      "b9e6c4e4-4e87-4ecf-bf81-7e1886ab4224",
+      "1486c454-aa60-470c-9741-f4ce0248957d",
+      "a673cb8a-4033-41bb-94dc-9f29ccfc7f15",
+      "2eba36aa-cc1d-4750-b059-733b3183bab2",
+      "a1113d59-2a56-4563-afb9-44aa1d00a58b",
+      "ba537b9c-3b30-4175-932a-23293aadba6c",
+      "9b196a20-cba2-4058-95fc-6f4603a2a988",
+      "bbc8837d-7c55-4b9a-9a58-73090ce42dd4",
+      "5dcac934-ce45-4bbf-9b39-0ff54e0325d3",
+      "b2a3d65d-ce9f-49e1-911a-6178288e1458",
+      "bd2e90d1-cd5c-4b38-ab81-7f5562f22661",
+      "61206177-b7f7-405e-9bb7-c0488ea30f61",
+      "93553bb9-574f-4a4b-846a-3e5bb2528d3a",
+      "2b8fa799-88c6-4e61-9ae9-458de3a23565",
+      "738d9f28-7670-49cd-b61e-0a62383ff67d",
+      "a553be5e-50d5-4408-bfb1-2ca41107a715",
+      "a258c7c1-1fc6-40c3-9285-5af0ae87b14d",
+      "b608c31e-23b2-478d-ba70-930419520812",
+      "42b04f32-dd3c-4b55-8177-d3d631d8c117",
+      "73b285bf-b0d2-4696-9d6b-a239859bf7f2",
+      "616e3c10-e513-43a8-ad4d-b0e910c95e8a",
+      "dd56b530-5c82-4d25-b4e5-3525bd0c1c19",
+      "f956bca9-2f6b-40b7-af44-b8ec0d9d6f27",
+      "53c8e955-02a4-480b-8791-7682240f1b7b",
+      "3bfb2fe9-deb3-4d0a-8e1a-2e3da6ad9b79",
+      "c110b5b4-0138-4e9a-93e9-d1cd3c9c5a51",
+      "775d9727-4f91-4802-9ad5-61f18b0bb001",
+      "47d28454-6b2e-49cd-990d-aa0917a8b30f",
+      "4cab8516-d50e-4c7f-bd8e-7e08be14338a",
+      "7f7893f3-ef1d-439c-a60f-fbee98baed59",
+      "e2493670-5d70-4865-98e7-9e63c8a7adb4",
+      "cc2967ca-02a9-4d11-b79a-de6bced1dbfe",
+      "18e87a15-9cc6-4f5e-9033-bc73fa4b256d",
+      "14584cd8-7333-4abf-be7b-d9e9cd7bb031",
+      "f809c026-2254-4a76-bbc0-49b6eae27982",
+      "672c29f5-6dc3-45db-93a3-6a54516fabe2",
+      "2a2187b4-eb9f-4cf6-bbc3-25b7bb2da1b1",
+      "902f77eb-1f6e-4648-8d35-958c66f597cc",
+      "ff8e42ed-3368-46ee-95b1-263f1bb911d1",
+      "29a97ba2-ef4e-45f5-acc0-ab9ab74dd2c0",
+      "a2778cf7-73b1-45fd-b8f1-93924117ca9c",
+      "5df997e3-5144-44d9-b207-c8dca3f751f3",
+      "ee2a5ae3-e630-4dff-8085-2dc0ae643738",
+      "dbff5f5c-5015-4523-8327-3999bccf8b67",
+      "b8908e85-1b8f-4224-bf65-3cab761ea0bb",
+      "119ffb2c-a41f-451b-bb2f-b365505c99ea",
+      "fde97900-c743-446b-8073-d365a0544bd2",
+      "075c77b8-3ed3-4ef8-ba15-88a8569c65c4",
+      "43e4d370-cdbf-4296-965e-cd09fa26ab7d",
+      "8c2ec135-3996-4e03-baa1-223aa9e92b78",
+      "dbf7d3b4-3691-4f7e-bbb1-2e7bd3a7c966",
+      "6248b22b-1d3b-44c5-9967-a53cb72ec795",
+      "179d0f13-f75f-45f6-8386-e644728723e8",
+      "15a8542f-96cb-4db2-bb79-5185290365f4",
+      "d1501a7e-f036-47a4-b6d9-04da222d2c7c",
+      "0df38e45-32ce-4646-8caa-ae95b7ffc7b0",
+      "fd30dca6-ae63-4a0d-aa0c-9de916140cd3",
+      "dabb8354-55e8-4b53-80a6-7fbec8dd1f3e",
+      "88a7591b-1cf1-471d-b77d-a1f890d6919c",
+      "deff18bb-a9fe-4e1e-b4e9-3d3475b08f0a",
+      "f92edff7-e144-43ef-bd26-6ecc80171e07",
+      "fb928e18-7fd4-4c95-9b6e-0c61650541cf",
+      "297d527a-8248-4105-ba61-313c87bb9fb3",
+      "f1d378c1-ec4f-447d-8247-acc041ac54cf",
+      "00f15363-3cd7-4045-a225-369c99f7cedc",
+      "92b7d637-e781-49e8-8ccb-91d855625686",
+      "b7469194-7792-4e60-9189-4b74a4528da6"
+    ],
+    "confidence": 1
+  },
+  {
+    "id": "278bd75c-5e11-441d-a7b9-031d3acae6df",
+    "type": "unknown",
+    "start_time": "2026-10-05T19:34:29.033Z",
+    "end_time": "2026-10-05T19:35:48.994Z",
+    "duration_seconds": 79.961,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 7 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "1db3d494-6371-4e7c-a930-465ca70f901b",
+    "source_events": [
+      "fef57f38-ac2e-434d-a226-22485618df9e",
+      "96204692-53ee-488b-8248-ce7e107afcc3",
+      "37d166ed-83b4-4da4-809b-4f96e819216a",
+      "b45fb8ce-81eb-4789-8b86-c5429ecf49f1",
+      "caeeadd6-3f30-4233-8208-16d342e3529a",
+      "84b0182f-ab01-4fc8-9573-4218bae0a534",
+      "fe09b37a-11de-4a8b-9f7a-43e2808f48e8",
+      "e7b5bc6d-0886-47aa-ab18-0718b8007fb4",
+      "07a17bff-5624-4ebf-8d93-99779622fa82",
+      "28d2ec91-e6a8-4f55-b09d-956eb525e276",
+      "de7f1a01-9c41-49a1-b7b9-351384f8df55",
+      "e05aa28d-fff2-4842-98c6-09669be0870a",
+      "2c71112f-4c84-401e-a618-361bc4136e7f",
+      "66996ce1-813b-4d23-9fa3-b82146cc1f4a",
+      "25b5d9bc-33d7-4ff3-86bf-a97a7a7e1b15",
+      "abd6163e-ef6f-41e5-bb50-026a81520750",
+      "377dc786-f01f-4ff6-87cf-d85f35ce6977",
+      "402151b4-e6ad-4555-bb50-44aca68572c1",
+      "45742b5d-47f3-48b4-93a0-b4cce3f48b66",
+      "65676c0c-b226-4815-8636-466404e7937e",
+      "872cb1f0-381d-4066-8055-896024457099",
+      "f6b5c9e9-65b0-44e5-935b-d694d692b82a",
+      "eaf3e942-feef-4d0c-872f-7fbffc9cabd6",
+      "5359cf00-e68f-4191-ac24-3d001dd4e451",
+      "dc08d21d-b19b-41b9-9a36-f3fff2ca76ab",
+      "ae25f30d-7ad1-45ae-93d5-68735cbdd1c1",
+      "3de66405-e1d7-41ef-a6c7-e738a92c9830",
+      "89449a1f-b355-4fe1-ac48-f8154008087b",
+      "3155d6b4-9e7b-427b-9fcc-26a30cb1afb7",
+      "787e13cd-21c0-464f-ab53-896cc68160f4",
+      "90776e0d-37eb-413c-801d-720402ab0886",
+      "10bd2b70-2d54-4da6-8394-9fed2f9bdc95"
+    ],
+    "confidence": 0.9332683333333334
+  },
+  {
+    "id": "1c3741e2-8db5-48b3-b357-8d0c44d80253",
+    "type": "unknown",
+    "start_time": "2026-10-05T19:34:59.349Z",
+    "end_time": "2026-10-05T19:35:47.636Z",
+    "duration_seconds": 48.287,
+    "application": "Devin",
+    "service": null,
+    "window_title": "GeoPuzzle - Devin - offtrackerのローカルファイルが見当たりません。 https://dash.cloudflare.com/5c98cd8420e33908663d...",
+    "session_id": "4dd7440d-ecb0-4fae-926c-901902b51ac2",
+    "source_events": [
+      "b1637265-a316-46f1-a9e9-c1d49ab134a1",
+      "b5f4afd3-ee93-4fbb-8334-7efe50fd666a",
+      "bde540c7-8b37-492d-a5a5-21948f8d1f7e",
+      "3b2b9427-1312-44c5-a147-4cad69759b0f",
+      "0765fb25-9ee3-411d-ae06-54ab3b0ff5b0",
+      "87267fb2-ab5f-40df-b7af-20db7bf838b6",
+      "fe8c9da7-89c5-4dca-b806-fa179622e489",
+      "d7d56054-d7ad-4dd9-b74a-50cb1c16dadb",
+      "c037c2c1-5d17-4b2d-91d4-513b7b6714f9",
+      "eb3c0f8c-fa27-4e38-8608-4d38b67a35fa",
+      "50a9deeb-72d2-4b87-a15f-41798f63b1ea",
+      "a52eb6f1-01c1-4859-8836-1bda7ea4732d",
+      "e68f14b2-1f33-448a-8fb3-19a11eb6c9d8",
+      "915bc41f-2f59-414f-94a6-0cad51694e28",
+      "d7607cde-79d7-4bac-821c-50b820b71252",
+      "1ceda03c-b098-49be-a0f5-2c8aea3d1345",
+      "0a041dd5-1e0f-4009-b10c-8b26c2c9b69b",
+      "c4831a69-21cc-445a-8cdc-d0dc6dfc6b06",
+      "1710f795-6406-43b8-88c3-a19bb9d38829",
+      "4ba2c324-dc63-4ee3-9f34-4c926ac6d7e9",
+      "82404475-1891-4f2e-ae92-008f8ff9cc67",
+      "9f65bbce-c4d5-4290-be2d-0df5974d7b39",
+      "99401b07-9c16-415c-895a-4c46ed05b483",
+      "ba4f8f2b-8ef9-43db-82ce-ed37b433d711",
+      "392f7728-3847-4669-aa30-80f85505cf80",
+      "baed083e-9c66-4204-8e11-5e16e2033908",
+      "07ac5d0d-bddd-476b-910c-d08b7b6b591e",
+      "b7b80f99-ad77-4be4-bc5d-5e73cd7f6d61",
+      "2bfdcd72-7247-44f1-b6c8-75cab2839de3",
+      "248b6fc4-7eca-4f1f-9b43-116f61b62c5b",
+      "171ad776-12e6-4313-8d02-12f5d386b3f9",
+      "b0418045-4666-4d8b-bb5b-9140f023c900",
+      "72129db5-3dc9-4c5b-be34-ea89df8a5fb4",
+      "b2ee022a-89b8-47c9-a54a-4cabee57d466",
+      "36b5a7ce-bb35-4b3e-99e2-4e493aa4f63e",
+      "d8008f3b-6494-4593-92b6-c2c75ec187b9",
+      "354847a8-68d1-4bf6-9e60-c87ebae71143",
+      "9d0add31-4c4c-46f2-b5e2-9603b6e881b1",
+      "896049d3-c7a1-48dc-9aff-1d53d89e2add",
+      "d8e99b12-1d66-479b-a14d-12f927c9a45e",
+      "aef2bcb8-c5f8-4705-a057-f780738c4b3c",
+      "7c699a40-3f8a-4394-8b89-136f3b096e88",
+      "92c637d2-d58d-40f6-b7b5-1ff0d859529f",
+      "4df59fc5-100d-4acb-8e3c-5b24bd7a38b8",
+      "b75dbae2-8787-433d-8141-b3c13a1bbffc"
+    ],
+    "confidence": 0.8804783333333334
+  },
+  {
+    "id": "eebfce02-7a68-4578-bcef-b5f4fa43f2b2",
+    "type": "unknown",
+    "start_time": "2026-10-05T19:36:47.592Z",
+    "end_time": "2026-10-05T19:38:03.390Z",
+    "duration_seconds": 75.798,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 8 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "8d2d0686-7d37-4d46-9a34-2307ba65467b",
+    "source_events": [
+      "9b96bdbe-6d66-49df-be34-4884a12219ed",
+      "0fc2c5a8-eab4-45cf-b198-31fcfbf8419f",
+      "00b01d6d-7887-476b-8349-efd984a9ea02",
+      "1a0989df-7e8a-4c1b-b554-0f82ea7e67ce",
+      "00c6ac60-d298-495b-b42c-c30c7c126986",
+      "0b6f3879-ce7d-432c-94d9-c029f673deb6",
+      "70c0b36c-6ff3-4ef0-b0b3-ba4d24fde355",
+      "1f6e0f97-bfc8-4a97-81f6-51f3abe63286",
+      "3cf1a8df-f9c8-4931-a0fd-6a3f6509a15c",
+      "d5f46f8e-b612-4034-b136-154644d1bb47",
+      "5e988e3d-f4b3-4b07-9183-3dfa0f935725",
+      "5c3508b9-86f4-48f0-8292-8521338161a2",
+      "17ec7a9d-7123-422c-8730-237deb002a42",
+      "9cece0d7-ec39-4539-a2bf-9a774b16c191",
+      "acd635fc-3034-44b5-8145-baffbe0dea23",
+      "3162f42e-cebd-4040-8347-3f365d0382b9",
+      "579a417f-21a9-43f9-946d-5b48f4b10f00",
+      "48921354-cf8c-4480-90a3-8d131f3426d2",
+      "28aec3d9-f9b4-438b-816d-f077328eb1fa",
+      "d01dc3f7-45f9-4e95-8ae5-5475c0b63728",
+      "5f5bf9d2-5986-4d33-972d-9723c152041c",
+      "304819cd-d220-4899-911c-0c1e0a382035",
+      "4d7c8c13-2fff-4bfb-ad89-93f012079d9b",
+      "453b353d-8ca4-406a-ab18-04bc7ca57172",
+      "bb240b09-5f56-4033-bff0-8f820cd9a3c3",
+      "2682b40d-062a-442f-8691-6b9aa4652c2f",
+      "560ced15-376f-4a97-aab5-bfffe47d48bf",
+      "7d3f0fd4-df8e-43ac-a6c0-95b6ee30831c",
+      "391114b4-05ab-41e9-945d-4e4f90d15684",
+      "9fc77281-93d5-4a1e-b136-9f2838239740",
+      "4b805a31-e77d-4397-a895-ddf21427d869",
+      "d16316bf-a4a1-42db-b0a6-3f382d8ae92d",
+      "e1dcb9d5-40ea-40e6-8832-e925eba96863",
+      "0007eff0-3e8d-4ddc-9136-c184b2ca647a",
+      "6c507073-769e-4e3e-bb96-3fae3ca51740",
+      "e0bfee82-c018-4e81-9f56-c4b1a6ea1c24",
+      "70d8f0a4-86d7-4528-aac6-4a16380c6867",
+      "cabd72c7-86c6-4cc3-b8bf-9e0138782060",
+      "cb8d729e-4096-49c2-b69f-d174b78e8e2d",
+      "0b338056-fe36-46f3-90e3-b1084476c22e",
+      "57d5c314-d787-414a-84e7-4a126a0e7a08",
+      "987434a7-2cfe-4ce1-a2c5-f00d8692dc19",
+      "a4d5b241-e02a-45af-a881-442007403db7",
+      "20375afe-1327-4100-a8fc-c41213d776cd",
+      "e7101c41-3f80-4321-ac27-17ec9c3923b4",
+      "5b8ae4e7-d615-43ae-9b6c-d5463d26d384",
+      "a7b83afc-eebb-49e4-bc96-a18b7a445461",
+      "90a6edd0-399c-401f-a76b-865f7d8e4d80",
+      "6c19a3ba-8233-4576-a7d6-c71c9dddb9c3",
+      "2fff55d0-00a6-4040-8912-7affa564c9b9",
+      "238043fc-38d5-4e85-bdec-b0a52e1dd21e",
+      "e6294df2-7d10-4f60-b3c2-03e8fe33dd5c",
+      "dbc0370e-db14-43b9-bc81-868e2d2ed506",
+      "bbe841ec-123f-4156-85fe-3422ab5ed194",
+      "2e6740b5-fa43-4a6f-bf1e-bcfd32ab7805",
+      "3ca0a149-6313-4e3f-bb66-3e23f91c43dd",
+      "2ae0695c-2df1-4083-9dd4-4fe344c95c75",
+      "78831356-8671-4dfb-8c62-3dea53715a79",
+      "901ec272-10d6-4621-a15b-89835e4e522b",
+      "745c1f0d-ac09-4f0d-9cd6-e51cd07c5a3a",
+      "bd3bc61c-1354-4653-96e1-4a422a00e3c5",
+      "7169bba9-3f46-4649-a6a8-d7db3a9b99c7",
+      "27695a3b-206b-478f-8105-84b59fc2ae8f",
+      "8a6ea7cc-b069-4442-8346-51b3533cbbff",
+      "c5f0ce24-ea6b-4205-b78f-5996a5488246",
+      "288fde12-48ae-4ae6-ab67-e0ba1932d8f7",
+      "6ea95661-b9bc-46b7-a30d-e3faceb77a72",
+      "b1f66146-84a5-4fe4-9612-9809271757b3",
+      "a4b0fcd2-14fe-432a-a544-c52c136ed1ee",
+      "446ab5fa-5e3e-455c-92f0-fa47f108385e",
+      "162244b8-ebf4-4712-ba83-fa0a1f0f86d5",
+      "2ab3eb5c-2f0d-4314-a233-244a3d97d493",
+      "7ae7f687-d81c-4433-98bf-f47bb1b209af",
+      "ebb0c0e8-e47f-4be2-9798-3fe41f8a2d56",
+      "75493f2a-674e-43b4-99cd-c1faa6260859"
+    ],
+    "confidence": 0.9263300000000001
+  },
+  {
+    "id": "3093217f-1a85-4621-82d7-b85431370186",
+    "type": "unknown",
+    "start_time": "2026-10-06T12:02:51.983Z",
+    "end_time": "2026-10-06T12:03:47.447Z",
+    "duration_seconds": 55.464,
+    "application": "Microsoft Edge",
+    "service": null,
+    "window_title": "OffTracker - Home および他 13 ページ - 個人 - Microsoft​ Edge",
+    "session_id": "ef2851c8-bfa2-4e6c-8dbe-7f8bed58d28e",
+    "source_events": [
+      "b3dbb3d3-012a-41ca-8c20-84b432aa0d1d",
+      "0582c0de-1cac-4213-aa29-75a3ede4d9eb",
+      "af5c6752-e27a-4747-9847-3d3be69aa021",
+      "eb0a133c-71f6-4b86-be1d-38593917fc51",
+      "98216a50-1cef-4c41-b721-a42d765f69cb",
+      "875a5e4a-c0cd-47a6-a0e2-8b39520313ea"
+    ],
+    "confidence": 0.89244
+  },
+  {
+    "id": "8c9845a3-e626-429b-b977-b1408bea3e40",
+    "type": "unknown",
+    "start_time": "2026-10-06T12:02:57.135Z",
+    "end_time": "2026-10-06T12:06:25.170Z",
+    "duration_seconds": 208.035,
+    "application": "Devin",
+    "service": null,
+    "window_title": "GeoPuzzle - Devin - offtrackerのローカルファイルが見当たりません。 https://dash.cloudflare.com/5c98cd8420e33908663d...",
+    "session_id": "ef2851c8-bfa2-4e6c-8dbe-7f8bed58d28e",
+    "source_events": [
+      "eb2862b1-733d-4188-9b07-8cefe6a62b7c",
+      "0d2adc82-1299-4a70-be5d-94fd663420aa",
+      "cf876c1c-9640-4eef-868b-f3de3f5a317a",
+      "3a3e6b24-3008-4140-9056-faad6c0072e3",
+      "c7a2eaea-371a-4400-90e5-d7f6eaa3dbb6",
+      "c74d9edb-cae6-4280-ae64-950e25a42d91",
+      "30c5793f-4ef8-4ff6-86f2-0266459db331",
+      "e764c42a-8c6b-40e0-8b72-60335c08c701",
+      "caf9989a-962b-4393-a0f9-825f3ec1e101",
+      "2ab7f54b-5366-4e57-9ded-3ea8f4e1125e",
+      "f00679b1-4ec1-4773-9d5b-f73851330bc9",
+      "164f322f-cd2b-483d-a4d6-f9e166b75d0b",
+      "ad1abb4b-7270-4d74-9481-937ee8102808",
+      "e5e9604b-bb58-4a85-9f57-d723af565f2c",
+      "9d655f38-4b62-4d05-83ae-c42e7c67b1d1",
+      "43ddf77a-2644-470f-9848-f320cc78f71d",
+      "a8af82dd-ff2d-4cd0-a28b-c32ff13edc7b",
+      "3251fdeb-4049-477b-b024-ea3147f480c2",
+      "2c6b212e-47b4-47f4-bf6b-7a95ed11b328",
+      "44909968-a1db-4414-bde6-f81731704b59",
+      "5bb5766e-a8ca-4fdf-9af7-d4c76eee2608",
+      "58f106bd-6e5f-475d-a90b-749070415e5e",
+      "809c66bb-f565-4999-a0c7-29bd63eaa546",
+      "e2424a3b-bb92-46ee-8d38-fb5ac68504a3",
+      "149f1295-594f-44cd-b723-c1d0207e06f0",
+      "82fcf8da-29b6-4c74-b176-4c381b4ae223",
+      "2eafe66a-b44c-4628-a9fa-bd7bcee19b09",
+      "ef0b483a-c21d-4a5e-8b66-775e3a20d725",
+      "25dd3e82-4743-4c0c-99b9-7966a9648764",
+      "c6c8c224-9cb8-4b45-a0f0-a7fa2886c3f0",
+      "5eb3cc62-c365-49e5-8c71-5c898664d3f9",
+      "7e7934ff-d7c3-402f-a415-b284a6ef5850",
+      "c76861c9-0c3e-4825-a536-cda7ce5585a8",
+      "cec145cc-55c4-4ba3-96dc-b04d95cebd4d",
+      "d53da5a0-2c31-4048-9202-6d98af9bb6f3",
+      "b65da315-6dc6-4866-8204-d9ace4c9609d",
+      "e36864e7-8be3-4085-b23b-f4bdfd712b5b",
+      "939f02cb-960c-45e5-90fd-5d475941c43d",
+      "fc78ed8d-3b13-41f5-8cb5-b214cf672fd3",
+      "520f6b6b-a5e5-4eda-bd83-5bd850472398",
+      "1c9d72dd-8483-4e4e-9c3f-354bc844684e",
+      "c643d36f-f826-4a7a-9562-48ab5ad35f92",
+      "c7f6ebbb-be5a-4b7e-b535-a5675d69e234",
+      "09018210-6baa-49dd-83ed-20574faad628",
+      "7445efcf-f9f6-4070-9c99-16da62255b1a",
+      "f440643c-5583-46a8-abdb-0df098db9a99",
+      "3ea68bab-ee54-49eb-8e49-1e893f51a790",
+      "4eedb63d-415d-41b7-bed7-e305bad5e876",
+      "2bd7296d-6fa4-4455-9df5-aee5d132299b",
+      "9a41adb3-a589-40e5-8e7c-fb1dfa93b3fb",
+      "65339cf1-3d91-493d-b8b2-9fd378bfa291",
+      "a58cf56d-b167-4feb-8657-f85fd73b5f6b",
+      "170a1ba2-34d3-40da-8079-23eb1653ab57",
+      "e2736c7b-5cfb-4d5b-809b-73fda1ac8466",
+      "fd0a5f2b-4fc3-4cbf-94c1-d48b3f34e488",
+      "9a12d145-14ef-4cd7-9ed3-8bfdc2250bf4",
+      "aa4158cb-345e-4a6a-8702-6cca7f16a114",
+      "3465cfdb-d9d0-4b47-b8d8-abb5915ccb50",
+      "a0dab101-bab3-4c39-9373-bed1adc44994",
+      "715ae666-2ab5-42e7-9d1f-0801f2e2f17b",
+      "e252cf55-0c55-40bf-9367-d71f1bd09479",
+      "c6fd0df6-df51-4092-b50e-75cd4939ba77",
+      "d4545a96-41ad-41b0-985b-21f76de843a2",
+      "72baad9f-6d1b-4466-a1f3-42fa75b6638d",
+      "73fa702b-be69-43cc-8306-fea9450da1bf",
+      "3fc1cc10-141b-4297-8e1f-db9dbcf246f9",
+      "008207b1-eb91-46fc-9910-850b2efd939c",
+      "58c773b5-9d63-4145-b0d8-398b5582ea0a",
+      "80375566-bc67-4a94-ae7d-224f27bc6178",
+      "f914087e-7a60-42b8-a09d-36de7347ff37",
+      "123267fd-572a-435d-a1b0-06bca7c1823d",
+      "dd4cbece-c189-40d6-b63e-64707c48a069",
+      "9b8ca939-7f23-4c43-a9fb-2b14b4a8ea2c",
+      "d5918280-dcf9-4457-9294-ffd2328f7122",
+      "21e3b083-1cbd-4d6d-a9da-ce078c38e32b",
+      "431763dd-5ddc-485a-9b84-a4f15d9da65e",
+      "c61c4437-4490-45bb-90d8-56b2d3cedc29",
+      "c796527a-f4f4-40e3-a3e4-ff0b4d62e65a",
+      "0a6b9dfc-7321-4f55-842c-cad5ec2c4b23",
+      "b43d017b-4aed-4cb5-a4f1-9f6c7d9e58a2",
+      "4ac611b3-18b5-4df4-a726-2de8ee290577",
+      "a9455c34-00df-477c-bb52-b4423fda627c",
+      "b6789313-2bbc-441e-b987-219b35051770",
+      "3a5c9300-82c5-4abf-8dab-92ea31e84dfb",
+      "f22dfd32-828f-416e-bb3d-45aee7f274b2",
+      "e8b97a43-f552-466e-8c0b-e715a18f9ff8",
+      "03b7164b-6190-46b5-92e7-aaf64d2177ef",
+      "0d779ad7-a01c-4d43-802a-5cfe97b1b206",
+      "088ec4fe-0c0d-422a-91c6-b2199df95ab8",
+      "95505187-992e-410c-93fc-54c98d2d3f5d",
+      "d7259497-cf5f-48b1-b700-17a0da3b6e4b",
+      "03d27d72-5daf-43d5-ab44-77bdc4356b5b",
+      "8d7f32fb-8218-4fa0-97b2-520c0a868f4d",
+      "ea2b0954-e095-45ca-8c52-9095cfdd87f0",
+      "4107edea-9675-4e39-bd0a-358896c33890",
+      "0a0a81a9-5bd3-4de6-9159-8a38cd6361f6",
+      "5753c2b9-9149-4452-8349-8fe2a892832a",
+      "ab419435-dc29-491a-ba0f-df91f55184e2",
+      "92bb1db8-260b-4245-8144-2323364bf2f6",
+      "05bf11de-7d8b-48c1-97ec-aed128df1019",
+      "8970494a-7328-467a-815f-f0db07f04e7a",
+      "236ad87a-3c2a-4278-b06b-6252c40880c1",
+      "7e99e1f8-b208-4429-bf17-62c92ca223c8",
+      "53be545d-a2ef-4341-a91e-db7d380b2394",
+      "83cda2b9-de1e-47dc-81b7-cff86c44c6f5",
+      "7722370c-f422-44e5-9f98-a1a237cf33fc",
+      "b1b79214-23d4-4c47-9e1d-dfd9bbb94172",
+      "e6a1b9e8-1d14-43af-b2b9-e1b86ff1e68e",
+      "612b7e67-83a7-47ac-98bb-38388a98f2c9",
+      "6df98c3b-cb40-4df3-bd6c-4bfd82981f88",
+      "e42cb2f9-6408-448e-9686-aceb631f1393",
+      "f8ab704c-e82a-4c58-9251-c04c66b413ef",
+      "7b0d72e7-2b81-43e4-81c3-3fcf3bd8cb09",
+      "be9b43ee-0f4d-4a76-9a3a-84db5930675f",
+      "c29eb22d-5f73-4d48-8d61-2fccd639f9f4",
+      "144224f8-b38f-4903-b28a-086425122778",
+      "8a6fa6f8-251f-41e4-b86e-673f3800c98b",
+      "d895b21f-cb35-4319-b655-412ca9fad92e",
+      "ac8ac1be-d25b-4a8b-a1f5-d299a923cfc9",
+      "b42a59e6-438d-4ff5-9f12-66e3bac58427",
+      "512dc1a9-a2e8-42d0-8457-64817abf4b20",
+      "ec967534-2c15-40b3-9f67-9bf9a55d1871",
+      "62e93ea1-a52f-43be-b677-fdfe8ed63a58",
+      "77aab964-c087-49ad-a116-03546d532a50",
+      "cb0bbd45-f776-46fa-b3f9-bb04920dce0b",
+      "d496bcad-b8ba-44d8-909f-67a93ce27e13",
+      "c3349cb4-e09c-43d4-9fc0-aadd9c597dbf",
+      "cc1ea854-530c-4027-b33b-efce8c5ac9e7",
+      "cf66291c-cef7-4d57-9511-432440fc62dd",
+      "c411f494-b872-4acf-a2fa-96d80984c8ca",
+      "808a5c52-5053-4609-bd49-f6a1bc54b655",
+      "aa58fcd2-2f12-4dbd-9b6b-1c2b4bfd137b",
+      "b915f7b1-7445-4877-ae45-f86922fb1cf0",
+      "f1840167-4722-4958-8e8d-f2e3ffe778d6",
+      "4880f7dc-6ed4-4505-a205-f0c5ce645aa9",
+      "44c1e87c-115d-4515-a350-c00b1fd92b0f",
+      "26d6c151-fed8-4cd0-93fe-e2572c3c09ee",
+      "efedd7da-ecfe-41c6-b2d7-2d61b69ae1fa",
+      "4a710ce7-6e4c-41d4-9dfc-59dc7f3fde6d",
+      "bc77636e-098a-4ddb-bd24-2481a43bf8f6",
+      "d658025c-3bb4-4091-82b2-bbe61fcf287f",
+      "1dc67139-e3e3-4986-9fef-b9c65e87940f",
+      "e4a2d83a-14e5-491f-a99b-9a79b27e4564",
+      "080e8333-3073-480b-8a5f-45baef1406e3",
+      "5cad9153-b18a-4663-8888-4aec729a2dbd",
+      "ebe67203-1dad-45ac-a54e-04b031d54481",
+      "d935aaf8-5e49-42c7-b850-4e6060f0dbd2",
+      "ce0973d3-c1ab-4507-8570-27e8ac20cd6e",
+      "b59c310f-6e97-4634-a8bc-7c26559665f7",
+      "10fbbe2b-d393-4b80-8883-629fd25b4fd7",
+      "f94394f2-1880-468b-9d96-e2560f08ba24",
+      "147f3f08-814a-4dbc-acfd-0c23ab0270f7",
+      "5460ccbc-8ee4-4af9-8a6d-b0a675545d5f",
+      "61b5cb08-e45d-4910-bded-0f5efab55f59",
+      "786a8d34-d17d-4523-ae0f-a192e8975dd9",
+      "ac35d2e3-9395-4dce-b886-435532d1dede",
+      "8342ec83-3d3e-49b0-9355-3d4c74b885a3",
+      "43c24c81-787e-4440-855a-f1eb33c90ad1",
+      "0251bc13-68d5-40d7-be7a-cf6d4449ba72",
+      "c22f15f6-cf78-414d-bf68-5420d882118f",
+      "751ebf56-6193-4be4-8ffa-f50526de891e",
+      "6e271dc0-abba-4030-b888-b040e57547f0",
+      "abc7140d-90df-419c-9764-e1310888f4b6",
+      "6ec56711-05f3-4a80-958a-fd0852dcf231",
+      "fe9df5df-818d-499f-a0f5-7ef613c7914b",
+      "8c39a0b6-861d-417e-8897-4a50dcc16a4f",
+      "abb91213-e4fd-4983-982d-1f11a7715326",
+      "4c4b715e-370b-4ae5-993e-ef10b16a6e41",
+      "36a10416-095f-485b-a85f-4d347a56f2f7",
+      "89c9cd4f-ae96-43d2-b441-92af8a7fdc0b",
+      "1357393e-427e-404b-b51b-959496d249d1",
+      "27deef72-2583-4f02-ab01-e99bf3d94b4a",
+      "c11e7237-aa33-4ef0-b5e2-94a8144aaaa1",
+      "7f9bfbb4-71e8-44ad-980f-e27512e68133",
+      "e0c9b37c-acb6-422e-8c2b-5aac1980904f",
+      "88d8a9cf-26fe-458b-b5bc-128ea83e7819",
+      "2d3cf398-44a6-4464-beec-777a53e0ec24",
+      "b9c9858c-0a3d-4520-961e-eb1a047a82a3",
+      "a470fac2-d9d9-4a01-8301-65ed45cf8ee9",
+      "e6afafe5-bed0-4221-9102-bc173d5c2b81",
+      "40743781-42f3-4a66-b902-a618dd0cd3f9",
+      "3477d0ac-d4e1-48fc-b73d-06722038f057",
+      "28ecbe5f-fc81-46aa-bec0-9d7d82a05b62",
+      "49a7ab15-ddbf-4ea2-b55f-332453d988ac",
+      "ab423081-eb96-40db-a484-f2d6da138440",
+      "75a4abf0-184f-4edc-9686-c3d514b498ad",
+      "147a9fc9-5c67-4440-a6d3-bcc1327d0651",
+      "0434161b-4637-45bf-9875-468f1e5d230f",
+      "bffa1f1c-4e06-43fb-aa10-04f3439b7e03",
+      "f93acdb7-7312-45bd-98a7-b51c82e604ee",
+      "fa9dde5e-afe1-41d7-9f40-e186fb2ca038",
+      "b23ab2ea-6ae2-4120-9220-5887d8f1f4db",
+      "53957893-61e1-484a-b997-402cf32a375a",
+      "1c53aff1-379b-4927-82b6-e2a1f5385a4e",
+      "6e17adbe-d2d8-4011-932b-5f21b1432bcc",
+      "b07497c5-bf50-4e6f-8bd0-867be657c046",
+      "81c4dfb9-5244-4188-aaae-3f718527076a",
+      "a4e04ab8-8883-4e71-9a37-1663ee6809a3",
+      "e531061c-2aea-4369-b363-708e099ce790",
+      "90b4cb28-2d80-4a60-9db0-17780f4b1df1",
+      "3f2e2b6c-a26e-4fe5-bf56-a3cc892fe9cf",
+      "a5796b33-016f-4dd5-898c-0e557ff2060a",
+      "01124507-829e-49b2-932f-38c03d7352f6"
+    ],
+    "confidence": 1
+  }
+]

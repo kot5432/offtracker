@@ -1,0 +1,149 @@
+[
+  {
+    "id": "fd256085-af70-4d67-8bd3-028e83edb520",
+    "session_id": "session-1789717677344",
+    "deviation_reason": "エラーが発生した",
+    "reflection_details": "",
+    "created_at": "2026-09-18T07:48:25.637Z"
+  },
+  {
+    "id": "64399b2e-8927-439a-8f32-7af107da4419",
+    "session_id": "session-1789717820847",
+    "deviation_reason": "その他",
+    "reflection_details": "",
+    "created_at": "2026-09-18T07:50:50.107Z"
+  },
+  {
+    "id": "183a1e17-be85-45ce-a054-3ec900df7559",
+    "session_id": "session-1789717936708",
+    "deviation_reason": "その他",
+    "reflection_details": "test",
+    "created_at": "2026-09-18T07:52:38.243Z"
+  },
+  {
+    "id": "40d26da0-c0c5-4f0f-89f0-47d04b5f5b59",
+    "session_id": "session-1789718031306",
+    "deviation_reason": "その他",
+    "reflection_details": "",
+    "created_at": "2026-09-18T07:54:13.351Z"
+  },
+  {
+    "id": "de662ae6-3c5d-4d5c-85cb-06d7335ee36a",
+    "session_id": "session-1789914004217",
+    "deviation_reason": "予定が入った",
+    "reflection_details": "",
+    "created_at": "2026-09-20T14:20:46.748Z"
+  },
+  {
+    "id": "1a3256eb-1356-4da8-85b4-63833aa9a87f",
+    "session_id": "session-1789915179238",
+    "deviation_reason": "エラーが発生した",
+    "reflection_details": "",
+    "created_at": "2026-09-20T14:40:16.474Z"
+  },
+  {
+    "id": "60c98f79-565e-4180-a887-0bcb79febeaf",
+    "session_id": "session-1789916437005",
+    "deviation_reason": "予定が入った",
+    "reflection_details": "",
+    "created_at": "2026-09-20T15:01:04.102Z"
+  },
+  {
+    "id": "b6f8093f-30e2-4de4-ba5b-dad68f9a20d6",
+    "session_id": "session-1790008563166",
+    "deviation_reason": "エラーが発生した",
+    "reflection_details": "",
+    "created_at": "2026-09-21T16:36:27.918Z"
+  },
+  {
+    "id": "42688a18-14db-4330-aa0b-99bbfd10b797",
+    "session_id": "session-1790008640894",
+    "deviation_reason": "疲れていた",
+    "reflection_details": "",
+    "created_at": "2026-09-21T16:37:32.703Z"
+  },
+  {
+    "id": "ffd408c5-0512-453b-be16-d98933870ddf",
+    "session_id": "session-1790008785091",
+    "deviation_reason": "エラーが発生した",
+    "reflection_details": "",
+    "created_at": "2026-09-21T16:40:14.516Z"
+  },
+  {
+    "id": "1a22296a-9567-4c6a-904b-ca1bf1fbf5a9",
+    "session_id": "session-1790009366079",
+    "deviation_reason": "疲れていた",
+    "reflection_details": "",
+    "created_at": "2026-09-21T16:51:49.933Z"
+  },
+  {
+    "id": "eb5202a7-afdf-46a7-b294-0b7fcd7bdc2f",
+    "session_id": "session-1790011542778",
+    "deviation_reason": "エラーが発生した",
+    "reflection_details": "",
+    "created_at": "2026-09-21T17:28:08.972Z"
+  },
+  {
+    "id": "8d0d8270-ded8-4bb8-a0ee-1273799b46b4",
+    "session_id": "0fd8762b-bdea-4429-b7e1-831693cc040a",
+    "deviation_reason": "その他",
+    "reflection_details": "",
+    "created_at": "2026-09-21T18:11:25.411Z"
+  },
+  {
+    "id": "205bd43c-fe28-42fd-8106-7a499ce77e55",
+    "session_id": "3f5ef04c-435c-47b9-b6a7-593e08fd3a35",
+    "deviation_reason": "その他",
+    "reflection_details": "",
+    "created_at": "2026-09-21T18:43:57.316Z"
+  },
+  {
+    "id": "0c80a0ff-1aa8-4b05-8d62-e7864e58d5f0",
+    "session_id": "24ec6575-3003-42b8-b689-e4ecc2043ca7",
+    "deviation_reason": "エラーが発生した",
+    "reflection_details": "",
+    "created_at": "2026-09-21T18:47:35.665Z"
+  },
+  {
+    "id": "6600fd77-092e-4f00-ab45-07a16e280303",
+    "session_id": "5579c58f-d65f-4951-b194-5947a3954eb6",
+    "deviation_reason": "エラーが発生した",
+    "reflection_details": "",
+    "created_at": "2026-09-21T18:50:13.365Z"
+  },
+  {
+    "id": "dc2dd587-7c90-463e-b821-56dd3cde2ef3",
+    "session_id": "7aa02ec0-2b03-44fb-ac0b-fb34e74c1f54",
+    "deviation_reason": "別のことをしてしまった",
+    "reflection_details": "途中でスマホでゲーム、パソコンでyoutubeを見ていた。",
+    "created_at": "2026-09-22T18:34:27.249Z"
+  },
+  {
+    "id": "d10a4ff7-35c4-4b87-87c7-bdf1c4bad926",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "deviation_reason": "その他",
+    "reflection_details": "",
+    "created_at": "2026-09-27T12:55:18.720Z"
+  },
+  {
+    "id": "982d3a9c-ddfe-43a9-8512-fb3380bba3d5",
+    "session_id": "136d8907-2555-48aa-a56a-a922cf530406",
+    "deviation_reason": "疲れていた",
+    "reflection_details": "",
+    "created_at": "2026-09-28T15:34:12.814Z"
+  },
+  {
+    "id": "8f030679-90d8-4785-97c7-952d39644df9",
+    "session_id": "b11c0a31-bfcb-4a61-ad57-b679aeca3627",
+    "deviation_reason": "予定が入った",
+    "reflection_details": "",
+    "created_at": "2026-09-28T15:39:21.471Z"
+  },
+  {
+    "id": "380ff0a4-8a9e-4836-9429-2c8704af5dd8",
+    "session_id": "295754ce-a59b-4c2e-a684-480c2880a609",
+    "deviation_reason": "時間が足りなかった",
+    "reflection_details": "fads",
+    "created_at": "2026-10-01T13:07:07.632Z"
+  }
+]

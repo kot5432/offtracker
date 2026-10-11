@@ -1,0 +1,290 @@
+[
+  {
+    "id": "249e9507-7ae7-4c48-95a2-ed15a0df2d4a",
+    "session_id": "session-1789717469380",
+    "result_level": "not_completed",
+    "result_description": "テスト",
+    "what_wasnt_done": "テスト",
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-18T07:45:06.871Z"
+  },
+  {
+    "id": "29f3183e-481e-4d5e-b6e5-cca086b97d6a",
+    "session_id": "session-1789717469380",
+    "result_level": "not_completed",
+    "result_description": "テスト",
+    "what_wasnt_done": "テスト",
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-18T07:45:26.275Z"
+  },
+  {
+    "id": "ade91931-2730-4fcf-8bba-0fb0153772ef",
+    "session_id": "session-1789717677344",
+    "result_level": "not_completed",
+    "result_description": "test",
+    "what_wasnt_done": "test",
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-18T07:48:16.781Z"
+  },
+  {
+    "id": "dcd7348b-d72d-4304-b8af-f0ad14df5f13",
+    "session_id": "session-1789717820847",
+    "result_level": "not_completed",
+    "result_description": "test",
+    "what_wasnt_done": "test",
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-18T07:50:46.434Z"
+  },
+  {
+    "id": "18ac81da-e98b-4e35-abc0-8893a6f6da22",
+    "session_id": "session-1789717936708",
+    "result_level": "not_completed",
+    "result_description": "test",
+    "what_wasnt_done": "test",
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-18T07:52:34.147Z"
+  },
+  {
+    "id": "5ae5ca14-4545-41b8-805f-9cf6be114c35",
+    "session_id": "session-1789718031306",
+    "result_level": "not_completed",
+    "result_description": "test",
+    "what_wasnt_done": "test",
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-18T07:54:08.574Z"
+  },
+  {
+    "id": "6d0fe87b-2d6b-4759-814c-607228d0143a",
+    "session_id": "session-1789914004217",
+    "result_level": "not_completed",
+    "result_description": "iu",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-20T14:20:41.744Z"
+  },
+  {
+    "id": "7a7da755-f5a0-4bc1-9b4a-a23662078a8f",
+    "session_id": "session-1789915179238",
+    "result_level": "not_completed",
+    "result_description": "cxzv",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-20T14:40:09.357Z"
+  },
+  {
+    "id": "f3b0331e-7ec4-4fc6-b584-832a1cf2820e",
+    "session_id": "session-1789916437005",
+    "result_level": "not_completed",
+    "result_description": "dsa",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-20T15:01:00.302Z"
+  },
+  {
+    "id": "6468ca2f-e212-4a1f-a9cb-571d34f4ffe2",
+    "session_id": "session-1790008563166",
+    "result_level": "not_completed",
+    "result_description": "adfs",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-21T16:36:23.542Z"
+  },
+  {
+    "id": "5415f24b-7088-4c10-a730-479e1f0b09ba",
+    "session_id": "session-1790008640894",
+    "result_level": "not_completed",
+    "result_description": "dafs",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-21T16:37:28.756Z"
+  },
+  {
+    "id": "b8b0270e-e41f-4346-9af0-97d340f8247d",
+    "session_id": "session-1790008785091",
+    "result_level": "not_completed",
+    "result_description": "dfas",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-21T16:40:10.108Z"
+  },
+  {
+    "id": "c4f15fe1-5b49-45ed-8de2-123b25eac370",
+    "session_id": "session-1790009366079",
+    "result_level": "not_completed",
+    "result_description": "dfsa",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-21T16:51:45.638Z"
+  },
+  {
+    "id": "c25ea5d2-864b-4df7-9ea6-8f5ac63a89d5",
+    "session_id": "session-1790011542778",
+    "result_level": "not_completed",
+    "result_description": "dfas",
+    "what_wasnt_done": "fasd",
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-21T17:28:05.117Z"
+  },
+  {
+    "id": "aae35146-0552-4b9c-b38b-da78f18b82a0",
+    "session_id": "0fd8762b-bdea-4429-b7e1-831693cc040a",
+    "result_level": "not_completed",
+    "result_description": "fgd",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-21T18:11:22.217Z"
+  },
+  {
+    "id": "567286bc-391e-41ff-a9f2-3d3ca8eb9f9c",
+    "session_id": "3f5ef04c-435c-47b9-b6a7-593e08fd3a35",
+    "result_level": "minimal",
+    "result_description": "fa",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-21T18:43:53.434Z"
+  },
+  {
+    "id": "3d5e105f-b072-4041-a2b4-da5d23157134",
+    "session_id": "24ec6575-3003-42b8-b689-e4ecc2043ca7",
+    "result_level": "not_completed",
+    "result_description": "sfda",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-21T18:47:30.365Z"
+  },
+  {
+    "id": "181b7fab-7018-4713-ae9e-37e3d2faa077",
+    "session_id": "5579c58f-d65f-4951-b194-5947a3954eb6",
+    "result_level": "minimal",
+    "result_description": ":kp",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-21T18:50:07.636Z"
+  },
+  {
+    "id": "a0d8731d-f26b-45c4-9f37-781684a83bdf",
+    "session_id": "7aa02ec0-2b03-44fb-ac0b-fb34e74c1f54",
+    "result_level": "partially_completed",
+    "result_description": "aiを使って応募内容を考えた。",
+    "what_wasnt_done": "動画の内容",
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-22T18:34:04.556Z"
+  },
+  {
+    "id": "776a0c39-8b2a-4e80-8f25-cf0f9b243e2a",
+    "session_id": "31045b12-0c6b-43f7-8eb7-6105e416c594",
+    "result_level": "minimal",
+    "result_description": "だｓｆ",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-22T18:39:34.699Z"
+  },
+  {
+    "id": "4ba6e3da-6282-4f36-8bdf-cd71267f0aa2",
+    "session_id": "d30b0bea-2d5f-40e7-b240-ee87cc91e0eb",
+    "result_level": "partially_completed",
+    "result_description": "ある程度のisjの応募の台本ができた。",
+    "what_wasnt_done": "動画撮影",
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-27T12:54:14.793Z"
+  },
+  {
+    "id": "d4720c21-7e2c-4165-817b-241ee9131ceb",
+    "session_id": "136d8907-2555-48aa-a56a-a922cf530406",
+    "result_level": "partially_completed",
+    "result_description": "ｆだ",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-28T15:34:08.441Z"
+  },
+  {
+    "id": "d8e1c4db-753b-4a95-98ee-480ad0a38a4e",
+    "session_id": "b11c0a31-bfcb-4a61-ad57-b679aeca3627",
+    "result_level": "partially_completed",
+    "result_description": "ｆだｓ",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-28T15:39:06.124Z"
+  },
+  {
+    "id": "58b22f4c-c749-45f8-8293-17c6f65022de",
+    "session_id": "11da58b2-bd9e-4764-b067-079b5088dade",
+    "result_level": "minimal",
+    "result_description": "ｄさｆ",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-29T12:57:02.193Z"
+  },
+  {
+    "id": "d8468f01-4d0b-4532-914a-a7a1364d10bb",
+    "session_id": "83be09fe-371f-4f1c-8a63-57a1ebaa1e5a",
+    "result_level": "not_completed",
+    "result_description": "新しい",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-09-30T05:59:18.405Z"
+  },
+  {
+    "id": "e89c2cda-0ba6-4ab0-984f-2b0e8f3c76a5",
+    "session_id": "295754ce-a59b-4c2e-a684-480c2880a609",
+    "result_level": "mostly_completed",
+    "result_description": "fd",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-10-01T13:06:33.197Z"
+  },
+  {
+    "id": "55e80391-a28e-4a48-83f4-526c43fd70f6",
+    "session_id": "b9186322-9412-4dc1-a8d5-5366656123a4",
+    "result_level": "not_completed",
+    "result_description": "fdsa",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-10-01T13:20:48.666Z"
+  },
+  {
+    "id": "d593ae8c-53f3-4e10-af0a-7785c450861d",
+    "session_id": "4dd7440d-ecb0-4fae-926c-901902b51ac2",
+    "result_level": "minimal",
+    "result_description": "ログイン画面のUIを完成させた。",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-10-05T19:36:13.030Z"
+  },
+  {
+    "id": "321a0b7e-1e89-4e9e-bcd9-d4b704cd321d",
+    "session_id": "8d2d0686-7d37-4d46-9a34-2307ba65467b",
+    "result_level": "mostly_completed",
+    "result_description": "ｆｄさ",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-10-05T19:38:11.989Z"
+  },
+  {
+    "id": "383f58f6-5360-45c9-a5d5-5210df6b0be8",
+    "session_id": "afd27038-46cf-481e-9809-f442036a7326",
+    "result_level": "partially_completed",
+    "result_description": "afds",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-10-06T11:58:21.207Z"
+  },
+  {
+    "id": "2d5fe7b6-fde4-4ba5-8d33-3113b532fb4e",
+    "session_id": "0378d6b1-66f6-4808-9441-74c3b38478d1",
+    "result_level": "partially_completed",
+    "result_description": "sdfa",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-10-06T12:02:44.000Z"
+  },
+  {
+    "id": "ff509d06-0c8a-4152-93f2-88a02eeddd59",
+    "session_id": "ef2851c8-bfa2-4e6c-8dbe-7f8bed58d28e",
+    "result_level": "minimal",
+    "result_description": "/m,l",
+    "what_wasnt_done": null,
+    "actual_duration_minutes": 0,
+    "created_at": "2026-10-06T12:06:30.286Z"
+  }
+]
