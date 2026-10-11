@@ -206,13 +206,126 @@
     .purpose-display strong {
       color: #1e40af;
     }
+
+    .summary-section {
+      background-color: #f0f9ff;
+      border: 1px solid #3b82f6;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .summary-section h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #1e40af;
+    }
+
+    .summary-section p {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .hypothesis-card {
+      background-color: #fef3c7;
+      border: 1px solid #f59e0b;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .hypothesis-card h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #92400e;
+    }
+
+    .hypothesis-card p {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .hypothesis-card .evidence {
+      font-size: 13px;
+      color: #78350f;
+      margin-top: 8px;
+    }
+
+    .hypothesis-card .confidence {
+      font-size: 12px;
+      color: #92400e;
+      margin-top: 5px;
+      font-weight: 600;
+    }
+
+    .hypothesis-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .hypothesis-actions button {
+      padding: 6px 12px;
+      font-size: 13px;
+      border: 1px solid #d97706;
+      background-color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .hypothesis-actions button:hover {
+      background-color: #fef3c7;
+    }
+
+    .hypothesis-actions button.selected {
+      background-color: #f59e0b;
+      color: white;
+    }
+
+    .next-action-card {
+      background-color: #d1fae5;
+      border: 1px solid #10b981;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .next-action-card:hover {
+      background-color: #a7f3d0;
+    }
+
+    .next-action-card.selected {
+      background-color: #10b981;
+      color: white;
+    }
+
+    .next-action-card h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .next-action-card p {
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .next-action-card .reason {
+      font-size: 12px;
+      opacity: 0.8;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <h1>OffTracker - Reflection</h1>
-      <a href="result.html" class="back-link">← Resultに戻る</a>
+      <a href="timeline.html" class="back-link">← Timelineに戻る</a>
     </header>
 
     <div id="loading" class="loading">読み込み中...</div>
@@ -227,6 +340,22 @@
           <p><strong>目的</strong></p>
           <p id="purposeText"></p>
         </div>
+      </div>
+
+      <div class="section" id="summarySection" style="display: none;">
+        <h2 class="section-title">今回のセッションの要約</h2>
+        <div class="summary-section">
+          <h3>セッション概要</h3>
+          <p id="sessionSummary"></p>
+          <h3>目的とのアライメント</h3>
+          <p id="purposeAlignment"></p>
+        </div>
+      </div>
+
+      <div class="section" id="hypothesisSection" style="display: none;">
+        <h2 class="section-title">なぜそうなった可能性があるか</h2>
+        <p class="section-description">AIが観測された行動から仮説を提示しました。自分の状況に近いものを選んでください。</p>
+        <div id="hypothesesContainer"></div>
       </div>
 
       <div class="section">
@@ -281,6 +410,21 @@
         </div>
       </div>
 
+      <div class="section">
+        <h2 class="section-title">次回の行動</h2>
+        <p class="section-description">次回どうしたいか考えてみましょう</p>
+
+        <div id="nextActionSuggestions" style="display: none;">
+          <p class="section-description">以下の候補から選ぶか、自由に入力してください。</p>
+          <div id="nextActionContainer"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="nextAction">次回どうしたいか？（空欄OK）</label>
+          <textarea id="nextAction" placeholder="例: YouTubeを見ないようにしよう、調査時間を制限しよう" rows="3"></textarea>
+        </div>
+      </div>
+
       <div class="actions">
         <button id="completeBtn" class="btn btn-primary btn-large">完了 → パターンを見る</button>
         <button id="backBtn" class="btn btn-secondary">前に戻る</button>
@@ -291,6 +435,8 @@
   <script>
     // State
     let sessionData = null;
+    let sessionSummary = null;
+    let selectedHypothesis = null;
 
     // DOM Elements
     const loading = document.getElementById('loading');
@@ -298,20 +444,24 @@
     const reflectionContainer = document.getElementById('reflectionContainer');
     const purposeText = document.getElementById('purposeText');
     const reflectionDetails = document.getElementById('reflectionDetails');
+    const nextAction = document.getElementById('nextAction');
     const deviationReasonError = document.getElementById('deviationReasonError');
     const completeBtn = document.getElementById('completeBtn');
     const backBtn = document.getElementById('backBtn');
+    const summarySection = document.getElementById('summarySection');
+    const sessionSummaryText = document.getElementById('sessionSummary');
+    const purposeAlignmentText = document.getElementById('purposeAlignment');
+    const hypothesisSection = document.getElementById('hypothesisSection');
+    const hypothesesContainer = document.getElementById('hypothesesContainer');
+    const nextActionSuggestions = document.getElementById('nextActionSuggestions');
+    const nextActionContainer = document.getElementById('nextActionContainer');
 
     // Initialize
     function init() {
       loadSessionData();
       completeBtn.addEventListener('click', submitReflection);
       backBtn.addEventListener('click', () => {
-        // Store session data when going back to result
-        if (sessionData && sessionData.session) {
-          localStorage.setItem('resultSession', JSON.stringify(sessionData.session));
-        }
-        window.location.href = 'result.html';
+        window.location.href = 'timeline.html';
       });
     }
 
@@ -349,6 +499,9 @@
         // Display purpose
         purposeText.textContent = session.purpose;
 
+        // Load session summary
+        await loadSessionSummary(session.id);
+
         // Hide loading, show reflection
         loading.style.display = 'none';
         reflectionContainer.style.display = 'block';
@@ -360,6 +513,159 @@
       }
     }
 
+    // Load session summary
+    async function loadSessionSummary(sessionId) {
+      try {
+        const response = await fetch(`/api/session/analyze?session_id=${sessionId}`);
+        if (!response.ok) {
+          throw new Error('Failed to load session summary');
+        }
+
+        sessionSummary = await response.json();
+        console.log('Session summary loaded:', sessionSummary);
+
+        // Display summary
+        displaySummary(sessionSummary);
+
+        // Load hypotheses
+        await loadHypotheses(sessionId);
+      } catch (err) {
+        console.error('Error loading session summary:', err);
+        // Continue without summary
+      }
+    }
+
+    // Display summary
+    function displaySummary(summary) {
+      if (!summary) return;
+
+      summarySection.style.display = 'block';
+      sessionSummaryText.textContent = summary.summary || '要約がありません';
+
+      // Display purpose alignment
+      if (summary.purpose_alignment) {
+        const alignment = summary.purpose_alignment;
+        const alignmentText = [
+          `目的に関連: ${Math.floor(alignment.related_time / 60)}分`,
+          `関連する可能性: ${Math.floor(alignment.possibly_related_time / 60)}分`,
+          `不明: ${Math.floor(alignment.uncertain_time / 60)}分`,
+          `関連しない可能性: ${Math.floor(alignment.possibly_unrelated_time / 60)}分`
+        ].join('、');
+        purposeAlignmentText.textContent = alignmentText;
+      }
+    }
+
+    // Load hypotheses
+    async function loadHypotheses(sessionId) {
+      try {
+        const response = await fetch(`/api/session/hypotheses?session_id=${sessionId}`);
+        if (!response.ok) {
+          throw new Error('Failed to load hypotheses');
+        }
+
+        const data = await response.json();
+        console.log('Hypotheses loaded:', data);
+
+        // Display hypotheses
+        displayHypotheses(data.hypotheses || []);
+
+        // Load next action suggestions
+        await loadNextActionSuggestions(sessionId);
+      } catch (err) {
+        console.error('Error loading hypotheses:', err);
+        // Continue without hypotheses
+      }
+    }
+
+    // Display hypotheses
+    function displayHypotheses(hypotheses) {
+      if (!hypotheses || hypotheses.length === 0) {
+        hypothesisSection.style.display = 'none';
+        return;
+      }
+
+      hypothesisSection.style.display = 'block';
+      hypothesesContainer.innerHTML = '';
+
+      hypotheses.forEach(hypothesis => {
+        const card = document.createElement('div');
+        card.className = 'hypothesis-card';
+        card.innerHTML = `
+          <h4>仮説</h4>
+          <p>${hypothesis.description}</p>
+          <div class="evidence">根拠: ${hypothesis.evidence}</div>
+          <div class="confidence">信頼度: ${hypothesis.confidence}</div>
+          <div class="hypothesis-actions">
+            <button onclick="selectHypothesis('${hypothesis.id}', 'agree')">近い</button>
+            <button onclick="selectHypothesis('${hypothesis.id}', 'partial')">少し違う</button>
+            <button onclick="selectHypothesis('${hypothesis.id}', 'disagree')">違う</button>
+          </div>
+        `;
+        hypothesesContainer.appendChild(card);
+      });
+    }
+
+    // Select hypothesis
+    window.selectHypothesis = function(hypothesisId, feedback) {
+      selectedHypothesis = { id: hypothesisId, feedback };
+      console.log('Selected hypothesis:', selectedHypothesis);
+
+      // Update button styles
+      const buttons = document.querySelectorAll('.hypothesis-actions button');
+      buttons.forEach(btn => {
+        btn.classList.remove('selected');
+        if (btn.textContent === (feedback === 'agree' ? '近い' : feedback === 'partial' ? '少し違う' : '違う')) {
+          btn.classList.add('selected');
+        }
+      });
+    };
+
+    // Load next action suggestions
+    async function loadNextActionSuggestions(sessionId) {
+      try {
+        const response = await fetch(`/api/session/next-actions?session_id=${sessionId}`);
+        if (!response.ok) {
+          throw new Error('Failed to load next action suggestions');
+        }
+
+        const data = await response.json();
+        console.log('Next action suggestions loaded:', data);
+
+        // Display next action suggestions
+        displayNextActionSuggestions(data.suggestions || []);
+      } catch (err) {
+        console.error('Error loading next action suggestions:', err);
+        // Continue without suggestions
+      }
+    }
+
+    // Display next action suggestions
+    function displayNextActionSuggestions(suggestions) {
+      if (!suggestions || suggestions.length === 0) {
+        nextActionSuggestions.style.display = 'none';
+        return;
+      }
+
+      nextActionSuggestions.style.display = 'block';
+      nextActionContainer.innerHTML = '';
+
+      suggestions.forEach((suggestion, index) => {
+        const card = document.createElement('div');
+        card.className = 'next-action-card';
+        card.innerHTML = `
+          <h4>${suggestion.action}</h4>
+          <p class="reason">理由: ${suggestion.reason}</p>
+        `;
+        card.onclick = () => {
+          nextAction.value = suggestion.action;
+          // Update card styles
+          document.querySelectorAll('.next-action-card').forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+        };
+        nextActionContainer.appendChild(card);
+      });
+    }
+
     // Submit reflection
     async function submitReflection() {
       // Get selected reasons
@@ -367,6 +673,7 @@
         .map(checkbox => checkbox.value);
 
       const reflectionDetailsValue = reflectionDetails.value.trim();
+      const nextActionValue = nextAction.value.trim();
 
       // Validation
       if (selectedReasons.length === 0) {
@@ -386,7 +693,10 @@
           body: JSON.stringify({
             session_id: sessionData.session.id,
             deviation_reason: selectedReasons.join(','),
-            reflection_details: reflectionDetailsValue
+            reflection_details: reflectionDetailsValue,
+            next_action: nextActionValue,
+            selected_hypothesis: selectedHypothesis,
+            session_summary: sessionSummary
           })
         });
 

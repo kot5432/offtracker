@@ -313,41 +313,10 @@
       </div>
 
       <div class="section">
-        <h2 class="section-title">結果</h2>
-
-        <div class="form-group">
-          <label>達成度を選択してください</label>
-          <div class="radio-group">
-            <label class="radio-option">
-              <input type="radio" name="resultLevel" value="completed">
-              完了
-            </label>
-            <label class="radio-option">
-              <input type="radio" name="resultLevel" value="mostly_completed">
-              ほぼ完了
-            </label>
-            <label class="radio-option">
-              <input type="radio" name="resultLevel" value="partially_completed">
-              一部完了
-            </label>
-            <label class="radio-option">
-              <input type="radio" name="resultLevel" value="minimal">
-              最小限
-            </label>
-            <label class="radio-option">
-              <input type="radio" name="resultLevel" value="not_completed">
-              未完了
-            </label>
-          </div>
-          <div id="resultLevelError" class="error"></div>
-        </div>
-      </div>
-
-      <div class="section">
         <h2 class="section-title">達成度</h2>
+        <p class="section-description">目的に対してどの程度達成できたかを選択してください</p>
 
         <div class="form-group">
-          <label>達成度を選択してください</label>
           <div class="radio-group">
             <label class="radio-option">
               <input type="radio" name="resultLevel" value="completed">
@@ -394,8 +363,8 @@
       </div>
 
       <div class="actions">
-        <button id="reflectBtn" class="btn btn-primary btn-large">次へ → 振り返りを入力</button>
-        <button id="backBtn" class="btn btn-secondary">Timelineに戻る</button>
+        <button id="timelineBtn" class="btn btn-primary btn-large">次へ → Timelineを見る</button>
+        <button id="backBtn" class="btn btn-secondary">Homeに戻る</button>
       </div>
     </div>
   </div>
@@ -415,15 +384,15 @@
     const whatWasntDone = document.getElementById('whatWasntDone');
     const resultLevelError = document.getElementById('resultLevelError');
     const whatWasDoneError = document.getElementById('whatWasDoneError');
-    const reflectBtn = document.getElementById('reflectBtn');
+    const timelineBtn = document.getElementById('timelineBtn');
     const backBtn = document.getElementById('backBtn');
 
     // Initialize
     function init() {
       loadSessionData();
-      reflectBtn.addEventListener('click', submitResult);
+      timelineBtn.addEventListener('click', submitResult);
       backBtn.addEventListener('click', () => {
-        window.location.href = 'timeline.html';
+        window.location.href = 'home.html';
       });
     }
 
@@ -559,8 +528,8 @@
         localStorage.setItem('resultSession', JSON.stringify(sessionData.session));
         console.log('Stored session, checking:', localStorage.getItem('resultSession'));
 
-        // Navigate to reflection
-        window.location.href = 'reflection.html';
+        // Navigate to timeline with session_id
+        window.location.href = `timeline.html?session_id=${sessionData.session.id}`;
       } catch (err) {
         console.error('Error submitting result:', err);
         alert('結果の保存に失敗しました');
