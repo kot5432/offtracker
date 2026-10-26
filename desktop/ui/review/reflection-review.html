@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OffTracker - 振り返り画面レビュー</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 28px 16px; background: #f4f6f8; color: #1f2937; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; }
+    main { max-width: 900px; margin: 0 auto; }
+    header, section { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 22px; margin-bottom: 16px; }
+    h1 { margin: 0 0 8px; font-size: 24px; }
+    h2 { margin: 0 0 14px; font-size: 18px; }
+    h3 { margin: 0 0 7px; font-size: 14px; color: #475569; }
+    p { margin: 0 0 10px; }
+    .mock-notice { border: 1px solid #f6c453; border-radius: 8px; background: #fff8e6; color: #704d00; padding: 12px 14px; margin-top: 14px; font-weight: 600; }
+    .switcher { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    button { border: 1px solid #94a3b8; border-radius: 8px; padding: 10px 16px; background: white; color: #1f2937; font: inherit; cursor: pointer; }
+    button[aria-pressed="true"] { background: #1d4ed8; border-color: #1d4ed8; color: white; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .card { border: 1px solid #e2e8f0; border-radius: 9px; padding: 15px; min-width: 0; }
+    .wide { grid-column: 1 / -1; }
+    .value { white-space: pre-wrap; overflow-wrap: anywhere; }
+    .focus { border: 2px solid #2563eb; background: #eff6ff; padding: 18px; }
+    .focus-label { display: inline-block; margin-bottom: 8px; padding: 3px 9px; border-radius: 999px; background: #dbeafe; color: #1e40af; font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .focus h2 { color: #1e40af; margin-bottom: 8px; }
+    .focus p { font-size: 18px; font-weight: 600; }
+    .note { margin-top: 12px; color: #64748b; font-size: 13px; }
+    .questions { margin: 0; padding-left: 22px; }
+    .questions li { margin: 7px 0; }
+    @media (max-width: 620px) { .grid { grid-template-columns: 1fr; } .wide { grid-column: auto; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>今回のセッションを振り返る</h1>
+      <div class="mock-notice">画面イメージ（架空データ）</div>
+      <div class="switcher" role="group" aria-label="架空のセッションを選択">
+        <button type="button" data-case="leisure" aria-pressed="true">時間を決めた娯楽</button>
+        <button type="button" data-case="shift" aria-pressed="false">途中で別の行動へ移った例</button>
+        <button type="button" data-case="aligned" aria-pressed="false">目的に沿って進めた例</button>
+        <button type="button" data-case="uncertain" aria-pressed="false">記録だけでは判断できない例</button>
+      </div>
+    </header>
+
+    <section class="focus" aria-live="polite">
+      <span class="focus-label">ここを見てください</span>
+      <h2>今回の注目点</h2>
+      <p class="value" id="focusPoint"></p>
+    </section>
+
+    <section aria-live="polite">
+      <div class="grid">
+        <article class="card">
+          <h3>目的</h3>
+          <p class="value" id="purpose"></p>
+        </article>
+        <article class="card">
+          <h3>結果</h3>
+          <p class="value" id="result"></p>
+        </article>
+        <article class="card wide">
+          <h3>行動の流れ</h3>
+          <p class="value" id="flow"></p>
+        </article>
+        <article class="card wide">
+          <h3>目的との関係（本人が選んだ例）</h3>
+          <p class="value" id="relation"></p>
+        </article>
+        <article class="card">
+          <h3>本人の振り返り例（架空）</h3>
+          <p class="value" id="reflection"></p>
+        </article>
+        <article class="card">
+          <h3>記録について</h3>
+          <p class="value">アプリの表示記録から、見ていた内容や気持ちは分かりません。</p>
+        </article>
+        <article class="card wide">
+          <h3>考える手がかり</h3>
+          <p class="value" id="question"></p>
+        </article>
+      </div>
+      <p class="note">記録と分類を見て、どう感じるかを聞かせてください。</p>
+    </section>
+
+    <section>
+      <h2>初めて見る人への確認</h2>
+      <ol class="questions">
+        <li>今回の目的と結果は分かりましたか。</li>
+        <li>どの表示が記録で、どれが結果や気づきだと思いましたか。</li>
+        <li>行動の流れを見て、どんな気づきや疑問が浮かびましたか。</li>
+        <li>目的との関係の表示に、納得しにくい部分はありましたか。</li>
+        <li>入力や表示で、不要・分かりにくいと感じたものはありますか。</li>
+      </ol>
+    </section>
+  </main>
+  <script>
+    const examples = {
+      leisure: {
+        purpose: '動画を楽しむ時間を1時間にする',
+        result: '1時間以内で楽しめた',
+        flow: '動画サービス 32分 → Web閲覧 6分 → 動画サービス 18分（合計56分）',
+        relation: '目的に関連 50分 ／ 判断材料が不足 6分',
+        reflection: '動画サービスは50分、セッション全体は56分。決めた時間の範囲で楽しめた。',
+        focusPoint: '目標の60分に対し、セッションは56分。内訳は動画サービス50分、Web閲覧6分でした。',
+        focusLabel: '目標時間と実際の使い方',
+        question: 'Web閲覧も含めた56分の使い方は、自分が決めた「動画を楽しむ1時間」に合っていましたか？'
+      },
+      shift: {
+        purpose: 'レポートの下書きを進める',
+        result: '一部、目的に沿って過ごせた',
+        flow: '文書作成 20分 → Web閲覧 12分 → 動画サービス 10分 → 文書作成 18分（合計60分）',
+        relation: '目的に関連 38分 ／ 判断材料が不足 12分 ／ 関係していなかった 10分',
+        reflection: '動画を見た後、文書作成に戻っていた。',
+        focusPoint: '文書作成の後に動画サービス10分が記録され、その後文書作成に戻っています。本人は動画を「関係していなかった」と選びました。',
+        focusLabel: '行動が切り替わった場面',
+        question: '動画に移る前後に何があったか、また文書作成に戻れたきっかけは何か、思い当たりますか？'
+      },
+      aligned: {
+        purpose: '数学の課題を4問解く',
+        result: '目的に沿って過ごせた',
+        flow: '課題 10分 → 解き方を調べる 4分 → 課題 25分（合計39分）',
+        relation: '目的に関連 39分（本人が確認）',
+        reflection: '調べた後に課題へ戻り、4問を終えられた。',
+        focusPoint: '課題に取り組み、解き方を調べた後、課題に戻る流れが記録されています。記録だけでは、この順序が進めやすさにつながったかまでは分かりません。',
+        focusLabel: '目的に沿って進んだ流れ',
+        question: 'この流れの中で、やりやすかったことや役立った行動はありましたか？'
+      },
+      uncertain: {
+        purpose: 'test',
+        result: '目的に沿って過ごせた',
+        flow: '短いWeb閲覧とアプリ切替のみ（行動のまとまりを特定できず）',
+        relation: '判断材料が不足（短い記録のみ）',
+        reflection: 'PCの記録だけでは、実際に何をしていたか分からなかった。',
+        focusPoint: '目的文と短いアプリ記録だけでは、行動の内容や目的との関係を判断できません。',
+        focusLabel: '記録から分かる範囲',
+        question: '無理に理由を決めず、覚えている範囲で実際にしていたことを補足しますか？'
+      }
+    };
+    const fields = ['purpose', 'result', 'flow', 'relation', 'reflection', 'question'];
+    function showExample(key) {
+      const item = examples[key];
+      fields.forEach(field => { document.getElementById(field).textContent = item[field]; });
+      document.getElementById('focusPoint').textContent = item.focusPoint;
+      document.querySelector('.focus-label').textContent = item.focusLabel;
+      document.querySelectorAll('[data-case]').forEach(button => {
+        button.setAttribute('aria-pressed', String(button.dataset.case === key));
+      });
+    }
+    document.querySelectorAll('[data-case]').forEach(button => {
+      button.addEventListener('click', () => showExample(button.dataset.case));
+    });
+    showExample('leisure');
+  </script>
+</body>
+</html>

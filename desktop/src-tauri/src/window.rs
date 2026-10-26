@@ -7,6 +7,7 @@ use windows::Win32::System::Threading::{OpenProcess, PROCESS_QUERY_INFORMATION, 
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct WindowInfo {
+    #[serde(skip_serializing)]
     pub title: String,
     pub process_name: String,
     pub process_id: u32,
@@ -16,7 +17,7 @@ pub struct WindowInfo {
 pub fn get_active_window() -> Option<WindowInfo> {
     unsafe {
         let hwnd = GetForegroundWindow();
-        if hwnd.0 == 0 {
+        if hwnd.0.is_null() {
             return None;
         }
 
@@ -30,14 +31,17 @@ pub fn get_active_window() -> Option<WindowInfo> {
         GetWindowThreadProcessId(hwnd, Some(&mut process_id as *mut u32));
 
         // Open process to get executable name
-        let process_handle = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, false, process_id);
-        if process_handle.is_invalid() {
+        let Ok(process_handle) = OpenProcess(
+            PROCESS_QUERY_INFORMATION | PROCESS_VM_READ,
+            false,
+            process_id,
+        ) else {
             return Some(WindowInfo {
                 title,
                 process_name: "Unknown".to_string(),
                 process_id,
             });
-        }
+        };
 
         // Get process name
         let mut name_buffer = [0u16; 260];

@@ -67,6 +67,24 @@
       padding-bottom: 10px;
     }
 
+    .session-story {
+      margin: -4px 0 22px;
+      padding: 16px 18px;
+      border-left: 4px solid #6366f1;
+      border-radius: 6px;
+      background: #eef2ff;
+      color: #312e81;
+    }
+
+    .session-story h3 {
+      margin-bottom: 5px;
+      font-size: 15px;
+    }
+
+    .session-story p {
+      line-height: 1.7;
+    }
+
     .timeline {
       position: relative;
       padding: 50px 20px 20px 20px;
@@ -185,6 +203,13 @@
       background-color: #ef4444;
     }
 
+    .timeline-event.activity-programming { background-color: #2563eb; }
+    .timeline-event.activity-writing { background-color: #16a34a; }
+    .timeline-event.activity-reading { background-color: #0d9488; }
+    .timeline-event.activity-research { background-color: #7c3aed; }
+    .timeline-event.activity-communication { background-color: #d97706; }
+    .timeline-event.activity-other { background-color: #6b7280; }
+
     .timeline-bar-duration {
       margin-left: auto;
       font-size: 12px;
@@ -222,6 +247,13 @@
       font-size: 24px;
       font-weight: 600;
       color: #1a1a1a;
+    }
+
+    .summary-note {
+      margin-top: 12px;
+      color: #666;
+      font-size: 12px;
+      line-height: 1.6;
     }
 
     .filters {
@@ -394,20 +426,33 @@
       background-color: #ef4444;
     }
 
+    .legend-color.activity-programming { background-color: #2563eb; }
+    .legend-color.activity-writing { background-color: #16a34a; }
+    .legend-color.activity-reading { background-color: #0d9488; }
+    .legend-color.activity-research { background-color: #7c3aed; }
+    .legend-color.activity-communication { background-color: #d97706; }
+    .legend-color.activity-other { background-color: #6b7280; }
+
     .legend-description {
       margin-top: 10px;
       font-size: 12px;
       color: #666;
       line-height: 1.4;
     }
+
+    .flow-steps { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 18px; padding: 0; list-style: none; }
+    .flow-steps li { padding: 5px 9px; border-radius: 999px; background: #eef2f7; color: #475569; font-size: 12px; }
+    .flow-steps li[aria-current="step"] { background: #dbeafe; color: #1e40af; font-weight: 700; }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <h1>OffTracker - Timeline</h1>
-      <a href="home.html" class="back-link">← Homeに戻る</a>
     </header>
+    <ol class="flow-steps" aria-label="今回の流れ">
+      <li>1 目的を決める</li><li>2 結果を選ぶ</li><li aria-current="step">3 行動記録を確認</li><li>4 振り返る</li>
+    </ol>
 
     <div id="sessionInfo" class="session-info" style="display: none;">
       <p><strong>目的:</strong> <span id="sessionPurpose"></span></p>
@@ -421,7 +466,12 @@
     </div>
 
     <div class="section">
-      <h2 class="section-title">今回のセッションの行動</h2>
+      <h2 class="section-title">このセッションで記録された行動</h2>
+
+      <div class="session-story" id="sessionStory" style="display: none;" aria-live="polite">
+        <h3>行動の流れ</h3>
+        <p id="sessionStoryText"></p>
+      </div>
 
       <div id="loading" class="loading">読み込み中...</div>
       <div id="error" class="error" style="display: none;"></div>
@@ -456,7 +506,7 @@
           <span>関連しない</span>
         </div>
         <div class="legend-description">
-          ※ 目的キーワードに基づいて自動判定されます（例: プログラミング → VS Codeは目的に関連、YouTubeは関連しない）
+          Activityの種類・登録された目的・サービス名に基づく暫定判定です。アプリだけで無関係とは決めません。
         </div>
       </div>
 
@@ -474,44 +524,18 @@
             <div class="summary-label">不明</div>
             <div class="summary-value" id="uncertainDuration">0分</div>
           </div>
-        </div>
-        <div class="summary-row">
           <div class="summary-item">
-            <div class="summary-label">関連しない可能性</div>
-            <div class="summary-value" id="possiblyUnrelatedDuration">0分</div>
+            <div class="summary-label">目的から外れた可能性</div>
+            <div class="summary-value" id="deviationDuration">0秒</div>
           </div>
           <div class="summary-item">
-            <div class="summary-label">関連しない</div>
-            <div class="summary-value" id="unrelatedDuration">0分</div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-label">合計</div>
+            <div class="summary-label">記録時間</div>
             <div class="summary-value" id="totalDuration">0分</div>
           </div>
         </div>
-      </div>
-
-      <div class="filters" style="display: none;" id="filtersContainer">
-        <label class="filter-checkbox">
-          <input type="checkbox" id="filterRelated" checked>
-          目的に関連
-        </label>
-        <label class="filter-checkbox">
-          <input type="checkbox" id="filterPossiblyRelated" checked>
-          関連する可能性
-        </label>
-        <label class="filter-checkbox">
-          <input type="checkbox" id="filterUncertain" checked>
-          不明
-        </label>
-        <label class="filter-checkbox">
-          <input type="checkbox" id="filterPossiblyUnrelated" checked>
-          関連しない可能性
-        </label>
-        <label class="filter-checkbox">
-          <input type="checkbox" id="filterUnrelated" checked>
-          関連しない
-        </label>
+        <p class="summary-note">
+          「関連しない可能性」と「関連しない」は「目的から外れた可能性」にまとめています。判断材料が足りないActivityは「不明」に集計します。
+        </p>
       </div>
 
       <div class="insight" style="display: none;" id="insight">
@@ -520,58 +544,15 @@
       </div>
 
       <div class="actions">
-        <button id="reflectBtn" class="btn btn-primary">次へ → 振り返りを入力</button>
-        <button id="backBtn" class="btn btn-secondary">Homeに戻る</button>
+        <button id="reflectBtn" class="btn btn-primary">この記録を振り返る</button>
       </div>
     </div>
   </div>
 
   <script>
-    // Purpose keyword map for classification
-    const purposeKeywords = {
-      'プログラミング': {
-        onTrack: ['VS Code', 'GitHub', 'Stack Overflow', 'Git'],
-        deviation: ['YouTube', 'X', 'Reddit', 'Discord'],
-        research: ['Google', 'Google Search']
-      },
-      '勉強': {
-        onTrack: ['PDF Viewer', 'Word', 'Excel', 'PowerPoint'],
-        deviation: ['YouTube', 'X', 'Reddit', 'Discord'],
-        research: ['Google', 'Google Scholar']
-      },
-      '調査': {
-        onTrack: ['Google', 'Google Scholar', 'Stack Overflow'],
-        deviation: ['YouTube', 'X', 'Reddit', 'Discord'],
-        research: ['Google', 'Google Scholar']
-      },
-      '開発': {
-        onTrack: ['VS Code', 'GitHub', 'Git'],
-        deviation: ['YouTube', 'X', 'Reddit', 'Discord'],
-        research: ['Google', 'Stack Overflow']
-      },
-      'レポート': {
-        onTrack: ['Word', 'Excel', 'PowerPoint'],
-        deviation: ['YouTube', 'X', 'Reddit', 'Discord'],
-        research: ['Google', 'Google Search']
-      },
-      'isj応募': {
-        onTrack: ['VS Code', 'Word', 'PDF Viewer'],
-        deviation: ['YouTube', 'X', 'Reddit', 'Discord'],
-        research: ['Google', 'Google Search']
-      }
-    };
-
-    // Default classification for unknown purposes
-    const defaultClassification = {
-      onTrack: ['VS Code', 'Word', 'Excel', 'PowerPoint', 'PDF Viewer'],
-      deviation: ['YouTube', 'X', 'Reddit', 'Discord'],
-      research: ['Google', 'Stack Overflow', 'Google Search']
-    };
-
     // State
     let sessionData = null;
     let events = [];
-    let currentPurposeKeywords = null;
 
     // DOM Elements
     const loading = document.getElementById('loading');
@@ -584,38 +565,28 @@
     const sessionEnd = document.getElementById('sessionEnd');
     const insight = document.getElementById('insight');
     const insightText = document.getElementById('insightText');
+    const sessionStory = document.getElementById('sessionStory');
+    const sessionStoryText = document.getElementById('sessionStoryText');
     const totalDuration = document.getElementById('totalDuration');
-    const relatedDuration = document.getElementById('relatedDuration');
-    const possiblyRelatedDuration = document.getElementById('possiblyRelatedDuration');
-    const uncertainDuration = document.getElementById('uncertainDuration');
-    const possiblyUnrelatedDuration = document.getElementById('possiblyUnrelatedDuration');
-    const unrelatedDuration = document.getElementById('unrelatedDuration');
+    const deviationDurationElements = {
+      related: document.getElementById('relatedDuration'),
+      possibly_related: document.getElementById('possiblyRelatedDuration'),
+      uncertain: document.getElementById('uncertainDuration'),
+      deviation: document.getElementById('deviationDuration')
+    };
     const switchCount = document.getElementById('switchCount');
     const longestApp = document.getElementById('longestApp');
     const onTrackDuration = document.getElementById('onTrackDuration');
-    const deviationDuration = document.getElementById('deviationDuration');
     const focusRatio = document.getElementById('focusRatio');
     const timelineAxis = document.getElementById('timelineAxis');
-    const filterRelated = document.getElementById('filterRelated');
-    const filterPossiblyRelated = document.getElementById('filterPossiblyRelated');
-    const filterUncertain = document.getElementById('filterUncertain');
-    const filterPossiblyUnrelated = document.getElementById('filterPossiblyUnrelated');
-    const filterUnrelated = document.getElementById('filterUnrelated');
     const recordResultBtn = document.getElementById('recordResultBtn');
     const stopBtn = document.getElementById('stopBtn');
-    const backBtn = document.getElementById('backBtn');
     const loadMockDataBtn = document.getElementById('loadMockDataBtn');
     const reflectionQuestions = document.getElementById('reflectionQuestions');
 
     // Initialize
     function init() {
       loadSessionData();
-      filterRelated.addEventListener('change', renderTimeline);
-      filterPossiblyRelated.addEventListener('change', renderTimeline);
-      filterUncertain.addEventListener('change', renderTimeline);
-      filterPossiblyUnrelated.addEventListener('change', renderTimeline);
-      filterUnrelated.addEventListener('change', renderTimeline);
-
       // Load mock data button
       if (loadMockDataBtn) {
         loadMockDataBtn.addEventListener('click', loadMockData);
@@ -624,16 +595,15 @@
       const reflectBtn = document.getElementById('reflectBtn');
       if (reflectBtn) {
         reflectBtn.addEventListener('click', () => {
-          window.location.href = 'reflection.html';
+          const sessionId = sessionData?.session?.id;
+          if (!sessionId) return;
+          window.location.href = `reflection.html?session_id=${encodeURIComponent(sessionId)}`;
         });
       }
 
-      backBtn.addEventListener('click', () => {
-        window.location.href = 'home.html';
-      });
     }
 
-    // Load session and events from API
+    // Load session and events from Tauri
     async function loadSessionData() {
       try {
         // Get session_id from URL parameter
@@ -649,6 +619,10 @@
 
         if (urlSessionId) {
           sessionId = urlSessionId;
+          const sessionDetails = await window.__TAURI__.core.invoke('get_session', {
+            sessionId: sessionId
+          });
+          session = sessionDetails ? sessionDetails.session : null;
           console.log('[Timeline] Using URL session_id:', sessionId);
         } else if (storedSession) {
           session = JSON.parse(storedSession);
@@ -656,25 +630,34 @@
           localStorage.removeItem('resultSession'); // Clear after use
           console.log('[Timeline] Using stored session_id:', sessionId);
         } else {
-          // Try to get current session from API
-          const sessionResponse = await fetch('/api/session/current');
-          if (sessionResponse.ok) {
-            session = await sessionResponse.json();
+          // Try to get current session from Tauri
+          const currentSession = await window.__TAURI__.core.invoke('get_current_session');
+          if (currentSession) {
+            session = currentSession;
             sessionId = session.id;
             console.log('[Timeline] Using current session_id:', sessionId);
           }
         }
 
-        // Get events for the specific session
+        // Get events and derive grouped activities for the specific session
         let eventsData = [];
+        let activitiesData = [];
         if (sessionId) {
           console.log('[Timeline] Fetching events for session:', sessionId);
-          const eventsResponse = await fetch(`/api/session/events?session_id=${sessionId}`);
-          if (eventsResponse.ok) {
-            eventsData = await eventsResponse.json();
+          try {
+            eventsData = await window.__TAURI__.core.invoke('get_events_for_session', {
+              sessionId: sessionId
+            });
             console.log('[Timeline] Received events:', eventsData.length);
-          } else {
-            console.error('[Timeline] Failed to fetch events:', eventsResponse.status);
+            const story = await window.__TAURI__.core.invoke('analyze_session_story', {
+              sessionId: sessionId
+            });
+            activitiesData = story.activities || [];
+            console.log('[Timeline] Classified activities:', activitiesData.length);
+            sessionStoryText.textContent = story.summary;
+            sessionStory.style.display = 'block';
+          } catch (err) {
+            console.error('[Timeline] Failed to fetch events:', err);
             error.style.display = 'block';
             error.textContent = 'イベントの取得に失敗しました';
             loading.style.display = 'none';
@@ -682,17 +665,13 @@
           }
         }
 
-        // If no session found, use all events
+        // If no session found, show error
         if (!session && !sessionId) {
-          console.log('[Timeline] No session found, loading all events');
-          const eventsResponse = await fetch('/api/events');
-          eventsData = await eventsResponse.json();
-          session = {
-            id: 'no-session',
-            purpose: '記録されたイベント',
-            start_time: new Date().toISOString(),
-            end_time: new Date().toISOString()
-          };
+          console.log('[Timeline] No session found');
+          error.style.display = 'block';
+          error.innerHTML = 'セッションデータが見つかりません。<br><a href="home.html" style="color: #3b82f6;">Home画面から新しいセッションを開始してください</a>';
+          loading.style.display = 'none';
+          return;
         }
 
         sessionData = {
@@ -702,9 +681,10 @@
             start_time: session ? session.start_time : new Date().toISOString(),
             end_time: session ? session.end_time : new Date().toISOString()
           },
-          events: eventsData
+          events: eventsData,
+          activities: activitiesData
         };
-        events = eventsData;
+        events = activitiesData;
 
         console.log('[Timeline] Session data loaded:', sessionData);
 
@@ -722,7 +702,6 @@
         timelineContainer.style.display = 'block';
         legendContainer.style.display = 'block';
         summaryContainer.style.display = 'block';
-        filtersContainer.style.display = 'block';
 
         // Update timeline session info
         if (session && session.purpose) {
@@ -742,42 +721,7 @@
 
     // Render timeline
     function renderTimeline() {
-      // Extract purpose keywords from session purpose
-      if (sessionData && sessionData.session && sessionData.session.purpose) {
-        extractPurposeKeywords(sessionData.session.purpose);
-      }
-
-      // Filter activities (events are now activities)
-      const filteredEvents = events.filter(event => {
-        // For activities, filter by purpose_relation
-        if (event.purpose_relation) {
-          switch (event.purpose_relation) {
-            case 'related':
-              return filterRelated.checked;
-            case 'possibly_related':
-              return filterPossiblyRelated.checked;
-            case 'uncertain':
-              return filterUncertain.checked;
-            case 'possibly_unrelated':
-              return filterPossiblyUnrelated.checked;
-            case 'unrelated':
-              return filterUnrelated.checked;
-            default:
-              return true;
-          }
-        }
-        // For backward compatibility with legacy events
-        if (event.type) {
-          // Activity without purpose_relation - show all
-          return true;
-        } else {
-          // Legacy event - keep original filtering
-          if (event.source === 'native' && !filterRelated.checked) return false;
-          if (event.source === 'browser' && !filterPossiblyRelated.checked) return false;
-          if (event.source === 'idle' && !filterUncertain.checked) return false;
-          return true;
-        }
-      });
+      const filteredEvents = events;
 
       // Render gantt chart
       renderGanttChart(filteredEvents);
@@ -796,95 +740,27 @@
         return;
       }
 
-      // For activities, filtering is already done in ActivityGenerator
-      // For legacy events, filter short events
-      const MIN_DURATION_SECONDS = 180; // 3 minutes
-      const significantEvents = filteredEvents.filter(event => {
-        // Activities are already filtered by ActivityGenerator
-        if (event.type) {
-          return true;
-        }
-        // Legacy events need filtering
-        return event.duration_seconds >= MIN_DURATION_SECONDS;
-      });
+      const timelineEvents = filteredEvents;
 
-      if (significantEvents.length === 0) {
-        timeline.innerHTML = '<div style="text-align: center; color: #666; padding: 40px;">主要なイベントがありません（3分以上のイベントのみ表示されます）</div>';
-        return;
-      }
-
-      // Calculate total duration
-      const startTime = new Date(significantEvents[0].start_time);
-      const endTime = new Date(significantEvents[significantEvents.length - 1].end_time);
+      // Keep every event visible, including short sessions and active events.
+      const startTimeMs = Math.min(...timelineEvents.map(event => new Date(event.start_time).getTime()));
+      const now = Date.now();
+      const endTimeMs = Math.max(...timelineEvents.map(event =>
+        event.end_time ? new Date(event.end_time).getTime() : now
+      ));
+      const startTime = new Date(startTimeMs);
+      const endTime = new Date(Math.max(startTimeMs + 1000, endTimeMs));
       const totalDuration = endTime - startTime;
 
       console.log('Gantt chart rendering:', {
-        totalEvents: significantEvents.length,
+        totalEvents: timelineEvents.length,
         startTime: startTime.toISOString(),
         endTime: endTime.toISOString(),
         totalDuration: totalDuration
       });
 
-      // Merge consecutive events for each application/service
-      // Activities are already merged by ActivityGenerator, so skip for activities
-      const isAllActivities = significantEvents.every(event => event.type);
-      let eventsToRender = significantEvents;
-
-      if (!isAllActivities) {
-        // Legacy events need merging
-        const mergedEvents = {};
-        significantEvents.forEach(event => {
-          const key = getAppLabel(event);
-          if (!mergedEvents[key]) {
-            mergedEvents[key] = [];
-          }
-          mergedEvents[key].push(event);
-        });
-
-        for (const [appLabel, appEvents] of Object.entries(mergedEvents)) {
-          if (appEvents.length === 0) {
-            continue;
-          }
-
-          // Sort events by start time
-          appEvents.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
-
-          const merged = [];
-          let currentEvent = { ...appEvents[0] };
-
-          for (let i = 1; i < appEvents.length; i++) {
-            const nextEvent = appEvents[i];
-            const currentEndTime = new Date(currentEvent.end_time);
-            const nextStartTime = new Date(nextEvent.start_time);
-
-            // Check if events are consecutive (gap less than 1 minute)
-            const gap = (nextStartTime - currentEndTime) / 1000;
-
-            if (gap < 60) {
-              // Merge events
-              currentEvent.end_time = nextEvent.end_time;
-              currentEvent.duration_seconds += nextEvent.duration_seconds;
-            } else {
-              // Add current event and start new
-              merged.push(currentEvent);
-              currentEvent = { ...nextEvent };
-            }
-          }
-
-          merged.push(currentEvent);
-          mergedEvents[appLabel] = merged;
-        }
-
-        // Convert merged events to a flat array and sort by start time
-        const flatEvents = [];
-        for (const [appLabel, appEvents] of Object.entries(mergedEvents)) {
-          appEvents.forEach(event => {
-            flatEvents.push(event);
-          });
-        }
-        flatEvents.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
-        eventsToRender = flatEvents;
-      }
+      // Keep recorded window transitions separate in the timeline.
+      const eventsToRender = timelineEvents;
 
       console.log('Events to render:', eventsToRender.length);
 
@@ -904,12 +780,15 @@
     // Create gantt event element
     function createGanttEvent(event, startTime, totalDuration, index) {
       const eventStart = new Date(event.start_time);
-      const eventEnd = new Date(event.end_time);
-      const eventDuration = eventEnd - eventStart;
+      const recordedEnd = event.end_time ? new Date(event.end_time) : null;
+      const eventEnd = recordedEnd && !Number.isNaN(recordedEnd.getTime())
+        ? recordedEnd
+        : new Date(eventStart.getTime() + Math.max(1, event.duration_seconds || 0) * 1000);
+      const eventDuration = Math.max(1000, eventEnd - eventStart);
 
       // Calculate position and width as percentages
       const leftPercent = ((eventStart - startTime) / totalDuration) * 100;
-      const widthPercent = (eventDuration / totalDuration) * 100;
+      const widthPercent = Math.max(1, (eventDuration / totalDuration) * 100);
 
       console.log('Gantt event:', {
         application: event.application,
@@ -926,8 +805,9 @@
       div.style.left = leftPercent + '%';
       div.style.width = widthPercent + '%';
       div.style.top = (index * 60 + 20) + 'px';
-      div.textContent = getAppLabel(event);
-      div.title = `${getAppLabel(event)} (${formatDuration(event.duration_seconds)})`;
+      div.textContent = event.label || getAppLabel(event);
+      const applications = Array.isArray(event.applications_used) ? event.applications_used.join(', ') : getAppLabel(event);
+      div.title = `${event.label || getAppLabel(event)}: ${applications} (${formatDuration(event.duration_seconds)})`;
 
       const duration = document.createElement('span');
       duration.className = 'timeline-bar-duration';
@@ -954,23 +834,7 @@
       timeline.insertBefore(axis, timeline.firstChild);
     }
 
-    // Extract purpose keywords from session purpose
-    function extractPurposeKeywords(purpose) {
-      currentPurposeKeywords = null;
-
-      // Find matching purpose keyword map
-      for (const [key, value] of Object.entries(purposeKeywords)) {
-        if (purpose.includes(key)) {
-          currentPurposeKeywords = value;
-          return;
-        }
-      }
-
-      // Use default classification if no match
-      currentPurposeKeywords = defaultClassification;
-    }
-
-    // Determine bar class based on deviation
+    // Color bars by the observed activity category. Purpose relevance is a later phase.
     function determineBarClass(event) {
       // For activities, use purpose_relation field first
       if (event.purpose_relation) {
@@ -993,14 +857,19 @@
       // For activities with type field but no purpose_relation (backward compatibility)
       if (event.type) {
         switch (event.type) {
+          case 'programming':
+          case 'writing':
+          case 'reading':
+          case 'research':
+          case 'communication':
+          case 'other':
+            return `activity-${event.type}`;
           case 'on_track':
           case 'work':
             return 'related';
           case 'deviation':
           case 'distraction_candidate':
             return 'unrelated';
-          case 'research':
-            return 'possibly-related';
           case 'idle':
             return 'uncertain';
           default:
@@ -1008,47 +877,12 @@
         }
       }
 
-      // For legacy events, use source field
-      if (event.source === 'idle') return 'uncertain';
-
-      // Use purpose keywords if available
-      if (currentPurposeKeywords) {
-        const appLabel = getAppLabel(event).toLowerCase();
-
-        // Check if it's a deviation
-        for (const deviationApp of currentPurposeKeywords.deviation) {
-          if (appLabel.includes(deviationApp.toLowerCase())) {
-            return 'unrelated';
-          }
-        }
-
-        // Check if it's research
-        for (const researchApp of currentPurposeKeywords.research) {
-          if (appLabel.includes(researchApp.toLowerCase())) {
-            return 'possibly-related';
-          }
-        }
-
-        // Check if it's on-track
-        for (const onTrackApp of currentPurposeKeywords.onTrack) {
-          if (appLabel.includes(onTrackApp.toLowerCase())) {
-            return 'related';
-          }
-        }
-      }
-
-      // Fallback to default classification
-      if (event.service === 'YouTube' || event.service === 'X' || event.service === 'Reddit') {
-        return 'unrelated';
-      }
-      if (event.application === 'VS Code' || event.application === 'Microsoft Word' || event.application === 'PDF Viewer') {
-        return 'related';
-      }
       return 'uncertain';
     }
 
     // Get app label
     function getAppLabel(event) {
+      if (event.label) return event.label;
       if (event.source === 'browser' && event.service) {
         return `${event.application}/${event.service}`;
       }
@@ -1056,100 +890,43 @@
     }
 
     // Update summary
-    function updateSummary(filteredEvents) {
-      // Calculate duration by purpose_relation
-      let relatedSeconds = 0;
-      let possiblyRelatedSeconds = 0;
-      let uncertainSeconds = 0;
-      let possiblyUnrelatedSeconds = 0;
-      let unrelatedSeconds = 0;
-
-      filteredEvents.forEach(event => {
-        const duration = event.duration_seconds || 0;
-        if (event.purpose_relation) {
-          switch (event.purpose_relation) {
-            case 'related':
-              relatedSeconds += duration;
-              break;
-            case 'possibly_related':
-              possiblyRelatedSeconds += duration;
-              break;
-            case 'uncertain':
-              uncertainSeconds += duration;
-              break;
-            case 'possibly_unrelated':
-              possiblyUnrelatedSeconds += duration;
-              break;
-            case 'unrelated':
-              unrelatedSeconds += duration;
-              break;
-          }
-        } else if (event.type) {
-          // Backward compatibility for activities without purpose_relation
-          switch (event.type) {
-            case 'on_track':
-            case 'work':
-              relatedSeconds += duration;
-              break;
-            case 'deviation':
-            case 'distraction_candidate':
-              unrelatedSeconds += duration;
-              break;
-            case 'research':
-              possiblyRelatedSeconds += duration;
-              break;
-            case 'idle':
-              uncertainSeconds += duration;
-              break;
-            default:
-              uncertainSeconds += duration;
-          }
+    function analyzeDeviation(activities) {
+      const totals = {
+        related: 0,
+        possibly_related: 0,
+        uncertain: 0,
+        deviation: 0
+      };
+      activities.forEach(activity => {
+        const relation = activity.purpose_relation || 'uncertain';
+        const duration = Math.max(0, activity.duration_seconds || 0);
+        if (relation === 'possibly_unrelated' || relation === 'unrelated') {
+          totals.deviation += duration;
+        } else if (Object.prototype.hasOwnProperty.call(totals, relation)) {
+          totals[relation] += duration;
         } else {
-          // Legacy events - classify based on source
-          if (event.source === 'idle') {
-            uncertainSeconds += duration;
-          } else {
-            uncertainSeconds += duration;
-          }
+          totals.uncertain += duration;
         }
       });
+      const totalSeconds = Object.values(totals).reduce((sum, duration) => sum + duration, 0);
+      return { totals, totalSeconds };
+    }
 
-      const totalSeconds = relatedSeconds + possiblyRelatedSeconds + uncertainSeconds + possiblyUnrelatedSeconds + unrelatedSeconds;
-
-      // Update display
-      relatedDuration.textContent = formatDuration(relatedSeconds);
-      possiblyRelatedDuration.textContent = formatDuration(possiblyRelatedSeconds);
-      uncertainDuration.textContent = formatDuration(uncertainSeconds);
-      possiblyUnrelatedDuration.textContent = formatDuration(possiblyUnrelatedSeconds);
-      unrelatedDuration.textContent = formatDuration(unrelatedSeconds);
-      totalDuration.textContent = formatDuration(totalSeconds);
+    function updateSummary(filteredEvents) {
+      const { totals, totalSeconds } = analyzeDeviation(filteredEvents);
+      Object.entries(deviationDurationElements).forEach(([relation, element]) => {
+        element.textContent = formatSummaryDuration(totals[relation]);
+      });
+      totalDuration.textContent = formatSummaryDuration(totalSeconds);
     }
 
     // Generate insight
     function generateInsight(filteredEvents) {
       const insights = [];
 
-      // Check for YouTube usage
-      const youtubeEvents = filteredEvents.filter(e => e.service === 'YouTube');
-      if (youtubeEvents.length > 0) {
-        const youtubeDuration = youtubeEvents.reduce((sum, e) => sum + e.duration_seconds, 0);
-        if (youtubeDuration > 300) {
-          insights.push(`YouTubeを${Math.floor(youtubeDuration / 60)}分使用しています。脱線している可能性があります。`);
-        }
-      }
-
-      // Check for switching frequency
-      if (filteredEvents.length > 5) {
-        insights.push(`アプリの切り替えが${filteredEvents.length}回発生しています。集中が途切れている可能性があります。`);
-      }
-
-      // Check for research time
-      const googleEvents = filteredEvents.filter(e => e.service === 'Google');
-      if (googleEvents.length > 0) {
-        const googleDuration = googleEvents.reduce((sum, e) => sum + e.duration_seconds, 0);
-        if (googleDuration > 900) {
-          insights.push(`調査に${Math.floor(googleDuration / 60)}分使用しています。調査に時間がかかっている可能性があります。`);
-        }
+      if (filteredEvents.length > 0) {
+        const uncertainCount = filteredEvents.filter(activity => activity.purpose_relation === 'uncertain').length;
+        insights.push(`${filteredEvents.length}件のActivityを目的と照合しました。${uncertainCount}件は判断材料が足りず「不明」としています。`);
       }
 
       // Display insight
@@ -1172,13 +949,30 @@
 
     // Format duration
     function formatDuration(seconds) {
-      const minutes = Math.floor(seconds / 60);
+      const durationSeconds = Math.max(0, Math.floor(seconds));
+      if (durationSeconds < 60) {
+        return `${durationSeconds}秒`;
+      }
+      const minutes = Math.floor(durationSeconds / 60);
       if (minutes >= 60) {
         const hours = Math.floor(minutes / 60);
         const mins = minutes % 60;
         return `${hours}時間${mins}分`;
       }
       return `${minutes}分`;
+    }
+
+    function formatSummaryDuration(seconds) {
+      const durationSeconds = Math.max(0, Math.floor(seconds));
+      if (durationSeconds < 60) return `${durationSeconds}秒`;
+      const hours = Math.floor(durationSeconds / 3600);
+      const minutes = Math.floor((durationSeconds % 3600) / 60);
+      const remainingSeconds = durationSeconds % 60;
+      const parts = [];
+      if (hours > 0) parts.push(`${hours}時間`);
+      if (minutes > 0) parts.push(`${minutes}分`);
+      if (remainingSeconds > 0) parts.push(`${remainingSeconds}秒`);
+      return parts.join('');
     }
 
     // Format date time
@@ -1191,50 +985,6 @@
         hour: '2-digit',
         minute: '2-digit'
       });
-    }
-
-    // Load mock data
-    async function loadMockData() {
-      try {
-        const response = await fetch('mock-sessions/phase-7-5-2-sessions.json');
-        const mockSessions = await response.json();
-
-        // Load the first session for demonstration
-        const mockSession = mockSessions[0];
-        sessionData = {
-          session: mockSession.session,
-          events: mockSession.events
-        };
-        events = mockSession.events;
-
-        // Display session info
-        sessionInfo.style.display = 'block';
-        sessionPurpose.textContent = mockSession.session.purpose;
-        sessionStart.textContent = formatDateTime(mockSession.session.start_time);
-        sessionEnd.textContent = formatDateTime(mockSession.session.end_time);
-
-        // Render timeline
-        renderTimeline();
-
-        // Hide loading, show timeline
-        loading.style.display = 'none';
-        timelineContainer.style.display = 'block';
-        legendContainer.style.display = 'block';
-        summaryContainer.style.display = 'block';
-        filtersContainer.style.display = 'block';
-
-        // Update timeline session info
-        if (mockSession.session.purpose) {
-          timelineSessionInfo.style.display = 'flex';
-          timelineSessionPurpose.textContent = mockSession.session.purpose;
-          const sessionStart = formatTime(mockSession.session.start_time);
-          const sessionEnd = formatTime(mockSession.session.end_time);
-          timelineSessionPeriod.textContent = `${sessionStart} - ${sessionEnd}`;
-        }
-      } catch (err) {
-        console.error('Error loading mock data:', err);
-        alert('疑似データの読み込みに失敗しました。');
-      }
     }
 
     // Initialize on load

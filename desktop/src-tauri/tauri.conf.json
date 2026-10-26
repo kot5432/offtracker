@@ -5,11 +5,11 @@
   "identifier": "com.offtracker.desktop",
   "build": {
     "frontendDist": "../../desktop/ui",
-    "devUrl": "",
     "beforeDevCommand": "",
     "beforeBuildCommand": ""
   },
   "app": {
+    "withGlobalTauri": true,
     "windows": [
       {
         "title": "OffTracker",

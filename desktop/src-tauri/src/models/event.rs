@@ -1,4 +1,4 @@
-use chrono::{DateTime, Duration, NaiveDateTime, Utc};
+use chrono::{DateTime, Utc};
 use rusqlite::params;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -22,9 +22,9 @@ pub struct Event {
     pub created_at: String,
 }
 
-fn process_to_display(process_name: &str) -> Option<String> {
+pub fn process_to_display(process_name: &str) -> Option<String> {
     let p = process_name.to_lowercase();
-    Some(match p.as_str() {
+    let display = match p.as_str() {
         "code.exe" | "code-insiders.exe" | "codium.exe" => "VS Code",
         "devenv.exe" => "Visual Studio",
         "idea64.exe" | "idea.exe" => "IntelliJ IDEA",
@@ -34,6 +34,8 @@ fn process_to_display(process_name: &str) -> Option<String> {
         "msedge.exe" => "Microsoft Edge",
         "firefox.exe" => "Firefox",
         "discord.exe" => "Discord",
+        "chatgpt.exe" => "ChatGPT",
+        "chatgpt classic.exe" => "ChatGPT Classic",
         "slack.exe" => "Slack",
         "spotify.exe" => "Spotify",
         "notion.exe" => "Notion",
@@ -53,7 +55,52 @@ fn process_to_display(process_name: &str) -> Option<String> {
         "rustrover.exe" => "RustRover",
         "sublime_text.exe" => "Sublime Text",
         _ => return None,
+    };
+    Some(display.to_string())
+}
+
+/// Return only an allowlisted service brand found in a browser window title.
+/// The source title is deliberately never persisted because it can contain page content.
+pub fn extract_service_name(process_name: &str, title: &str) -> Option<&'static str> {
+    let process = process_name.to_ascii_lowercase();
+    if !["chrome.exe", "msedge.exe", "firefox.exe"].contains(&process.as_str()) {
+        return None;
+    }
+    let title = title.to_lowercase();
+    let services: &[(&[&str], &str)] = &[
+        (&["youtube"], "YouTube"),
+        (&["google", "google search", "google 検索"], "Google"),
+        (&["stack overflow"], "Stack Overflow"),
+        (&["github"], "GitHub"),
+        (&["reddit"], "Reddit"),
+        (&["wikipedia"], "Wikipedia"),
+        (&["twitch"], "Twitch"),
+        (&["netflix"], "Netflix"),
+        (&["discord"], "Discord"),
+        (&["chatgpt"], "ChatGPT"),
+        (&["linkedin"], "LinkedIn"),
+        (&["instagram"], "Instagram"),
+        (&["facebook"], "Facebook"),
+        (&["tiktok"], "TikTok"),
+        (&["x.com"], "X"),
+    ];
+    services.iter().find_map(|(brands, service)| {
+        brands
+            .iter()
+            .any(|brand| title_has_brand_segment(&title, brand))
+            .then_some(*service)
     })
+}
+
+fn title_has_brand_segment(title: &str, brand: &str) -> bool {
+    let segmented_title = title
+        .replace(" - ", "|")
+        .replace(" – ", "|")
+        .replace(" — ", "|")
+        .replace(" · ", "|");
+    segmented_title
+        .split('|')
+        .any(|segment| segment.trim() == brand)
 }
 
 impl Storage {
@@ -62,6 +109,7 @@ impl Storage {
         session_id: &str,
         window: &WindowInfo,
         start_time_iso: Option<&str>,
+        detected_service: Option<String>,
     ) -> StorageResult<Event> {
         let id = Uuid::new_v4().to_string();
         let start_time = start_time_iso
@@ -73,12 +121,8 @@ impl Storage {
         } else {
             window.process_name.clone()
         };
-        let title_opt = if window.title.is_empty() {
-            None
-        } else {
-            Some(window.title.clone())
-        };
         let display = process_to_display(&application);
+        let service = detected_service;
         let event = Event {
             id: id.clone(),
             session_id: session_id.to_string(),
@@ -87,8 +131,8 @@ impl Storage {
             source: "native".into(),
             application,
             application_display: display,
-            service: None,
-            window_title: title_opt,
+            service,
+            window_title: None,
             process_id: Some(window.process_id as i64),
             duration_seconds: 0,
             created_at: now_iso,
@@ -123,15 +167,18 @@ impl Storage {
         let parsed_end = DateTime::parse_from_rfc3339(end_time_iso)
             .map_err(|_| StorageError::Message("invalid end_time iso".into()))?
             .with_timezone(&Utc);
-        let (session_id, start_time_str) = {
+        let (session_id, start_time_str, existing_end_time, existing_duration) = {
             let conn = self.conn.lock().map_err(|_| StorageError::Message("mutex poison".into()))?;
-            let (sid, st): (String, String) = conn.query_row(
-                "SELECT session_id, start_time FROM events WHERE id=?1",
+            let (sid, st, end, duration): (String, String, Option<String>, i64) = conn.query_row(
+                "SELECT session_id, start_time, end_time, duration_seconds FROM events WHERE id=?1",
                 params![event_id],
-                |row| Ok((row.get(0)?, row.get(1)?)),
+                |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?, row.get(3)?)),
             )?;
-            (sid, st)
+            (sid, st, end, duration)
         };
+        if existing_end_time.is_some() {
+            return Ok(existing_duration);
+        }
         let start_parsed = DateTime::parse_from_rfc3339(&start_time_str)
             .map_err(|_| StorageError::Message("invalid start_time iso".into()))?
             .with_timezone(&Utc);
@@ -159,23 +206,45 @@ impl Storage {
         }
         let conn = self.conn.lock().map_err(|_| StorageError::Message("mutex poison".into()))?;
         // 直前の同じapplicationのイベントを取得
-        let current: (String, Option<String>, String, String) = conn.query_row(
-            "SELECT application, application_display, start_time, id FROM events WHERE id=?1",
+        let current: (
+            String,
+            Option<String>,
+            String,
+            String,
+            Option<String>,
+            Option<String>,
+            Option<String>,
+        ) = conn.query_row(
+            "SELECT application, application_display, start_time, id, end_time, window_title, service
+             FROM events WHERE id=?1",
             params![event_id],
             |row| {
-                Ok((row.get(0)?, row.get(1)?, row.get(2)?, row.get(3)?))
+                Ok((
+                    row.get(0)?,
+                    row.get(1)?,
+                    row.get(2)?,
+                    row.get(3)?,
+                    row.get(4)?,
+                    row.get(5)?,
+                    row.get(6)?,
+                ))
             },
         )?;
+        // Without retaining page or document titles, only merge browser events when
+        // the allowlisted service name provides a privacy-safe grouping key.
+        if current.6.is_none() {
+            return Ok(());
+        }
         let mut stmt = conn.prepare(
             "SELECT id, start_time, end_time, duration_seconds, window_title, service
              FROM events
              WHERE session_id=?1 AND id != ?4 AND application=?2 AND start_time <= ?3
-                   AND end_time IS NOT NULL
+                   AND window_title IS ?5 AND service IS ?6 AND end_time IS NOT NULL
              ORDER BY start_time DESC
              LIMIT 1",
         )?;
         let prev = stmt.query_row(
-            params![session_id, current.0, current.2, event_id],
+            params![session_id, current.0, current.2, event_id, current.5, current.6],
             |row| {
                 Ok((
                     row.get::<_, String>(0)?,
@@ -188,7 +257,7 @@ impl Storage {
             },
         ).ok();
         drop(stmt);
-        if let Some((prev_id, prev_start, prev_end, prev_dur, prev_title, prev_svc)) = prev {
+        if let Some((prev_id, _prev_start, prev_end, prev_dur, _prev_title, _prev_svc)) = prev {
             if prev_end.as_deref().is_none() {
                 return Ok(());
             }
@@ -204,12 +273,12 @@ impl Storage {
                 if gap <= 180 {
                     // current を prev にマージ（prevを延長してcurrentを削除）
                     let merged_duration = prev_dur + duration_secs + gap.max(0);
-                    let new_end = prev_end.clone();
+                    let merged_end = current.4.clone();
                     drop(conn);
                     self.exec_tx(|conn| {
                         conn.execute(
-                            "UPDATE events SET duration_seconds=?2 WHERE id=?1",
-                            params![prev_id, merged_duration],
+                            "UPDATE events SET end_time=?2, duration_seconds=?3 WHERE id=?1",
+                            params![prev_id, merged_end, merged_duration],
                         )?;
                         conn.execute("DELETE FROM events WHERE id=?1", params![event_id])?;
                         Ok(())

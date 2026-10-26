@@ -1,12 +1,14 @@
 mod window;
 mod storage;
 mod models;
+mod tracker;
 
 use std::sync::Arc;
 
 use serde::Serialize;
 use tauri::{Manager, State};
 
+use crate::models::activity::label_for_application;
 use crate::models::event::process_to_display;
 use crate::models::*;
 use crate::window::{get_active_window, WindowInfo};
@@ -19,7 +21,7 @@ struct AppState {
 struct CurrentActivity {
     application: String,
     application_display: Option<String>,
-    window_title: String,
+    label: String,
     start_time: Option<String>,
     duration_seconds: i64,
     process_id: u32,
@@ -31,6 +33,7 @@ struct SessionWithDetails {
     events: Vec<Event>,
     result: Option<ResultRecord>,
     reflection: Option<Reflection>,
+    activity_feedback: Vec<ActivityFeedback>,
 }
 
 fn default_db_path<R: tauri::Runtime>(app: &tauri::AppHandle<R>) -> std::path::PathBuf {
@@ -55,8 +58,11 @@ pub fn run() {
             let storage = storage::Storage::new(&db_path)
                 .expect("failed to initialize storage");
             storage.run_migrations().expect("migrations failed");
+            let storage = Arc::new(storage);
+            let tracker_storage = Arc::clone(&storage);
+            std::thread::spawn(move || tracker::run(tracker_storage));
             let state = AppState {
-                storage: Arc::new(storage),
+                storage,
             };
             app.manage(state);
             Ok(())
@@ -69,8 +75,18 @@ pub fn run() {
             get_current_session,
             get_session,
             get_recent_sessions,
+            get_observed_leisure_items,
+            get_leisure_items,
+            set_leisure_item,
+            get_leisure_relation_rules,
+            save_leisure_relation_rule,
+            get_latest_next_experiment,
             get_events_for_session,
+            analyze_activities,
+            classify_activity_purpose,
+            analyze_session_story,
             save_result,
+            save_activity_feedback,
             save_reflection,
             get_session_elapsed,
         ])
@@ -85,50 +101,85 @@ fn get_current_window() -> Result<WindowInfo, String> {
 
 #[tauri::command]
 fn get_current_activity(state: State<'_, AppState>) -> Result<Option<CurrentActivity>, String> {
-    let win = match get_active_window() {
-        Some(w) => w,
+    let window = match get_active_window().filter(|window| {
+        !window.process_name.to_lowercase().contains("offtracker")
+    }) {
+        Some(window) => window,
         None => return Ok(None),
     };
-    let storage = state.storage.clone();
-    let (start_time, duration) = if let Some(session) =
-        storage.get_active_session().map_err(|e| e.to_string())?
-    {
-        let conn = storage
-            .conn
-            .lock()
-            .map_err(|_| "mutex poison".to_string())?;
-        let ev: Option<(String, i64)> = conn
-            .query_row(
-                "SELECT start_time, duration_seconds FROM events
-                 WHERE session_id=?1 AND end_time IS NULL
-                 ORDER BY start_time DESC LIMIT 1",
-                rusqlite::params![session.id],
-                |row| Ok((row.get(0)?, row.get(1)?)),
-            )
-            .ok();
-        drop(conn);
-        ev.unwrap_or((session.start_time, 0))
-    } else {
-        (chrono::Utc::now().to_rfc3339(), 0)
+    let Some(session) = state
+        .storage
+        .get_active_session()
+        .map_err(|error| error.to_string())?
+    else {
+        return Ok(None);
     };
+    let conn = state
+        .storage
+        .conn
+        .lock()
+        .map_err(|_| "mutex poison".to_string())?;
+    let event: Option<(String, Option<String>)> = conn
+        .query_row(
+            "SELECT start_time, service FROM events
+             WHERE session_id=?1 AND process_id=?2 AND end_time IS NULL
+             ORDER BY start_time DESC LIMIT 1",
+            rusqlite::params![session.id, window.process_id as i64],
+            |row| Ok((row.get(0)?, row.get(1)?)),
+        )
+        .ok();
+    drop(conn);
+    let Some((start_time, service)) = event else {
+        return Ok(None);
+    };
+    let duration = chrono::DateTime::parse_from_rfc3339(&start_time)
+        .map(|start| (chrono::Utc::now() - start.with_timezone(&chrono::Utc)).num_seconds().max(0))
+        .unwrap_or(0);
+    let application_display = process_to_display(&window.process_name);
+    let label = label_for_application(
+        &window.process_name,
+        application_display.as_deref(),
+        service.as_deref(),
+    );
     Ok(Some(CurrentActivity {
-        application_display: process_to_display(&win.process_name),
-        application: win.process_name.clone(),
-        window_title: win.title.clone(),
+        application_display,
+        application: window.process_name.clone(),
+        label,
         start_time: Some(start_time),
         duration_seconds: duration,
-        process_id: win.process_id,
+        process_id: window.process_id,
     }))
 }
 
 #[tauri::command]
 fn start_session(
     purpose: String,
+    purpose_category: String,
     target_time_minutes: Option<i64>,
+    experiment_source_session_id: Option<String>,
+    experiment_proposal: Option<String>,
+    experiment_text: Option<String>,
+    experiment_choice: Option<String>,
     state: State<'_, AppState>,
 ) -> Result<Session, String> {
     if purpose.trim().is_empty() {
         return Err("purpose cannot be empty".to_string());
+    }
+    if !matches!(purpose_category.as_str(), "leisure" | "learning" | "task" | "admin" | "other" | "unknown") {
+        return Err("invalid purpose category".to_string());
+    }
+    if let Some(choice) = experiment_choice.as_deref() {
+        if !matches!(choice, "adopted" | "edited" | "skipped") {
+            return Err("invalid experiment choice".to_string());
+        }
+        if experiment_source_session_id.is_none() {
+            return Err("experiment source is required".to_string());
+        }
+    }
+    if experiment_choice.as_deref() == Some("edited")
+        && experiment_text.as_deref().unwrap_or_default().trim().is_empty()
+    {
+        return Err("edited experiment cannot be empty".to_string());
     }
     let storage = state.storage.clone();
     if let Some(active) = storage.get_active_session().map_err(|e| e.to_string())? {
@@ -136,7 +187,23 @@ fn start_session(
         let _ = storage.complete_session(&active.id);
     }
     storage
-        .create_session(&purpose, target_time_minutes)
+        .create_session(
+            &purpose,
+            &purpose_category,
+            target_time_minutes,
+            experiment_source_session_id.as_deref(),
+            experiment_proposal.as_deref(),
+            experiment_text.as_deref(),
+            experiment_choice.as_deref(),
+        )
+        .map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn get_latest_next_experiment(state: State<'_, AppState>) -> Result<Option<NextExperiment>, String> {
+    state
+        .storage
+        .get_latest_next_experiment()
         .map_err(|e| e.to_string())
 }
 
@@ -180,11 +247,15 @@ fn get_session(
     let reflection = storage
         .get_reflection_for_session(&session_id)
         .map_err(|e| e.to_string())?;
+    let activity_feedback = storage
+        .get_activity_feedback(&session_id)
+        .map_err(|e| e.to_string())?;
     Ok(Some(SessionWithDetails {
         session,
         events,
         result,
         reflection,
+        activity_feedback,
     }))
 }
 
@@ -200,6 +271,31 @@ fn get_recent_sessions(
 }
 
 #[tauri::command]
+fn get_observed_leisure_items(state: State<'_, AppState>) -> Result<Vec<LeisureItem>, String> {
+    state.storage.get_observed_leisure_items().map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn get_leisure_items(state: State<'_, AppState>) -> Result<Vec<LeisureItem>, String> {
+    state.storage.get_leisure_items().map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn set_leisure_item(item_type: String, item_name: String, enabled: bool, state: State<'_, AppState>) -> Result<Vec<LeisureItem>, String> {
+    state.storage.set_leisure_item(LeisureItem { item_type, item_name, auto_suggested: false, registered: false }, enabled).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn get_leisure_relation_rules(purpose_category: String, state: State<'_, AppState>) -> Result<Vec<LeisureRelationRule>, String> {
+    state.storage.get_leisure_relation_rules(&purpose_category).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn save_leisure_relation_rule(item_type: String, item_name: String, purpose_category: String, relation: String, state: State<'_, AppState>) -> Result<(), String> {
+    state.storage.save_leisure_relation_rule(LeisureRelationRule { item_type, item_name, purpose_category, relation }).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
 fn get_events_for_session(
     session_id: String,
     state: State<'_, AppState>,
@@ -208,6 +304,40 @@ fn get_events_for_session(
         .storage
         .get_events_for_session(&session_id)
         .map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn analyze_activities(
+    session_id: String,
+    state: State<'_, AppState>,
+) -> Result<Vec<Activity>, String> {
+    state
+        .storage
+        .analyze_activities(&session_id)
+        .map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn classify_activity_purpose(
+    session_id: String,
+    state: State<'_, AppState>,
+) -> Result<Vec<Activity>, String> {
+    state
+        .storage
+        .classify_activity_purpose(&session_id)
+        .map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn analyze_session_story(
+    session_id: String,
+    state: State<'_, AppState>,
+) -> Result<SessionStory, String> {
+    let activities = state
+        .storage
+        .classify_activity_purpose(&session_id)
+        .map_err(|error| error.to_string())?;
+    Ok(models::session_story::analyze_session_story(&activities))
 }
 
 #[tauri::command]
@@ -232,10 +362,24 @@ fn save_result(
 }
 
 #[tauri::command]
+fn save_activity_feedback(
+    session_id: String,
+    items: Vec<ActivityFeedback>,
+    state: State<'_, AppState>,
+) -> Result<Vec<ActivityFeedback>, String> {
+    state.storage
+        .replace_activity_feedback(&session_id, items)
+        .map_err(|e| e.to_string())
+}
+
+#[tauri::command]
 fn save_reflection(
     session_id: String,
     deviation_reason: String,
     reflection_details: Option<String>,
+    purpose_category_override: Option<String>,
+    next_experiment: Option<String>,
+    experiment_reflection: Option<String>,
     state: State<'_, AppState>,
 ) -> Result<Reflection, String> {
     state
@@ -244,6 +388,9 @@ fn save_reflection(
             session_id,
             deviation_reason,
             reflection_details,
+            purpose_category_override,
+            next_experiment,
+            experiment_reflection,
         })
         .map_err(|e| e.to_string())
 }

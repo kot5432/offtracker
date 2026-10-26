@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OffTracker - 仮説候補の表示例</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 28px 16px;
+      background: #f5f5f5;
+      color: #263238;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    main { max-width: 820px; margin: 0 auto; }
+    header, section {
+      margin-bottom: 18px;
+      padding: 22px;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 2px 6px #0000000d;
+    }
+    h1 { margin: 0 0 8px; font-size: 22px; }
+    h2 { margin: 0 0 14px; font-size: 18px; }
+    h3 { margin: 0 0 8px; font-size: 16px; }
+    p { margin: 0 0 10px; }
+    a { color: #2563eb; }
+    .notice {
+      padding: 12px 14px;
+      border: 1px solid #93c5fd;
+      border-radius: 8px;
+      background: #eff6ff;
+      color: #1e3a8a;
+    }
+    .purpose { color: #475569; }
+    label { display: block; margin-bottom: 6px; font-weight: 600; }
+    select {
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      background: #fff;
+      color: inherit;
+      font: inherit;
+    }
+    .candidate {
+      margin-top: 12px;
+      padding: 16px;
+      border: 1px solid #dbe3ee;
+      border-radius: 8px;
+    }
+    .candidate-title { font-weight: 650; }
+    .evidence-title { margin-top: 12px; font-weight: 600; }
+    .evidence { margin: 4px 0 0; padding-left: 22px; }
+    .confidence { margin-top: 10px; color: #475569; font-size: 14px; }
+    details { margin-top: 10px; }
+    summary { cursor: pointer; color: #334155; }
+    pre {
+      overflow-x: auto;
+      padding: 14px;
+      border-radius: 6px;
+      background: #f8fafc;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-size: 13px;
+    }
+    #error { color: #b91c1c; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>仮説候補の表示例</h1>
+      <p>候補の見せ方と根拠の確認用ページです。</p>
+      <p><a href="../reflection.html">← 振り返り画面へ戻る</a></p>
+      <p class="notice">これは架空の疑似データによる表示例です。実際のセッション記録は読み込まず、データの送信や保存もしません。</p>
+    </header>
+
+    <section id="content" hidden>
+      <h2>疑似セッション</h2>
+      <label for="scenarioSelect">確認する記録パターン</label>
+      <select id="scenarioSelect"></select>
+      <p class="purpose"><strong>目的:</strong> <span id="purpose"></span></p>
+      <details>
+        <summary>仮説候補に渡す項目を見る</summary>
+        <pre id="inputPreview"></pre>
+      </details>
+    </section>
+
+    <section id="hypotheses" hidden>
+      <h2>記録から考えられる候補</h2>
+      <p>それぞれ一つの見方です。活動の記録だけでは、実際の理由を特定できない場合があります。</p>
+      <p id="coverageNotice" class="notice" hidden></p>
+      <div id="candidateList"></div>
+    </section>
+
+    <section id="insufficient" hidden>
+      <h2>候補を十分に分ける根拠がありません</h2>
+      <p id="insufficientMessage"></p>
+      <p>記録にない理由を推測で補わず、ここでは候補を表示しません。</p>
+    </section>
+
+    <section id="loading">表示例を読み込んでいます…</section>
+    <section id="error" hidden></section>
+  </main>
+
+  <script id="phase6MockData" type="application/json">
+{
+  "is_mock": true,
+  "scenarios": [
+    {
+      "id": "mixed-activities",
+      "label": "複数の活動・一部完了",
+      "input": {
+        "purpose": "数学レポートを書く",
+        "activities": [
+          { "activity_type": "research", "duration_seconds": 600, "purpose_relation": "possibly_related" },
+          { "activity_type": "writing", "duration_seconds": 1200, "purpose_relation": "related" },
+          { "activity_type": "communication", "duration_seconds": 720, "purpose_relation": "uncertain" },
+          { "activity_type": "writing", "duration_seconds": 300, "purpose_relation": "related" }
+        ],
+        "result": { "result_level": "partially_completed", "actual_duration_minutes": 47 }
+      },
+      "display_example": {
+        "status": "partial_candidates",
+        "coverage_message": "根拠の重なりを避けると、別々に説明できる候補は2件です。3件目は無理に補っていません。",
+        "hypotheses": [
+          {
+            "title": "調査と文書作成に使った時間の配分が、完了度に影響した可能性",
+            "description": "調査が必要な範囲だったかは記録されていないため、時間配分に関する一つの見方です。",
+            "evidence": [
+              "activity:0",
+              "activity:1",
+              "activity:3",
+              "result"
+            ],
+            "confidence": "low"
+          },
+          {
+            "title": "文書作成の間に記録された連絡が、作業の流れに影響した可能性",
+            "description": "連絡の内容や必要性は分からないため、作業が中断されたかどうかは確定できません。",
+            "evidence": [
+              "activity:1",
+              "activity:2",
+              "activity:3",
+              "result"
+            ],
+            "confidence": "low"
+          }
+        ]
+      }
+    },
+    {
+      "id": "short-completed",
+      "label": "短い記録・目的完了",
+      "input": {
+        "purpose": "メールを1通送る",
+        "activities": [
+          { "activity_type": "communication", "duration_seconds": 35, "purpose_relation": "related" }
+        ],
+        "result": { "result_level": "completed", "actual_duration_minutes": 1 }
+      },
+      "display_example": {
+        "status": "insufficient_evidence",
+        "message": "目的は完了と記録され、記録された活動も目的に関連しています。この記録から原因候補を挙げる根拠はありません。"
+      }
+    },
+    {
+      "id": "uncertain-short-partial",
+      "label": "短い記録・関係不明・一部未完了",
+      "input": {
+        "purpose": "数学レポートを書く",
+        "activities": [
+          { "activity_type": "research", "duration_seconds": 25, "purpose_relation": "uncertain" },
+          { "activity_type": "other", "duration_seconds": 4, "purpose_relation": "uncertain" },
+          { "activity_type": "communication", "duration_seconds": 20, "purpose_relation": "uncertain" },
+          { "activity_type": "research", "duration_seconds": 10, "purpose_relation": "uncertain" }
+        ],
+        "result": { "result_level": "partially_completed", "actual_duration_minutes": 1 }
+      },
+      "display_example": {
+        "status": "insufficient_evidence",
+        "message": "記録された活動はいずれも目的との関係が「不明」で、合計1分未満です。未完了の理由を区別できる根拠が足りません。"
+      }
+    }
+  ]
+}
+</script>
+
+  <script>
+    const confidenceLabels = {
+      low: '低い',
+      medium: '中程度',
+      high: '高い'
+    };
+
+    function addTextElement(parent, tagName, className, text) {
+      const element = document.createElement(tagName);
+      if (className) element.className = className;
+      element.textContent = text;
+      parent.appendChild(element);
+      return element;
+    }
+
+    function formatEvidenceDuration(seconds) {
+      const duration = Math.max(0, Number(seconds) || 0);
+      const minutes = Math.floor(duration / 60);
+      const remainder = duration % 60;
+      if (minutes === 0) return `${remainder}秒`;
+      if (remainder === 0) return `${minutes}分`;
+      return `${minutes}分${remainder}秒`;
+    }
+
+    function renderEvidenceReference(input, reference) {
+      const activityMatch = typeof reference === 'string' ? /^activity:(\d+)$/.exec(reference) : null;
+      if (activityMatch) {
+        const activity = input.activities[Number(activityMatch[1])];
+        if (!activity) throw new Error('根拠の参照先Activityが見つかりません。');
+        const activityLabels = {
+          research: '調査',
+          programming: 'プログラミング',
+          writing: '文書・資料作成',
+          document_work: '文書作成',
+          reading: '文書の閲覧',
+          communication: 'コミュニケーション',
+          leisure: '余暇',
+          other: 'その他の活動'
+        };
+        const relationLabels = {
+          related: '目的に関連',
+          possibly_related: '関連する可能性',
+          uncertain: '不明',
+          possibly_unrelated: '目的から外れた可能性',
+          unrelated: '目的から外れた'
+        };
+        const activityLabel = activityLabels[activity.activity_type] || '活動';
+        const relationLabel = relationLabels[activity.purpose_relation] || '不明';
+        return `${activityLabel}が${formatEvidenceDuration(activity.duration_seconds)}記録され、目的との関係は「${relationLabel}」です`;
+      }
+      if (reference === 'result' && input.result) {
+        const resultLabels = {
+          completed: '完了',
+          mostly_completed: '大部分を完了',
+          partially_completed: '一部完了',
+          minimal: '少し進行',
+          not_completed: '未完了'
+        };
+        return `結果は「${resultLabels[input.result.result_level] || '未分類'}」、実績時間は${Math.max(0, input.result.actual_duration_minutes)}分です`;
+      }
+      throw new Error('根拠の参照形式を確認できませんでした。');
+    }
+
+    function renderScenario(scenario) {
+      const outcome = scenario.display_example;
+      document.getElementById('purpose').textContent = scenario.input.purpose;
+      document.getElementById('inputPreview').textContent = JSON.stringify(scenario.input, null, 2);
+
+      const candidateList = document.getElementById('candidateList');
+      candidateList.replaceChildren();
+      document.getElementById('hypotheses').hidden = true;
+      document.getElementById('insufficient').hidden = true;
+
+      if (outcome.status === 'insufficient_evidence') {
+        document.getElementById('insufficientMessage').textContent = outcome.message;
+        document.getElementById('insufficient').hidden = false;
+        return;
+      }
+
+      const candidates = outcome.hypotheses;
+      const isFullSet = outcome.status === 'candidates';
+      const isPartialSet = outcome.status === 'partial_candidates';
+      if (
+        (!isFullSet && !isPartialSet)
+        || !Array.isArray(candidates)
+        || (isFullSet && candidates.length !== 3)
+        || (isPartialSet && (candidates.length < 1 || candidates.length > 2 || !outcome.coverage_message))
+      ) {
+        throw new Error('この記録パターンの表示例を確認できませんでした。');
+      }
+
+      const coverageNotice = document.getElementById('coverageNotice');
+      coverageNotice.hidden = !isPartialSet;
+      coverageNotice.textContent = isPartialSet ? outcome.coverage_message : '';
+
+      candidates.forEach(candidate => {
+        const card = document.createElement('article');
+        card.className = 'candidate';
+        addTextElement(card, 'h3', 'candidate-title', candidate.title);
+        addTextElement(card, 'p', '', candidate.description);
+        addTextElement(card, 'p', 'evidence-title', '根拠');
+
+        const evidenceList = document.createElement('ul');
+        evidenceList.className = 'evidence';
+        (Array.isArray(candidate.evidence) ? candidate.evidence : []).forEach(reference => {
+          addTextElement(evidenceList, 'li', '', renderEvidenceReference(scenario.input, reference));
+        });
+        card.appendChild(evidenceList);
+
+        const confidence = confidenceLabels[candidate.confidence] || '未設定';
+        addTextElement(card, 'p', 'confidence', `確信度: ${confidence}`);
+        candidateList.appendChild(card);
+      });
+
+      document.getElementById('hypotheses').hidden = false;
+    }
+
+    function renderPreview(data) {
+      if (!data || !data.is_mock || !Array.isArray(data.scenarios) || data.scenarios.length === 0) {
+        throw new Error('疑似データの形式を確認できませんでした。');
+      }
+
+      const scenarioSelect = document.getElementById('scenarioSelect');
+      data.scenarios.forEach(scenario => {
+        const option = document.createElement('option');
+        option.value = scenario.id;
+        option.textContent = scenario.label;
+        scenarioSelect.appendChild(option);
+      });
+      scenarioSelect.addEventListener('change', () => {
+        const selected = data.scenarios.find(scenario => scenario.id === scenarioSelect.value);
+        if (selected) renderScenario(selected);
+      });
+
+      document.getElementById('loading').hidden = true;
+      document.getElementById('content').hidden = false;
+      renderScenario(data.scenarios[0]);
+    }
+
+    try {
+      const mockDataText = document.getElementById('phase6MockData').textContent;
+      renderPreview(JSON.parse(mockDataText));
+    } catch (error) {
+      document.getElementById('loading').hidden = true;
+      const errorElement = document.getElementById('error');
+      errorElement.textContent = error.message || '表示例の読み込みに失敗しました。';
+      errorElement.hidden = false;
+    }
+  </script>
+</body>
+</html>

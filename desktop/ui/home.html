@@ -165,7 +165,10 @@
     .recent-session-item {
       padding: 15px;
       border-bottom: 1px solid #e0e0e0;
+      cursor: pointer;
     }
+
+    .recent-session-item:hover, .recent-session-item:focus-visible { background: #f8fafc; outline: 2px solid #bfdbfe; }
 
     .recent-session-item:last-child {
       border-bottom: none;
@@ -240,6 +243,7 @@
   <div class="container">
     <header>
       <h1>OffTracker</h1>
+      <a href="settings.html" style="float:right;color:#2563eb;text-decoration:none;">設定</a>
     </header>
 
     <!-- Idle State -->
@@ -251,6 +255,20 @@
         <label for="purpose">目的</label>
         <textarea id="purpose" placeholder="例: ログイン機能を実装する" rows="3"></textarea>
         <div id="purposeError" class="error"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="purposeCategory">パソコンを使う目的の種類</label>
+        <select id="purposeCategory" required style="width:100%;padding:12px;border:1px solid #ddd;border-radius:4px;font:inherit;background:#fff;">
+          <option value="">選択してください</option>
+          <option value="leisure">娯楽・楽しむ</option>
+          <option value="learning">勉強・学習</option>
+          <option value="task">課題・制作</option>
+          <option value="admin">連絡・事務</option>
+          <option value="other">その他</option>
+          <option value="unknown">まだ分からない</option>
+        </select>
+        <p class="form-hint">目的の文章と合わせて、振り返りの分類に使います。</p>
       </div>
 
       <div class="form-group">
@@ -267,7 +285,7 @@
       <button id="startBtn" class="btn btn-primary btn-large">記録を開始 → 次はPCで作業</button>
 
       <div class="recent-sessions">
-        <h3 class="section-title">最近のセッション</h3>
+        <h3 class="section-title">過去のセッション（選択して開く）</h3>
         <div id="recentSessionsList">
           <p style="color: #666;">過去のセッションはありません</p>
         </div>
@@ -296,8 +314,8 @@
 
       <div class="current-activity">
         <h3>現在の状態</h3>
-        <p>PC使用中: <span id="currentApp">VS Code</span></p>
-        <p>経過時間: <span id="elapsedTime">0</span>分</p>
+        <p>記録対象のアプリ: <span id="currentApp">確認中...</span></p>
+        <p>セッション経過時間: <span id="elapsedTime">0</span>分</p>
       </div>
 
       <div class="actions">
@@ -308,20 +326,6 @@
   </div>
 
   <script>
-    // Mock data for recent sessions
-    const recentSessions = [
-      {
-        date: "2026-09-20",
-        purpose: "Webアプリを完成させる",
-        result_level: "minimal"
-      },
-      {
-        date: "2026-09-19",
-        purpose: "Webアプリのログイン機能を実装する",
-        result_level: "minimal"
-      }
-    ];
-
     // State
     let currentSession = null;
     let elapsedTimer = null;
@@ -331,6 +335,7 @@
     const idleSession = document.getElementById('idleSession');
     const activeSession = document.getElementById('activeSession');
     const purposeInput = document.getElementById('purpose');
+    const purposeCategoryInput = document.getElementById('purposeCategory');
     const targetHoursInput = document.getElementById('targetHours');
     const targetMinutesInput = document.getElementById('targetMinutes');
     const startBtn = document.getElementById('startBtn');
@@ -346,39 +351,70 @@
     }
 
     // Load recent sessions
-    function loadRecentSessions() {
-      if (recentSessions.length === 0) {
+    async function loadRecentSessions() {
+      recentSessionsList.textContent = '読み込み中...';
+      try {
+        const recentSessions = await window.__TAURI__.core.invoke('get_recent_sessions', {
+          limit: 50
+        });
+
+        if (recentSessions.length === 0) {
         recentSessionsList.innerHTML = '<p style="color: #666;">過去のセッションはありません</p>';
         return;
+        }
+
+        recentSessionsList.replaceChildren(...recentSessions.map(session => {
+          const item = document.createElement('button');
+          item.className = 'recent-session-item';
+          item.type = 'button';
+          item.style.width = '100%';
+          item.style.textAlign = 'left';
+          item.style.background = 'transparent';
+          item.style.border = '0';
+          item.style.font = 'inherit';
+          item.setAttribute('aria-label', `記録を開く: ${session.purpose}`);
+          item.addEventListener('click', () => {
+            window.location.href = `timeline.html?session_id=${encodeURIComponent(session.id)}`;
+          });
+
+          const date = document.createElement('div');
+          date.className = 'recent-session-date';
+          date.textContent = formatDateTime(session.start_time);
+
+          const purpose = document.createElement('div');
+          purpose.className = 'recent-session-purpose';
+          purpose.textContent = session.purpose;
+
+          const result = document.createElement('div');
+          result.className = 'recent-session-result';
+          result.append('結果: ');
+
+          const label = document.createElement('span');
+          label.className = `result-badge ${getResultClass(session.result_level)}`;
+          label.textContent = session.status === 'active'
+            ? '記録中'
+            : getResultLabel(session.result_level);
+          result.appendChild(label);
+
+          item.append(date, purpose, result);
+          return item;
+        }));
+      } catch (error) {
+        console.error('[Home] Failed to load recent sessions:', error);
+        recentSessionsList.textContent = 'セッション履歴を読み込めませんでした';
       }
-
-      const html = recentSessions.map(session => {
-        const resultLabel = getResultLabel(session.result_level);
-        const resultClass = getResultClass(session.result_level);
-        return `
-          <div class="recent-session-item">
-            <div class="recent-session-date">${session.date}</div>
-            <div class="recent-session-purpose">${session.purpose}</div>
-            <div class="recent-session-result">
-              結果: <span class="result-badge ${resultClass}">${resultLabel}</span>
-            </div>
-          </div>
-        `;
-      }).join('');
-
-      recentSessionsList.innerHTML = html;
     }
 
     // Get result label
     function getResultLabel(level) {
       const labels = {
-        'completed': '完了',
-        'mostly_completed': 'ほぼ完了',
-        'partially_completed': '一部完了',
-        'minimal': '最小限',
-        'not_completed': '未完了'
+        'completed': '目的に沿って過ごせた',
+        'mostly_completed': 'ほぼ目的に沿って過ごせた',
+        'partially_completed': '一部、目的に沿って過ごせた',
+        'minimal': '少し、目的に沿って過ごせた',
+        'not_completed': '今回は目的に沿って過ごせなかった'
       };
-      return labels[level] || level;
+      return labels[level] || '結果未入力';
     }
 
     // Get result class
@@ -404,15 +440,25 @@
         purposeError.textContent = '目的を入力してください';
         return;
       }
+      if (!purposeCategoryInput.value) {
+        purposeError.textContent = '目的の種類を選んでください';
+        purposeCategoryInput.focus();
+        return;
+      }
 
       purposeError.textContent = '';
 
       // Call Tauri command to start session
       try {
         console.log('[Home] Calling Tauri command to start session');
-        const session = await window.__TAURI__.invoke('start_session', {
+        const session = await window.__TAURI__.core.invoke('start_session', {
           purpose: purpose,
-          targetTimeMinutes: targetHours * 60 + targetMinutes
+          purposeCategory: purposeCategoryInput.value,
+          targetTimeMinutes: targetHours * 60 + targetMinutes,
+          experimentSourceSessionId: null,
+          experimentProposal: null,
+          experimentText: null,
+          experimentChoice: null
         });
         console.log('[Home] Session started:', session);
 
@@ -465,7 +511,7 @@
 
       // Stop session via Tauri
       try {
-        const result = await window.__TAURI__.invoke('stop_session', {
+        const result = await window.__TAURI__.core.invoke('stop_session', {
           sessionId: currentSession.id
         });
         console.log('Session stopped:', result);
@@ -521,14 +567,23 @@
     // Update current window display
     async function updateCurrentWindow() {
       try {
-        const windowData = await window.__TAURI__.invoke('get_current_window');
+        const [activity, windowData] = await Promise.all([
+          window.__TAURI__.core.invoke('get_current_activity'),
+          window.__TAURI__.core.invoke('get_current_window')
+        ]);
 
         const currentAppElement = document.getElementById('currentApp');
         if (currentAppElement) {
-          currentAppElement.textContent = windowData.process_name || 'Unknown';
+          currentAppElement.textContent = activity
+            ? (activity.label || activity.application_display || activity.application || '不明')
+            : windowData.process_name.toLowerCase().includes('offtracker')
+              ? 'OffTracker（記録対象外）'
+              : '記録を取得中...';
         }
       } catch (err) {
         console.error('Error updating window:', err);
+        const currentAppElement = document.getElementById('currentApp');
+        if (currentAppElement) currentAppElement.textContent = '状態を取得できません';
       }
     }
 

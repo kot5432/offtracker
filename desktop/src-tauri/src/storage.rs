@@ -48,6 +48,96 @@ impl Storage {
     pub fn run_migrations(&self) -> StorageResult<()> {
         let conn = self.conn.lock().map_err(|_| StorageError::Message("mutex poison".into()))?;
         conn.execute_batch(include_str!("../db/migrations/001_initial.sql"))?;
+        let activity_migration_applied: bool = conn.query_row(
+            "SELECT EXISTS(SELECT 1 FROM schema_versions WHERE version=2)",
+            [],
+            |row| row.get(0),
+        )?;
+        if !activity_migration_applied {
+            conn.execute_batch(include_str!("../db/migrations/002_activities.sql"))?;
+        }
+        let privacy_migration_applied: bool = conn.query_row(
+            "SELECT EXISTS(SELECT 1 FROM schema_versions WHERE version=3)",
+            [],
+            |row| row.get(0),
+        )?;
+        if !privacy_migration_applied {
+            conn.execute_batch("PRAGMA secure_delete=ON;")?;
+            conn.execute_batch(include_str!("../db/migrations/003_service_names.sql"))?;
+            conn.execute_batch("PRAGMA wal_checkpoint(TRUNCATE); VACUUM;")?;
+        }
+        let service_migration_applied: bool = conn.query_row(
+            "SELECT EXISTS(SELECT 1 FROM schema_versions WHERE version=4)",
+            [],
+            |row| row.get(0),
+        )?;
+        if !service_migration_applied {
+            conn.execute_batch(include_str!("../db/migrations/004_service_detection.sql"))?;
+        }
+        let purpose_category_override_migration_applied: bool = conn.query_row(
+            "SELECT EXISTS(SELECT 1 FROM schema_versions WHERE version=5)",
+            [],
+            |row| row.get(0),
+        )?;
+        if !purpose_category_override_migration_applied {
+            conn.execute_batch(include_str!("../db/migrations/005_purpose_category_override.sql"))?;
+        }
+        let next_experiment_migration_applied: bool = conn.query_row(
+            "SELECT EXISTS(SELECT 1 FROM schema_versions WHERE version=6)",
+            [],
+            |row| row.get(0),
+        )?;
+        if !next_experiment_migration_applied {
+            conn.execute_batch(include_str!("../db/migrations/006_next_experiment.sql"))?;
+        }
+        let session_experiment_migration_applied: bool = conn.query_row(
+            "SELECT EXISTS(SELECT 1 FROM schema_versions WHERE version=7)",
+            [],
+            |row| row.get(0),
+        )?;
+        if !session_experiment_migration_applied {
+            conn.execute_batch(include_str!("../db/migrations/007_session_experiment.sql"))?;
+        }
+        let experiment_reflection_migration_applied: bool = conn.query_row(
+            "SELECT EXISTS(SELECT 1 FROM schema_versions WHERE version=8)",
+            [],
+            |row| row.get(0),
+        )?;
+        if !experiment_reflection_migration_applied {
+            conn.execute_batch(include_str!("../db/migrations/008_experiment_reflection.sql"))?;
+        }
+        let activity_feedback_migration_applied: bool = conn.query_row(
+            "SELECT EXISTS(SELECT 1 FROM schema_versions WHERE version=9)",
+            [],
+            |row| row.get(0),
+        )?;
+        if !activity_feedback_migration_applied {
+            conn.execute_batch(include_str!("../db/migrations/009_activity_feedback.sql"))?;
+        }
+        let leisure_items_migration_applied: bool = conn.query_row(
+            "SELECT EXISTS(SELECT 1 FROM schema_versions WHERE version=10)",
+            [],
+            |row| row.get(0),
+        )?;
+        if !leisure_items_migration_applied {
+            conn.execute_batch(include_str!("../db/migrations/010_leisure_items.sql"))?;
+        }
+        let purpose_category_migration_applied: bool = conn.query_row(
+            "SELECT EXISTS(SELECT 1 FROM schema_versions WHERE version=11)",
+            [],
+            |row| row.get(0),
+        )?;
+        if !purpose_category_migration_applied {
+            conn.execute_batch(include_str!("../db/migrations/011_purpose_category.sql"))?;
+        }
+        let leisure_relation_rules_migration_applied: bool = conn.query_row(
+            "SELECT EXISTS(SELECT 1 FROM schema_versions WHERE version=12)",
+            [],
+            |row| row.get(0),
+        )?;
+        if !leisure_relation_rules_migration_applied {
+            conn.execute_batch(include_str!("../db/migrations/012_leisure_relation_rules.sql"))?;
+        }
         Ok(())
     }
 

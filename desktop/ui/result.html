@@ -271,6 +271,30 @@
       background-color: #3b82f6;
     }
 
+    .recorded-activities { margin-top: 18px; padding: 18px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; }
+    .recorded-activities h3 { margin: 0 0 6px; font-size: 16px; }
+    .activity-review-list { display: grid; gap: 12px; margin-top: 14px; }
+    .activity-review-card { padding: 14px; background: #fff; border: 1px solid #dbe3ec; border-radius: 8px; }
+    .activity-review-heading { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:6px; }
+    .activity-review-heading h4 { margin: 0; font-size: 15px; }
+    .activity-review-duration { color:#334155; font-weight:700; white-space:nowrap; }
+    .activity-review-count { color:#64748b; font-size:12px; }
+    .activity-review-question { margin: 10px 0 7px; font-weight:600; font-size:13px; }
+    .activity-relation-options { display:flex; flex-wrap:wrap; gap:8px; }
+    .activity-relation-options label { display:flex; align-items:center; gap:6px; padding:7px 10px; border:1px solid #cbd5e1; border-radius:999px; background:#fff; cursor:pointer; font-size:13px; }
+    .activity-context { margin-top:10px; }
+    .activity-context[hidden] { display:none; }
+    .activity-context label { display:block; margin-bottom:4px; font-size:12px; }
+    .activity-context input { width:100%; padding:9px 10px; border:1px solid #cbd5e1; border-radius:5px; font:inherit; }
+    .activity-context select { width:100%; padding:9px 10px; border:1px solid #cbd5e1; border-radius:5px; font:inherit; background:#fff; }
+    .short-activity-details { margin-top:12px; color:#475569; font-size:13px; }
+    .short-activity-details summary { cursor:pointer; }
+    .short-activity-details ul { margin:8px 0 0; padding-left:20px; }
+    .recorded-note { color: #64748b; font-size: 12px; margin-top: 8px; }
+    .flow-steps { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 18px; padding: 0; list-style: none; }
+    .flow-steps li { padding: 5px 9px; border-radius: 999px; background: #eef2f7; color: #475569; font-size: 12px; }
+    .flow-steps li[aria-current="step"] { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
     .actual-bar {
       background-color: #10b981;
     }
@@ -280,16 +304,18 @@
   <div class="container">
     <header>
       <h1>OffTracker - Result</h1>
-      <a href="timeline.html" class="back-link">← Timelineに戻る</a>
     </header>
+    <ol class="flow-steps" aria-label="今回の流れ">
+      <li>1 目的を決める</li><li aria-current="step">2 結果を選ぶ</li><li>3 行動記録を確認</li><li>4 振り返る</li>
+    </ol>
 
     <div id="loading" class="loading">読み込み中...</div>
     <div id="error" class="error-message" style="display: none;"></div>
 
     <div id="resultContainer" style="display: none;">
       <div class="section">
-        <h2 class="section-title">結果を入力しましょう</h2>
-        <p class="section-description">実際に何ができたか入力してください</p>
+        <h2 class="section-title">今回のセッションを記録する</h2>
+        <p class="section-description">目的に対する今回の過ごし方を選びます。補足は必要な場合だけ記入できます。</p>
 
         <div class="purpose-display">
           <p><strong>目的</strong></p>
@@ -310,33 +336,36 @@
             </div>
           </div>
         </div>
+
+        <div class="recorded-activities">
+          <h3>PC上で記録された行動（参考）</h3>
+          <p class="recorded-note">時間の長いまとまりを中心に表示します。目的との関係を選び、必要なものだけ中身を補足できます。</p>
+          <div id="recordedActivities" class="activity-review-list" aria-live="polite">記録を読み込み中...</div>
+          <details id="shortActivityDetails" class="short-activity-details" hidden>
+            <summary id="shortActivitySummary"></summary>
+            <ul id="shortActivityList"></ul>
+          </details>
+          <p class="recorded-note">これはアプリやウィンドウの記録です。実際に何をしていたか、目的に必要だったかはご本人が判断します。</p>
+        </div>
       </div>
 
       <div class="section">
-        <h2 class="section-title">達成度</h2>
-        <p class="section-description">目的に対してどの程度達成できたかを選択してください</p>
+        <h2 class="section-title">今回の目的に対する結果</h2>
+        <p class="section-description">目的と記録を参考に、今回どのくらい目的に沿って過ごせたかを選んでください。選択は任意です。PCの記録だけで結果を決めることはできません。選択して保存するとき、補足も一緒に記録されます。</p>
 
         <div class="form-group">
           <div class="radio-group">
             <label class="radio-option">
               <input type="radio" name="resultLevel" value="completed">
-              完了
-            </label>
-            <label class="radio-option">
-              <input type="radio" name="resultLevel" value="mostly_completed">
-              ほぼ完了
+              目的に沿って過ごせた
             </label>
             <label class="radio-option">
               <input type="radio" name="resultLevel" value="partially_completed">
-              一部完了
-            </label>
-            <label class="radio-option">
-              <input type="radio" name="resultLevel" value="minimal">
-              最小限
+              一部は目的に沿って過ごせた
             </label>
             <label class="radio-option">
               <input type="radio" name="resultLevel" value="not_completed">
-              未完了
+              今回は目的に沿って過ごせなかった
             </label>
           </div>
           <div id="resultLevelError" class="error"></div>
@@ -344,27 +373,18 @@
       </div>
 
       <div class="section">
-        <h2 class="section-title">できたこと</h2>
+        <h2 class="section-title">補足（任意）</h2>
+        <p class="section-description">記録だけでは分からない事情や、次に見返したいことがあれば書けます。毎回書く必要はありません。</p>
 
         <div class="form-group">
-          <label for="whatWasDone">できたことは何ですか？</label>
-          <textarea id="whatWasDone" placeholder="例: ログイン画面のUIを完成させた" rows="3"></textarea>
+          <label for="whatWasDone">補足したいこと（任意）</label>
+          <textarea id="whatWasDone" placeholder="例: 解き方を調べていたので、Web閲覧も課題の一部だった\n例: 次回は調べたページを先にメモしておく" rows="3"></textarea>
           <div id="whatWasDoneError" class="error"></div>
         </div>
       </div>
 
-      <div class="section">
-        <h2 class="section-title">できなかったこと</h2>
-
-        <div class="form-group">
-          <label for="whatWasntDone">できなかったことは何ですか？（空欄OK）</label>
-          <textarea id="whatWasntDone" placeholder="例: 認証処理の実装" rows="2"></textarea>
-        </div>
-      </div>
-
       <div class="actions">
-        <button id="timelineBtn" class="btn btn-primary btn-large">次へ → Timelineを見る</button>
-        <button id="backBtn" class="btn btn-secondary">Homeに戻る</button>
+        <button id="timelineBtn" class="btn btn-primary btn-large">次へ：行動記録を確認</button>
       </div>
     </div>
   </div>
@@ -372,6 +392,11 @@
   <script>
     // State
     let sessionData = null;
+    let savedNoteValue = '';
+    let activityFeedback = new Map();
+    let groupedActivities = [];
+    let leisureItems = [];
+    let leisureRelationRules = new Map();
 
     // DOM Elements
     const loading = document.getElementById('loading');
@@ -381,25 +406,20 @@
     const targetTime = document.getElementById('targetTime');
     const actualTime = document.getElementById('actualTime');
     const whatWasDone = document.getElementById('whatWasDone');
-    const whatWasntDone = document.getElementById('whatWasntDone');
     const resultLevelError = document.getElementById('resultLevelError');
     const whatWasDoneError = document.getElementById('whatWasDoneError');
     const timelineBtn = document.getElementById('timelineBtn');
-    const backBtn = document.getElementById('backBtn');
 
     // Initialize
     function init() {
       loadSessionData();
       timelineBtn.addEventListener('click', submitResult);
-      backBtn.addEventListener('click', () => {
-        window.location.href = 'home.html';
-      });
     }
 
     // Get elapsed time from Tauri
     async function getElapsedTime(sessionId) {
       try {
-        const elapsedSeconds = await window.__TAURI__.invoke('get_session_elapsed', {
+        const elapsedSeconds = await window.__TAURI__.core.invoke('get_session_elapsed', {
           sessionId: sessionId
         });
         return { elapsed_minutes: Math.floor(elapsedSeconds / 60) };
@@ -421,7 +441,7 @@
           localStorage.removeItem('stoppedSession'); // Clear after use
         } else {
           // Try to get current session from Tauri
-          const currentSession = await window.__TAURI__.invoke('get_current_session');
+          const currentSession = await window.__TAURI__.core.invoke('get_current_session');
           if (currentSession) {
             session = currentSession;
           }
@@ -435,15 +455,39 @@
           return;
         }
 
+        const details = await window.__TAURI__.core.invoke('get_session', { sessionId: session.id });
+        leisureItems = await window.__TAURI__.core.invoke('get_leisure_items');
+        if (details?.session) session = details.session;
+        const savedRules = await window.__TAURI__.core.invoke('get_leisure_relation_rules', {
+          purposeCategory: session.purpose_category || 'unknown'
+        });
+        leisureRelationRules = new Map(savedRules.map(rule => [`${rule.itemType}::${rule.itemName}`, rule.relation]));
+        const savedResult = details?.result || null;
+        const elapsed = await getElapsedTime(session.id);
         sessionData = {
           session: session,
-          result: {
-            actual_duration_minutes: 0
-          }
+          result: { actual_duration_minutes: savedResult?.actual_duration_minutes ?? elapsed.elapsed_minutes },
+          savedResult
         };
+        (details?.activity_feedback || []).forEach(item => {
+          activityFeedback.set(activityFeedbackKey(item.activityType, item.label), { relation: item.relation, details: item.details || '' });
+        });
 
         // Display purpose
         purposeText.textContent = session.purpose;
+
+        if (savedResult) {
+          const category = resultCategory(savedResult.result_level);
+          const savedLevel = document.querySelector(`input[name="resultLevel"][value="${category}"]`);
+          if (savedLevel) savedLevel.checked = true;
+          const savedNotes = [savedResult.result_description, savedResult.what_wasnt_done]
+            .filter(Boolean)
+            .map(value => value.trim());
+          whatWasDone.value = [...new Set(savedNotes)].join('\n');
+          savedNoteValue = whatWasDone.value;
+        }
+
+        await loadRecordedActivities(session.id);
 
         // Display time comparison with bar visualization
         const targetMinutes = session.target_time_minutes || 0;
@@ -474,44 +518,258 @@
       }
     }
 
+    async function loadRecordedActivities(sessionId) {
+      const list = document.getElementById('recordedActivities');
+      try {
+        const story = await window.__TAURI__.core.invoke('analyze_session_story', { sessionId });
+        const activities = story?.activities || [];
+        if (!activities.length) {
+          list.textContent = 'このセッションの行動はまだ記録されていません。';
+          return;
+        }
+        groupedActivities = aggregateActivities(activities);
+        renderActivityFeedback();
+      } catch (err) {
+        console.error('Failed to load recorded activities:', err);
+        list.textContent = '行動記録を読み込めませんでした。結果はそのまま入力できます。';
+      }
+    }
+
+    function activityFeedbackKey(type, label) { return `${type}::${label}`; }
+
+    function aggregateActivities(activities) {
+      const grouped = new Map();
+      activities.forEach(activity => {
+        const type = activity.activity_type || 'other';
+        const label = activity.label || '分類できない行動';
+        const key = activityFeedbackKey(type, label);
+        const current = grouped.get(key) || { activity_type: type, label, duration_seconds: 0, occurrences: 0, applications_used: [], services_used: [] };
+        current.duration_seconds += Math.max(0, activity.duration_seconds || 0);
+        current.occurrences += 1;
+        (activity.applications_used || []).forEach(value => { if (!current.applications_used.includes(value)) current.applications_used.push(value); });
+        (activity.services_used || []).forEach(value => { if (!current.services_used.includes(value)) current.services_used.push(value); });
+        grouped.set(key, current);
+      });
+      return Array.from(grouped.values()).sort((a, b) => b.duration_seconds - a.duration_seconds);
+    }
+
+    function formatActivityDuration(seconds) {
+      if (seconds < 60) return '1分未満';
+      const minutes = Math.floor(seconds / 60);
+      const remainder = seconds % 60;
+      return remainder >= 30 ? `約${minutes + 1}分` : `約${minutes}分`;
+    }
+
+    function activityHasLeisureTarget(activity) {
+      if (sessionData?.session?.purpose_category === 'leisure') return false;
+      return leisureItems.some(item => item.itemType === 'service'
+        ? (activity.services_used || []).includes(item.itemName)
+        : (activity.applications_used || []).some(name => normalizeApplicationName(name) === normalizeApplicationName(item.itemName)));
+    }
+
+    function normalizeApplicationName(name) {
+      return String(name || '').trim().toLocaleLowerCase('ja-JP').replace(/\.exe$/i, '').replace(/[\s._-]+/g, '');
+    }
+
+    function renderActivityFeedback() {
+      const list = document.getElementById('recordedActivities');
+      const shortDetails = document.getElementById('shortActivityDetails');
+      const shortList = document.getElementById('shortActivityList');
+      const primary = groupedActivities.filter(item => item.duration_seconds >= 60 || activityHasLeisureTarget(item));
+      const short = groupedActivities.filter(item => item.duration_seconds < 60 && !activityHasLeisureTarget(item));
+      list.replaceChildren();
+      shortList.replaceChildren();
+
+      if (!groupedActivities.length) {
+        list.textContent = 'このセッションの行動はまだ記録されていません。';
+        shortDetails.hidden = true;
+        return;
+      }
+
+      if (!primary.length) {
+        const message = document.createElement('p');
+        message.textContent = '1分以上続いた行動はありません。短い切替は下から確認できます。';
+        list.appendChild(message);
+      }
+
+      primary.forEach((activity, index) => {
+        const key = activityFeedbackKey(activity.activity_type, activity.label);
+        const isLeisureSession = sessionData.session.purpose_category === 'leisure';
+        const leisureTargets = !isLeisureSession
+          ? leisureItems.filter(item => item.itemType === 'service'
+            ? activity.services_used.includes(item.itemName)
+            : activity.applications_used.some(name => normalizeApplicationName(name) === normalizeApplicationName(item.itemName)))
+          : [];
+        const matchingRules = [...new Set(leisureTargets
+          .map(item => leisureRelationRules.get(`${item.itemType}::${item.itemName}`))
+          .filter(Boolean))];
+        const hadSessionFeedback = activityFeedback.has(key);
+        const saved = activityFeedback.get(key) || {
+          relation: '',
+          details: '',
+          saveScope: 'once',
+          leisureTargets
+        };
+        saved.leisureTargets = leisureTargets;
+        if (!activityFeedback.has(key) && saved.relation) activityFeedback.set(key, saved);
+        const card = document.createElement('div');
+        card.className = 'activity-review-card';
+        const heading = document.createElement('div');
+        heading.className = 'activity-review-heading';
+        const name = document.createElement('h4');
+        name.textContent = activity.label;
+        const time = document.createElement('span');
+        time.className = 'activity-review-duration';
+        time.textContent = formatActivityDuration(activity.duration_seconds);
+        heading.append(name, time);
+        const count = document.createElement('span');
+        count.className = 'activity-review-count';
+        count.textContent = `${activity.occurrences}回に分かれて記録`;
+        const question = document.createElement('p');
+        question.className = 'activity-review-question';
+        const leisureMatch = leisureTargets.length > 0;
+        question.textContent = leisureMatch
+          ? matchingRules.length === 1 && !hadSessionFeedback
+            ? `前回までの回答は「${relationLabel(matchingRules[0])}」です。今回は「${purposeText.textContent}」に関係していましたか？`
+            : `娯楽でも使うものが記録されています。今回は「${purposeText.textContent}」に関係していましたか？`
+          : `「${purposeText.textContent}」のために、この行動は関係していましたか？`;
+        const options = document.createElement('div');
+        options.className = 'activity-relation-options';
+        options.setAttribute('role', 'radiogroup');
+        options.setAttribute('aria-label', `${activity.label}と目的との関係`);
+        [
+          ['related', '関係していた'],
+          ['unrelated', '関係していなかった'],
+          ['uncertain', '判断できない']
+        ].forEach(([value, text]) => {
+          const label = document.createElement('label');
+          const radio = document.createElement('input');
+          radio.type = 'radio';
+          radio.name = `activityRelation${index}`;
+          radio.value = value;
+          radio.checked = saved.relation === value;
+          radio.addEventListener('change', () => {
+            const current = activityFeedback.get(key) || { details: '', saveScope: 'once', leisureTargets };
+            activityFeedback.set(key, { ...current, relation: value });
+            detailsGroup.hidden = false;
+          });
+          label.append(radio, document.createTextNode(text));
+          options.appendChild(label);
+        });
+        const detailsGroup = document.createElement('div');
+        detailsGroup.className = 'activity-context';
+        detailsGroup.hidden = !saved.relation;
+        const detailsLabel = document.createElement('label');
+        detailsLabel.textContent = '何をしていたか、分かる範囲で補足（任意）';
+        const detailsInput = document.createElement('input');
+        detailsInput.type = 'text';
+        detailsInput.value = saved.details;
+        detailsInput.placeholder = '例: Google Docsでアイデアを整理';
+        detailsInput.addEventListener('input', () => {
+          const current = activityFeedback.get(key) || { relation: '', saveScope: 'once', leisureTargets };
+          activityFeedback.set(key, { ...current, details: detailsInput.value });
+        });
+        detailsGroup.append(detailsLabel, detailsInput);
+        let scopeGroup = null;
+        if (leisureMatch) {
+          scopeGroup = document.createElement('div');
+          scopeGroup.className = 'activity-context';
+          const scopeLabel = document.createElement('label');
+          scopeLabel.textContent = '回答の反映範囲';
+          const scopeSelect = document.createElement('select');
+          scopeSelect.setAttribute('aria-label', '娯楽アプリの関係回答を適用する範囲');
+          scopeSelect.innerHTML = '<option value="once">今回だけに反映</option><option value="future">今後、同じ目的の種類でも使う</option>';
+          scopeSelect.value = saved.saveScope || 'once';
+          scopeSelect.addEventListener('change', () => {
+            const current = activityFeedback.get(key) || { relation: '', details: '', leisureTargets };
+            activityFeedback.set(key, { ...current, saveScope: scopeSelect.value, leisureTargets });
+          });
+          scopeGroup.append(scopeLabel, scopeSelect);
+        }
+        card.append(heading, count, question, options);
+        if (scopeGroup) card.appendChild(scopeGroup);
+        card.appendChild(detailsGroup);
+        list.appendChild(card);
+      });
+
+      shortDetails.hidden = !short.length;
+      const shortSeconds = short.reduce((sum, item) => sum + item.duration_seconds, 0);
+      document.getElementById('shortActivitySummary').textContent = `1分未満の短い記録 ${short.length}種類（合計${formatActivityDuration(shortSeconds)}）を表示`;
+      short.forEach(activity => {
+        const item = document.createElement('li');
+        item.textContent = `${activity.label}（${formatActivityDuration(activity.duration_seconds)}・${activity.occurrences}回）`;
+        shortList.appendChild(item);
+      });
+    }
+
+    function resultCategory(level) {
+      if (level === 'completed' || level === 'mostly_completed') return 'completed';
+      if (level === 'not_completed') return 'not_completed';
+      return 'partially_completed';
+    }
+
+    function relationLabel(relation) {
+      return relation === 'related' ? '関係していた' : relation === 'unrelated' ? '関係していなかった' : '判断できない';
+    }
+
     // Submit result
     async function submitResult() {
-      // Get selected result level
+      // A missing choice remains unanswered; never invent a middle result.
       const selectedLevel = document.querySelector('input[name="resultLevel"]:checked');
       const whatWasDoneValue = whatWasDone.value.trim();
-      const whatWasntDoneValue = whatWasntDone.value.trim();
 
-      // Validation
-      let hasError = false;
+      resultLevelError.textContent = '';
+      whatWasDoneError.textContent = '';
 
-      if (!selectedLevel) {
-        resultLevelError.textContent = '達成度を選択してください';
-        hasError = true;
-      } else {
-        resultLevelError.textContent = '';
-      }
-
-      if (!whatWasDoneValue) {
-        whatWasDoneError.textContent = '何ができたかを入力してください';
-        hasError = true;
-      } else {
-        whatWasDoneError.textContent = '';
-      }
-
-      if (hasError) {
+      if (!selectedLevel && whatWasDoneValue !== savedNoteValue) {
+        resultLevelError.textContent = '補足を保存・変更するには、今回の結果も選んでください。結果を選ばず進む場合、今回の入力は保存されません。';
         return;
       }
 
       try {
-        // Submit to Tauri
-        const result = await window.__TAURI__.invoke('save_result', {
+        const feedbackItems = Array.from(activityFeedback.entries())
+          .filter(([, value]) => value.relation)
+          .map(([key, value]) => {
+            const separator = key.indexOf('::');
+            return {
+              activityType: key.slice(0, separator),
+              label: key.slice(separator + 2),
+              relation: value.relation,
+              details: value.details.trim() || null
+            };
+          });
+        await window.__TAURI__.core.invoke('save_activity_feedback', {
           sessionId: sessionData.session.id,
-          resultLevel: selectedLevel.value,
-          resultDescription: whatWasDoneValue,
-          actualDurationMinutes: sessionData.result.actual_duration_minutes,
-          whatWasntDone: whatWasntDoneValue
+          items: feedbackItems
         });
-        console.log('Result submitted:', result);
+        for (const value of activityFeedback.values()) {
+          if (value.relation && value.saveScope === 'future') {
+            for (const item of value.leisureTargets || []) {
+              await window.__TAURI__.core.invoke('save_leisure_relation_rule', {
+                itemType: item.itemType,
+                itemName: item.itemName,
+                purposeCategory: sessionData.session.purpose_category,
+                relation: value.relation
+              });
+            }
+          }
+        }
+        if (selectedLevel) {
+          const originalCategory = sessionData.savedResult
+            ? resultCategory(sessionData.savedResult.result_level)
+            : null;
+          const levelToSave = sessionData.savedResult && originalCategory === selectedLevel.value
+            ? sessionData.savedResult.result_level
+            : selectedLevel.value;
+          const result = await window.__TAURI__.core.invoke('save_result', {
+            sessionId: sessionData.session.id,
+            resultLevel: levelToSave,
+            resultDescription: whatWasDoneValue,
+            actualDurationMinutes: sessionData.result.actual_duration_minutes,
+            whatWasntDone: null
+          });
+          console.log('Result submitted:', result);
+        }
 
         // Store session data in localStorage for reflection screen
         console.log('Storing session in localStorage:', sessionData.session);

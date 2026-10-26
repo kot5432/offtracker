@@ -184,6 +184,10 @@
       margin-bottom: 20px;
     }
 
+    .flow-steps { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 18px; padding: 0; list-style: none; }
+    .flow-steps li { padding: 5px 9px; border-radius: 999px; background: #eef2f7; color: #475569; font-size: 12px; }
+    .flow-steps li[aria-current="step"] { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
     .form-hint {
       color: #999;
       font-size: 12px;
@@ -199,6 +203,8 @@
       display: block;
     }
 
+    @media (max-width: 560px) { .actions { flex-direction: column; } }
+
     .purpose-display p {
       margin-bottom: 8px;
     }
@@ -206,6 +212,24 @@
     .purpose-display strong {
       color: #1e40af;
     }
+
+    .review-hero { background: #eff6ff; border: 1px solid #bfdbfe; }
+    .review-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .review-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 14px; }
+    .review-card h3 { color: #1e40af; font-size: 14px; margin-bottom: 6px; }
+    .review-card p { white-space: pre-wrap; overflow-wrap: anywhere; }
+    .category-edit-button { margin-top: 8px; padding: 6px 0; border: 0; background: transparent; color: #2563eb; font: inherit; cursor: pointer; }
+    .category-editor { margin-top: 10px; }
+    .category-editor select { width: 100%; padding: 9px 10px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; font: inherit; }
+    .review-wide { grid-column: 1 / -1; }
+    .data-origin { color: #64748b; font-size: 12px; margin-top: 12px; }
+    .next-ideas { display: flex; flex-direction: column; gap: 8px; }
+    .focus-point { width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 7px; background: #fff; text-align: left; font: inherit; cursor: pointer; }
+    .focus-point[aria-pressed="true"] { border-color: #2563eb; background: #eff6ff; }
+    .focus-point-prompt { margin: 10px 0 0; padding: 12px 14px; border-left: 3px solid #2563eb; background: #eff6ff; color: #1e3a8a; }
+    .focus-context-option { margin: 4px 6px 4px 0; padding: 7px 10px; border: 1px solid #d1d5db; border-radius: 999px; background: #fff; cursor: pointer; }
+    .focus-context-option[aria-pressed="true"] { border-color: #2563eb; background: #dbeafe; }
+    @media (max-width: 560px) { .review-grid { grid-template-columns: 1fr; } .review-wide { grid-column: auto; } }
 
     .summary-section {
       background-color: #f0f9ff;
@@ -325,76 +349,81 @@
   <div class="container">
     <header>
       <h1>OffTracker - Reflection</h1>
-      <a href="timeline.html" class="back-link">← Timelineに戻る</a>
     </header>
+    <ol class="flow-steps" aria-label="今回の流れ">
+      <li>1 目的を決める</li><li>2 結果を選ぶ</li><li>3 行動記録を確認</li><li id="reflectionFlowStep" aria-current="step">4 振り返る</li>
+    </ol>
 
     <div id="loading" class="loading">読み込み中...</div>
     <div id="error" class="error-message" style="display: none;"></div>
 
     <div id="reflectionContainer" style="display: none;">
       <div class="section">
-        <h2 class="section-title">振り返りましょう</h2>
-        <p class="section-description">なぜ予定通りできなかったか考えてみましょう</p>
+        <h2 class="section-title">今回のセッションを振り返る</h2>
+        <p class="section-description">今回の目的・PC上の記録・結果を並べています。記録を見て気づいたことがあれば、任意で残せます。</p>
+        <p class="section-description"><a href="review/reflection-review.html">発表・レビュー用の画面例を見る（架空データ）</a></p>
 
-        <div class="purpose-display">
-          <p><strong>目的</strong></p>
-          <p id="purposeText"></p>
+        <div class="review-grid">
+          <div class="review-card"><h3>今回の目的</h3><p id="purposeText"></p></div>
+          <div class="review-card">
+            <h3>目的の種類（目安）</h3>
+            <p id="purposeCategoryText">判定中...</p>
+            <small>目的文だけからの目安です。違う場合だけ変更してください。変更しなくても振り返りを続けられます。</small>
+            <button id="editPurposeCategoryBtn" class="category-edit-button" type="button" aria-expanded="false" aria-controls="purposeCategoryEditor">分類を変更</button>
+            <div id="purposeCategoryEditor" class="category-editor" hidden>
+              <label for="purposeCategoryChoice">今回の目的に近いもの</label>
+              <select id="purposeCategoryChoice">
+                <option value="unknown">目的文だけでは判断できない</option>
+                <option value="leisure">娯楽・楽しむ時間</option>
+                <option value="learning">勉強・学習</option>
+                <option value="task">課題・制作</option>
+                <option value="admin">連絡・事務</option>
+                <option value="other">その他</option>
+              </select>
+            </div>
+          </div>
+          <div class="review-card"><h3>本人が記録した結果</h3><p id="resultText">まだ入力されていません</p></div>
+          <div class="review-card review-wide"><h3>記録された行動の流れ</h3><p id="sessionSummary">読み込み中です</p></div>
+          <div class="review-card review-wide"><h3>目的との関係（参考情報）</h3><p id="purposeAlignment">読み込み中です</p></div>
+          <div class="review-card review-wide" id="contextInfluenceCard" hidden><h3>本人が選んだ関係の反映</h3><p id="contextInfluenceText"></p></div>
         </div>
+        <p class="data-origin">行動の流れと目的との関係はPC上の記録を整理したものです。本人の意図や気持ちを断定するものではありません。</p>
       </div>
 
-      <div class="section" id="summarySection" style="display: none;">
-        <h2 class="section-title">今回のセッションの要約</h2>
-        <div class="summary-section">
-          <h3>セッション概要</h3>
-          <p id="sessionSummary"></p>
-          <h3>目的とのアライメント</h3>
-          <p id="purposeAlignment"></p>
-        </div>
+      <div class="section" id="focusPointSection" hidden>
+        <h2 class="section-title">今回、振り返る場面（任意）</h2>
+        <p class="section-description" id="focusPointIntro">行動の流れから、振り返る手掛かりを示します。気になるものがあれば選ぶと、考える問いが表示されます。</p>
+        <div id="focusPointChoices" class="next-ideas" aria-label="振り返る切替の候補"></div>
+        <p id="focusPointPrompt" class="focus-point-prompt" aria-live="polite" hidden></p>
       </div>
 
       <div class="section" id="hypothesisSection" style="display: none;">
         <h2 class="section-title">なぜそうなった可能性があるか</h2>
-        <p class="section-description">AIが観測された行動から仮説を提示しました。自分の状況に近いものを選んでください。</p>
+        <p class="section-description">記録から考えられる候補です。原因を断定するものではありません。</p>
         <div id="hypothesesContainer"></div>
       </div>
 
       <div class="section">
-        <h2 class="section-title">原因を考える</h2>
+        <h2 class="section-title">今回の進み方について</h2>
 
         <div class="form-group">
-          <label>なぜできなかったと思いますか？（複数選択可）</label>
+          <label>今回の進み方に近いものがあれば選んでください（任意・複数選択可）</label>
           <div class="checkbox-group">
             <label class="checkbox-option">
-              <input type="checkbox" name="deviationReason" value="作業が難しかった">
-              作業が難しかった
+          <input type="checkbox" name="deviationReason" value="予定していたことを進められた">
+              予定していたことを進められた
             </label>
             <label class="checkbox-option">
-              <input type="checkbox" name="deviationReason" value="次に何をすればいいか分からなかった">
-              次に何をすればいいか分からなかった
+              <input type="checkbox" name="deviationReason" value="途中で別のことに移った">
+              途中で別のことに移った
             </label>
             <label class="checkbox-option">
-              <input type="checkbox" name="deviationReason" value="別のことをしてしまった">
-              別のことをしてしまった
+              <input type="checkbox" name="deviationReason" value="予定外の中断があった">
+              予定外の中断があった
             </label>
             <label class="checkbox-option">
-              <input type="checkbox" name="deviationReason" value="時間が足りなかった">
-              時間が足りなかった
-            </label>
-            <label class="checkbox-option">
-              <input type="checkbox" name="deviationReason" value="予定が入った">
-              予定が入った
-            </label>
-            <label class="checkbox-option">
-              <input type="checkbox" name="deviationReason" value="疲れていた">
-              疲れていた
-            </label>
-            <label class="checkbox-option">
-              <input type="checkbox" name="deviationReason" value="エラーが発生した">
-              エラーが発生した
-            </label>
-            <label class="checkbox-option">
-              <input type="checkbox" name="deviationReason" value="その他">
-              その他
+          <input type="checkbox" name="deviationReason" value="特に気づいたことはない">
+              特に気づいたことはない
             </label>
           </div>
           <div id="deviationReasonError" class="error"></div>
@@ -402,33 +431,17 @@
       </div>
 
       <div class="section">
-        <h2 class="section-title">その他、気がついたこと</h2>
-
         <div class="form-group">
-          <label for="reflectionDetails">その他、気がついたことは？（空欄OK）</label>
-          <textarea id="reflectionDetails" placeholder="例: 途中でYouTubeを見てしまった" rows="3"></textarea>
-        </div>
-      </div>
-
-      <div class="section">
-        <h2 class="section-title">次回の行動</h2>
-        <p class="section-description">次回どうしたいか考えてみましょう</p>
-
-        <div id="nextActionSuggestions" style="display: none;">
-          <p class="section-description">以下の候補から選ぶか、自由に入力してください。</p>
-          <div id="nextActionContainer"></div>
-        </div>
-
-        <div class="form-group">
-          <label for="nextAction">次回どうしたいか？（空欄OK）</label>
-          <textarea id="nextAction" placeholder="例: YouTubeを見ないようにしよう、調査時間を制限しよう" rows="3"></textarea>
+          <label for="reflectionDetails">今回の気づき（任意）</label>
+          <textarea id="reflectionDetails" placeholder="記録を見て気づいたことがあれば残せます。空欄でも大丈夫です。" rows="3"></textarea>
         </div>
       </div>
 
       <div class="actions">
-        <button id="completeBtn" class="btn btn-primary btn-large">完了 → パターンを見る</button>
-        <button id="backBtn" class="btn btn-secondary">前に戻る</button>
+        <button id="completeBtn" class="btn btn-primary btn-large">振り返りを保存して終了</button>
+        <button id="backBtn" class="btn btn-secondary">行動記録を見直す</button>
       </div>
+      <p id="completionMessage" class="section-description" role="status" style="display: none; text-align: center; margin-top: 12px;">振り返りを保存しました。今回の記録は完了です。</p>
     </div>
   </div>
 
@@ -437,6 +450,10 @@
     let sessionData = null;
     let sessionSummary = null;
     let selectedHypothesis = null;
+    let purposeCategoryManuallyChanged = false;
+    let reviewActivities = [];
+    let currentSession = null;
+    let selectedFocusPoint = null;
 
     // DOM Elements
     const loading = document.getElementById('loading');
@@ -444,40 +461,61 @@
     const reflectionContainer = document.getElementById('reflectionContainer');
     const purposeText = document.getElementById('purposeText');
     const reflectionDetails = document.getElementById('reflectionDetails');
-    const nextAction = document.getElementById('nextAction');
     const deviationReasonError = document.getElementById('deviationReasonError');
     const completeBtn = document.getElementById('completeBtn');
+    const completionMessage = document.getElementById('completionMessage');
+    const reflectionFlowStep = document.getElementById('reflectionFlowStep');
     const backBtn = document.getElementById('backBtn');
-    const summarySection = document.getElementById('summarySection');
     const sessionSummaryText = document.getElementById('sessionSummary');
     const purposeAlignmentText = document.getElementById('purposeAlignment');
+    const contextInfluenceCard = document.getElementById('contextInfluenceCard');
+    const contextInfluenceText = document.getElementById('contextInfluenceText');
+    const focusPointSection = document.getElementById('focusPointSection');
+    const focusPointChoices = document.getElementById('focusPointChoices');
+    const focusPointPrompt = document.getElementById('focusPointPrompt');
+    const resultText = document.getElementById('resultText');
+    const purposeCategoryText = document.getElementById('purposeCategoryText');
+    const editPurposeCategoryBtn = document.getElementById('editPurposeCategoryBtn');
+    const purposeCategoryEditor = document.getElementById('purposeCategoryEditor');
+    const purposeCategoryChoice = document.getElementById('purposeCategoryChoice');
     const hypothesisSection = document.getElementById('hypothesisSection');
     const hypothesesContainer = document.getElementById('hypothesesContainer');
-    const nextActionSuggestions = document.getElementById('nextActionSuggestions');
-    const nextActionContainer = document.getElementById('nextActionContainer');
 
     // Initialize
     function init() {
       loadSessionData();
       completeBtn.addEventListener('click', submitReflection);
-      backBtn.addEventListener('click', () => {
-        window.location.href = 'timeline.html';
+      editPurposeCategoryBtn.addEventListener('click', () => {
+        purposeCategoryEditor.hidden = false;
+        editPurposeCategoryBtn.hidden = true;
+        editPurposeCategoryBtn.setAttribute('aria-expanded', 'true');
+        purposeCategoryChoice.focus();
       });
+      purposeCategoryChoice.addEventListener('change', () => {
+        purposeCategoryManuallyChanged = true;
+        updatePurposeCategoryLabel();
+        purposeCategoryEditor.hidden = true;
+        editPurposeCategoryBtn.hidden = false;
+        editPurposeCategoryBtn.setAttribute('aria-expanded', 'false');
+      });
+      backBtn.addEventListener('click', () => {
+        const sessionId = sessionData?.session?.id;
+        if (sessionId) window.location.href = `timeline.html?session_id=${encodeURIComponent(sessionId)}`;
+      });
+
     }
 
-    // Load session from localStorage
+    // Load the selected session from the URL, falling back to the just-finished session.
     async function loadSessionData() {
       try {
-        // Get session from localStorage
-        console.log('Checking localStorage for resultSession...');
+        const urlSessionId = new URLSearchParams(window.location.search).get('session_id');
         const storedSession = localStorage.getItem('resultSession');
-        console.log('Found in localStorage:', storedSession);
         let session = null;
 
-        if (storedSession) {
+        if (urlSessionId) {
+          session = { id: urlSessionId };
+        } else if (storedSession) {
           session = JSON.parse(storedSession);
-          localStorage.removeItem('resultSession'); // Clear after use
-          console.log('Parsed session:', session);
         }
 
         // If no session data available
@@ -488,19 +526,37 @@
           return;
         }
 
-        sessionData = {
-          session: session,
-          reflection: {
-            deviation_reason: '',
-            reflection_details: ''
-          }
-        };
+        // Load the saved reflection from SQLite so returning to this screen
+        // restores the user's earlier answers instead of presenting a blank form.
+        const savedSession = await window.__TAURI__.core.invoke('get_session', {
+          sessionId: session.id
+        });
+        if (!savedSession?.session) {
+          throw new Error('Session was not found');
+        }
+        session = savedSession.session;
+        sessionData = savedSession;
+        sessionData.reflection = savedSession.reflection || null;
+
+        if (storedSession && !urlSessionId) {
+          localStorage.removeItem('resultSession');
+        }
 
         // Display purpose
-        purposeText.textContent = session.purpose;
-
-        // Load session summary
-        await loadSessionSummary(session.id);
+        purposeText.textContent = session.purpose || '目的は記録されていません';
+        const categoryOverride = sessionData.reflection?.purpose_category_override;
+        const validCategories = ['leisure', 'learning', 'task', 'admin', 'other', 'unknown'];
+        setPurposeCategory(
+          validCategories.includes(categoryOverride) ? categoryOverride : (validCategories.includes(session.purpose_category) ? session.purpose_category : classifyPurposeType(session.purpose)),
+          validCategories.includes(categoryOverride)
+        );
+        displaySessionReview(savedSession);
+        restoreSavedReflection(sessionData.reflection);
+        if (sessionData.reflection) {
+          completionMessage.style.display = 'block';
+          reflectionFlowStep.textContent = '4 振り返り完了';
+          completeBtn.textContent = '振り返りを更新して終了';
+        }
 
         // Hide loading, show reflection
         loading.style.display = 'none';
@@ -513,97 +569,380 @@
       }
     }
 
-    // Load session summary
-    async function loadSessionSummary(sessionId) {
+    async function displaySessionReview(details) {
+      const levelLabels = {
+        completed: '目的に沿って過ごせた', mostly_completed: 'ほぼ目的に沿って過ごせた',
+        partially_completed: '一部、目的に沿って過ごせた', minimal: '少し、目的に沿って過ごせた', not_completed: '今回は目的に沿って過ごせなかった'
+      };
+      const result = details.result;
+      currentSession = details.session;
+      if (result) {
+        const resultLabel = levelLabels[result.result_level] || result.result_level;
+        const notes = [result.result_description, result.what_wasnt_done].filter(Boolean).map(value => value.trim());
+        const uniqueNotes = [...new Set(notes)];
+        const description = uniqueNotes.length ? `\n補足：${uniqueNotes.join('\n')}` : '';
+        resultText.textContent = `${resultLabel}${description}`;
+      } else {
+        resultText.textContent = 'まだ入力されていません';
+      }
+
       try {
-        const response = await fetch(`/api/session/analyze?session_id=${sessionId}`);
-        if (!response.ok) {
-          throw new Error('Failed to load session summary');
-        }
-
-        sessionSummary = await response.json();
-        console.log('Session summary loaded:', sessionSummary);
-
-        // Display summary
-        displaySummary(sessionSummary);
-
-        // Load hypotheses
-        await loadHypotheses(sessionId);
+        const story = await window.__TAURI__.core.invoke('analyze_session_story', {
+          sessionId: details.session.id
+        });
+        reviewActivities = story.activities || [];
+        const contextInfluence = applyUserProvidedContext(reviewActivities, result, details.activity_feedback || []);
+        sessionSummaryText.textContent = story.summary || '行動記録はありません。';
+        purposeAlignmentText.textContent = summarizeRelations(reviewActivities);
+        renderContextInfluence(contextInfluence);
+        renderFocusPointChoices(reviewActivities, result);
       } catch (err) {
-        console.error('Error loading session summary:', err);
-        // Continue without summary
+        console.error('Failed to load session activity summary:', err);
+        reviewActivities = [];
+        renderContextInfluence(null);
+        renderFocusPointChoices([]);
+        sessionSummaryText.textContent = '行動の要約を読み込めませんでした。Timelineで記録を確認できます。';
+        purposeAlignmentText.textContent = '目的との関係を表示できませんでした。';
       }
     }
 
-    // Display summary
-    function displaySummary(summary) {
-      if (!summary) return;
-
-      summarySection.style.display = 'block';
-      sessionSummaryText.textContent = summary.summary || '要約がありません';
-
-      // Display purpose alignment
-      if (summary.purpose_alignment) {
-        const alignment = summary.purpose_alignment;
-        const alignmentText = [
-          `目的に関連: ${Math.floor(alignment.related_time / 60)}分`,
-          `関連する可能性: ${Math.floor(alignment.possibly_related_time / 60)}分`,
-          `不明: ${Math.floor(alignment.uncertain_time / 60)}分`,
-          `関連しない可能性: ${Math.floor(alignment.possibly_unrelated_time / 60)}分`
-        ].join('、');
-        purposeAlignmentText.textContent = alignmentText;
-      }
+    function classifyPurposeType(purpose) {
+      const text = String(purpose || '').trim().toLowerCase();
+      if (!text) return 'unknown';
+      const matches = [
+        ['leisure', /(楽し|娯楽|息抜|休憩|リラックス|気分転換)/],
+        ['admin', /(メール|返信|連絡|会議|打ち合わせ|予約|申請|手続き)/],
+        ['learning', /(勉強|学習|学ぶ|理解|練習|暗記|問題を解|教科書|復習)/],
+        ['task', /(課題|レポート|論文|提出|作成|執筆|書く|開発|実装|コーディング|完成|制作)/]
+      ].filter(([, pattern]) => pattern.test(text));
+      // Multiple or zero matches are ambiguous; don't let rule order decide intent.
+      return matches.length === 1 ? matches[0][0] : 'unknown';
     }
 
-    // Load hypotheses
-    async function loadHypotheses(sessionId) {
-      try {
-        const response = await fetch(`/api/session/hypotheses?session_id=${sessionId}`);
-        if (!response.ok) {
-          throw new Error('Failed to load hypotheses');
+    function applyUserProvidedContext(activities, result, explicitFeedback = []) {
+      const context = [result?.result_description, result?.what_wasnt_done]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase()
+        .replace(/[\s　]+/g, ' ');
+      if (!activities.length) return [];
+
+      const relevance = /(一部|必要|必要だった|使った|使用|調べ|調査|資料|参考|解説|確認|関係がある|役立)/;
+      const negative = /(関係ない|関係なかった|必要なかった|使わなかった|目的外|課題外|無関係)/;
+      const goalContext = /(課題|レポート|論文|勉強|学習|作業|目的|制作|開発|実装)/;
+      const applied = [];
+      const feedbackByKey = new Map(explicitFeedback.map(item => [
+        `${item.activityType}::${item.label}`,
+        item
+      ]));
+      activities.forEach(activity => {
+        const feedbackKey = `${activity.activity_type}::${activity.label}`;
+        const explicit = feedbackByKey.get(feedbackKey);
+        if (explicit) {
+          activity.purpose_relation = explicit.relation;
+          activity.purpose_relation_source = 'user';
+          activity.user_context_details = explicit.details || null;
+          applied.push({ label: activity.label, relation: explicit.relation, details: explicit.details || null });
+          return;
         }
+        if (!context || activity.activity_type !== 'research') return;
+        const labels = [activity.label, ...(activity.services_used || [])]
+          .filter(Boolean)
+          .map(value => String(value).toLowerCase());
+        const isYouTubeActivity = labels.some(label => /youtube|ユーチューブ/i.test(label));
+        const explicitlyMentionsActivity = labels.some(label => label && context.includes(label));
+        const mentionsGenericWebUse = /(web|ウェブ|ブラウザ|ブラウジング|ネット)/i.test(context) && !isYouTubeActivity;
+        const mentionsActivity = explicitlyMentionsActivity || mentionsGenericWebUse;
+        if (!mentionsActivity || !goalContext.test(context) || !relevance.test(context) || negative.test(context)) return;
+        // Explicit user context is stronger evidence than a generic activity label.
+        // It affects this reflection view only; it does not rewrite stored PC logs.
+        activity.purpose_relation = 'related';
+        applied.push({ label: activity.label || 'Web閲覧', relation: 'related', details: null });
+      });
+      return applied.filter((item, index) => applied.findIndex(other => other.label === item.label) === index);
+    }
 
-        const data = await response.json();
-        console.log('Hypotheses loaded:', data);
+    function renderContextInfluence(activities) {
+      contextInfluenceCard.hidden = !activities?.length;
+      if (!activities?.length) return;
+      const statements = activities.map(item => {
+        const relation = item.relation === 'related' ? '関係していた' : item.relation === 'unrelated' ? '関係していなかった' : '判断できない';
+        return `「${item.label}」は「${relation}」${item.details ? `（${item.details}）` : ''}`;
+      });
+      contextInfluenceText.textContent = `本人の回答を、以下の記録の参考分類に反映しています。${statements.join('、')}。AIによる推測ではありません。`;
+    }
 
-        // Display hypotheses
-        displayHypotheses(data.hypotheses || []);
+    function renderFocusPointChoices(activities, result) {
+      focusPointChoices.replaceChildren();
+      const completed = ['completed', 'mostly_completed'].includes(result?.result_level);
+      const candidates = activities
+        .slice(1)
+        .map((activity, index) => ({ kind: 'transition', previous: activities[index], activity }))
+        .filter(({ previous, activity }) =>
+          previous.label !== activity.label
+          && previous.duration_seconds >= 60
+          && activity.duration_seconds >= 60
+          && relationBand(previous.purpose_relation)
+          && relationBand(activity.purpose_relation)
+          && relationBand(previous.purpose_relation) !== relationBand(activity.purpose_relation)
+        )
+        .slice(0, 6);
+      if (completed && candidates.length === 0) {
+        const relatedActivity = activities
+          .filter(activity => relationBand(activity.purpose_relation) === 'related' && activity.duration_seconds >= 60)
+          .sort((a, b) => b.duration_seconds - a.duration_seconds)[0];
+        if (relatedActivity) candidates.push({ kind: 'aligned', activity: relatedActivity });
+      }
+      const hasTransitions = candidates.some(candidate => candidate.kind === 'transition');
+      const intro = document.getElementById('focusPointIntro');
+      if (hasTransitions) {
+        intro.textContent = '目的との関係が切り替わった前後を候補にします。候補を選ぶと、その時の流れを振り返る問いが表示されます。分類は参考情報で、原因は決めつけません。';
+      } else if (candidates.some(candidate => candidate.kind === 'aligned')) {
+        intro.textContent = '目的に関連する行動を手掛かりに、何が役立ったかを考える問いを表示します。本人の回答と参考分類を区別して示します。問いへの回答は任意です。';
+      } else {
+        intro.textContent = completed
+          ? '今回の結果に関係する手掛かりは、記録からは見つかりませんでした。'
+          : '目的との関係が切り替わる記録は見つかりませんでした。無理に理由を推測せず、振り返りを続けられます。';
+      }
+      focusPointSection.hidden = !result || candidates.length === 0;
+      focusPointPrompt.hidden = true;
+      focusPointPrompt.textContent = '';
+      selectedFocusPoint = null;
+      if (!candidates.length) return;
 
-        // Load next action suggestions
-        await loadNextActionSuggestions(sessionId);
-      } catch (err) {
-        console.error('Error loading hypotheses:', err);
-        // Continue without hypotheses
+      candidates.forEach(candidate => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'focus-point';
+        let signature;
+        if (candidate.kind === 'transition') {
+          const { previous, activity } = candidate;
+          const time = new Date(activity.start_time).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+          const previousRelation = relationLabel(previous.purpose_relation);
+          const currentRelation = relationLabel(activity.purpose_relation);
+          signature = `${time}: ${previous.label}（${previousRelation}）→ ${activity.label}（${currentRelation}）`;
+          button.textContent = `${time}　${previous.label}（${formatReviewDuration(previous.duration_seconds)}・${previousRelation}） → ${activity.label}（${formatReviewDuration(activity.duration_seconds)}・${currentRelation}）`;
+          button.setAttribute('aria-label', `${time}ごろ、${previous.label} ${formatReviewDuration(previous.duration_seconds)}、${previousRelation}から、${activity.label} ${formatReviewDuration(activity.duration_seconds)}、${currentRelation}へ切り替わりました。選ぶと振り返りメモに記録します。`);
+        } else {
+          const { activity } = candidate;
+          const time = new Date(activity.start_time).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+          const relationSource = activity.purpose_relation_source === 'user'
+            ? '本人が「関係していた」と回答'
+            : '目的に関連する参考分類';
+          signature = `${time}: ${activity.label}（${relationSource}）`;
+          button.textContent = `${time}　${activity.label}（${formatReviewDuration(activity.duration_seconds)}・${relationSource}）`;
+          button.setAttribute('aria-label', `${time}ごろ、${activity.label}が${formatReviewDuration(activity.duration_seconds)}記録されました。${relationSource}。今回の進め方を振り返る手掛かりとして選べます。`);
+        }
+        button.setAttribute('aria-pressed', 'false');
+        const userContext = String(candidate.activity?.user_context_details || '').trim().slice(0, 100);
+        const prompt = candidate.kind === 'transition'
+          ? `「${candidate.previous.label}」から「${candidate.activity.label}」に切り替わった前後に何がありましたか？目的への取り組みにどう影響したか、思い出せる範囲で振り返れます。`
+          : userContext
+              ? `補足には「${userContext}」とあります。その作業で、何が進みましたか？`
+            : candidate.activity.purpose_relation_source === 'user'
+                ? `「${candidate.activity.label}」が目的に役立ったのは、どんな使い方だったからですか？`
+                : `「${candidate.activity.label}」は目的に関連する参考分類です。どんな使い方が目的に役立ったか、思い当たりますか？`;
+        if (candidate.kind === 'aligned' && candidates.length === 1) {
+          focusPointPrompt.textContent = `振り返りの問い：${prompt} 必要なら、下の「今回の気づき」に残してください。`;
+          focusPointPrompt.hidden = false;
+        }
+        button.dataset.focusSignature = signature;
+        button.dataset.focusPrompt = prompt;
+        button.addEventListener('click', () => selectFocusPoint(signature, button, prompt));
+        focusPointChoices.appendChild(button);
+      });
+
+      const savedMarker = reflectionDetails.value
+        .split('\n')
+        .find(line => line.startsWith('【気になった切替】'));
+      const savedSignature = savedMarker?.slice('【気になった切替】'.length);
+      if (savedSignature) {
+        const savedButton = Array.from(focusPointChoices.querySelectorAll('.focus-point'))
+          .find(button => button.dataset.focusSignature === savedSignature);
+        if (savedButton) {
+          selectedFocusPoint = savedSignature;
+          savedButton.setAttribute('aria-pressed', 'true');
+          focusPointPrompt.textContent = `振り返りの問い：${savedButton.dataset.focusPrompt} 必要なら、下の「今回の気づき」に残してください。`;
+          focusPointPrompt.hidden = false;
+        }
       }
     }
 
-    // Display hypotheses
-    function displayHypotheses(hypotheses) {
-      if (!hypotheses || hypotheses.length === 0) {
-        hypothesisSection.style.display = 'none';
+    function relationBand(relation) {
+      if (relation === 'related' || relation === 'possibly_related') return 'related';
+      if (relation === 'unrelated' || relation === 'possibly_unrelated') return 'unrelated';
+      return null;
+    }
+
+    function relationLabel(relation) {
+      const labels = {
+        related: '目的に関連',
+        possibly_related: '関連する可能性',
+        uncertain: '判断材料が不足',
+        possibly_unrelated: '目的外の可能性',
+        unrelated: '目的外の可能性'
+      };
+      return labels[relation] || labels.uncertain;
+    }
+
+    function selectFocusPoint(signature, button, prompt) {
+      selectedFocusPoint = signature;
+      focusPointChoices.querySelectorAll('.focus-point').forEach(item => {
+        item.setAttribute('aria-pressed', String(item === button));
+      });
+      focusPointPrompt.textContent = `振り返りの問い：${prompt} 必要なら、下の「今回の気づき」に残してください。`;
+      focusPointPrompt.hidden = false;
+      saveFocusPointNote(signature, null);
+    }
+
+    function saveFocusPointNote(signature, context) {
+      const marker = '【気になった切替】';
+      const lines = reflectionDetails.value
+        .split('\n')
+        .filter(line => !line.startsWith(marker) && !line.startsWith('【その時の状況】'));
+      const note = [`${marker}${signature}`];
+      if (context) note.push(`【その時の状況】${context}`);
+      reflectionDetails.value = [...note, ...lines].filter(Boolean).join('\n');
+    }
+
+    function purposeCategoryLabel(category) {
+      const labels = {
+        leisure: '娯楽・楽しむ時間',
+        learning: '勉強・学習',
+        task: '課題・制作',
+        admin: '連絡・事務',
+        other: 'その他',
+        unknown: '目的文だけでは判断できません'
+      };
+      return labels[category] || labels.unknown;
+    }
+
+    function setPurposeCategory(category, manuallyChanged = false) {
+      purposeCategoryChoice.value = category;
+      purposeCategoryManuallyChanged = manuallyChanged;
+      updatePurposeCategoryLabel();
+    }
+
+    function updatePurposeCategoryLabel() {
+      purposeCategoryText.textContent = purposeCategoryLabel(purposeCategoryChoice.value);
+    }
+
+    function summarizeRelations(activities) {
+      if (!activities.length) return '比較できる行動記録はありません。';
+      const totals = new Map();
+      activities.forEach(activity => {
+        const relation = activity.purpose_relation || 'uncertain';
+        totals.set(relation, (totals.get(relation) || 0) + Math.max(0, activity.duration_seconds || 0));
+      });
+      const labels = {
+        related: '目的に関連', possibly_related: '関連する可能性', uncertain: '判断材料が不足',
+        possibly_unrelated: '目的外の可能性', unrelated: '目的外の可能性'
+      };
+      const parts = Array.from(totals, ([relation, seconds]) =>
+        `${labels[relation] || '判断材料が不足'} ${formatReviewDuration(seconds)}`
+      );
+      return `${parts.join(' ／ ')}。この分類は参考情報です。`;
+    }
+
+    function formatReviewDuration(seconds) {
+      const minutes = Math.floor(seconds / 60);
+      const remainder = seconds % 60;
+      return minutes > 0 ? `${minutes}分${remainder ? `${remainder}秒` : ''}` : `${remainder}秒`;
+    }
+
+    function restoreSavedReflection(reflection) {
+      if (!reflection) return;
+
+      const savedReasons = new Set(
+        String(reflection.deviation_reason || '')
+          .split(',')
+          .map(reason => reason.trim())
+          .filter(Boolean)
+      );
+      document.querySelectorAll('input[name="deviationReason"]').forEach(checkbox => {
+        checkbox.checked = savedReasons.has(checkbox.value);
+      });
+      reflectionDetails.value = reflection.reflection_details || '';
+    }
+
+    // Render only the sanitized Rust display state. This is deliberately not
+    // called until a provider passes the quality gate and is connected.
+    function displayHypothesisState(state) {
+      const fallbackMessage = '仮説候補を表示できませんでした。記録を確認して、振り返りを続けてください。';
+      const confidenceLabels = { low: '低め', medium: '中程度', high: '高め' };
+      hypothesesContainer.replaceChildren();
+
+      const showNoCandidates = () => {
+        const message = document.createElement('p');
+        message.className = 'hypothesis-empty';
+        message.textContent = fallbackMessage;
+        hypothesesContainer.appendChild(message);
+        hypothesisSection.style.display = 'block';
+      };
+
+      if (state?.status === 'no_candidates') {
+        showNoCandidates();
         return;
       }
 
-      hypothesisSection.style.display = 'block';
-      hypothesesContainer.innerHTML = '';
+      const hypotheses = state?.hypotheses;
+      if (
+        state?.status !== 'candidates'
+        || !Array.isArray(hypotheses)
+        || hypotheses.length < 1
+        || hypotheses.length > 3
+        || hypotheses.some(item =>
+          !item
+          || typeof item.title !== 'string'
+          || typeof item.description !== 'string'
+          || !Array.isArray(item.evidence)
+          || item.evidence.some(fact => typeof fact !== 'string')
+          || !confidenceLabels[item.confidence]
+        )
+        || (state.coverage_message !== null && state.coverage_message !== undefined
+          && typeof state.coverage_message !== 'string')
+      ) {
+        showNoCandidates();
+        return;
+      }
+
+      if (state.coverage_message) {
+        const coverage = document.createElement('p');
+        coverage.className = 'hypothesis-empty';
+        coverage.textContent = state.coverage_message;
+        hypothesesContainer.appendChild(coverage);
+      }
 
       hypotheses.forEach(hypothesis => {
-        const card = document.createElement('div');
+        const card = document.createElement('article');
         card.className = 'hypothesis-card';
-        card.innerHTML = `
-          <h4>仮説</h4>
-          <p>${hypothesis.description}</p>
-          <div class="evidence">根拠: ${hypothesis.evidence}</div>
-          <div class="confidence">信頼度: ${hypothesis.confidence}</div>
-          <div class="hypothesis-actions">
-            <button onclick="selectHypothesis('${hypothesis.id}', 'agree')">近い</button>
-            <button onclick="selectHypothesis('${hypothesis.id}', 'partial')">少し違う</button>
-            <button onclick="selectHypothesis('${hypothesis.id}', 'disagree')">違う</button>
-          </div>
-        `;
+        const title = document.createElement('h4');
+        title.textContent = hypothesis.title;
+        card.appendChild(title);
+
+        const description = document.createElement('p');
+        description.textContent = hypothesis.description;
+        card.appendChild(description);
+
+        const evidence = document.createElement('ul');
+        evidence.className = 'evidence';
+        hypothesis.evidence.forEach(fact => {
+          const item = document.createElement('li');
+          item.textContent = fact;
+          evidence.appendChild(item);
+        });
+        card.appendChild(evidence);
+
+        const confidence = document.createElement('p');
+        confidence.className = 'confidence';
+        confidence.textContent = `確信度: ${confidenceLabels[hypothesis.confidence]}`;
+        card.appendChild(confidence);
         hypothesesContainer.appendChild(card);
       });
+      hypothesisSection.style.display = 'block';
     }
+
+    window.displayHypothesisState = displayHypothesisState;
 
     // Select hypothesis
     window.selectHypothesis = function(hypothesisId, feedback) {
@@ -620,52 +959,6 @@
       });
     };
 
-    // Load next action suggestions
-    async function loadNextActionSuggestions(sessionId) {
-      try {
-        const response = await fetch(`/api/session/next-actions?session_id=${sessionId}`);
-        if (!response.ok) {
-          throw new Error('Failed to load next action suggestions');
-        }
-
-        const data = await response.json();
-        console.log('Next action suggestions loaded:', data);
-
-        // Display next action suggestions
-        displayNextActionSuggestions(data.suggestions || []);
-      } catch (err) {
-        console.error('Error loading next action suggestions:', err);
-        // Continue without suggestions
-      }
-    }
-
-    // Display next action suggestions
-    function displayNextActionSuggestions(suggestions) {
-      if (!suggestions || suggestions.length === 0) {
-        nextActionSuggestions.style.display = 'none';
-        return;
-      }
-
-      nextActionSuggestions.style.display = 'block';
-      nextActionContainer.innerHTML = '';
-
-      suggestions.forEach((suggestion, index) => {
-        const card = document.createElement('div');
-        card.className = 'next-action-card';
-        card.innerHTML = `
-          <h4>${suggestion.action}</h4>
-          <p class="reason">理由: ${suggestion.reason}</p>
-        `;
-        card.onclick = () => {
-          nextAction.value = suggestion.action;
-          // Update card styles
-          document.querySelectorAll('.next-action-card').forEach(c => c.classList.remove('selected'));
-          card.classList.add('selected');
-        };
-        nextActionContainer.appendChild(card);
-      });
-    }
-
     // Submit reflection
     async function submitReflection() {
       // Get selected reasons
@@ -673,45 +966,24 @@
         .map(checkbox => checkbox.value);
 
       const reflectionDetailsValue = reflectionDetails.value.trim();
-      const nextActionValue = nextAction.value.trim();
-
-      // Validation
-      if (selectedReasons.length === 0) {
-        deviationReasonError.textContent = '少なくとも1つ選択してください';
-        return;
-      }
-
       deviationReasonError.textContent = '';
 
       try {
-        // Submit to API
-        const response = await fetch('/api/reflection', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            session_id: sessionData.session.id,
-            deviation_reason: selectedReasons.join(','),
-            reflection_details: reflectionDetailsValue,
-            next_action: nextActionValue,
-            selected_hypothesis: selectedHypothesis,
-            session_summary: sessionSummary
-          })
+        const reflection = await window.__TAURI__.core.invoke('save_reflection', {
+          sessionId: sessionData.session.id,
+          deviationReason: selectedReasons.join(','),
+          reflectionDetails: reflectionDetailsValue || null,
+          purposeCategoryOverride: purposeCategoryManuallyChanged ? purposeCategoryChoice.value : null,
+          nextExperiment: null,
+          experimentReflection: null
         });
-
-        if (!response.ok) {
-          throw new Error('Failed to save reflection');
-        }
-
-        const reflection = await response.json();
         console.log('Reflection submitted:', reflection);
 
-        // Store session data in localStorage for pattern screen
-        localStorage.setItem('reflectionSession', JSON.stringify(sessionData.session));
-
-        // Navigate to pattern
-        window.location.href = 'pattern.html';
+        completionMessage.style.display = 'block';
+        reflectionFlowStep.textContent = '4 振り返り完了';
+        completeBtn.textContent = '保存済み';
+        completeBtn.disabled = true;
+        completeBtn.setAttribute('aria-label', '振り返りは保存済みです');
       } catch (err) {
         console.error('Error submitting reflection:', err);
         alert('振り返りの保存に失敗しました');

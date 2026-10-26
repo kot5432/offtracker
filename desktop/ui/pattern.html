@@ -40,15 +40,10 @@
       color: #1a1a1a;
     }
 
-    .back-link {
-      color: #3b82f6;
-      text-decoration: none;
-      font-weight: 500;
-    }
+    .flow-steps { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 18px; padding: 0; list-style: none; }
+    .flow-steps li { padding: 5px 9px; border-radius: 999px; background: #eef2f7; color: #475569; font-size: 12px; }
+    .flow-steps li[aria-current="step"] { background: #dbeafe; color: #1e40af; font-weight: 700; }
 
-    .back-link:hover {
-      text-decoration: underline;
-    }
 
     .section {
       background-color: #fff;
@@ -244,8 +239,10 @@
   <div class="container">
     <header>
       <h1>OffTracker - Pattern</h1>
-      <a href="reflection.html" class="back-link">← Reflectionに戻る</a>
     </header>
+    <ol class="flow-steps" aria-label="記録の進み方">
+      <li>1 目的を決める</li><li>2 結果を選ぶ</li><li>3 行動記録を確認</li><li>4 振り返る</li>
+    </ol>
 
     <div id="loading" class="loading">読み込み中...</div>
     <div id="error" class="error-message" style="display: none;"></div>
@@ -259,24 +256,19 @@
           <h3>今回の記録</h3>
           <p><strong>目的:</strong> <span id="sessionPurpose">-</span></p>
           <p><strong>結果:</strong> <span id="sessionResult">-</span></p>
-          <p><strong>原因:</strong> <span id="sessionReason">-</span></p>
+          <p><strong>今回の気づき:</strong> <span id="sessionReason">-</span></p>
           <p><strong>時間:</strong> <span id="sessionDuration">-</span></p>
+          <p><strong>できたこと:</strong> <span id="sessionResultDescription">-</span></p>
+          <p><strong>残したメモ:</strong> <span id="sessionWhatRemains">-</span></p>
         </div>
       </div>
 
       <div class="section">
         <h2 class="section-title">これまでの作業を振り返る</h2>
-        <p class="section-description">これまでの記録を比較できます</p>
+        <p class="section-description">今回のセッションで記録された内容です</p>
 
         <div id="patternsArea">
-          <div class="pattern-flow">
-            <div class="pattern-step">難しい問題に遭遇</div>
-            <div class="pattern-arrow">↓</div>
-            <div class="pattern-step">ブラウザで調査</div>
-            <div class="pattern-arrow">↓</div>
-            <div class="pattern-step">作業終了</div>
-            <div class="pattern-count">この流れが2回ありました</div>
-          </div>
+          <div class="no-patterns">このセッションの行動記録はありません。</div>
         </div>
       </div>
 
@@ -284,42 +276,13 @@
         <h2 class="section-title">そのときの振り返り</h2>
 
         <div id="reflectionsArea">
-          <div class="reflection-item">
-            <div class="reflection-date">9/17</div>
-            <div class="reflection-purpose">Webアプリのログイン機能を実装する</div>
-            <div class="reflection-reason">作業が難しかった、エラーが発生した</div>
-          </div>
-          <div class="reflection-item">
-            <div class="reflection-date">9/15</div>
-            <div class="reflection-purpose">APIエンドポイントの実装</div>
-            <div class="reflection-reason">作業が難しかった、次に何をすればいいか分からなかった</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section">
-        <h2 class="section-title">インサイト</h2>
-
-        <div class="insight-box">
-          <div class="insight-title">観察</div>
-          <div class="insight-content">
-            難しい問題に遭遇したとき、調査に時間をかけすぎて作業を中断する傾向があります。
-          </div>
-
-          <div class="insight-suggestions">
-            <h4>次回は以下を試してみてください：</h4>
-            <ul>
-              <li>調査時間を15分に制限する</li>
-              <li>分からないことは質問する</li>
-              <li>問題を小さく分ける</li>
-            </ul>
-          </div>
+          <div class="no-patterns">保存された振り返りはありません。</div>
         </div>
       </div>
 
       <div class="actions">
-        <button id="newSessionBtn" class="btn btn-primary btn-large">新しい記録を開始</button>
-        <button id="backBtn" class="btn btn-secondary">前に戻る</button>
+        <button id="newSessionBtn" class="btn btn-primary btn-large">次の記録を始める</button>
+        <button id="backBtn" class="btn btn-secondary">振り返りを見直す</button>
       </div>
     </div>
   </div>
@@ -336,6 +299,16 @@
     const reflectionsArea = document.getElementById('reflectionsArea');
     const newSessionBtn = document.getElementById('newSessionBtn');
     const backBtn = document.getElementById('backBtn');
+    const reasonLabels = {
+      '作業が難しかった': '作業が難しかった',
+      '次に何をすればいいか分からなかった': '次に何をすればよいか迷った',
+      '別のことをしてしまった': '別のことが気になった',
+      '時間が足りなかった': '時間が足りなかった',
+      '予定が入った': '別の用事で中断した',
+      '疲れていた': '疲れを感じた',
+      'エラーが発生した': 'エラーが発生した',
+      'その他': 'その他'
+    };
 
     // Initialize
     function init() {
@@ -355,34 +328,32 @@
     // Load session data for pattern analysis
     async function loadSessionData() {
       try {
-        // Get session from localStorage
+        // Resolve the session ID from navigation state, then load persisted data.
         const storedSession = localStorage.getItem('reflectionSession');
-        let session = null;
+        let sessionId = null;
 
         if (storedSession) {
-          session = JSON.parse(storedSession);
+          sessionId = JSON.parse(storedSession)?.id || null;
           localStorage.removeItem('reflectionSession'); // Clear after use
         }
 
-        // If no session data available
-        if (!session) {
+        if (!sessionId) {
           loading.style.display = 'none';
           error.style.display = 'block';
           error.innerHTML = 'セッションデータが見つかりません。<br><a href="home.html" style="color: #3b82f6;">Home画面から新しいセッションを開始してください</a>';
           return;
         }
 
-        // Get all events
-        const eventsResponse = await fetch('/api/events');
-        const events = await eventsResponse.json();
+        const details = await window.__TAURI__.core.invoke('get_session', { sessionId });
+        if (!details?.session) throw new Error('Session was not found');
+        const events = details.events || [];
 
         sessionData = {
-          session: session,
-          events: events
+          ...details,
+          session: details.session
         };
 
-        // Display patterns (simplified for now)
-        displaySimplePattern(session, events);
+        displaySimplePattern(details.session, events, details.result, details.reflection);
 
         // Hide loading, show pattern
         loading.style.display = 'none';
@@ -396,40 +367,73 @@
     }
 
     // Display simple pattern (placeholder for now)
-    function displaySimplePattern(session, events) {
+    function displaySimplePattern(session, events, result, reflection) {
       // Populate session summary
       const sessionPurposeEl = document.getElementById('sessionPurpose');
       const sessionResultEl = document.getElementById('sessionResult');
       const sessionReasonEl = document.getElementById('sessionReason');
       const sessionDurationEl = document.getElementById('sessionDuration');
+      document.getElementById('sessionResultDescription').textContent = result?.result_description || '記入なし';
+      document.getElementById('sessionWhatRemains').textContent = result?.what_wasnt_done || '記入なし';
 
       if (sessionPurposeEl) sessionPurposeEl.textContent = session.purpose || '-';
-      if (sessionResultEl) sessionResultEl.textContent = session.status === 'completed' ? '完了' : '進行中';
-      if (sessionReasonEl) sessionReasonEl.textContent = session.result_level || '-';
-      if (sessionDurationEl) sessionDurationEl.textContent = session.actual_duration_minutes ? session.actual_duration_minutes + '分' : '-';
+      const resultLabels = {
+        completed: '目的に沿って過ごせた', mostly_completed: 'ほぼ目的に沿って過ごせた',
+        partially_completed: '一部、目的に沿って過ごせた', minimal: '少し、目的に沿って過ごせた', not_completed: '今回は目的に沿って過ごせなかった'
+      };
+      if (sessionResultEl) sessionResultEl.textContent = result?.result_level ? (resultLabels[result.result_level] || result.result_level) : '未記録';
+      if (sessionReasonEl) sessionReasonEl.textContent = reflection ? formatReasons(reflection.deviation_reason) : '未記録';
+      if (sessionDurationEl) {
+        const duration = result?.actual_duration_minutes;
+        sessionDurationEl.textContent = Number.isFinite(duration) ? `${duration}分` : '記録なし';
+      }
 
-      // Simplified pattern display
-      // In real implementation, this would analyze patterns across multiple sessions
+      const eventCount = document.createElement('div');
+      eventCount.className = 'pattern-flow';
+      const eventText = document.createElement('div');
+      eventText.className = 'pattern-step';
+      eventText.textContent = `${events.length}件の操作記録`;
+      const countCaption = document.createElement('div');
+      countCaption.className = 'pattern-count';
+      countCaption.textContent = '今回のセッション';
+      eventCount.append(eventText, countCaption);
+      patternsArea.replaceChildren(eventCount);
 
-      patternsArea.innerHTML = `
-        <div class="pattern-flow">
-          <div class="pattern-step">セッション開始</div>
-          <div class="pattern-arrow">↓</div>
-          <div class="pattern-step">${events.length}個のイベント記録</div>
-          <div class="pattern-arrow">↓</div>
-          <div class="pattern-step">セッション終了</div>
-          <div class="pattern-count">今回のセッション</div>
-        </div>
-      `;
+      if (reflection) {
+        const item = document.createElement('div');
+        item.className = 'reflection-item';
+        const date = document.createElement('div');
+        date.className = 'reflection-date';
+        date.textContent = new Date(session.start_time).toLocaleDateString('ja-JP');
+        const purpose = document.createElement('div');
+        purpose.className = 'reflection-purpose';
+        purpose.textContent = session.purpose || '';
+        const reason = document.createElement('div');
+        reason.className = 'reflection-reason';
+        reason.textContent = formatReasons(reflection.deviation_reason);
+        item.append(date, purpose, reason);
+        if (reflection.reflection_details) {
+          const details = document.createElement('p');
+          details.className = 'reflection-reason';
+          details.textContent = reflection.reflection_details;
+          item.appendChild(details);
+        }
+        reflectionsArea.replaceChildren(item);
+      } else {
+        reflectionsArea.replaceChildren(emptyMessage('保存された振り返りはありません。'));
+      }
+    }
 
-      // Show session reflection if available
-      reflectionsArea.innerHTML = `
-        <div class="reflection-item">
-          <div class="reflection-date">${new Date(session.start_time).toLocaleDateString('ja-JP')}</div>
-          <div class="reflection-purpose">${session.purpose}</div>
-          <div class="reflection-reason">振り返りを完了しました</div>
-        </div>
-      `;
+    function formatReasons(value) {
+      return String(value || '').split(',').map(reason => reason.trim()).filter(Boolean)
+        .map(reason => reasonLabels[reason] || reason).join('、') || '未記録';
+    }
+
+    function emptyMessage(text) {
+      const message = document.createElement('div');
+      message.className = 'no-patterns';
+      message.textContent = text;
+      return message;
     }
 
     init();

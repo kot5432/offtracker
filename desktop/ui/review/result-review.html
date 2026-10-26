@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OffTracker - 結果入力レビュー</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 28px 16px; background: #f4f6f8; color: #1f2937; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; }
+    main { max-width: 760px; margin: 0 auto; }
+    header, section { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 22px; margin-bottom: 16px; }
+    h1 { margin: 0 0 8px; font-size: 24px; }
+    h2 { margin: 0 0 12px; font-size: 18px; }
+    p { margin: 0 0 10px; }
+    .notice { border: 1px solid #f6c453; border-radius: 8px; background: #fff8e6; color: #704d00; padding: 10px 12px; margin-top: 14px; font-weight: 600; }
+    .switcher { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    button { border: 1px solid #94a3b8; border-radius: 8px; padding: 10px 14px; background: white; color: #1f2937; font: inherit; cursor: pointer; }
+    button[aria-pressed="true"] { background: #1d4ed8; border-color: #1d4ed8; color: white; }
+    .example { border-left: 4px solid #2563eb; background: #eff6ff; padding: 14px 16px; border-radius: 6px; }
+    .example strong { display: block; margin-bottom: 4px; color: #1e40af; }
+    .evidence-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .evidence { border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; }
+    .evidence h3 { margin: 0 0 6px; font-size: 15px; }
+    .evidence p { margin: 0; }
+    .self-report { background: #f8fafc; }
+    .example-list { margin: 0; padding-left: 20px; }
+    .example-list li { margin: 5px 0; }
+    .choices { display: grid; gap: 9px; }
+    .choice { text-align: left; width: 100%; }
+    .choice[aria-pressed="true"] { background: #eff6ff; border-color: #2563eb; color: #1e3a8a; }
+    .hint { color: #64748b; font-size: 13px; }
+    .feedback { min-height: 28px; margin-top: 12px; font-weight: 600; }
+    textarea { width: 100%; min-height: 88px; padding: 10px; border: 1px solid #cbd5e1; border-radius: 7px; font: inherit; resize: vertical; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    #continueMessage { margin-top: 10px; color: #334155; }
+    @media (max-width: 560px) { header, section { padding: 18px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>今回の結果を記録する</h1>
+      <p>今回の目的に対する自分の実感を選びます。選択は任意です。</p>
+      <div class="notice">画面イメージ（架空データ・入力は保存されません）</div>
+      <div class="switcher" role="group" aria-label="例を選ぶ">
+        <button type="button" data-case="leisure" aria-pressed="true">動画を楽しむ例</button>
+        <button type="button" data-case="study" aria-pressed="false">課題を進める例</button>
+      </div>
+    </header>
+
+    <section aria-live="polite">
+      <div class="example">
+        <strong>今回の目的</strong>
+        <span id="purpose"></span>
+      </div>
+    </section>
+
+    <section aria-live="polite">
+      <h2>PC上で記録された行動</h2>
+      <p id="observed"></p>
+      <p class="hint" style="margin-top: 10px">PCの記録だけでは、何を見ていたか・課題がどこまで進んだか・本人がどう感じたかは分かりません。</p>
+    </section>
+
+    <section aria-live="polite">
+      <h2>選択の参考例（架空）</h2>
+      <p class="hint">下の3択がどんな場合に近いかを示す例です。ここに入力する必要はありません。実際の結果はご自身で選んでください。</p>
+      <ul class="example-list" id="selfReport"></ul>
+    </section>
+
+    <section>
+      <h2>今回の実感に近いもの</h2>
+      <p class="hint">目的と記録を参考に、ご自身の実感に最も近いものを選びます。どれが正しいという判定ではありません。</p>
+      <div class="choices" role="group" aria-label="今回の結果">
+        <button type="button" class="choice" data-result="mostly">今回の目的に沿って過ごせた</button>
+        <button type="button" class="choice" data-result="mixed">目的に沿った時間も、別の過ごし方もあった</button>
+        <button type="button" class="choice" data-result="different">今回は別の目的で過ごした</button>
+      </div>
+      <p class="feedback" id="choiceFeedback" aria-live="polite"></p>
+    </section>
+
+    <section>
+      <h2>補足したいこと（任意）</h2>
+      <p>文字を入力する場所はここです。記録だけでは分からない事情や、次に見返したいことがあれば書けます。</p>
+      <textarea id="note" aria-label="補足したいこと" placeholder="例：解き方を調べていたので、Web閲覧も課題の一部だった\n例：次回は調べたページを先にメモしておく"></textarea>
+      <p class="hint">毎回書く必要はありません。空欄のままでも進めます。</p>
+    </section>
+
+    <section>
+      <h2>このあとの流れ</h2>
+      <p class="hint">結果を選ばずに進む操作も試せます。選択していない場合、結果は記録しません。</p>
+      <div class="actions">
+        <button type="button" id="continueButton">振り返りへ進む</button>
+        <button type="button" id="resetButton">選択を取り消す</button>
+      </div>
+      <p id="continueMessage" aria-live="polite"></p>
+    </section>
+  </main>
+  <script>
+    const cases = {
+      leisure: {
+        purpose: '動画を楽しむ時間を1時間にする',
+        observed: '動画サービス 32分 → Web閲覧 6分 → 動画サービス 18分（合計56分）',
+        examples: [
+          '見たかった動画を楽しめて、1時間以内だった',
+          '動画を楽しめたが、予定より長くなった',
+          '動画を少し見た後、別のことをしていた'
+        ]
+      },
+      study: {
+        purpose: '数学の課題を解いて、提出する問題を3問終える',
+        observed: '課題作業 38分／Web閲覧 18分／動画サービス 9分（合計65分）',
+        examples: [
+          '3問とも解けた',
+          '3問中2問を解けた。Webで解き方を調べていた',
+          '課題には取りかからず、別のことをしていた'
+        ]
+      }
+    };
+    const resultMeanings = {
+      mostly: '目的に沿って過ごせた（目標時間や目的を達成できた）',
+      mixed: '目的に沿った部分と、別の過ごし方の両方があった',
+      different: '今回は設定した目的とは別のことをしていた'
+    };
+    let selectedResult = null;
+    function showCase(key) {
+      document.getElementById('purpose').textContent = cases[key].purpose;
+      document.getElementById('observed').textContent = cases[key].observed;
+      const exampleList = document.getElementById('selfReport');
+      exampleList.replaceChildren();
+      cases[key].examples.forEach(text => {
+        const item = document.createElement('li');
+        item.textContent = text;
+        exampleList.appendChild(item);
+      });
+      document.querySelectorAll('[data-case]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.case === key)));
+      selectedResult = null;
+      document.querySelectorAll('[data-result]').forEach(button => button.setAttribute('aria-pressed', 'false'));
+      document.getElementById('choiceFeedback').textContent = '';
+      document.getElementById('continueMessage').textContent = '';
+    }
+    document.querySelectorAll('[data-case]').forEach(button => button.addEventListener('click', () => showCase(button.dataset.case)));
+    document.querySelectorAll('[data-result]').forEach(button => button.addEventListener('click', () => {
+      selectedResult = button.dataset.result;
+      document.querySelectorAll('[data-result]').forEach(option => option.setAttribute('aria-pressed', String(option === button)));
+      document.getElementById('choiceFeedback').textContent = `選択内容: ${resultMeanings[selectedResult]}`;
+    }));
+    document.getElementById('resetButton').addEventListener('click', () => {
+      selectedResult = null;
+      document.querySelectorAll('[data-result]').forEach(button => button.setAttribute('aria-pressed', 'false'));
+      document.getElementById('choiceFeedback').textContent = '選択を取り消しました。';
+      document.getElementById('continueMessage').textContent = '';
+    });
+    document.getElementById('continueButton').addEventListener('click', () => {
+      const note = document.getElementById('note').value.trim();
+      document.getElementById('continueMessage').textContent = selectedResult
+        ? `この例では「${resultMeanings[selectedResult]}」を記録する想定です。${note ? '補足欄に入力があります。' : '補足は空欄です。'} 実際の保存は行いません。`
+        : `結果は未選択のまま進む想定です。${note ? '補足欄に入力があります。' : '補足も空欄です。'} 実際の保存は行いません。`;
+    });
+    showCase('leisure');
+  </script>
+</body>
+</html>

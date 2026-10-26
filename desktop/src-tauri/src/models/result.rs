@@ -25,6 +25,15 @@ pub struct UpsertResultInput {
     pub what_wasnt_done: Option<String>,
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ActivityFeedback {
+    pub activity_type: String,
+    pub label: String,
+    pub relation: String,
+    pub details: Option<String>,
+}
+
 const VALID_LEVELS: &[&str] = &[
     "completed",
     "mostly_completed",
@@ -34,6 +43,50 @@ const VALID_LEVELS: &[&str] = &[
 ];
 
 impl Storage {
+    pub fn get_activity_feedback(&self, session_id: &str) -> StorageResult<Vec<ActivityFeedback>> {
+        let conn = self.conn.lock().map_err(|_| StorageError::Message("mutex poison".into()))?;
+        let mut stmt = conn.prepare(
+            "SELECT activity_type, label, relation, details
+             FROM activity_feedback WHERE session_id=?1 ORDER BY activity_type, label",
+        )?;
+        let rows = stmt.query_map(params![session_id], |row| {
+            Ok(ActivityFeedback {
+                activity_type: row.get(0)?,
+                label: row.get(1)?,
+                relation: row.get(2)?,
+                details: row.get(3)?,
+            })
+        })?;
+        let mut out = Vec::new();
+        for row in rows { out.push(row?); }
+        Ok(out)
+    }
+
+    pub fn replace_activity_feedback(&self, session_id: &str, items: Vec<ActivityFeedback>) -> StorageResult<Vec<ActivityFeedback>> {
+        if self.get_session(session_id)?.is_none() {
+            return Err(StorageError::Message(format!("session not found: {session_id}")));
+        }
+        if items.iter().any(|item| {
+            item.activity_type.trim().is_empty()
+                || item.label.trim().is_empty()
+                || !matches!(item.relation.as_str(), "related" | "unrelated" | "uncertain")
+        }) {
+            return Err(StorageError::Message("invalid activity feedback".into()));
+        }
+        self.exec_tx(|conn| {
+            conn.execute("DELETE FROM activity_feedback WHERE session_id=?1", params![session_id])?;
+            for item in &items {
+                conn.execute(
+                    "INSERT INTO activity_feedback (session_id, activity_type, label, relation, details, updated_at)
+                     VALUES (?1,?2,?3,?4,?5,CURRENT_TIMESTAMP)",
+                    params![session_id, item.activity_type, item.label, item.relation, item.details],
+                )?;
+            }
+            Ok(())
+        })?;
+        self.get_activity_feedback(session_id)
+    }
+
     pub fn upsert_result(&self, input: UpsertResultInput) -> StorageResult<ResultRecord> {
         if !VALID_LEVELS.contains(&input.result_level.as_str()) {
             return Err(StorageError::Message(format!(
