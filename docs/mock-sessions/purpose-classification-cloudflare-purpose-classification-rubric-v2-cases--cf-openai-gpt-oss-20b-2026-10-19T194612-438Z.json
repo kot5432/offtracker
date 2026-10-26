@@ -1,0 +1,414 @@
+{
+  "provider": "Cloudflare Workers AI REST API",
+  "model": "@cf/openai/gpt-oss-20b",
+  "prompt_version": "purpose-classification-v6",
+  "dataset": "purpose-classification-rubric-v2-cases.json",
+  "evaluated_case_count": 28,
+  "run_status": "complete",
+  "timestamp": "2026-10-19T19:48:24.592Z",
+  "settings": {
+    "api_format": "responses",
+    "reasoning_effort": "low",
+    "max_output_tokens": 512,
+    "response_schema_validated_locally": true
+  },
+  "synthetic_data_only": true,
+  "predictions": [
+    {
+      "id": "r2-leisure-1",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1283,
+      "usage": {
+        "input_tokens": 854,
+        "output_tokens": 139,
+        "total_tokens": 993,
+        "neurons": 19.3181625
+      },
+      "raw_response": "{\"category\":\"leisure\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-leisure-2",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 6156,
+      "usage": {
+        "input_tokens": 856,
+        "output_tokens": 151,
+        "total_tokens": 1007,
+        "neurons": 19.6817985
+      },
+      "raw_response": "{\"category\":\"leisure\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-leisure-3",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1348,
+      "usage": {
+        "input_tokens": 854,
+        "output_tokens": 92,
+        "total_tokens": 946,
+        "neurons": 18.0363456
+      },
+      "raw_response": "{\"category\":\"leisure\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-leisure-4",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3518,
+      "usage": {
+        "input_tokens": 857,
+        "output_tokens": 215,
+        "total_tokens": 1072,
+        "neurons": 21.445433100000002
+      },
+      "raw_response": "{\"category\":\"leisure\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-learning-1",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 2932,
+      "usage": {
+        "input_tokens": 857,
+        "output_tokens": 218,
+        "total_tokens": 1075,
+        "neurons": 21.527251200000002
+      },
+      "raw_response": "{\"category\":\"learning\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-learning-2",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1903,
+      "usage": {
+        "input_tokens": 857,
+        "output_tokens": 140,
+        "total_tokens": 997,
+        "neurons": 19.399980600000003
+      },
+      "raw_response": "{\"category\":\"learning\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-learning-3",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 2232,
+      "usage": {
+        "input_tokens": 856,
+        "output_tokens": 160,
+        "total_tokens": 1016,
+        "neurons": 19.9272528
+      },
+      "raw_response": "{\"category\":\"learning\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-learning-4",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1030,
+      "usage": {
+        "input_tokens": 858,
+        "output_tokens": 117,
+        "total_tokens": 975,
+        "neurons": 18.7908903
+      },
+      "raw_response": "{\"category\":\"learning\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-task-1",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1185,
+      "usage": {
+        "input_tokens": 856,
+        "output_tokens": 146,
+        "total_tokens": 1002,
+        "neurons": 19.545435
+      },
+      "raw_response": "{\"category\":\"task\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-task-2",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 4338,
+      "usage": {
+        "input_tokens": 851,
+        "output_tokens": 203,
+        "total_tokens": 1054,
+        "neurons": 21.0090699
+      },
+      "raw_response": "{\"category\":\"task\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-task-3",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 2555,
+      "usage": {
+        "input_tokens": 858,
+        "output_tokens": 203,
+        "total_tokens": 1061,
+        "neurons": 21.1363425
+      },
+      "raw_response": "{\"category\":\"task\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-task-4",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1802,
+      "usage": {
+        "input_tokens": 853,
+        "output_tokens": 177,
+        "total_tokens": 1030,
+        "neurons": 20.3363433
+      },
+      "raw_response": "{\"category\":\"task\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-admin-1",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 7790,
+      "usage": {
+        "input_tokens": 853,
+        "output_tokens": 334,
+        "total_tokens": 1187,
+        "neurons": 24.6181572
+      },
+      "raw_response": "{\"category\":\"admin\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-admin-2",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 2243,
+      "usage": {
+        "input_tokens": 853,
+        "output_tokens": 356,
+        "total_tokens": 1209,
+        "neurons": 25.2181566
+      },
+      "raw_response": "{\"category\":\"admin\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-admin-3",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1181,
+      "usage": {
+        "input_tokens": 853,
+        "output_tokens": 160,
+        "total_tokens": 1013,
+        "neurons": 19.8727074
+      },
+      "raw_response": "{\"category\":\"admin\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-admin-4",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1476,
+      "usage": {
+        "input_tokens": 855,
+        "output_tokens": 107,
+        "total_tokens": 962,
+        "neurons": 18.463617900000003
+      },
+      "raw_response": "{\"category\":\"admin\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-other-1",
+      "category": "other",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 9417,
+      "usage": {
+        "input_tokens": 856,
+        "output_tokens": 395,
+        "total_tokens": 1251,
+        "neurons": 26.3363373
+      },
+      "raw_response": "{\"category\":\"other\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-other-2",
+      "category": "other",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 2888,
+      "usage": {
+        "input_tokens": 858,
+        "output_tokens": 317,
+        "total_tokens": 1175,
+        "neurons": 24.245430300000002
+      },
+      "raw_response": "{\"category\":\"other\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-other-3",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 6901,
+      "usage": {
+        "input_tokens": 862,
+        "output_tokens": 512,
+        "total_tokens": 1374,
+        "neurons": 29.636334
+      },
+      "raw_response": null,
+      "error": {
+        "kind": "empty_model_response",
+        "attempts": 2
+      }
+    },
+    {
+      "id": "r2-other-4",
+      "category": "other",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 12233,
+      "usage": {
+        "input_tokens": 861,
+        "output_tokens": 437,
+        "total_tokens": 1298,
+        "neurons": 27.5726997
+      },
+      "raw_response": "{\"category\":\"other\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-ambiguous-1",
+      "category": "ambiguous",
+      "confidence": "low",
+      "ambiguous": true,
+      "elapsed_ms": 10937,
+      "usage": {
+        "input_tokens": 848,
+        "output_tokens": 221,
+        "total_tokens": 1069,
+        "neurons": 21.445433100000002
+      },
+      "raw_response": "{\"category\":\"ambiguous\",\"confidence\":\"low\",\"ambiguous\":true}"
+    },
+    {
+      "id": "r2-ambiguous-2",
+      "category": "ambiguous",
+      "confidence": "low",
+      "ambiguous": true,
+      "elapsed_ms": 10561,
+      "usage": {
+        "input_tokens": 843,
+        "output_tokens": 321,
+        "total_tokens": 1164,
+        "neurons": 24.081794100000003
+      },
+      "raw_response": "{\"category\":\"ambiguous\",\"confidence\":\"low\",\"ambiguous\":true}"
+    },
+    {
+      "id": "r2-ambiguous-3",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 7610,
+      "usage": {
+        "input_tokens": 846,
+        "output_tokens": 414,
+        "total_tokens": 1260,
+        "neurons": 26.6727006
+      },
+      "raw_response": "{\"category\":\"task\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-ambiguous-4",
+      "category": "ambiguous",
+      "confidence": "low",
+      "ambiguous": true,
+      "elapsed_ms": 7968,
+      "usage": {
+        "input_tokens": 848,
+        "output_tokens": 200,
+        "total_tokens": 1048,
+        "neurons": 20.8727064
+      },
+      "raw_response": "{\"category\":\"ambiguous\",\"confidence\":\"low\",\"ambiguous\":true}"
+    },
+    {
+      "id": "r2-ambiguous-5",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3309,
+      "usage": {
+        "input_tokens": 849,
+        "output_tokens": 321,
+        "total_tokens": 1170,
+        "neurons": 24.1908849
+      },
+      "raw_response": "{\"category\":\"task\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-ambiguous-6",
+      "category": "ambiguous",
+      "confidence": "low",
+      "ambiguous": true,
+      "elapsed_ms": 4830,
+      "usage": {
+        "input_tokens": 846,
+        "output_tokens": 411,
+        "total_tokens": 1257,
+        "neurons": 26.5908825
+      },
+      "raw_response": "{\"category\":\"ambiguous\",\"confidence\":\"low\",\"ambiguous\":true}"
+    },
+    {
+      "id": "r2-ambiguous-7",
+      "category": "ambiguous",
+      "confidence": "low",
+      "ambiguous": true,
+      "elapsed_ms": 1985,
+      "usage": {
+        "input_tokens": 855,
+        "output_tokens": 212,
+        "total_tokens": 1067,
+        "neurons": 21.3272514
+      },
+      "raw_response": "{\"category\":\"ambiguous\",\"confidence\":\"low\",\"ambiguous\":true}"
+    },
+    {
+      "id": "r2-ambiguous-8",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 10479,
+      "usage": {
+        "input_tokens": 859,
+        "output_tokens": 483,
+        "total_tokens": 1342,
+        "neurons": 28.7908803
+      },
+      "raw_response": "{\"category\":\"admin\",\"confidence\":\"high\",\"ambiguous\":false}"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "is_mock": true,
+  "scenarios": [
+    {
+      "id": "mixed-activities",
+      "label": "複数の活動・一部完了",
+      "input": {
+        "purpose": "数学レポートを書く",
+        "activities": [
+          { "activity_type": "research", "duration_seconds": 600, "purpose_relation": "possibly_related" },
+          { "activity_type": "writing", "duration_seconds": 1200, "purpose_relation": "related" },
+          { "activity_type": "communication", "duration_seconds": 720, "purpose_relation": "uncertain" },
+          { "activity_type": "writing", "duration_seconds": 300, "purpose_relation": "related" }
+        ],
+        "result": { "result_level": "partially_completed", "actual_duration_minutes": 47 }
+      },
+      "display_example": {
+        "status": "partial_candidates",
+        "coverage_message": "根拠の重なりを避けると、別々に説明できる候補は2件です。3件目は無理に補っていません。",
+        "hypotheses": [
+          {
+            "title": "調査と文書作成に使った時間の配分が、完了度に影響した可能性",
+            "description": "調査が必要な範囲だったかは記録されていないため、時間配分に関する一つの見方です。",
+            "evidence": [
+              "activity:0",
+              "activity:1",
+              "activity:3",
+              "result"
+            ],
+            "confidence": "low"
+          },
+          {
+            "title": "文書作成の間に記録された連絡が、作業の流れに影響した可能性",
+            "description": "連絡の内容や必要性は分からないため、作業が中断されたかどうかは確定できません。",
+            "evidence": [
+              "activity:1",
+              "activity:2",
+              "activity:3",
+              "result"
+            ],
+            "confidence": "low"
+          }
+        ]
+      }
+    },
+    {
+      "id": "short-completed",
+      "label": "短い記録・目的完了",
+      "input": {
+        "purpose": "メールを1通送る",
+        "activities": [
+          { "activity_type": "communication", "duration_seconds": 35, "purpose_relation": "related" }
+        ],
+        "result": { "result_level": "completed", "actual_duration_minutes": 1 }
+      },
+      "display_example": {
+        "status": "insufficient_evidence",
+        "message": "目的は完了と記録され、記録された活動も目的に関連しています。この記録から原因候補を挙げる根拠はありません。"
+      }
+    },
+    {
+      "id": "uncertain-short-partial",
+      "label": "短い記録・関係不明・一部未完了",
+      "input": {
+        "purpose": "数学レポートを書く",
+        "activities": [
+          { "activity_type": "research", "duration_seconds": 25, "purpose_relation": "uncertain" },
+          { "activity_type": "other", "duration_seconds": 4, "purpose_relation": "uncertain" },
+          { "activity_type": "communication", "duration_seconds": 20, "purpose_relation": "uncertain" },
+          { "activity_type": "research", "duration_seconds": 10, "purpose_relation": "uncertain" }
+        ],
+        "result": { "result_level": "partially_completed", "actual_duration_minutes": 1 }
+      },
+      "display_example": {
+        "status": "insufficient_evidence",
+        "message": "記録された活動はいずれも目的との関係が「不明」で、合計1分未満です。未完了の理由を区別できる根拠が足りません。"
+      }
+    }
+  ]
+}

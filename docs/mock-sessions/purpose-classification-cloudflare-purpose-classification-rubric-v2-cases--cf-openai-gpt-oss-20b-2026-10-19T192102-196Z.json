@@ -1,0 +1,270 @@
+{
+  "provider": "Cloudflare Workers AI REST API",
+  "model": "@cf/openai/gpt-oss-20b",
+  "prompt_version": "purpose-classification-v4",
+  "dataset": "purpose-classification-rubric-v2-cases.json",
+  "evaluated_case_count": 28,
+  "run_status": "failed",
+  "timestamp": "2026-10-19T19:21:25.097Z",
+  "settings": {
+    "temperature": 0,
+    "max_tokens": 120,
+    "json_schema_in_prompt_only": true,
+    "response_schema_validated_locally": true
+  },
+  "synthetic_data_only": true,
+  "diagnostic": {
+    "kind": "missing_model_response",
+    "result_type": "object",
+    "result_keys": [
+      "id",
+      "object",
+      "created",
+      "model",
+      "choices",
+      "service_tier",
+      "system_fingerprint",
+      "usage",
+      "prompt_logprobs",
+      "prompt_token_ids",
+      "kv_transfer_params"
+    ],
+    "result_response_type": "undefined",
+    "choices_count": 1,
+    "first_choice_keys": [
+      "index",
+      "message",
+      "logprobs",
+      "finish_reason",
+      "stop_reason",
+      "token_ids"
+    ],
+    "first_choice_text_type": "undefined",
+    "first_message_keys": [
+      "role",
+      "content",
+      "refusal",
+      "annotations",
+      "audio",
+      "function_call",
+      "tool_calls",
+      "reasoning_content"
+    ],
+    "first_message_content_type": "null",
+    "first_message_tool_calls_count": 0,
+    "top_level_keys": [
+      "result",
+      "success",
+      "errors",
+      "messages"
+    ],
+    "api_success": true,
+    "error_codes": []
+  },
+  "predictions": [
+    {
+      "id": "r2-leisure-1",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1805,
+      "usage": {
+        "prompt_tokens": 602,
+        "completion_tokens": 90,
+        "total_tokens": 692,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 13.399986600000002
+      },
+      "raw_response": "{\"category\":\"leisure\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-leisure-2",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 2969,
+      "usage": {
+        "prompt_tokens": 604,
+        "completion_tokens": 113,
+        "total_tokens": 717,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 14.0636223
+      },
+      "raw_response": "{\"category\":\"leisure\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-leisure-3",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1737,
+      "usage": {
+        "prompt_tokens": 602,
+        "completion_tokens": 101,
+        "total_tokens": 703,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 13.6999863
+      },
+      "raw_response": "{\"category\":\"leisure\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-leisure-4",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1265,
+      "usage": {
+        "prompt_tokens": 605,
+        "completion_tokens": 92,
+        "total_tokens": 697,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 13.5090774
+      },
+      "raw_response": "{\"category\":\"leisure\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-learning-1",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 2104,
+      "usage": {
+        "prompt_tokens": 605,
+        "completion_tokens": 77,
+        "total_tokens": 682,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 13.099986900000001
+      },
+      "raw_response": "{\"category\":\"learning\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-learning-2",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1391,
+      "usage": {
+        "prompt_tokens": 605,
+        "completion_tokens": 81,
+        "total_tokens": 686,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 13.209077700000002
+      },
+      "raw_response": "{\"category\":\"learning\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-learning-3",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1753,
+      "usage": {
+        "prompt_tokens": 604,
+        "completion_tokens": 79,
+        "total_tokens": 683,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 13.1363505
+      },
+      "raw_response": "{\"category\":\"learning\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-learning-4",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1597,
+      "usage": {
+        "prompt_tokens": 606,
+        "completion_tokens": 82,
+        "total_tokens": 688,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 13.2545322
+      },
+      "raw_response": "{\"category\":\"learning\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-task-1",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1090,
+      "usage": {
+        "prompt_tokens": 604,
+        "completion_tokens": 87,
+        "total_tokens": 691,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 13.3545321
+      },
+      "raw_response": "{\"category\":\"task\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-task-2",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 2107,
+      "usage": {
+        "prompt_tokens": 599,
+        "completion_tokens": 85,
+        "total_tokens": 684,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 13.2090777
+      },
+      "raw_response": "{\"category\":\"task\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-task-3",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1957,
+      "usage": {
+        "prompt_tokens": 606,
+        "completion_tokens": 113,
+        "total_tokens": 719,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 14.0999859
+      },
+      "raw_response": "{\"category\":\"task\",\"confidence\":\"high\",\"ambiguous\":false}"
+    },
+    {
+      "id": "r2-task-4",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1357,
+      "usage": {
+        "prompt_tokens": 601,
+        "completion_tokens": 85,
+        "total_tokens": 686,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 13.2454413
+      },
+      "raw_response": "{\"category\":\"task\",\"confidence\":\"high\",\"ambiguous\":false}"
+    }
+  ]
+}

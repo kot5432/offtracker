@@ -1,0 +1,410 @@
+{
+  "provider": "Cloudflare Workers AI REST API",
+  "model": "@cf/openai/gpt-oss-20b",
+  "prompt_version": "purpose-classification-v4",
+  "dataset": "purpose-classification-rubric-v2-cases.json",
+  "evaluated_case_count": 28,
+  "run_status": "complete",
+  "timestamp": "2026-10-19T19:31:53.404Z",
+  "settings": {
+    "api_format": "responses",
+    "reasoning_effort": "low",
+    "max_output_tokens": 512,
+    "response_schema_validated_locally": true
+  },
+  "synthetic_data_only": true,
+  "predictions": [
+    {
+      "id": "r2-leisure-1",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 1405,
+      "usage": {
+        "input_tokens": 594,
+        "output_tokens": 72,
+        "total_tokens": 666,
+        "neurons": 12.7636236
+      },
+      "raw_response": "We have \"目的文: 好きなバンドのライブ映像を見て楽しむ\" meaning \"watch live video of favorite band to enjoy\". That's leisure.\n\nConfident high. Ambiguous false.\n\nLet's output JSON."
+    },
+    {
+      "id": "r2-leisure-2",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 1200,
+      "usage": {
+        "input_tokens": 596,
+        "output_tokens": 132,
+        "total_tokens": 728,
+        "neurons": 14.4363492
+      },
+      "raw_response": "We need to determine category. The instruction: leisure: enjoyment, rest, mood improvement explicitly mentioned. The sentence: \"休憩にパズルゲームをして気分転換する\". This explicitly says to do puzzle game during rest to refresh mood. That is clear leisure. So category \"leisure\". confidence could be medium or high? It's clear purpose is leisure: you want to rest and get mood break. Hence high confidence. ambiguous: false. So produce JSON with category leisure, confidence high, ambiguous false."
+    },
+    {
+      "id": "r2-leisure-3",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1275,
+      "usage": {
+        "input_tokens": 594,
+        "output_tokens": 106,
+        "total_tokens": 700,
+        "neurons": 13.6908954
+      },
+      "raw_response": "We need to identify category. Purpose: \"コメディ番組を見て笑ってリラックスする\" – watching comedy show to laugh and relax. That's leisure (explicit enjoyment, relaxation, entertainment). No learning, admin, task, other. So category = leisure. Confidence high. ambiguous=false.\n\nReturn JSON: {\"category\":\"leisure\",\"confidence\":\"high\",\"ambiguous\":false}."
+    },
+    {
+      "id": "r2-leisure-4",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 2264,
+      "usage": {
+        "input_tokens": 597,
+        "output_tokens": 168,
+        "total_tokens": 765,
+        "neurons": 15.436348200000001
+      },
+      "raw_response": "We have to classify the purpose: \"好きな作家の小説を読んで物語を楽しむ\" meaning \"reading a novel by my favorite author to enjoy the story.\" Purpose: enjoyment of reading. According to categories: leisure: \"楽しむ、休む、気分転換することが明示された目的\". They explicitly mention enjoy. This is leisure. Not learning, task, admin, other. So \"leisure\". Should we consider it as learning? No, it's explicitly \"enjoy the story\" not learning something. So leisure. Confidence high. ambig false. So output JSON: {\"category\":\"leisure\",\"confidence\":\"high\",\"ambiguous\":false}."
+    },
+    {
+      "id": "r2-learning-1",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1312,
+      "usage": {
+        "input_tokens": 597,
+        "output_tokens": 107,
+        "total_tokens": 704,
+        "neurons": 13.772713500000002
+      },
+      "raw_response": "We need to classify. The description: \"講義動画を見て微分の考え方を理解する\". That's watching lecture video to understand differentiation concept. That's explicit learning: knowledge/skill understanding. So category \"learning\". Confidence high. ambiguous false.\n\nReturn JSON:\n\n{\n  \"category\":\"learning\",\n  \"confidence\":\"high\",\n  \"ambiguous\":false\n}\n\nEnsure no additional props."
+    },
+    {
+      "id": "r2-learning-2",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 1433,
+      "usage": {
+        "input_tokens": 597,
+        "output_tokens": 92,
+        "total_tokens": 689,
+        "neurons": 13.363623
+      },
+      "raw_response": "The user says: \"目的文: 英語の発音を練習して自然に話せるようになる\". This is a learning activity: practicing English pronunciation to speak naturally. It falls under learning because it's explicitly about skill acquisition.\n\nCategory: \"learning\". Confidence: high. ambiguous: false.\n\nWe output JSON accordingly."
+    },
+    {
+      "id": "r2-learning-3",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 1352,
+      "usage": {
+        "input_tokens": 596,
+        "output_tokens": 84,
+        "total_tokens": 680,
+        "neurons": 13.1272596
+      },
+      "raw_response": "We need to decide category. The phrase: \"試験に向けて歴史の用語を復習する\" = \"review history terms for an exam.\" This is explicitly about learning: understand and revisit terms, knowledge/skill. So category learning. Confidence high. ambiguous false."
+    },
+    {
+      "id": "r2-learning-4",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3063,
+      "usage": {
+        "input_tokens": 598,
+        "output_tokens": 154,
+        "total_tokens": 752,
+        "neurons": 15.072712200000002
+      },
+      "raw_response": "We need to output JSON category, confidence, ambiguous. The user states: \"目的文: Python講座で繰り返し処理の使い方を学ぶ\". We interpret this: \"Learn how to use loops in Python in a course.\" This clearly expresses the intention to acquire knowledge / skills. So category should be \"learning\". According to guidance: \"knowledge or skill to understand, acquire, practice, review\". So \"learning\". Confidence: We are sure this is learning; high. ambiguous: false. So JSON: {\"category\":\"learning\",\"confidence\":\"high\",\"ambiguous\":false}. Ensure compliance with schema."
+    },
+    {
+      "id": "r2-task-1",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 1507,
+      "usage": {
+        "input_tokens": 596,
+        "output_tokens": 101,
+        "total_tokens": 697,
+        "neurons": 13.5908955
+      },
+      "raw_response": "We need classify. The user gives \"目的文: ゼミで提出する調査レポートを仕上げる\". Means \"Finish a research report to submit for the seminar.\" This is \"task\" - finishing a report is a specific output. Not admin, not learning. So category 'task'. Confidence? Likely high. ambiguous false. Provide JSON."
+    },
+    {
+      "id": "r2-task-2",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 1646,
+      "usage": {
+        "input_tokens": 591,
+        "output_tokens": 107,
+        "total_tokens": 698,
+        "neurons": 13.663622700000001
+      },
+      "raw_response": "We need to classify \"個人アプリに検索画面を追加する\" into categories. It describes adding a search screen in a personal app. That's a development task: producing a new feature. So it's \"task\". Category: task. Confidence likely high since it's clearly a concrete development task. ambiguous? It's a single clear objective. So ambiguous: false. Confidence: high.\n\nReturn JSON with properties."
+    },
+    {
+      "id": "r2-task-3",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 1622,
+      "usage": {
+        "input_tokens": 598,
+        "output_tokens": 95,
+        "total_tokens": 693,
+        "neurons": 13.4636229
+      },
+      "raw_response": "We need to categorize: \"パソコン内の写真を整理して重複ファイルを削除する\" – that's a specific task: organizing pictures and deleting duplicate files. This is task category: \"task\". Confidence high? Since it's clear. Also ambiguous false. So output: category \"task\", confidence \"high\", ambiguous false."
+    },
+    {
+      "id": "r2-task-4",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 1887,
+      "usage": {
+        "input_tokens": 593,
+        "output_tokens": 141,
+        "total_tokens": 734,
+        "neurons": 14.627258100000002
+      },
+      "raw_response": "We have a prompt: \"目的文: サークル紹介の動画を編集して完成させる\". We need to decide category. Let's parse: \"サークル紹介の動画を編集して完成させる\". That's editing a video for a club introduction, to finish it. Description: editing a video and complete it. The objective: produce a final deliverable. This is classed under task. It's producing a result. Not learning, not admin. It's a work. So category: \"task\". No ambiguous. confidence: high. ambiguous: false."
+    },
+    {
+      "id": "r2-admin-1",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 1498,
+      "usage": {
+        "input_tokens": 593,
+        "output_tokens": 126,
+        "total_tokens": 719,
+        "neurons": 14.218167600000001
+      },
+      "raw_response": "We need to classify the Japanese sentence: \"目的文: 先生に面談できる日時をメールで返信する\". It says: Respond by email with a date/time that works for meeting with teacher. So it's about emailing a teacher, scheduling a meeting date and time. That is a \"admin\" category: contacting person, scheduling, booking, application - a procedure. Specific: contacting teacher, emailing. So Category: admin. Confidence: high. ambiguous: false. So output as requested."
+    },
+    {
+      "id": "r2-admin-2",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 1942,
+      "usage": {
+        "input_tokens": 593,
+        "output_tokens": 91,
+        "total_tokens": 684,
+        "neurons": 13.263623100000002
+      },
+      "raw_response": "We need to categorize the purpose. The task: \"歯科検診の予約を来週に変更する\" => make appointment change for dental check-up to next week. That is a procedure/administrative action: contacting dentist, scheduling. So category: admin. Confidence: high. ambiguous: false.\n\nReturn JSON."
+    },
+    {
+      "id": "r2-admin-3",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 1912,
+      "usage": {
+        "input_tokens": 593,
+        "output_tokens": 102,
+        "total_tokens": 695,
+        "neurons": 13.563622800000001
+      },
+      "raw_response": "The user asks: \"目的文: 大学の履修登録を確定して申請する\" i.e., \"Confirm university course registration and apply.\" This falls under admin: it's a procedural activity, contacting, scheduling, reservation, application. (although it's a student action, but still admin). The category should be 'admin'. Confidence high. ambiguous false."
+    },
+    {
+      "id": "r2-admin-4",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 1801,
+      "usage": {
+        "input_tokens": 595,
+        "output_tokens": 145,
+        "total_tokens": 740,
+        "neurons": 14.7727125
+      },
+      "raw_response": "We need to classify the given purpose sentence: \"友人に旅行の集合時刻と場所を連絡する\". That translates to: \"Inform a friend about the meeting time and location for a trip.\" This is a communication, scheduling because it involves informing. This fits into admin category: \"人への連絡、日程調整、予約、申請などの手続きを完了する目的\" i.e., contacting a person with schedule, etc. That is clearly admin. Confidence high. ambiguous false. So output JSON with category \"admin\", confidence \"high\", ambiguous false."
+    },
+    {
+      "id": "r2-other-1",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 2555,
+      "usage": {
+        "input_tokens": 596,
+        "output_tokens": 153,
+        "total_tokens": 749,
+        "neurons": 15.0090759
+      },
+      "raw_response": "We need to classify: the user says \"目的文: 明日の気温を確認して着ていく服を決める\". They want to check tomorrow's temperature, decide what to wear. This is category \"other\": It's information confirmation (weather) and adjusting clothing. The doc: \"other: 目的と達成したいことが明確で、上記に当てはまらない日常の情報確認や端末環境の調整。例: 天気を見て服を決める\". So matches \"other\". Confidence: high. ambig: false. Output."
+    },
+    {
+      "id": "r2-other-2",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 1837,
+      "usage": {
+        "input_tokens": 598,
+        "output_tokens": 180,
+        "total_tokens": 778,
+        "neurons": 15.781802400000002
+      },
+      "raw_response": "We need to classify the purpose: \"荷物の追跡ページを見て配達状況を確認する\" = \"Check the delivery status by looking at the tracking page.\" This is about checking status, a specific, informational purpose. According to categories: \"other\" is for \"目的と達成したいことが明確で、上記に当てはまらない日常の情報確認や端末環境の調整。例: 天気を見て服を決める、荷物状況を確認する、画面の明るさを調整する。\" This matches exactly: \"荷物状況を確認する\". So category = other. Confidence high. ambiguous = false."
+    },
+    {
+      "id": "r2-other-3",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 2277,
+      "usage": {
+        "input_tokens": 602,
+        "output_tokens": 221,
+        "total_tokens": 823,
+        "neurons": 16.972710300000003
+      },
+      "raw_response": "We have to classify the given purpose statement: \"画面の明るさを調整して目が疲れにくい環境にする\" (Adjust screen brightness to reduce eye fatigue). We need to decide category and confidence and ambiguous flag.\n\nWe check definitions:\n\n- leisure: provides explicit enjoyment/relaxation. This statement is more about adjusting environment to reduce eye fatigue. It's about physical ergonomics. Could be considered 'other' because \"目的と達成したいことが明確で、上記に当てはまらない日常の情報確認や端末環境の調整。例: 天気を見て服を決める、荷物状況を確認する、画面の明るさを調整する\". Exactly \"画面の明るさを調整する\" is in example given for other category.\n\nThus category = other. Confidence high.\n\nAmbiguous = false.\n\nReturn JSON.\n\n"
+    },
+    {
+      "id": "r2-other-4",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 2544,
+      "usage": {
+        "input_tokens": 601,
+        "output_tokens": 156,
+        "total_tokens": 757,
+        "neurons": 15.181803
+      },
+      "raw_response": "We need to classify the purpose statement. It's about checking library opening hours and deciding travel time. That is contacting information and scheduling? It's a personal info check. It is about deciding travel time to library. It is not administrative tasks like booking? It's just checking hours. According to definition: \"other: purposes that are clear but not above categories, like checking weather to decide clothing, or checking luggage status or adjusting screen brightness.\" Checking library opening hours to schedule visit is similar to checking weather to decide clothing: it's daily info check. So category \"other\". Confidence high. ambiguous? No, clear. So ambiguous: false.\n\nReturn JSON."
+    },
+    {
+      "id": "r2-ambiguous-1",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 2732,
+      "usage": {
+        "input_tokens": 588,
+        "output_tokens": 175,
+        "total_tokens": 763,
+        "neurons": 15.4636209
+      },
+      "raw_response": "The prompt: We need to decide category and confidence. The input: \"YouTubeで動画を2本見る\". This indicates they intend to watch videos on YouTube. There's no mention of entertainment? It's leisure. It's \"YouTubeで動画を2本見る\" - could be leisure intent. According to definitions: leisure is enjoyment, rest, change of mood. \"動画を見る\" generally is entertainment; but some might study videos. However it's ambiguous? The instruction: if ambiguous, ambiguous. But \"YouTubeで動画を2本見る\" - leisure is typical. It could be educational too. But due to typical context, it's leisure. The dataset expects leisure. I think classification: leisure, high confidence, ambiguous: false."
+    },
+    {
+      "id": "r2-ambiguous-2",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 1775,
+      "usage": {
+        "input_tokens": 583,
+        "output_tokens": 126,
+        "total_tokens": 709,
+        "neurons": 14.036349600000001
+      },
+      "raw_response": "User gives \"Purpose sentence: 本を読む\". We need to classify. The rule: \"本を読む\" by itself ambiguous: could be reading for pleasure (leisure) or reading to learn? We see instructions: \"「YouTubeを見る」「本を読む」「音楽を流す」「ネットで調べ物をする」「学校の作業をする」は、それだけでは目的が分からないのでambiguousです.\" So we must output ambiguous with confidence low."
+    },
+    {
+      "id": "r2-ambiguous-3",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 3623,
+      "usage": {
+        "input_tokens": 586,
+        "output_tokens": 226,
+        "total_tokens": 812,
+        "neurons": 16.818165
+      },
+      "raw_response": "We need to classify. The instruction: \"音楽を流す\" only. According to definitions: \"leisure: 楽しむ、休む、気分転換することが明示された目的。動画・SNS・ゲーム等の対象だけでは分類しない。\" Wait so music is a target, but the criteria says if it's video, SNS, game, do not classify just based on target. They want not to infer. For \"音楽を流す\", it's just playing music. That could be leisure. But they say only if the purpose to enjoy, rest, or mental break is explicitly mentioned. Here the phrasing \"音楽を流す\" doesn't explicitly say 'enjoying' or 'relax'. It is ambiguous: it's just an action \"play music\". According to the instruction: \"YouTubeを見る\" ... \"english\" example, ambiguous. So \"音楽を流す\" similarly ambiguous. So category ambiguous, confidence low."
+    },
+    {
+      "id": "r2-ambiguous-4",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 1237,
+      "usage": {
+        "input_tokens": 588,
+        "output_tokens": 123,
+        "total_tokens": 711,
+        "neurons": 14.0454405
+      },
+      "raw_response": "We need to classify the purpose. The guidelines:\n\n- \"ネットで調べ物をする\" – The example given: \"ネットで調べ物をする\" is ambiguous. The instruction says: \"「YouTubeを見る」「本を読む」「音楽を流す」「ネットで調べ物をする」「学校の作業をする」は、それだけでは目的が分からないのでambiguousです。\"\n\nThus category should be ambiguous, confidence low, ambiguous true."
+    },
+    {
+      "id": "r2-ambiguous-5",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 2000,
+      "usage": {
+        "input_tokens": 589,
+        "output_tokens": 210,
+        "total_tokens": 799,
+        "neurons": 16.4363472
+      },
+      "raw_response": "We need to classify \"学校の作業を進める\". The prompt definitions: \n- task: 提出物や制作物を完成させる、具体的な作業結果を得る目的。学業・仕事に限らず、写真の整理や重複ファイル削除もtask.\n- learning: 知識や技能を理解・習得・練習・復習することが明示された目的.\n- admin: など admin tasks.\n\"学校の作業を進める\" means \"advancing school work\" which is basically working on assignments, completing them, producing results, perhaps. That seems like a task. It's likely a direct work on school assignment: a specific undertaking. So this is a task. So category = \"task\". Confidence: high. ambiguous: false.\n\nCheck: So we output JSON accordingly."
+    },
+    {
+      "id": "r2-ambiguous-6",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 1687,
+      "usage": {
+        "input_tokens": 586,
+        "output_tokens": 118,
+        "total_tokens": 704,
+        "neurons": 13.8727134
+      },
+      "raw_response": "User input: \"目的文: パソコンを使う\" (They want to classify the objective statement \"Using a computer\").\n\nWe need to determine category per given definitions. \"パソコンを使う\" is ambiguous - no specific purpose . It could be for work, study, leisure, etc. So ambiguous category. Confidence low per rule.\n\nReturn JSON with category: \"ambiguous\", confidence: \"low\", ambiguous: true. Ensure schema."
+    },
+    {
+      "id": "r2-ambiguous-7",
+      "category": "ambiguous",
+      "confidence": "low",
+      "ambiguous": true,
+      "elapsed_ms": 2668,
+      "usage": {
+        "input_tokens": 595,
+        "output_tokens": 278,
+        "total_tokens": 873,
+        "neurons": 18.3999816
+      },
+      "raw_response": "We need to classify to one of the categories: leisure, learning, task, admin, other, ambiguous. The user: \"目的文: 英単語を復習してから友達とゲームを楽しむ\"\n\nWe need to pick a single category. The phrase indicates two activities: \"英単語を復習してから\" (review English words) which is learning; \"友達とゲームを楽しむ\" (play games with friends for leisure). The prompt says: \"娯楽と学習など異なる目的が同じ文に並ぶ場合、主目的を勝手に選ばずambiguousにしてください。\" which suggests that if multiple distinct intents coexist, we must label as ambiguous. The user content indeed lists both learning and leisure. The rule also says: \"If 行動だけで目的が分からない、または異なる目的が並び一つに決められない。\"\n\nTherefore we classify ambiguous.\n\nConfidence: low? The rule suggests for ambiguous, use \"low\" confidence. Possibly ambiguous with low.\n\nThe \"ambiguous\" field must be true. The category \"ambiguous\".\n\nReturn JSON: {\"category\":\"ambiguous\",\"confidence\":\"low\",\"ambiguous\":true}."
+    },
+    {
+      "id": "r2-ambiguous-8",
+      "category": "invalid",
+      "confidence": "invalid",
+      "ambiguous": false,
+      "elapsed_ms": 4321,
+      "usage": {
+        "input_tokens": 599,
+        "output_tokens": 404,
+        "total_tokens": 1003,
+        "neurons": 21.909069000000002
+      },
+      "raw_response": "We need to classify the given Japanese sentence: \"授業の課題を調べて、先生にも質問のメールを送る\". This is a task: they are researching the assignment (\"授業の課題を調べて\") and then sending an email with a question to the teacher. So the purpose is two parts: research the assignment, and send email. The email is a communication, performing a procedure. It's both learning? \"調べて\" means \"researching\" can be learning, but also they are producing a reply? Maybe it's admin? The sentence says \"授業の課題を調べて、先生にも質問のメールを送る\". This is like \"I will look up my assignment and send a mail to the teacher with questions.\" This includes an action to send an email. The requirement: if the purpose is a hand the tasks of contacting people (like send email) it might be admin. But there is also \"調べて\" which indicates research - learning. The prompt says: \"Specific procedures like contacting people etc. (like admin) should be prioritized over tasks. If there's a specific procedure then admin is preferred.\" In this phrase, there's \"メールを送る\" - that is a procedural action contacting teacher. That is admin. But also \"調べて\" - that might be learning. Which constitutes ambiguous? The instruction: \"各カテゴリの定義: admin: ... 手続きを完了する目的。具体的な手続きでもtaskよりadminを優先する.\" So because there is \"メール送信\" which is a specific procedure and contact, that's admin. The overall purpose is to send email to teacher. So it falls under admin. They want to send an email; that is a procedure/communication. So category: admin. Confidence: likely high. ambiguous: false."
+    }
+  ]
+}

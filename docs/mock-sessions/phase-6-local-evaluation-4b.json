@@ -1,0 +1,159 @@
+[
+  {
+    "model": "qwen3:4b",
+    "model_metadata": {
+      "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+      "size_bytes": 2497293931,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "4.0B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 262144,
+        "embedding_length": 2560,
+        "runner": "ggml"
+      }
+    },
+    "scenario_id": "mixed-activities",
+    "timestamp_utc": "2026-10-14T07:59:28.906Z",
+    "format": "json_schema_simple_evidence_refs",
+    "prompt_sha256": "3c62273a697db8a4d5a4cfb25cee98726b25d6ae595f847bd6f99a5ead66a0e4",
+    "schema_sha256": "78af651975694b5f290f6038950175e1ad1d61cbbaf4d67ff47d2cadedf1674f",
+    "host": {
+      "platform": "win32",
+      "architecture": "x64",
+      "node_version": "24.20.0",
+      "total_memory_gib": 13.31,
+      "free_memory_before_gib": 2.85
+    },
+    "settings": {
+      "num_ctx": 4096,
+      "num_predict": 512,
+      "temperature": 0,
+      "seed": 42,
+      "think": false
+    },
+    "metrics": {
+      "prompt_tokens": 571,
+      "output_tokens": 302,
+      "total_seconds": 44.925,
+      "output_tokens_per_second": 10.55
+    },
+    "parse_ok": true,
+    "structural_issues": [
+      "unexpected_coverage_message",
+      "mixed_activities_more_than_two_candidates"
+    ],
+    "parse_error": null,
+    "response": "{\n  \"hypotheses\": [\n    {\n      \"title\": \"数学レポートの研究が不十分\",\n      \"description\": \"研究活動が数学レポートの準備に必要とされるが、その結果が完全に達成されていない可能性。具体的には、研究の期間が短く、数学の概念を十分に理解していない可能性。ただし、研究の結果がレポートに反映されているかどうかは不明。\",\n      \"evidence\": [\"activity:0\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"title\": \"書く活動が2回行われたが、内容が重複している\",\n      \"description\": \"2回の書く活動が行われたが、その内容が重複している可能性。これにより、レポートの作成が効率的でない場合がある。ただし、重複した部分がどの部分かは不明。\",\n      \"evidence\": [\"activity:1\", \"activity:3\"],\n      \"confidence\": \"low\"\n    },\n    {\n      \"title\": \"コミュニケーション活動が目的外に使用された\",\n      \"description\": \"コミュニケーション活動が数学レポートの作成に直接関係しない場合、その活動が目的外に使用された可能性。ただし、コミュニケーション活動がどの目的のために行われたかは不明。\",\n      \"evidence\": [\"activity:2\"],\n      \"confidence\": \"low\"\n    }\n  ],\n  \"coverage_message\": \"null\"\n}"
+  },
+  {
+    "model": "qwen3:4b",
+    "model_metadata": {
+      "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+      "size_bytes": 2497293931,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "4.0B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 262144,
+        "embedding_length": 2560,
+        "runner": "ggml"
+      }
+    },
+    "scenario_id": "short-completed",
+    "timestamp_utc": "2026-10-14T08:00:13.859Z",
+    "format": "json_schema_simple_evidence_refs",
+    "prompt_sha256": "485dc4091b777bcae4116fa188f5f7e2ff1a16b6461eeb97777d72fec1cc3231",
+    "schema_sha256": "78af651975694b5f290f6038950175e1ad1d61cbbaf4d67ff47d2cadedf1674f",
+    "host": {
+      "platform": "win32",
+      "architecture": "x64",
+      "node_version": "24.20.0",
+      "total_memory_gib": 13.31,
+      "free_memory_before_gib": 0.5
+    },
+    "settings": {
+      "num_ctx": 4096,
+      "num_predict": 512,
+      "temperature": 0,
+      "seed": 42,
+      "think": false
+    },
+    "metrics": {
+      "prompt_tokens": 474,
+      "output_tokens": 322,
+      "total_seconds": 44.969,
+      "output_tokens_per_second": 10.95
+    },
+    "parse_ok": true,
+    "structural_issues": [
+      "invalid_evidence_reference",
+      "unexpected_coverage_message",
+      "completed_related_case_should_have_no_candidates"
+    ],
+    "parse_error": null,
+    "response": "{\n  \"hypotheses\": [\n    {\n      \"title\": \"メール送信の遅延\",\n      \"description\": \"メール送信が完了したが、35秒の通信活動が1分の実際の時間に相当するため、通信が遅延した可能性がある。具体的には、メールの作成や送信プロセスが長時間かかっている。分からない点：メールの作成に要した時間\",\n      \"evidence\": [\"activity:0\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"title\": \"メールの内容が不適切\",\n      \"description\": \"メールの内容が不適切で、受信者に誤解を招く可能性がある。具体的には、メールの内容が不適切で、受信者が意図しない結果を生む。分からない点：メールの内容が不適切かどうか\",\n      \"evidence\": [\"activity:1\"],\n      \"confidence\": \"low\"\n    },\n    {\n      \"title\": \"メールの送信先が誤り\",\n      \"description\": \"メールの送信先が誤っており、受信者が想定外の人に届く可能性がある。具体的には、メールの送信先が誤っており、受信者が想定外の人に届く。分からない点：送信先の誤りの原因\",\n      \"evidence\": [\"activity:2\"],\n      \"confidence\": \"low\"\n    }\n  ],\n  \"coverage_message\": \"null\"\n}"
+  },
+  {
+    "model": "qwen3:4b",
+    "model_metadata": {
+      "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+      "size_bytes": 2497293931,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "4.0B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 262144,
+        "embedding_length": 2560,
+        "runner": "ggml"
+      }
+    },
+    "scenario_id": "uncertain-short-partial",
+    "timestamp_utc": "2026-10-14T08:00:58.834Z",
+    "format": "json_schema_simple_evidence_refs",
+    "prompt_sha256": "9821cb90c5576e1f21bb4246a0d9c9757467fce77e5f66cd993a1e892aab4a9e",
+    "schema_sha256": "78af651975694b5f290f6038950175e1ad1d61cbbaf4d67ff47d2cadedf1674f",
+    "host": {
+      "platform": "win32",
+      "architecture": "x64",
+      "node_version": "24.20.0",
+      "total_memory_gib": 13.31,
+      "free_memory_before_gib": 0.76
+    },
+    "settings": {
+      "num_ctx": 4096,
+      "num_predict": 512,
+      "temperature": 0,
+      "seed": 42,
+      "think": false
+    },
+    "metrics": {
+      "prompt_tokens": 566,
+      "output_tokens": 278,
+      "total_seconds": 43.177,
+      "output_tokens_per_second": 10.25
+    },
+    "parse_ok": true,
+    "structural_issues": [
+      "unexpected_coverage_message",
+      "all_uncertain_partial_case_should_have_no_candidates"
+    ],
+    "parse_error": null,
+    "response": "{\n  \"hypotheses\": [\n    {\n      \"title\": \"数学レポートの研究が不十分\",\n      \"description\": \"研究活動が数学レポートの準備に十分でない可能性。具体的には、研究の時間が短かったり、適切な資料が見つからなかったりする。具体的な原因は不明。\",\n      \"evidence\": [\"activity:0\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"title\": \"コミュニケーションがレポートの完成度に影響\",\n      \"description\": \"コミュニケーション活動が数学レポートの完成度に影響を与えた可能性。具体的には、相手との対話が不十分だったり、情報の伝達が不正確だったりする。具体的な原因は不明。\",\n      \"evidence\": [\"activity:2\"],\n      \"confidence\": \"low\"\n    },\n    {\n      \"title\": \"他の活動が研究を妨げた\",\n      \"description\": \"他の活動が数学レポートの研究を妨げた可能性。具体的には、他の活動が研究時間を食いついたり、適切な資料を入手するのを妨げた可能性がある。具体的な原因は不明。\",\n      \"evidence\": [\"activity:1\"],\n      \"confidence\": \"low\"\n    }\n  ],\n  \"coverage_message\": \"null\"\n}"
+  }
+]

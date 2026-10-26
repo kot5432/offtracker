@@ -1,0 +1,298 @@
+{
+  "provider": "Ollama local",
+  "model": "qwen3:4b",
+  "prompt_version": "purpose-classification-v4",
+  "dataset": "purpose-classification-rubric-v2-cases.json",
+  "run": 1,
+  "timestamp": "2026-10-19T18:52:03.528Z",
+  "settings": {
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 2048,
+    "num_predict": 64,
+    "schema_constrained": true
+  },
+  "synthetic_data_only": true,
+  "predictions": [
+    {
+      "id": "r2-leisure-1",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 32319,
+      "prompt_eval_count": 420,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-leisure-2",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3350,
+      "prompt_eval_count": 422,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-leisure-3",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3331,
+      "prompt_eval_count": 418,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-leisure-4",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3554,
+      "prompt_eval_count": 424,
+      "eval_count": 27,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-learning-1",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3216,
+      "prompt_eval_count": 421,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"learning\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-learning-2",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3292,
+      "prompt_eval_count": 424,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"learning\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-learning-3",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3256,
+      "prompt_eval_count": 423,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"learning\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-learning-4",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3411,
+      "prompt_eval_count": 425,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"learning\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-task-1",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3243,
+      "prompt_eval_count": 422,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"task\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-task-2",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3566,
+      "prompt_eval_count": 421,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"task\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-task-3",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3347,
+      "prompt_eval_count": 424,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"task\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-task-4",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3598,
+      "prompt_eval_count": 424,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"task\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-admin-1",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3182,
+      "prompt_eval_count": 422,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"admin\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-admin-2",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3354,
+      "prompt_eval_count": 423,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"admin\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-admin-3",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3175,
+      "prompt_eval_count": 421,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"admin\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-admin-4",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3278,
+      "prompt_eval_count": 422,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"admin\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-other-1",
+      "category": "other",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3308,
+      "prompt_eval_count": 421,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"other\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-other-2",
+      "category": "other",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3508,
+      "prompt_eval_count": 423,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"other\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-other-3",
+      "category": "other",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3529,
+      "prompt_eval_count": 422,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"other\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-other-4",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3483,
+      "prompt_eval_count": 425,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"admin\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-ambiguous-1",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3300,
+      "prompt_eval_count": 415,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-ambiguous-2",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3469,
+      "prompt_eval_count": 412,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"learning\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-ambiguous-3",
+      "category": "ambiguous",
+      "confidence": "low",
+      "ambiguous": true,
+      "elapsed_ms": 3133,
+      "prompt_eval_count": 413,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"ambiguous\",\n  \"confidence\": \"low\",\n  \"ambiguous\": true\n}"
+    },
+    {
+      "id": "r2-ambiguous-4",
+      "category": "ambiguous",
+      "confidence": "low",
+      "ambiguous": true,
+      "elapsed_ms": 3304,
+      "prompt_eval_count": 414,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"ambiguous\",\n  \"confidence\": \"low\",\n  \"ambiguous\": true\n}"
+    },
+    {
+      "id": "r2-ambiguous-5",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3244,
+      "prompt_eval_count": 416,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"task\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-ambiguous-6",
+      "category": "other",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3023,
+      "prompt_eval_count": 412,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"other\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "r2-ambiguous-7",
+      "category": "ambiguous",
+      "confidence": "low",
+      "ambiguous": true,
+      "elapsed_ms": 3288,
+      "prompt_eval_count": 424,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"ambiguous\",\n  \"confidence\": \"low\",\n  \"ambiguous\": true\n}"
+    },
+    {
+      "id": "r2-ambiguous-8",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3397,
+      "prompt_eval_count": 426,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"admin\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    }
+  ]
+}

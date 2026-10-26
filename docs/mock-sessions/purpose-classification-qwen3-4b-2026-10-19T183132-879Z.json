@@ -1,0 +1,257 @@
+{
+  "provider": "Ollama local",
+  "model": "qwen3:4b",
+  "prompt_version": "purpose-classification-v2",
+  "run": 1,
+  "timestamp": "2026-10-19T18:33:43.122Z",
+  "settings": {
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 2048,
+    "num_predict": 64,
+    "schema_constrained": true
+  },
+  "synthetic_data_only": true,
+  "predictions": [
+    {
+      "id": "leisure-video-target",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 31595,
+      "prompt_eval_count": 373,
+      "eval_count": 24,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "leisure-game-break",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 5609,
+      "prompt_eval_count": 369,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "leisure-music",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 5655,
+      "prompt_eval_count": 372,
+      "eval_count": 27,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "leisure-film",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 4756,
+      "prompt_eval_count": 365,
+      "eval_count": 27,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "learning-math-video",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3973,
+      "prompt_eval_count": 372,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"learning\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "learning-vocabulary",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3537,
+      "prompt_eval_count": 368,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"learning\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "learning-online-course",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3475,
+      "prompt_eval_count": 370,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"learning\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "learning-review",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3459,
+      "prompt_eval_count": 378,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"learning\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "task-report",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 4010,
+      "prompt_eval_count": 372,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"task\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "task-code",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 4375,
+      "prompt_eval_count": 367,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"task\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "task-homework",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 4704,
+      "prompt_eval_count": 367,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"task\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "task-slides",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3789,
+      "prompt_eval_count": 369,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"task\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "admin-email",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 5068,
+      "prompt_eval_count": 370,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"admin\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "admin-calendar",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 5358,
+      "prompt_eval_count": 376,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"admin\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "admin-reservation",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 4442,
+      "prompt_eval_count": 369,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"admin\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "admin-expense",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 4740,
+      "prompt_eval_count": 368,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"admin\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "other-backup",
+      "category": "other",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3902,
+      "prompt_eval_count": 367,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"other\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "other-settings",
+      "category": "other",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 4525,
+      "prompt_eval_count": 370,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"other\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "other-weather",
+      "category": "other",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3984,
+      "prompt_eval_count": 365,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"other\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "ambiguous-youtube",
+      "category": "ambiguous",
+      "confidence": "low",
+      "ambiguous": true,
+      "elapsed_ms": 3502,
+      "prompt_eval_count": 359,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"ambiguous\",\n  \"confidence\": \"low\",\n  \"ambiguous\": true\n}"
+    },
+    {
+      "id": "ambiguous-pc",
+      "category": "ambiguous",
+      "confidence": "low",
+      "ambiguous": true,
+      "elapsed_ms": 3414,
+      "prompt_eval_count": 362,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"ambiguous\",\n  \"confidence\": \"low\",\n  \"ambiguous\": true\n}"
+    },
+    {
+      "id": "ambiguous-mixed-study-task",
+      "category": "ambiguous",
+      "confidence": "low",
+      "ambiguous": true,
+      "elapsed_ms": 3807,
+      "prompt_eval_count": 373,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"ambiguous\",\n  \"confidence\": \"low\",\n  \"ambiguous\": true\n}"
+    },
+    {
+      "id": "ambiguous-mixed-leisure-research",
+      "category": "ambiguous",
+      "confidence": "low",
+      "ambiguous": true,
+      "elapsed_ms": 3933,
+      "prompt_eval_count": 371,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"ambiguous\",\n  \"confidence\": \"low\",\n  \"ambiguous\": true\n}"
+    },
+    {
+      "id": "ambiguous-social",
+      "category": "ambiguous",
+      "confidence": "low",
+      "ambiguous": true,
+      "elapsed_ms": 3958,
+      "prompt_eval_count": 360,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"ambiguous\",\n  \"confidence\": \"low\",\n  \"ambiguous\": true\n}"
+    }
+  ]
+}

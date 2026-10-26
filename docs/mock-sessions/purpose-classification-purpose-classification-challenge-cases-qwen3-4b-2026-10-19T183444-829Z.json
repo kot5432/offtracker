@@ -1,0 +1,178 @@
+{
+  "provider": "Ollama local",
+  "model": "qwen3:4b",
+  "prompt_version": "purpose-classification-v2",
+  "dataset": "purpose-classification-challenge-cases.json",
+  "run": 1,
+  "timestamp": "2026-10-19T18:36:00.233Z",
+  "settings": {
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 2048,
+    "num_predict": 64,
+    "schema_constrained": true
+  },
+  "synthetic_data_only": true,
+  "predictions": [
+    {
+      "id": "challenge-leisure-youtube",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 21592,
+      "prompt_eval_count": 372,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "challenge-leisure-music",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3311,
+      "prompt_eval_count": 373,
+      "eval_count": 24,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "challenge-learning-youtube",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3427,
+      "prompt_eval_count": 371,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"learning\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "challenge-learning-speaking",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 4194,
+      "prompt_eval_count": 378,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"learning\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "challenge-task-slides",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3744,
+      "prompt_eval_count": 375,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"task\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "challenge-task-code",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3578,
+      "prompt_eval_count": 369,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"task\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "challenge-admin-dentist",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3761,
+      "prompt_eval_count": 369,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"admin\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "challenge-admin-course",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3719,
+      "prompt_eval_count": 369,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"admin\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "challenge-other-backup",
+      "category": "other",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3424,
+      "prompt_eval_count": 369,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"other\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "challenge-other-transport",
+      "category": "other",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3660,
+      "prompt_eval_count": 369,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"other\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "challenge-ambiguous-youtube-count",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3210,
+      "prompt_eval_count": 365,
+      "eval_count": 24,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "challenge-ambiguous-stream",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3971,
+      "prompt_eval_count": 363,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "challenge-ambiguous-research",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3437,
+      "prompt_eval_count": 363,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"learning\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "challenge-ambiguous-admin-learning",
+      "category": "ambiguous",
+      "confidence": "low",
+      "ambiguous": true,
+      "elapsed_ms": 3562,
+      "prompt_eval_count": 373,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"ambiguous\",\n  \"confidence\": \"low\",\n  \"ambiguous\": true\n}"
+    },
+    {
+      "id": "challenge-ambiguous-task-leisure",
+      "category": "ambiguous",
+      "confidence": "low",
+      "ambiguous": true,
+      "elapsed_ms": 3357,
+      "prompt_eval_count": 370,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"ambiguous\",\n  \"confidence\": \"low\",\n  \"ambiguous\": true\n}"
+    },
+    {
+      "id": "challenge-ambiguous-school-work",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3352,
+      "prompt_eval_count": 366,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"task\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    }
+  ]
+}

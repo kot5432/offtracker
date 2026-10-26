@@ -1,0 +1,32 @@
+{
+  "provider": "Cloudflare Workers AI REST API",
+  "model": "@cf/openai/gpt-oss-20b",
+  "prompt_version": "purpose-classification-v4",
+  "dataset": "purpose-classification-rubric-v2-cases.json",
+  "evaluated_case_count": 1,
+  "run_status": "complete",
+  "timestamp": "2026-10-19T19:30:02.120Z",
+  "settings": {
+    "api_format": "responses",
+    "reasoning_effort": "low",
+    "max_output_tokens": 512,
+    "response_schema_validated_locally": true
+  },
+  "synthetic_data_only": true,
+  "predictions": [
+    {
+      "id": "r2-leisure-1",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 1750,
+      "usage": {
+        "input_tokens": 594,
+        "output_tokens": 90,
+        "total_tokens": 684,
+        "neurons": 13.2545322
+      },
+      "raw_response": "We need to classify the purpose. The sentence: \"好きなバンドのライブ映像を見て楽しむ\". That's clearly about leisure: watching a live video to enjoy. So category leisure. Confidence high. ambiguous false.\n\nReturn JSON: {\"category\":\"leisure\",\"confidence\":\"high\",\"ambiguous\":false}"
+    }
+  ]
+}

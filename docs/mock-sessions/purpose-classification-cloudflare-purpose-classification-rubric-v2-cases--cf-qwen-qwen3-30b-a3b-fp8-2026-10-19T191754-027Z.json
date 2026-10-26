@@ -1,0 +1,69 @@
+{
+  "provider": "Cloudflare Workers AI REST API",
+  "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+  "prompt_version": "purpose-classification-v4",
+  "dataset": "purpose-classification-rubric-v2-cases.json",
+  "run_status": "failed",
+  "timestamp": "2026-10-19T19:17:55.125Z",
+  "settings": {
+    "temperature": 0,
+    "max_tokens": 120,
+    "json_schema_in_prompt_only": true,
+    "response_schema_validated_locally": true
+  },
+  "synthetic_data_only": true,
+  "diagnostic": {
+    "kind": "missing_model_response",
+    "result_type": "object",
+    "result_keys": [
+      "id",
+      "object",
+      "created",
+      "model",
+      "choices",
+      "service_tier",
+      "usage",
+      "prompt_logprobs",
+      "prompt_token_ids",
+      "prompt_text",
+      "kv_transfer_params",
+      "ec_transfer_params",
+      "metrics",
+      "response",
+      "tool_calls"
+    ],
+    "result_response_type": "null",
+    "choices_count": 1,
+    "first_choice_keys": [
+      "index",
+      "message",
+      "logprobs",
+      "finish_reason",
+      "stop_reason",
+      "token_ids",
+      "routed_experts"
+    ],
+    "first_choice_text_type": "undefined",
+    "first_message_keys": [
+      "role",
+      "content",
+      "refusal",
+      "annotations",
+      "audio",
+      "function_call",
+      "reasoning",
+      "reasoning_content"
+    ],
+    "first_message_content_type": "null",
+    "first_message_tool_calls_count": null,
+    "top_level_keys": [
+      "result",
+      "success",
+      "errors",
+      "messages"
+    ],
+    "api_success": true,
+    "error_codes": []
+  },
+  "predictions": []
+}

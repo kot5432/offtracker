@@ -1,0 +1,101 @@
+{
+  "is_mock": true,
+  "purpose": "Provider quality evaluation only. These cases are not loaded by the UI preview and contain no real session data.",
+  "cases": [
+    {
+      "id": "long-completed-related-work",
+      "label": "長時間・関連活動・完了",
+      "input": {
+        "purpose": "研究発表のスライドを完成させる",
+        "activities": [
+          { "activity_type": "research", "duration_seconds": 1800, "purpose_relation": "related" },
+          { "activity_type": "writing", "duration_seconds": 2400, "purpose_relation": "related" }
+        ],
+        "result": { "result_level": "completed", "actual_duration_minutes": 70 }
+      },
+      "evaluation_expectations": [
+        "長時間だったことだけを問題や原因として扱わない",
+        "完了した目的に、未達の原因候補を作らない"
+      ]
+    },
+    {
+      "id": "research-heavy-partial",
+      "label": "調査多め・一部完了",
+      "input": {
+        "purpose": "数学レポートを書く",
+        "activities": [
+          { "activity_type": "research", "duration_seconds": 2400, "purpose_relation": "possibly_related" },
+          { "activity_type": "writing", "duration_seconds": 300, "purpose_relation": "related" }
+        ],
+        "result": { "result_level": "partially_completed", "actual_duration_minutes": 50 }
+      },
+      "evaluation_expectations": [
+        "調査が不要・過剰だったと断定しない",
+        "調査と執筆の時間配分を示す場合も、低い確信度の一つの見方として扱う"
+      ]
+    },
+    {
+      "id": "possibly-unrelated-mixed",
+      "label": "目的外の可能性を含む・一部完了",
+      "input": {
+        "purpose": "確定申告の書類を準備する",
+        "activities": [
+          { "activity_type": "leisure", "duration_seconds": 900, "purpose_relation": "possibly_unrelated" },
+          { "activity_type": "document_work", "duration_seconds": 600, "purpose_relation": "related" }
+        ],
+        "result": { "result_level": "partially_completed", "actual_duration_minutes": 25 }
+      },
+      "evaluation_expectations": [
+        "目的外の可能性がある時間を事実として説明する",
+        "その時間が未完了の原因だったとは断定しない"
+      ]
+    },
+    {
+      "id": "missing-result",
+      "label": "結果情報なし",
+      "input": {
+        "purpose": "会議の資料を準備する",
+        "activities": [
+          { "activity_type": "research", "duration_seconds": 600, "purpose_relation": "possibly_related" },
+          { "activity_type": "writing", "duration_seconds": 900, "purpose_relation": "related" },
+          { "activity_type": "communication", "duration_seconds": 300, "purpose_relation": "uncertain" }
+        ],
+        "result": null
+      },
+      "evaluation_expectations": [
+        "目的が完了・未完了だったと推測しない",
+        "候補を作る場合は記録された活動の事実だけに結び付ける"
+      ]
+    },
+    {
+      "id": "no-activities-partial",
+      "label": "活動記録なし・一部未完了",
+      "input": {
+        "purpose": "部屋を片付ける",
+        "activities": [],
+        "result": { "result_level": "partially_completed", "actual_duration_minutes": 20 }
+      },
+      "evaluation_expectations": [
+        "未完了の理由を作らない",
+        "候補なしと、活動記録がないため根拠不足であることを返す"
+      ]
+    },
+    {
+      "id": "uncertain-all-partial",
+      "label": "すべて関係不明・一部未完了",
+      "input": {
+        "purpose": "資格試験の勉強をする",
+        "activities": [
+          { "activity_type": "research", "duration_seconds": 1200, "purpose_relation": "uncertain" },
+          { "activity_type": "communication", "duration_seconds": 900, "purpose_relation": "uncertain" },
+          { "activity_type": "other", "duration_seconds": 600, "purpose_relation": "uncertain" }
+        ],
+        "result": { "result_level": "partially_completed", "actual_duration_minutes": 50 }
+      },
+      "evaluation_expectations": [
+        "uncertainを目的外と読み替えない",
+        "未完了の理由を活動の種類だけから断定せず、関係を判断する情報が不足していると伝える"
+      ]
+    }
+  ]
+}

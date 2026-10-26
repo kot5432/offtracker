@@ -1,0 +1,138 @@
+{
+  "provider": "Ollama local",
+  "model": "qwen3:4b",
+  "prompt_version": "purpose-classification-v3",
+  "dataset": "purpose-classification-holdout-cases.json",
+  "run": 1,
+  "timestamp": "2026-10-19T18:37:52.537Z",
+  "settings": {
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 2048,
+    "num_predict": 64,
+    "schema_constrained": true
+  },
+  "synthetic_data_only": true,
+  "predictions": [
+    {
+      "id": "holdout-leisure-game",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 8874,
+      "prompt_eval_count": 444,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "holdout-leisure-comic",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 4454,
+      "prompt_eval_count": 445,
+      "eval_count": 27,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "holdout-learning-article",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3892,
+      "prompt_eval_count": 446,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"learning\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "holdout-learning-presentation",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3934,
+      "prompt_eval_count": 448,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"learning\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "holdout-task-report",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3875,
+      "prompt_eval_count": 448,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"task\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "holdout-task-app",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3929,
+      "prompt_eval_count": 448,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"task\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "holdout-admin-delivery",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 4176,
+      "prompt_eval_count": 448,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"admin\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "holdout-admin-location",
+      "category": "admin",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 4354,
+      "prompt_eval_count": 441,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"admin\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "holdout-other-files",
+      "category": "task",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 4213,
+      "prompt_eval_count": 446,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"task\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "holdout-ambiguous-book",
+      "category": "learning",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3588,
+      "prompt_eval_count": 436,
+      "eval_count": 25,
+      "raw_response": "{\n  \"category\": \"learning\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "holdout-ambiguous-music",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 3574,
+      "prompt_eval_count": 437,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    },
+    {
+      "id": "holdout-ambiguous-browsing",
+      "category": "leisure",
+      "confidence": "high",
+      "ambiguous": false,
+      "elapsed_ms": 4788,
+      "prompt_eval_count": 442,
+      "eval_count": 26,
+      "raw_response": "{\n  \"category\": \"leisure\",\n  \"confidence\": \"high\",\n  \"ambiguous\": false\n}"
+    }
+  ]
+}

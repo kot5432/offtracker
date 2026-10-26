@@ -1,0 +1,136 @@
+[
+  {
+    "model": "qwen3:0.6b",
+    "scenario_id": "mixed-activities",
+    "timestamp_local": "2026-10-14T15:29:32.3249616+09:00",
+    "settings": {
+      "num_predict": 512,
+      "temperature": 0,
+      "seed": 42,
+      "think": false,
+      "num_ctx": 4096
+    },
+    "metrics": {
+      "total_seconds": 5.374,
+      "prompt_tokens": 531,
+      "output_tokens": 88,
+      "output_tokens_per_second": 39.16
+    },
+    "parse_ok": true,
+    "structural_issues": [
+      "missing_coverage_message"
+    ],
+    "response": "{\n  \"hypotheses\": [\n    {\n      \"title\": \"可能性としての短い見出し\",\n      \"description\": \"入力にない感情、意図、予定、出来事、原因を補わない。\",\n      \"evidence\": [{ \"type\": \"activity\", \"activity_index\": 0 }],\n      \"confidence\": \"low\"\n    }\n  ],\n  \"coverage_message\": null\n}"
+  },
+  {
+    "model": "qwen3:0.6b",
+    "scenario_id": "short-completed",
+    "timestamp_local": "2026-10-14T15:29:37.5425525+09:00",
+    "settings": {
+      "num_predict": 512,
+      "temperature": 0,
+      "seed": 42,
+      "think": false,
+      "num_ctx": 4096
+    },
+    "metrics": {
+      "total_seconds": 5.172,
+      "prompt_tokens": 473,
+      "output_tokens": 87,
+      "output_tokens_per_second": 39.77
+    },
+    "parse_ok": true,
+    "structural_issues": [
+      "missing_coverage_message"
+    ],
+    "response": "{\n  \"hypotheses\": [\n    {\n      \"title\": \"可能性としての短い見出し\",\n      \"description\": \"メールを1通送るには、目的外だった証拠として扱わない。\",\n      \"evidence\": [{ \"type\": \"activity\", \"activity_index\": 0 }],\n      \"confidence\": \"low\"\n    }\n  ],\n  \"coverage_message\": null\n}"
+  },
+  {
+    "model": "qwen3:0.6b",
+    "scenario_id": "uncertain-short-partial",
+    "timestamp_local": "2026-10-14T15:29:42.9465619+09:00",
+    "settings": {
+      "num_predict": 512,
+      "temperature": 0,
+      "seed": 42,
+      "think": false,
+      "num_ctx": 4096
+    },
+    "metrics": {
+      "total_seconds": 5.391,
+      "prompt_tokens": 526,
+      "output_tokens": 88,
+      "output_tokens_per_second": 37.5
+    },
+    "parse_ok": true,
+    "structural_issues": [
+      "missing_coverage_message"
+    ],
+    "response": "{\n  \"hypotheses\": [\n    {\n      \"title\": \"可能性としての短い見出し\",\n      \"description\": \"入力にない感情、意図、予定、出来事、原因を補わない。\",\n      \"evidence\": [{ \"type\": \"activity\", \"activity_index\": 0 }],\n      \"confidence\": \"low\"\n    }\n  ],\n  \"coverage_message\": null\n}"
+  },
+  {
+    "model": "qwen3:1.7b",
+    "scenario_id": "mixed-activities",
+    "timestamp_local": "2026-10-14T15:30:08.5483511+09:00",
+    "settings": {
+      "num_predict": 512,
+      "temperature": 0,
+      "seed": 42,
+      "think": false,
+      "num_ctx": 4096
+    },
+    "metrics": {
+      "total_seconds": 25.59,
+      "prompt_tokens": 531,
+      "output_tokens": 337,
+      "output_tokens_per_second": 17.38
+    },
+    "parse_ok": true,
+    "structural_issues": [
+      "duplicate_title"
+    ],
+    "response": "{\n  \"hypotheses\": [\n    {\n      \"title\": \"数学レポートの作業\",\n      \"description\": \"研究、書類作成、コミュニケーションの活動が存在し、レポートの完成度は部分的に完了している。\",\n      \"evidence\": [\n        { \"type\": \"activity\", \"activity_index\": 0 },\n        { \"type\": \"activity\", \"activity_index\": 2 },\n        { \"type\": \"activity\", \"activity_index\": 3 }\n      ],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"title\": \"数学レポートの作業\",\n      \"description\": \"研究、書類作成、コミュニケーションの活動が存在し、レポートの完成度は部分的に完了している。\",\n      \"evidence\": [\n        { \"type\": \"activity\", \"activity_index\": 0 },\n        { \"type\": \"activity\", \"activity_index\": 2 },\n        { \"type\": \"activity\", \"activity_index\": 3 }\n      ],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"title\": \"数学レポートの作業\",\n      \"description\": \"研究、書類作成、コミュニケーションの活動が存在し、レポートの完成度は部分的に完了している。\",\n      \"evidence\": [\n        { \"type\": \"activity\", \"activity_index\": 0 },\n        { \"type\": \"activity\", \"activity_index\": 2 },\n        { \"type\": \"activity\", \"activity_index\": 3 }\n      ],\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"coverage_message\": null\n}"
+  },
+  {
+    "model": "qwen3:1.7b",
+    "scenario_id": "short-completed",
+    "timestamp_local": "2026-10-14T15:30:32.1877451+09:00",
+    "settings": {
+      "num_predict": 512,
+      "temperature": 0,
+      "seed": 42,
+      "think": false,
+      "num_ctx": 4096
+    },
+    "metrics": {
+      "total_seconds": 23.627,
+      "prompt_tokens": 473,
+      "output_tokens": 335,
+      "output_tokens_per_second": 19.04
+    },
+    "parse_ok": true,
+    "structural_issues": [],
+    "response": "{\n  \"hypotheses\": [\n    {\n      \"title\": \"メールを送る活動の可能性\",\n      \"description\": \"メールを送るという目的が明確だが、具体的な理由や結果が不明。活動の種類や長さが示されているが、その背景や目的の関係性が不明。\",\n      \"evidence\": [\n        { \"type\": \"activity\", \"activity_index\": 0 }\n      ],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"title\": \"通信活動の結果の推測\",\n      \"description\": \"通信活動が完了したという結果が示されているが、その理由や背景が不明。活動の種類や長さが示されているが、その背景や目的の関係性が不明。\",\n      \"evidence\": [\n        { \"type\": \"activity\", \"activity_index\": 0 },\n        { \"type\": \"result\", \"result_index\": 0 }\n      ],\n      \"confidence\": \"low\"\n    },\n    {\n      \"title\": \"通信活動の目的外の可能性\",\n      \"description\": \"通信活動が完了したという結果が示されているが、その背景や目的の関係性が不明。活動の種類や長さが示されているが、その背景や目的の関係性が不明。\",\n      \"evidence\": [\n        { \"type\": \"activity\", \"activity_index\": 0 },\n        { \"type\": \"result\", \"result_index\": 0 }\n      ],\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"coverage_message\": null\n}"
+  },
+  {
+    "model": "qwen3:1.7b",
+    "scenario_id": "uncertain-short-partial",
+    "timestamp_local": "2026-10-14T15:30:56.7022795+09:00",
+    "settings": {
+      "num_predict": 512,
+      "temperature": 0,
+      "seed": 42,
+      "think": false,
+      "num_ctx": 4096
+    },
+    "metrics": {
+      "total_seconds": 24.503,
+      "prompt_tokens": 526,
+      "output_tokens": 351,
+      "output_tokens_per_second": 19.13
+    },
+    "parse_ok": true,
+    "structural_issues": [],
+    "response": "{\n  \"hypotheses\": [\n    {\n      \"title\": \"不明な目的と活動の重複\",\n      \"description\": \"数学レポートの作成中に、研究活動とコミュニケーション活動が重複しているが、目的が不明であるため、根拠が不完全である。\",\n      \"evidence\": [\n        { \"type\": \"activity\", \"activity_index\": 0 },\n        { \"type\": \"activity\", \"activity_index\": 2 },\n        { \"type\": \"activity\", \"activity_index\": 3 }\n      ],\n      \"confidence\": \"low\"\n    },\n    {\n      \"title\": \"研究活動とコミュニケーションの関連性\",\n      \"description\": \"研究活動とコミュニケーション活動が重複しているが、目的が不明であるため、根拠が不完全である。\",\n      \"evidence\": [\n        { \"type\": \"activity\", \"activity_index\": 0 },\n        { \"type\": \"activity\", \"activity_index\": 3 },\n        { \"type\": \"activity\", \"activity_index\": 2 }\n      ],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"title\": \"活動の重複と目的の不明\",\n      \"description\": \"研究活動とコミュニケーション活動が重複しているが、目的が不明であるため、根拠が不完全である。\",\n      \"evidence\": [\n        { \"type\": \"activity\", \"activity_index\": 0 },\n        { \"type\": \"activity\", \"activity_index\": 3 },\n        { \"type\": \"activity\", \"activity_index\": 2 }\n      ],\n      \"confidence\": \"high\"\n    }\n  ],\n  \"coverage_message\": null\n}"
+  }
+]

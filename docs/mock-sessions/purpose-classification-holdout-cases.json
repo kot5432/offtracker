@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "description": "v1/v2のプロンプト調整に使っていない追加合成ケース。改訂指示の一般化を確認するための保留データ。",
+  "categories": ["leisure", "learning", "task", "admin", "other", "ambiguous"],
+  "acceptance": { "clear_correct_min": 9, "ambiguous_must_all": true },
+  "cases": [
+    {
+      "id": "holdout-leisure-game",
+      "purpose_text": "好きなゲームで遊んでリラックスする",
+      "expected_category": "leisure",
+      "reason": "楽しみ・休息が明示されている"
+    },
+    {
+      "id": "holdout-leisure-comic",
+      "purpose_text": "休憩に好きな漫画を読んで気分転換する",
+      "expected_category": "leisure",
+      "reason": "休憩・気分転換が目的"
+    },
+    {
+      "id": "holdout-learning-article",
+      "purpose_text": "英語の記事を読んで新しい語彙を身につける",
+      "expected_category": "learning",
+      "reason": "知識習得が明示されている"
+    },
+    {
+      "id": "holdout-learning-presentation",
+      "purpose_text": "発表の練習をして、聞き取りやすい話し方を身につける",
+      "expected_category": "learning",
+      "reason": "技能習得が目的"
+    },
+    {
+      "id": "holdout-task-report",
+      "purpose_text": "授業で指定されたレポートを提出できる状態まで仕上げる",
+      "expected_category": "task",
+      "reason": "具体的な提出物の完成が目的"
+    },
+    {
+      "id": "holdout-task-app",
+      "purpose_text": "個人で作っている家計簿アプリの画面を実装する",
+      "expected_category": "task",
+      "reason": "具体的な成果物の実装が目的"
+    },
+    {
+      "id": "holdout-admin-delivery",
+      "purpose_text": "郵便局に荷物の再配達を依頼する",
+      "expected_category": "admin",
+      "reason": "依頼手続きが目的"
+    },
+    {
+      "id": "holdout-admin-location",
+      "purpose_text": "友人に集合場所を連絡する",
+      "expected_category": "admin",
+      "reason": "連絡が目的"
+    },
+    {
+      "id": "holdout-other-files",
+      "purpose_text": "パソコン内のファイルを整理して重複を削除する",
+      "expected_category": "other",
+      "reason": "明確なPC管理で、定義済み4分類以外"
+    },
+    {
+      "id": "holdout-ambiguous-book",
+      "purpose_text": "本を読む",
+      "expected_category": "ambiguous",
+      "reason": "学習・娯楽など意図が読み取れない"
+    },
+    {
+      "id": "holdout-ambiguous-music",
+      "purpose_text": "音楽を流す",
+      "expected_category": "ambiguous",
+      "reason": "楽しむ目的か、別の目的か分からない"
+    },
+    {
+      "id": "holdout-ambiguous-browsing",
+      "purpose_text": "ブラウザでWebサイトを見て回る",
+      "expected_category": "ambiguous",
+      "reason": "閲覧の目的が明示されていない"
+    }
+  ]
+}

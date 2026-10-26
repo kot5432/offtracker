@@ -1,0 +1,147 @@
+[
+  {
+    "model": "qwen3:0.6b",
+    "scenario_id": "mixed-activities",
+    "timestamp_local": "2026-10-14T15:32:49.7464680+09:00",
+    "format": "json_schema",
+    "settings": {
+      "seed": 42,
+      "temperature": 0,
+      "num_predict": 512,
+      "num_ctx": 4096,
+      "think": false
+    },
+    "metrics": {
+      "total_seconds": 4.799,
+      "prompt_tokens": 531,
+      "output_tokens": 80,
+      "output_tokens_per_second": 37.7
+    },
+    "parse_ok": true,
+    "structural_issues": [
+      "missing_coverage_message"
+    ],
+    "response": "{\n  \"coverage_message\": null,\n  \"hypotheses\": [\n    {\n      \"title\": \"可能性としての短い見出し\",\n      \"description\": \"数学レポートの作成は、研究の目的と結果を示しています。\",\n      \"evidence\": [{ \"type\": \"result\" }], \"confidence\": \"medium\"\n    }\n  ]\n}"
+  },
+  {
+    "model": "qwen3:0.6b",
+    "scenario_id": "short-completed",
+    "timestamp_local": "2026-10-14T15:32:55.2624823+09:00",
+    "format": "json_schema",
+    "settings": {
+      "seed": 42,
+      "temperature": 0,
+      "num_predict": 512,
+      "num_ctx": 4096,
+      "think": false
+    },
+    "metrics": {
+      "total_seconds": 5.483,
+      "prompt_tokens": 473,
+      "output_tokens": 91,
+      "output_tokens_per_second": 36.67
+    },
+    "parse_ok": true,
+    "structural_issues": [
+      "missing_coverage_message"
+    ],
+    "response": "{\n  \"coverage_message\": null,\n  \"hypotheses\": [\n    {\n      \"title\": \"メールの送りの原因\",\n      \"description\": \"入力にない感情や意図を含む説明ですが、原因を断定せず、分からない点\",\n      \"evidence\": [{ \"type\": \"result\" }], \"confidence\": \"low\"\n    }\n  ]\n}"
+  },
+  {
+    "model": "qwen3:0.6b",
+    "scenario_id": "uncertain-short-partial",
+    "timestamp_local": "2026-10-14T15:33:00.9353074+09:00",
+    "format": "json_schema",
+    "settings": {
+      "seed": 42,
+      "temperature": 0,
+      "num_predict": 512,
+      "num_ctx": 4096,
+      "think": false
+    },
+    "metrics": {
+      "total_seconds": 5.659,
+      "prompt_tokens": 526,
+      "output_tokens": 84,
+      "output_tokens_per_second": 35.13
+    },
+    "parse_ok": true,
+    "structural_issues": [
+      "missing_coverage_message"
+    ],
+    "response": "{\n  \"coverage_message\": null,\n  \"hypotheses\": [\n    {\n      \"title\": \"可能性としての短い見出し\",\n      \"description\": \"入力にない感情、意図、予定、出来事、原因を補わない。\",\n      \"evidence\": [{ \"type\": \"result\" }], \"confidence\": \"low\"\n    }\n  ]\n}"
+  },
+  {
+    "model": "qwen3:1.7b",
+    "scenario_id": "mixed-activities",
+    "timestamp_local": "2026-10-14T15:33:24.1459891+09:00",
+    "format": "json_schema",
+    "settings": {
+      "seed": 42,
+      "temperature": 0,
+      "num_predict": 512,
+      "num_ctx": 4096,
+      "think": false
+    },
+    "metrics": {
+      "total_seconds": 23.196,
+      "prompt_tokens": 531,
+      "output_tokens": 318,
+      "output_tokens_per_second": 18.88
+    },
+    "parse_ok": true,
+    "structural_issues": [
+      "duplicate_evidence_ref"
+    ],
+    "response": "{\n  \"coverage_message\": null,\n  \"hypotheses\": [\n    {\n      \"title\": \"未明の目的と活動の関係\",\n      \"description\": \"数学レポートの作成中、研究活動、書類作成、コミュニケーション活動が行われているが、目的の明確性や各活動の関係性は不明。\",\n      \"evidence\": [\n        { \"type\": \"result\" },\n        { \"type\": \"result\" },\n        { \"type\": \"result\" },\n        { \"type\": \"result\" }\n      ],\n      \"confidence\": \"low\"\n    },\n    {\n      \"title\": \"研究と書類作成の関係\",\n      \"description\": \"研究活動が行われており、その結果が書類作成に使われているが、目的の明確性や書類作成の目的は不明。\",\n      \"evidence\": [\n        { \"type\": \"result\" },\n        { \"type\": \"result\" },\n        { \"type\": \"result\" }\n      ],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"title\": \"コミュニケーション活動の不明な関係\",\n      \"description\": \"コミュニケーション活動が行われているが、その目的や関係性は不明。研究活動と書類作成との関係も不明。\",\n      \"evidence\": [\n        { \"type\": \"result\" },\n        { \"type\": \"result\" }\n      ],\n      \"confidence\": \"low\"\n    }\n  ]\n}"
+  },
+  {
+    "model": "qwen3:1.7b",
+    "scenario_id": "short-completed",
+    "timestamp_local": "2026-10-14T15:33:46.0193791+09:00",
+    "format": "json_schema",
+    "settings": {
+      "seed": 42,
+      "temperature": 0,
+      "num_predict": 512,
+      "num_ctx": 4096,
+      "think": false
+    },
+    "metrics": {
+      "total_seconds": 21.861,
+      "prompt_tokens": 473,
+      "output_tokens": 287,
+      "output_tokens_per_second": 18.32
+    },
+    "parse_ok": true,
+    "structural_issues": [
+      "duplicate_evidence_ref"
+    ],
+    "response": "{\n  \"coverage_message\": null,\n  \"hypotheses\": [\n    {\n      \"title\": \"メールを送る活動の可能性\",\n      \"description\": \"メールを送るという目的が明確だが、具体的な理由や結果が不明。活動の種類や長さが示されており、結果の完成が確認されている。\",\n      \"evidence\": [\n        { \"type\": \"result\" },\n        { \"type\": \"result\" }\n      ],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"title\": \"通信活動の関連性\",\n      \"description\": \"通信活動が目的として関連しているが、具体的な理由や内容が不明。活動の長さが示されており、結果の完成が確認されている。\",\n      \"evidence\": [\n        { \"type\": \"result\" },\n        { \"type\": \"result\" }\n      ],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"title\": \"通信活動の実施\",\n      \"description\": \"通信活動が実施されているが、具体的な理由や内容が不明。活動の長さが示されており、結果の完成が確認されている。\",\n      \"evidence\": [\n        { \"type\": \"result\" },\n        { \"type\": \"result\" }\n      ],\n      \"confidence\": \"medium\"\n    }\n  ]\n}"
+  },
+  {
+    "model": "qwen3:1.7b",
+    "scenario_id": "uncertain-short-partial",
+    "timestamp_local": "2026-10-14T15:33:59.5033572+09:00",
+    "format": "json_schema",
+    "settings": {
+      "seed": 42,
+      "temperature": 0,
+      "num_predict": 512,
+      "num_ctx": 4096,
+      "think": false
+    },
+    "metrics": {
+      "total_seconds": 13.474,
+      "prompt_tokens": 526,
+      "output_tokens": 134,
+      "output_tokens_per_second": 18.76
+    },
+    "parse_ok": true,
+    "structural_issues": [
+      "duplicate_evidence_ref",
+      "missing_coverage_message"
+    ],
+    "response": "{\n  \"coverage_message\": null,\n  \"hypotheses\": [\n    {\n      \"title\": \"不明な目的と活動の関係\",\n      \"description\": \"数学レポートの作成中、研究活動とコミュニケーション活動が行われているが、目的の明確性や活動の関係性は不明である。\",\n      \"evidence\": [\n        { \"type\": \"result\" },\n        { \"type\": \"result\" },\n        { \"type\": \"result\" },\n        { \"type\": \"result\" }\n      ],\n      \"confidence\": \"low\"\n    }\n  ]\n}"
+  }
+]

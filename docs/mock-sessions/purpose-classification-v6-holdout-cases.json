@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "description": "プロンプト調整用のルーブリックv2ケースとは別に作成した、Cloudflare候補の未使用合成ホールドアウト24件。",
+  "categories": ["leisure", "learning", "task", "admin", "other", "ambiguous"],
+  "acceptance": { "clear_correct_min": 19, "ambiguous_must_all": true, "ambiguous_confidence": "low" },
+  "cases": [
+    { "id": "h6-leisure-1", "purpose_text": "休日に好きな映画を見てのんびりする", "expected_category": "leisure", "reason": "休息の意図が明示されている" },
+    { "id": "h6-leisure-2", "purpose_text": "お気に入りの曲を聴いて気分転換する", "expected_category": "leisure", "reason": "気分転換が目的と明示されている" },
+    { "id": "h6-leisure-3", "purpose_text": "暇な時間にパズルを解いて遊ぶ", "expected_category": "leisure", "reason": "遊ぶことが明示されている" },
+    { "id": "h6-leisure-4", "purpose_text": "寝る前に漫画を読んで物語を楽しむ", "expected_category": "leisure", "reason": "楽しむ意図が明示されている" },
+
+    { "id": "h6-learning-1", "purpose_text": "資格試験の用語を覚えて説明できるようにする", "expected_category": "learning", "reason": "知識を習得する目的が明示されている" },
+    { "id": "h6-learning-2", "purpose_text": "英会話の教材で発音を練習する", "expected_category": "learning", "reason": "技能練習が明示されている" },
+    { "id": "h6-learning-3", "purpose_text": "講義ノートを読み返して電気回路の仕組みを理解する", "expected_category": "learning", "reason": "理解が目的と明示されている" },
+    { "id": "h6-learning-4", "purpose_text": "料理の基本を動画教材で学ぶ", "expected_category": "learning", "reason": "知識習得が明示されている" },
+
+    { "id": "h6-task-1", "purpose_text": "サークルの会計報告書を提出できる状態に仕上げる", "expected_category": "task", "reason": "提出物の完成が目的" },
+    { "id": "h6-task-2", "purpose_text": "旅行の写真を選んでアルバムを作る", "expected_category": "task", "reason": "具体的な制作結果が明確" },
+    { "id": "h6-task-3", "purpose_text": "研究発表の資料に図表を入れて完成させる", "expected_category": "task", "reason": "成果物の完成が目的" },
+    { "id": "h6-task-4", "purpose_text": "パソコンの古いダウンロードファイルを整理して削除する", "expected_category": "task", "reason": "具体的な整理作業の結果が明確" },
+
+    { "id": "h6-admin-1", "purpose_text": "市役所に電話して転居届に必要な書類を確認する", "expected_category": "admin", "reason": "機関への連絡と手続き確認が目的" },
+    { "id": "h6-admin-2", "purpose_text": "ゼミの担当者に参加できる日をメールで伝える", "expected_category": "admin", "reason": "連絡と日程調整が目的" },
+    { "id": "h6-admin-3", "purpose_text": "使わなくなった動画サービスの解約手続きをする", "expected_category": "admin", "reason": "契約手続きが目的" },
+    { "id": "h6-admin-4", "purpose_text": "友人に待ち合わせ場所の変更をメッセージで知らせる", "expected_category": "admin", "reason": "人への連絡が目的" },
+
+    { "id": "h6-other-1", "purpose_text": "バスの運行状況を確認して家を出る時間を決める", "expected_category": "other", "reason": "移動の判断に使う情報確認が目的" },
+    { "id": "h6-other-2", "purpose_text": "パソコンの音量を調整して会議の声を聞き取りやすくする", "expected_category": "other", "reason": "端末環境の調整が目的" },
+    { "id": "h6-other-3", "purpose_text": "充電残量を見て持っていくケーブルを決める", "expected_category": "other", "reason": "日常の判断に使う情報確認が目的" },
+    { "id": "h6-other-4", "purpose_text": "地図で会場の入口を調べて向かう道を決める", "expected_category": "other", "reason": "道順の判断に使う情報確認が目的" },
+
+    { "id": "h6-ambiguous-1", "purpose_text": "配信を何本か見る", "expected_category": "ambiguous", "reason": "視聴する目的が書かれていない" },
+    { "id": "h6-ambiguous-2", "purpose_text": "本を一章読む", "expected_category": "ambiguous", "reason": "読書の目的が書かれていない" },
+    { "id": "h6-ambiguous-3", "purpose_text": "パソコンで作業をする", "expected_category": "ambiguous", "reason": "具体的な作業内容や達成したい結果が分からない" },
+    { "id": "h6-ambiguous-4", "purpose_text": "英語の勉強をしてから友人に週末の予定を連絡する", "expected_category": "ambiguous", "reason": "学習と連絡の異なる目的が並んでいる" }
+  ]
+}

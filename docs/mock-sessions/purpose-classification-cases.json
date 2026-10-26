@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "description": "合成目的文の分類品質を比べるための評価用データ。実セッションの文章やPC記録は含まない。",
+  "categories": ["leisure", "learning", "task", "admin", "other", "ambiguous"],
+  "acceptance": { "clear_correct_min": 18, "ambiguous_must_all": true },
+  "cases": [
+    {
+      "id": "leisure-video-target",
+      "purpose_text": "好きな配信動画を見て、1時間ゆっくり楽しむ",
+      "expected_category": "leisure",
+      "reason": "楽しむことと時間の意図が明示されている"
+    },
+    {
+      "id": "leisure-game-break",
+      "purpose_text": "気分転換にゲームをして休む",
+      "expected_category": "leisure",
+      "reason": "休息と気分転換が目的"
+    },
+    {
+      "id": "leisure-music",
+      "purpose_text": "好きな音楽を聴いてリラックスする",
+      "expected_category": "leisure",
+      "reason": "娯楽・リラックスが明示されている"
+    },
+    {
+      "id": "leisure-film",
+      "purpose_text": "映画を一本見て楽しむ",
+      "expected_category": "leisure",
+      "reason": "楽しむことが目的"
+    },
+    {
+      "id": "learning-math-video",
+      "purpose_text": "数学の授業動画を見て、二次関数を理解する",
+      "expected_category": "learning",
+      "reason": "動画視聴ではなく理解が目的"
+    },
+    {
+      "id": "learning-vocabulary",
+      "purpose_text": "英単語を20個覚える",
+      "expected_category": "learning",
+      "reason": "知識の習得が目的"
+    },
+    {
+      "id": "learning-online-course",
+      "purpose_text": "オンライン講座でPythonの基礎を学ぶ",
+      "expected_category": "learning",
+      "reason": "学ぶことが目的"
+    },
+    {
+      "id": "learning-review",
+      "purpose_text": "試験に向けて教科書を読み返し、重要語句を復習する",
+      "expected_category": "learning",
+      "reason": "復習が目的"
+    },
+    {
+      "id": "task-report",
+      "purpose_text": "歴史のレポートを800字まで書き進める",
+      "expected_category": "task",
+      "reason": "提出物の作成が目的"
+    },
+    {
+      "id": "task-code",
+      "purpose_text": "アプリのログイン画面を実装する",
+      "expected_category": "task",
+      "reason": "成果物の実装が目的"
+    },
+    {
+      "id": "task-homework",
+      "purpose_text": "数学の課題を3問解く",
+      "expected_category": "task",
+      "reason": "課題の完了が目的"
+    },
+    {
+      "id": "task-slides",
+      "purpose_text": "発表用スライドを5枚作る",
+      "expected_category": "task",
+      "reason": "成果物の作成が目的"
+    },
+    {
+      "id": "admin-email",
+      "purpose_text": "先生に日程確認のメールを返信する",
+      "expected_category": "admin",
+      "reason": "連絡・返信が目的"
+    },
+    {
+      "id": "admin-calendar",
+      "purpose_text": "来週の打ち合わせ日時を決めてカレンダーに登録する",
+      "expected_category": "admin",
+      "reason": "予定調整が目的"
+    },
+    {
+      "id": "admin-reservation",
+      "purpose_text": "旅行の新幹線とホテルを予約する",
+      "expected_category": "admin",
+      "reason": "手続き・予約が目的"
+    },
+    {
+      "id": "admin-expense",
+      "purpose_text": "出張の経費申請を提出する",
+      "expected_category": "admin",
+      "reason": "申請手続きが目的"
+    },
+    {
+      "id": "other-backup",
+      "purpose_text": "写真ファイルのバックアップを取る",
+      "expected_category": "other",
+      "reason": "目的は明確だが定義した4種類以外のPC管理"
+    },
+    {
+      "id": "other-settings",
+      "purpose_text": "パソコンの音量と画面設定を調整する",
+      "expected_category": "other",
+      "reason": "目的は明確だが娯楽・学習・制作・事務以外の設定変更"
+    },
+    {
+      "id": "other-weather",
+      "purpose_text": "明日の天気を確認する",
+      "expected_category": "other",
+      "reason": "目的は明確だが定義した4種類以外"
+    },
+    {
+      "id": "ambiguous-youtube",
+      "purpose_text": "YouTubeを見る",
+      "expected_category": "ambiguous",
+      "reason": "学習・娯楽などの意図を判別できない"
+    },
+    {
+      "id": "ambiguous-pc",
+      "purpose_text": "パソコンを使う",
+      "expected_category": "ambiguous",
+      "reason": "目的の内容が分からない"
+    },
+    {
+      "id": "ambiguous-mixed-study-task",
+      "purpose_text": "授業内容を復習しながら、提出するレポートも書く",
+      "expected_category": "ambiguous",
+      "reason": "学習と提出物作成の複数目的が同じセッションにある"
+    },
+    {
+      "id": "ambiguous-mixed-leisure-research",
+      "purpose_text": "ゲーム配信を楽しみつつ、攻略方法も調べる",
+      "expected_category": "ambiguous",
+      "reason": "娯楽と調査の複数目的が含まれる"
+    },
+    {
+      "id": "ambiguous-social",
+      "purpose_text": "SNSを見る",
+      "expected_category": "ambiguous",
+      "reason": "閲覧の目的が分からない"
+    }
+  ]
+}

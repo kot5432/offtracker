@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "description": "目的分類ルーブリックv2を確認するための新規合成ケース。以前のプロンプト調整や評価には未使用。",
+  "categories": ["leisure", "learning", "task", "admin", "other", "ambiguous"],
+  "acceptance": { "clear_correct_min": 19, "ambiguous_must_all": true, "ambiguous_confidence": "low" },
+  "cases": [
+    { "id": "r2-leisure-1", "purpose_text": "好きなバンドのライブ映像を見て楽しむ", "expected_category": "leisure", "reason": "楽しむ意図が明示されている" },
+    { "id": "r2-leisure-2", "purpose_text": "休憩にパズルゲームをして気分転換する", "expected_category": "leisure", "reason": "休憩と気分転換が目的" },
+    { "id": "r2-leisure-3", "purpose_text": "コメディ番組を見て笑ってリラックスする", "expected_category": "leisure", "reason": "娯楽とリラックスが明示されている" },
+    { "id": "r2-leisure-4", "purpose_text": "好きな作家の小説を読んで物語を楽しむ", "expected_category": "leisure", "reason": "読書の目的が楽しむことと明示されている" },
+
+    { "id": "r2-learning-1", "purpose_text": "講義動画を見て微分の考え方を理解する", "expected_category": "learning", "reason": "理解することが明示されている" },
+    { "id": "r2-learning-2", "purpose_text": "英語の発音を練習して自然に話せるようになる", "expected_category": "learning", "reason": "技能習得が目的" },
+    { "id": "r2-learning-3", "purpose_text": "試験に向けて歴史の用語を復習する", "expected_category": "learning", "reason": "試験に向けた学習が目的" },
+    { "id": "r2-learning-4", "purpose_text": "Python講座で繰り返し処理の使い方を学ぶ", "expected_category": "learning", "reason": "知識習得が明示されている" },
+
+    { "id": "r2-task-1", "purpose_text": "ゼミで提出する調査レポートを仕上げる", "expected_category": "task", "reason": "提出物の完成が目的" },
+    { "id": "r2-task-2", "purpose_text": "個人アプリに検索画面を追加する", "expected_category": "task", "reason": "具体的な成果物の実装" },
+    { "id": "r2-task-3", "purpose_text": "パソコン内の写真を整理して重複ファイルを削除する", "expected_category": "task", "reason": "具体的な整理作業と結果が明確" },
+    { "id": "r2-task-4", "purpose_text": "サークル紹介の動画を編集して完成させる", "expected_category": "task", "reason": "具体的な制作物の完成" },
+
+    { "id": "r2-admin-1", "purpose_text": "先生に面談できる日時をメールで返信する", "expected_category": "admin", "reason": "連絡と日程調整が目的" },
+    { "id": "r2-admin-2", "purpose_text": "歯科検診の予約を来週に変更する", "expected_category": "admin", "reason": "予約手続きが目的" },
+    { "id": "r2-admin-3", "purpose_text": "大学の履修登録を確定して申請する", "expected_category": "admin", "reason": "申請手続きが目的" },
+    { "id": "r2-admin-4", "purpose_text": "友人に旅行の集合時刻と場所を連絡する", "expected_category": "admin", "reason": "連絡が目的" },
+
+    { "id": "r2-other-1", "purpose_text": "明日の気温を確認して着ていく服を決める", "expected_category": "other", "reason": "日常の判断に必要な情報確認で、他の分類には当たらない" },
+    { "id": "r2-other-2", "purpose_text": "荷物の追跡ページを見て配達状況を確認する", "expected_category": "other", "reason": "状況確認が目的で、依頼や手続きではない" },
+    { "id": "r2-other-3", "purpose_text": "画面の明るさを調整して目が疲れにくい環境にする", "expected_category": "other", "reason": "端末環境の調整が目的" },
+    { "id": "r2-other-4", "purpose_text": "近所の図書館の開館時間を確認して行く時間を決める", "expected_category": "other", "reason": "日常予定の参考情報を確認する目的" },
+
+    { "id": "r2-ambiguous-1", "purpose_text": "YouTubeで動画を2本見る", "expected_category": "ambiguous", "reason": "視聴本数だけでは目的が分からない" },
+    { "id": "r2-ambiguous-2", "purpose_text": "本を読む", "expected_category": "ambiguous", "reason": "学習か娯楽かなど目的を判別できない" },
+    { "id": "r2-ambiguous-3", "purpose_text": "音楽を流す", "expected_category": "ambiguous", "reason": "楽しむ、集中用、別の用途か分からない" },
+    { "id": "r2-ambiguous-4", "purpose_text": "ネットで調べ物をする", "expected_category": "ambiguous", "reason": "何を知るためか書かれていない" },
+    { "id": "r2-ambiguous-5", "purpose_text": "学校の作業を進める", "expected_category": "ambiguous", "reason": "具体的な作業と目的が分からない" },
+    { "id": "r2-ambiguous-6", "purpose_text": "パソコンを使う", "expected_category": "ambiguous", "reason": "行動と目的の両方が特定できない" },
+    { "id": "r2-ambiguous-7", "purpose_text": "英単語を復習してから友達とゲームを楽しむ", "expected_category": "ambiguous", "reason": "学習と娯楽の目的が並んでいる" },
+    { "id": "r2-ambiguous-8", "purpose_text": "授業の課題を調べて、先生にも質問のメールを送る", "expected_category": "ambiguous", "reason": "課題と連絡の複数目的が含まれている" }
+  ]
+}

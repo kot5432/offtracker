@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "description": "分類境界と同じアプリの異なる目的を確認する追加合成ケース。モデルの初期比較には含めず、改訂プロンプトの追加評価に使う。",
+  "categories": ["leisure", "learning", "task", "admin", "other", "ambiguous"],
+  "acceptance": { "clear_correct_min": 10, "ambiguous_must_all": true },
+  "cases": [
+    {
+      "id": "challenge-leisure-youtube",
+      "purpose_text": "好きな料理チャンネルの動画を見て楽しむ",
+      "expected_category": "leisure",
+      "reason": "動画視聴でも楽しむ意図が明示されている"
+    },
+    {
+      "id": "challenge-leisure-music",
+      "purpose_text": "休憩中に音楽を聴いて気分転換する",
+      "expected_category": "leisure",
+      "reason": "休憩・気分転換が明示されている"
+    },
+    {
+      "id": "challenge-learning-youtube",
+      "purpose_text": "YouTubeの講義動画で統計の考え方を理解する",
+      "expected_category": "learning",
+      "reason": "同じ動画サービスでも理解が目的"
+    },
+    {
+      "id": "challenge-learning-speaking",
+      "purpose_text": "英語の発音を練習し、自然なリズムを身につける",
+      "expected_category": "learning",
+      "reason": "技能の練習・習得が目的"
+    },
+    {
+      "id": "challenge-task-slides",
+      "purpose_text": "ゼミ発表用の図を作り、スライドに入れる",
+      "expected_category": "task",
+      "reason": "具体的な発表成果物を作成する"
+    },
+    {
+      "id": "challenge-task-code",
+      "purpose_text": "課題で指定されたPythonプログラムを完成させる",
+      "expected_category": "task",
+      "reason": "指定された課題成果物を完成させる"
+    },
+    {
+      "id": "challenge-admin-dentist",
+      "purpose_text": "歯医者の予約日時を変更する",
+      "expected_category": "admin",
+      "reason": "予約手続きが目的"
+    },
+    {
+      "id": "challenge-admin-course",
+      "purpose_text": "大学に履修変更申請を提出する",
+      "expected_category": "admin",
+      "reason": "申請手続きが目的"
+    },
+    {
+      "id": "challenge-other-backup",
+      "purpose_text": "外付けSSDに写真のバックアップを作る",
+      "expected_category": "other",
+      "reason": "意図の明確なPC管理"
+    },
+    {
+      "id": "challenge-other-transport",
+      "purpose_text": "明日の電車の運行情報を調べる",
+      "expected_category": "other",
+      "reason": "意図の明確な情報確認で、学習・課題・事務ではない"
+    },
+    {
+      "id": "challenge-ambiguous-youtube-count",
+      "purpose_text": "YouTubeで動画を2本見る",
+      "expected_category": "ambiguous",
+      "reason": "視聴本数は分かるが、見る目的は不明"
+    },
+    {
+      "id": "challenge-ambiguous-stream",
+      "purpose_text": "ゲーム配信を見る",
+      "expected_category": "ambiguous",
+      "reason": "見る目的が娯楽・学習などのどれか分からない"
+    },
+    {
+      "id": "challenge-ambiguous-research",
+      "purpose_text": "調べ物をする",
+      "expected_category": "ambiguous",
+      "reason": "調べる目的が分からない"
+    },
+    {
+      "id": "challenge-ambiguous-admin-learning",
+      "purpose_text": "英語を勉強してから先生への連絡メールを書く",
+      "expected_category": "ambiguous",
+      "reason": "学習と連絡の目的が並んでいる"
+    },
+    {
+      "id": "challenge-ambiguous-task-leisure",
+      "purpose_text": "レポートを書いて、休憩にゲーム配信を見る",
+      "expected_category": "ambiguous",
+      "reason": "課題と娯楽の目的が含まれている"
+    },
+    {
+      "id": "challenge-ambiguous-school-work",
+      "purpose_text": "学校の作業を進める",
+      "expected_category": "ambiguous",
+      "reason": "学校の何をするのか、複数の目的のどれか分からない"
+    }
+  ]
+}
