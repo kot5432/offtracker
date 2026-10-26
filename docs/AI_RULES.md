@@ -3,7 +3,7 @@
 ## Core Principle
 
 Before adding any feature, ask:
-**「この機能は『やろうと思っていたことができなかった理由を理解する』という目的にどう貢献するか？」**
+**「この機能は、本人が自分の過ごし方に気づき、自分で時間の使い方を変えることをどう支えるか？」**
 
 If the answer is unclear or the contribution is indirect, do not add the feature.
 

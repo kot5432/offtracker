@@ -1,65 +1,26 @@
-# OffTracker - 行動分析プラットフォーム
+# OffTracker
 
-PC上の行動履歴を収集・分析し、「何にどれだけ時間を使ったか」だけでなく、「どのような流れで行動し、なぜ集中や脱線が起きたのか」を可視化する行動理解プラットフォーム。
+OffTracker は、PCを使う前に本人が決めた目的と、実際の行動記録・本人の結果を見比べ、自分なりの気づきを得るためのアプリです。
 
-## プロジェクト構成
+## 現在の開発対象
 
-```
-offtracker/
-├── web/                    # Webダッシュボード
-│   ├── index.html         # メインUI
-│   └── style.css          # スタイルシート
-├── desktop/               # Tauriデスクトップアプリ（開発中）
-├── functions/             # Cloudflare Pages Functions
-│   └── api/
-├── extension/             # ブラウザ拡張機能（保留）
-├── docs/                  # ドキュメント
-│   ├── README.md          # 詳細README
-│   ├── PROGRESS.md        # 進捗状況
-│   ├── ELECTRON_TAURI_COMPARISON.md  # 技術比較
-│   └── TAURI_MIGRATION_PLAN.md      # 移行計画
-└── .gitignore
-```
+現在のメインアプリは Tauri 2 と Rust、SQLite で作られたデスクトップアプリです。
 
-## 現在の状態
+- Rustアプリとデータベース: `desktop/src-tauri/`
+- アプリ画面: `desktop/ui/`
+- 画面例・レビュー用プロトタイプ: `desktop/ui/review/`
+- 現在の開発計画: [MASTER_DEVELOPMENT_PLAN.md](MASTER_DEVELOPMENT_PLAN.md)
 
-### ✅ 完了
-- WebダッシュボードUI完成
-- Supabase認証システム
-- Cloudflare Pagesデプロイ
-- GitHub連携による自動デプロイ
+画面は「目的 → 結果 → 行動記録 → 振り返り」の順に進みます。画面例は架空データを使うレビュー素材で、実際の分析機能とは区別しています。
 
-### 🔲 開発中
-- Tauriデスクトップアプリ
-- データ収集機能
-- ネイティブアプリ統合
+## リポジトリ内の別プロジェクト・参考資産
 
-## 開発計画
-
-詳細は [docs/PROGRESS.md](docs/PROGRESS.md) を参照してください。
-
-## クイックスタート
-
-### Webダッシュボード
-Cloudflare Pagesで自動デプロイされています。
-
-### デスクトップアプリ（開発中）
-Tauriを使用したネイティブアプリを開発中です。
-
-## 技術スタック
-
-- **フロントエンド**: HTML5, CSS3, Vanilla JavaScript
-- **バックエンド**: Supabase (PostgreSQL)
-- **ホスティング**: Cloudflare Pages
-- **デスクトップ**: Tauri (Rust + Web技術)
+- `desktop/_legacy_electron/` と `desktop/src/`: 旧Electron版とその共有JavaScript。旧版からの参照があるため、移動・削除しないでください。
+- ルートの `package.json` / `package-lock.json`: 旧Electron向けのNode設定です。現在のTauriアプリは `desktop/src-tauri/Cargo.toml` から管理します。
+- `web/` と `functions/`: 以前のWeb版資産。
+- `extension/`: ブラウザー拡張機能の資産。
+- `docs/_archive/`: 古い計画・調査記録・仕様書。履歴として内容を保持しています。
 
 ## ドキュメント
 
-- [プロジェクト概要](docs/README.md)
-- [進捗状況](docs/PROGRESS.md)
-- [技術比較](docs/ELECTRON_TAURI_COMPARISON.md)
-- [移行計画](docs/TAURI_MIGRATION_PLAN.md)
-
-## ライセンス
-
-MIT License
+現在参照すべき文書と各文書の役割は [docs/README.md](docs/README.md) にまとめています。

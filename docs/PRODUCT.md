@@ -1,167 +1,118 @@
-# OffTracker Product Definition
+# OffTracker 製品定義
 
-## Product Name
-OffTracker
+更新日: 2026-10-24
+この文書は、現在合意している製品の目的・MVP範囲・設計原則を定める。以前の定義書は `docs/_archive/PRODUCT_pre_redefinition_2026-10-24.md` に保存している。実装の進捗と作業順は `MASTER_DEVELOPMENT_PLAN.md` を参照する。
 
-## Purpose
-自分が「やろう」と思っていたことを実行できなかったとき、実際の行動・作業状況・結果・自分自身の振り返りをもとに、なぜ実行できなかったのかを理解し、次の行動につなげられるようにする。
+## 1. 製品の目的
 
-## Value
-「できなかった」という結果だけで自分を評価するのではなく、自分の行動を知ることで、自分に合った次の行動を選べるようにする。
+OffTrackerは、PCを使う人が自分の過ごし方を振り返り、自分で気づき、時間の使い方を変える機会をつくる。作業中にそれていると気づく支援も将来の方向として考えるが、MVPはセッション終了後の振り返りを対象にする。
 
-## Core Philosophy
+アプリが時間の使い方を採点したり、改善方法を指示したりするのではなく、本人が判断するための記録と振り返りの手掛かりを提供する。
 
-### 自己否定につなげない
-失敗を責めるのではなく、事実として分析する
+**体験の中心はセッション後の振り返りとする。** 利用者が画面を見たとき、今回の目的に対して行動がどのように進み、どの時点で関係が変わったのか、または目的に沿って進められた流れは何かを捉え、自分の時間の使い方について考えられることを最優先する。記録の網羅性や分析精度を上げる作業は、この振り返りをより分かりやすく、根拠のあるものにする範囲で進める。
 
-### 行動を事実として扱う
-「集中力が低かった」ではなく「YouTubeを1時間使用していた」
+## 2. 対象と利用範囲
 
-### AIが原因を断定しない
-観測事実と仮説を区別する
+- **対象利用者:** PCを使う幅広い人。学習・課題・仕事・娯楽など、目的を限定しない。
+- **MVPの記録単位:** 本人が目的を決めて開始するPC利用セッション。
+- **将来拡張:** 目的を設定していない時間も含むPC利用全体の把握、および作業中に本人が時間の使い方へ気づく支援。
 
-### YouTube等を一律に悪い行動と判断しない
-休息や調査の一部である可能性もある
+## 3. MVPで実現する体験
 
-### 自動取得できない情報は自己申告する
-心理状態や理由はユーザー自身が入力する
+1. 本人が、そのセッションで何をしたいかを文章で記入し、PC利用の目的種類（娯楽・学習・課題制作・連絡事務など）を選ぶ。
+2. アプリがセッション中のPC利用を記録する。
+3. セッション後、目的・行動の流れ・本人が記録した結果を見比べる。
+4. 行動はまず種類ごとにまとめて表示し、本人が望むときにアプリ名などの詳細を見る。
+5. ローカルの分類規則が行動と目的との関係を参考表示する。本人は「目的に関係した／関係しなかった／判断できない」を選び、必要なら訂正・補足する。
+6. 本人が設定画面で、PC上に記録されたアプリ・サービスの一覧から選び、「娯楽でも使う」と登録できるようにする。娯楽以外の目的のセッションで登録済みのものが使われた場合は、目的からずれたと断定せず、関係を見直す候補として示す。本人はその使い方が今回の目的に関係していたかを訂正でき、必要なら短く補足する。訂正は「今回だけ」または「今後の候補にも反映」を選べる。娯楽目的のセッションでは、それを理由にずれの候補にしない。
+7. 目的との関係の切替と本人が記録した結果など、複数の条件に基づいて振り返り候補を提示する。候補は行動の切替前後など、記録上の根拠が分かる形にする。本人が当てはまるか判断し、アプリは原因を断定しない。娯楽アプリ候補への訂正を今後にも反映する場合は、同じ目的の種類のセッションに限る。
+8. 目的に沿って進められた場合も、行動の流れを手掛かりに、なぜうまく進んだかを負担なく考えられるようにする。行動の種類・順序・時間は自動記録して保存する。
+9. 本人の結果・選択・補足・振り返り回答をセッションに結びつけて保存し、後から見返せる。
+10. 複数セッションの簡単な傾向を表示する。アプリが目的文の近さをローカルで仮分類し、本人が分類を確認できる。同じ／似た目的のセッション比較と、目的をまたいだ行動傾向は分けて表示し、成功・失敗を判定しない。傾向と呼ぶ表示は、該当する比較群に3回以上の記録がたまってから行う。
 
-## Persona
+振り返りは選択中心で短く完了でき、自由記述や追加質問は任意とする。記録に変化が見られない場合に毎回同じ振り返りを強制しない。最初の候補抽出では、本人の結果と目的との関係の切替を組み合わせる。具体的なしきい値や候補数は実利用を踏まえて調整する。
 
-### Name
-佐藤（20歳、大学生）
+## 4. MVPに含めないもの
 
-### Characteristics
-- 情報技術を専攻
-- PCを課題や自己啓発に使用
-- 作業を開始できるが、エラーや難しい問題に遭遇すると途中で離れてしまう
-- 情報検索からYouTube、SNS、Discordへ漂流し、後で「あまり進捗がない」と感じるが明確な理由を説明できない
+- 「次に試すこと」の作成・次回への引き継ぎはMVP外の拡張候補として後回しにし、現行画面から外す
+- PC利用全体の常時把握
+- 作業中の通知や介入
+- AIによる分類・分析
+- 行動の成功／失敗、良し悪し、集中度などの採点
+- 心理状態や行動原因の断定
 
-### Target Behavior
-「やる気はないわけではない。作業も始める。でも、途中でいつの間にか目的から離れてしまう人」
+AI分析は将来候補とする。現在のアプリ本体はAI APIを使わず、目的文やPC記録を外部へ送信しない。AIを導入する場合は、品質評価、送信内容、同意、保存・ログ方針を別途決めてから判断する。個人に結びつく情報をAI処理へ使うかは未決定であり、導入前に改めて決める。匿名集計の外部利用も将来検討とし、現時点では決めない。
 
-## Core Loop
+## 5. 記録・判定・保存の原則
 
-```
-目的を設定
-    ↓
-実際に行動
-    ↓
-PCが自動記録
-    ↓
-結果を記録
-    ↓
-行動・作業状況を振り返る
-    ↓
-「なぜできなかった？」を考える
-    ↓
-過去の記録と比較
-    ↓
-自分のパターンを理解
-    ↓
-次回の行動を考える
-```
+### 自動記録と本人入力を分ける
 
-## Information Needed to Understand "Why"
+- **自動記録:** アプリの種類、利用時間、順序、切替など、PC上で観測できる情報。
+- **本人入力:** その回の目的、本人が感じた結果、行動が目的に関係したか、状況や気づき。
+- **アプリの参考分類:** ローカル規則による推定。本人の意図や実際の成果を示す事実ではなく、本人が訂正できる。
 
-| Information | Example | Collection Method |
-|-------------|---------|-------------------|
-| Purpose | Webアプリを完成させる | User Input |
-| Work Time | 18:00〜20:00 | Automatic |
-| Used Apps | VS Code | Automatic |
-| Web Usage | Google, YouTube | Automatic |
-| Behavior Flow | VS Code→Google→YouTube | Automatic |
-| Work Result | ログイン機能まで完成 | User Input |
-| Reason for Failure | エラーが解決できなかった | User Input |
-| Past Behavior | 同じパターンが3回 | Data Analysis |
-| Next Action | 次回は問題を小さく分ける | User + AI |
+### 娯楽でも使うアプリ・サービス
 
-## What NOT to Do
+- 設定に表示する候補は、このPCの記録に実際に現れたアプリ名・サービス名に限る。娯楽目的として記録したセッションに現れた項目は、自動で候補選択する。本人は設定で解除できる。
+- 登録は「娯楽でも使う」という手掛かりであり、娯楽目的以外の回で使われても、目的からそれたとは自動判定しない。
+- 娯楽以外の目的の振り返りでは、登録済みのものが含まれる行動について、今回の目的との関係を本人に確認する。
+- 設定と登録はPC内に保存し、設定からいつでも解除できる。
+- セッション開始時に目的の種類を選ぶ。過去セッションは目的文からローカルで仮分類し、振り返りで本人が直した種類があればそれを優先する。
+- 関係の訂正は「今回だけ」または「今後、同じ目的の種類でも使う」を選べる。後者はアプリ・サービスごと、目的種類ごとにPC内へ保存し、次回以降の参考候補として使う。
 
-### Feature Restrictions
-- ❌ Productivity Score
-- ❌ Gamification
-- ❌ Pomodoro Timer
-- ❌ Notifications
-- ❌ AI Chat
-- ❌ "You lacked focus" messaging
+「データを保存する」と「情報を自動収集する」を混同しない。本人の結果や振り返り回答は本人が入力・選択した情報として保存する。
 
-### Evaluation Restrictions
-- ❌ Evaluating user behavior as "good" or "bad"
-- ❌ Judging YouTube usage as "distraction" by default
-- ❌ Inferring psychological state from logs
-- ❌ Determining causes definitively
-- ❌ Shaming the user
+### 表示と振り返り
 
-### Privacy Restrictions
-- ❌ Keyloggers
-- ❌ Screenshots
-- ❌ Clipboard monitoring
-- ❌ File content reading
-- ❌ Password collection
-- ❌ Search term collection
-- ❌ Network traffic monitoring
+- 記録はまず行動の種類ごとにまとめ、必要なときに詳細を開けるようにする。
+- アプリ名や前面表示時間だけから、本人の意図・成果・心理を決めつけない。
+- 目的との関係が不明な記録は不明として示し、推測を事実のように表示しない。
+- 振り返り候補には、どの時刻・行動記録に基づくかを示し、本人が訂正できるようにする。
+- 娯楽も本人が選んだ目的として扱い、一律に問題視しない。
+- セッション間の傾向は目的の違いを保って表示し、単一の点数にまとめない。
+- 振り返り画面では、今回の目的・本人の結果・行動の流れをもとにした「今回見るポイント」を明確にし、根拠となる記録と本人が判断する部分を区別する。行動一覧を均等に並べるだけで終わらせない。
+- 振り返りの主な気づき候補は一つの具体的な流れや切替に結びつける。根拠が足りない場合は無理に候補を作らず、判断材料が足りないことを示す。目的に沿って進められた場合も、役立った流れを本人が見つけられるようにする。
+- 前段の目的入力・結果入力・行動記録は、振り返りの価値を伝えるための材料として位置づける。発表では振り返りを主役として見せ、前段は必要に応じて実機または架空データで短く示す。
 
-## Feature Addition Criteria
+### 保存とプライバシー
 
-Before adding any feature, ask:
-**「この機能は『やろうと思っていたことができなかった理由を理解する』という目的にどう貢献するか？」**
+- MVPでは、個人に結びつくセッション情報・行動記録・結果・補足・振り返りをPC内に保存する。
+- 画面で開いたときだけ詳細なアプリ名を表示する設計を基本とする。
+- キー入力、画面画像、クリップボード、ファイル内容、パスワード、検索語、通信内容は収集しない。
+- クラウド処理や匿名集計を始める場合は、送信内容と目的を明示し、別途合意を得る。
 
-If the answer is unclear or the contribution is indirect, do not add the feature.
+## 6. 成功を確かめる基準
 
-## Success Criteria
+MVPは、機能が動くことだけで製品目的を達成したとはみなさない。次を実利用で確かめる。
 
-### Evaluation 1: Can you set a purpose?
-- User can input what they intend to do
+1. 利用者が目的・行動・本人の結果を同じセッションの情報として理解できる。
+2. 行動の流れや切替候補を見て、本人が「どのタイミングで／どのような流れで」目的との関係が変わったかを考えられる。
+3. 振り返り画面を見て、今回の主な注目点とその根拠がすぐ分かり、「だから何に気づけるのか」を自分の言葉で説明できる。
+4. 目的に沿ったセッションでも、役立った行動や時間配分を負担なく振り返れる。
+5. 参考分類の意味と限界が伝わり、誤りを本人が直せる。
+6. 保存済みの回答と振り返りを後から正しいセッションで見返せる。
+7. 複数セッションの傾向を見て、本人が自分なりの変化を考えられる。アプリが成功・失敗を決めない。
+8. 振り返りの操作が選択中心で、負担が許容できる。
+9. 利用を通じて本人が自分で時間の使い方を変える助けになるかを、実利用者の反応で確認する。
 
-### Evaluation 2: Can you understand actual behavior?
-- User can see what they actually did
+## 7. 機能追加の判断基準
 
-### Evaluation 3: Can you compare purpose with actual behavior?
-- User can see the gap between intention and reality
+機能を追加・変更する前に、次を確認する。
 
-### Evaluation 4: Can you reflect on "why"?
-- User can think about why they couldn't complete the task
+> この機能は、本人が自分の過ごし方に気づき、自分で時間の使い方を変えることをどう支えるか。
 
-### Evaluation 5: Can you understand patterns over time?
-- User can see recurring patterns in their behavior
+貢献が曖昧なら追加を保留し、実利用で見つかった課題に対応する。振り返り機能が一通り整った後、画面構成と見せ方は利用者と改めて決め、その段階でUIをまとめて変更する。
 
-### Evaluation 6: Can you connect to next action?
-- User can derive insights for future behavior
+開発の優先順位は、振り返りの価値が明確に伝わること、振り返りを支える記録・保存・再表示が正しく動くこと、複数セッションの傾向など周辺機能を整えることの順とする。分析精度の改善は、振り返りに必要な根拠が不足していると確認できた場合に優先度を上げる。
 
-## Technical Foundation
+## 8. 未決定事項
 
-### What Can Be Collected Automatically
-- Application name (VS Code, Chrome, Discord, etc.)
-- Web service name (Google, YouTube, GitHub, etc.)
-- Start and end times
-- Window title (subject to privacy controls)
-- Process ID (for technical identification)
-- Transition sequences
-
-### What Requires Self-Reporting
-- Why the user deviated from the task
-- What happened (error, interruption, fatigue, etc.)
-- How the user felt
-- What they think they should do next
-
-### Collection vs. Analysis Division
-- **Automatic Collection** = What the user was doing
-- **Self-Reporting** = What was happening to the user
-
-This division minimizes user input while capturing necessary information.
-
-## Minimum User Input
-
-### At Start
-- Today's purpose (e.g., "Implement login functionality")
-
-### At End
-- How far did you get? (e.g., "Partially completed")
-- Why didn't you proceed as planned? (e.g., "Got stuck on an error")
-
-Input is limited to information that cannot be automatically determined.
-
-## Vision
-
-OffTracker helps users understand their own behavior patterns when they fail to complete intended tasks, without judgment or shame, enabling them to make better choices for future work.
+- 振り返り候補を出す条件の具体的なしきい値と候補数。初期案は、目的との関係が切り替わる前後を候補にし、本人の結果に合わせて提示理由を変える。
+- 目的との関係をローカルで分類する基準と、本人による訂正の最小操作。
+- 目的をまたぐ行動傾向を、どの行動パターンでまとめ、どの比較群に対して表示するか。傾向表示は比較可能な記録3回以上を推奨する。
+- 目的文の近さをローカルでどう仮分類するか。分類が違う場合の訂正方法は、表示を確認してから決める。
+- 娯楽目的で使うものは、本人が設定画面で記録済みアプリ・サービスから選び、「娯楽でも使う」と登録する。今後への訂正反映は同じ目的の種類に限る。訂正データの保存方法と、設定画面での確認・解除方法を決める。
+- 複数セッション傾向の最小表示と、比較対象を選ぶ方法。
+- 記録が変化したとみなす具体的条件。初期案では目的との関係の切替と本人が記録した結果を組み合わせる。
+- AIの導入可否・送信条件、および匿名集計の将来利用。
+- 機能確認後に利用者が決める画面構成とUI変更内容。
