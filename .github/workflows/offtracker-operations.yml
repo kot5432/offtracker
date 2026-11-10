@@ -1,0 +1,68 @@
+# Staged rollout: validation runs automatically; production reads require manual opt-in.
+name: OffTracker operation status
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'server/contact/external-monitor-*'
+      - 'server/contact/operational-signal-policy*'
+      - 'server/contact/retention-health*'
+      - 'server/contact/certs/supabase-prod-ca-2021.crt'
+      - '.github/workflows/offtracker-operations.yml'
+  workflow_dispatch:
+    inputs:
+      run_monitor:
+        description: 'Read production status and signal fresh completion (configure environment secrets first)'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: offtracker-operations
+  cancel-in-progress: false
+jobs:
+  validate:
+    if: github.repository == 'kot5432/offtracker' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ab5879a0064983bd96880626f7daf6e2090562e5
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: 24
+      - name: Verify runtime and offline policies
+        run: |
+          node --version
+          psql --version
+          node --test server/contact/external-monitor-runner.test.mjs server/contact/operational-signal-policy.test.mjs server/contact/retention-health.test.mjs
+  observe:
+    needs: validate
+    if: github.event_name == 'workflow_dispatch' && inputs.run_monitor && github.repository == 'kot5432/offtracker' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    environment: offtracker-operations
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ab5879a0064983bd96880626f7daf6e2090562e5
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: 24
+      - name: Check installed runtime
+        run: |
+          node --version
+          psql --version
+      - name: Read bounded status and signal fresh completion
+        env:
+          PGHOST: aws-0-ap-northeast-1.pooler.supabase.com
+          PGPORT: '5432'
+          PGUSER: offtracker_ops_monitor.predaivzwllitlcnxbin
+          PGPASSWORD: ${{ secrets.OFFTRACKER_MONITOR_PGPASSWORD }}
+          PGSSLROOTCERT: server/contact/certs/supabase-prod-ca-2021.crt
+          OFFTRACKER_RETENTION_PING_URL: ${{ secrets.OFFTRACKER_RETENTION_PING_URL }}
+          OFFTRACKER_CLEANUP_PING_URL: ${{ secrets.OFFTRACKER_CLEANUP_PING_URL }}
+        run: node server/contact/external-monitor-runner.mjs
