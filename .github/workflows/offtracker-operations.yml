@@ -1,6 +1,8 @@
-# Staged rollout: validation runs automatically; production reads require manual opt-in.
+# Production observation runs every five minutes; only fresh verified completion signals are sent.
 name: OffTracker operation status
 on:
+  schedule:
+    - cron: '2-57/5 * * * *'
   push:
     branches: [main]
     paths:
@@ -40,7 +42,7 @@ jobs:
           node --test server/contact/external-monitor-runner.test.mjs server/contact/operational-signal-policy.test.mjs server/contact/retention-health.test.mjs
   observe:
     needs: validate
-    if: github.event_name == 'workflow_dispatch' && inputs.run_monitor && github.repository == 'kot5432/offtracker' && github.ref == 'refs/heads/main'
+    if: (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run_monitor)) && github.repository == 'kot5432/offtracker' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 2
     environment: offtracker-operations
